@@ -1,0 +1,10 @@
+node_modules
+webpack.*
+devServer.js
+npm-debug.log
+.DS_Store
+*.log
+*dist/
+*.html
+scripts/
+app/

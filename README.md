@@ -1,33 +1,19 @@
 # gene-database
 
+## requirement
++ node v8.5+
++ npm v3.6+
 
-
-## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
-
-### Development
-
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+## develop
++ 启动前端项目
+``` bash
+npm run dev:fe 
 ```
-
-### Deploy
-
-```bash
-$ npm start
-$ npm stop
++ 启动服务端
+``` bash
+npm run dev:ser
 ```
++ open [localhost:3001](http://localhost:3001)
 
-### npm scripts
+## deploy
 
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-
-[egg]: https://eggjs.org

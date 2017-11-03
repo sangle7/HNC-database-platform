@@ -9,7 +9,7 @@ const Drugs = props => {
     loading,
     columns: [{
       title: 'Drug name',
-      dataIndex: 'Drug name',
+      dataIndex: 'name',
     }, {
       title: 'PMID',
       dataIndex: 'pubmed_id',

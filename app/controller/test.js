@@ -42,7 +42,7 @@ exports.init = function* (ctx) {
       case '1':
         var { item } = yield ctx.service.gene.getIdByName(geneId)
         var { list } = yield ctx.service.gene2pubmed.query(item.id)
-        for(elem of list){
+        for(let elem of list){
           var { result } = yield ctx.service.pubmed.getById(elem.pubmed_id) 
           elem.pmid = result.pmid
         }
@@ -54,13 +54,33 @@ exports.init = function* (ctx) {
         break
       case '2':
         var { item } = yield ctx.service.gene.getIdByName(geneId)
-        var { list } = yield ctx.service.drug2pubmed.query(item.id)
+        var { list } = yield ctx.service.gene2pubmed.query(item.id)
+        let newlist = []
+        for(let elem of list){
+          var { result } = yield ctx.service.pubmed.getById(elem.pubmed_id) 
+          var obj1 = yield ctx.service.drug2pubmed.query(elem.pubmed_id) 
+          let _list = []
+          for (let item of obj1.list){
+            // 这里获得药名,两步 先查获取dbid 再查durgbank
+            const drugid = item.hncdrug_id
+            const { dbid } = yield ctx.service.hncdrug.queryById(drugid) 
+            const { drug } = yield ctx.service.drugbank.queryById(dbid) 
+            _list = [..._list,{...item,pmid:result.pmid,name:drug.name}]
+          }
+          //_list 中每个pmid都为result.pmid
+          newlist = [...newlist,..._list]
+        }
         body = {
-          list,
+          list: newlist,
           step: 2,
           ret: 200,
         }
         break
+      default:
+        body = {
+          step: step ? parseInt(step) : 0,
+          ret: 200,
+        }
     }
   } catch (error) {
     body.error = error

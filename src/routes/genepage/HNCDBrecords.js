@@ -32,7 +32,7 @@ const HNCDB = props => {
       dataIndex: 'mol_event',
     }, {
       title: 'Function in HNC',
-      dataIndex: 'func',
+      dataIndex: 'note',
     }],
   }
   const TabProps = {

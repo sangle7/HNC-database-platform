@@ -1,19 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import Surviral from './Surviral'
-import Expression from './Expression'
-import Epigenetic from './Epigenetic'
-import Mutation from './Mutation'
-import Corr from './Corr'
-import Diff from './Diff'
-import CNV from './CNV'
-import style from './style.less'
-import { Menu, Breadcrumb } from '../../components'
-import HNCDBrecords from './HNCDBrecords'
-import Drugs from './Drugs'
+import { Menu, Breadcrumb } from '../../../components'
 
-const genemenu = ['General Information','HNCDB record','Drugs','Expression','Mutation','CNV','Epigenetic modification','Surviral','Corr. annalysis','Diff. annalysis']
+const genemenu = ['IncRNA', 'miRNA', 'piRNA', 'snoRNA', 'cirRNA']
 class GenePage extends React.Component {
   constructor (props) {
     super(props)
@@ -126,36 +116,6 @@ class GenePage extends React.Component {
 
     let itemByStep
     switch (step) {
-      case 0:
-        itemByStep = <pre>{JSON.stringify(item,null,4)}</pre>
-        break
-      case 1:
-        itemByStep = <HNCDBrecords {...HNCDBrecordsProps} />
-        break
-      case 2:
-        itemByStep = <Drugs {...DrugsProps} />
-        break
-      case 3:
-        itemByStep = <Expression {...ExpressionProps} />
-        break
-      case 4:
-        itemByStep = <Mutation {...MutationProps} />
-        break
-      case 5:
-        itemByStep = <CNV {...CNVProps} />
-        break
-      case 6:
-        itemByStep = <Epigenetic {...EpigeneticProps} />
-        break
-      case 7:
-        itemByStep = <Surviral {...SurviralProps} />
-        break
-      case 8:
-        itemByStep = <Corr {...CorrProps} />
-        break
-      case 9:
-        itemByStep = <Diff {...DiffProps} />
-        break
       default:
         itemByStep = <h1> 还没写完呢- -</h1>
     }
@@ -171,6 +131,7 @@ class GenePage extends React.Component {
     )
   }
 }
+
 
 GenePage.propTypes = {
   history: PropTypes.object.isRequired,

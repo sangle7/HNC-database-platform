@@ -27,7 +27,7 @@ class GeneList extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/test/info', {
+    fetch('/gene/info', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

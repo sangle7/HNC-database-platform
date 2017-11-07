@@ -76,12 +76,20 @@ exports.init = function* (ctx) {
           ret: 200,
         }
         break
-      default:
+      case '3':
         body = {
-          step: step ? parseInt(step) : 0,
+          step: 3,
           ret: 200,
         }
-    }
+        break
+      default:
+        var { item } = yield ctx.service.gene.getIdByName(geneId)
+        body = {
+          item,
+          step: 0,
+          ret: 200,
+        }
+      }
   } catch (error) {
     body.error = error
   }

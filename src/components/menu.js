@@ -7,7 +7,7 @@ const Sider = props => (
     onClick={props.onChange}
     style={{ width: 240 , float: 'left' }}
     mode="inline"
-    
+    selectedKeys={[props.genemenu[props.highlight]]}
   >
     {props.genemenu.map(elem => (<Menu.Item key={elem}>
       <Icon type="mail" />{elem}

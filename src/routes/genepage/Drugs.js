@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { DatasourceTable } from '../../components'
 
 const Drugs = props => {
@@ -22,7 +23,7 @@ const Drugs = props => {
     }, {
       title: 'More',
       dataIndex: 'more',
-      render:() => (<h5>hi more</h5>),
+      render:(value,record) => (<Link to={`/drug/${record.name}`}>more</Link>),
     }],
   }
   return <DatasourceTable {...TableProps} />

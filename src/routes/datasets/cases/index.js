@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Breadcrumb, Tabs, DatasourceTable, StackedBarChart } from '../../../components'
+
 const DatasetsCases = props => {
   const { location, history } = props
   const BreadcrumbProps = {
@@ -91,6 +92,8 @@ const DatasetsCases = props => {
 }
 
 DatasetsCases.propTypes = {
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 export default DatasetsCases

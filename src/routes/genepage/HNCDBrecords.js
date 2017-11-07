@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Tabs, DatasourceTable, BarChart } from '../../components'
 import { countFromArray } from '../../const/function'
 
@@ -30,7 +31,7 @@ const HNCDB = props => {
     tabs: [{
       key: 'Graph',
       title: 'Graph',
-      content: <BarChart data={data}/>,
+      content: <BarChart data={data} />,
     }, {
       key: 'Table',
       title: 'Table',
@@ -41,6 +42,12 @@ const HNCDB = props => {
     },
   }
   return <Tabs {...TabProps} />
+}
+
+HNCDB.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  dataSource: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default HNCDB

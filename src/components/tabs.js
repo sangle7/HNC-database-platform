@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
-import { Tabs, Table } from 'antd'
+import { Tabs } from 'antd'
 
 const TabPane = Tabs.TabPane
 
@@ -16,6 +15,7 @@ const TabWithRoute = props => {
 
 TabWithRoute.propTypes = {
   onChange: PropTypes.func.isRequired,
+  tabs: PropTypes.array.isRequired,
 }
 
 export default TabWithRoute

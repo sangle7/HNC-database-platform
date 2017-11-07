@@ -8,12 +8,11 @@ import Mutation from './Mutation'
 import Corr from './Corr'
 import Diff from './Diff'
 import CNV from './CNV'
-import style from './style.less'
 import { Menu, Breadcrumb, Label } from '../../components'
 import HNCDBrecords from './HNCDBrecords'
 import Drugs from './Drugs'
 
-const genemenu = ['General Information','HNCDB record','Drugs','Expression','Mutation','CNV','Epigenetic modification','Surviral','Corr. annalysis','Diff. annalysis']
+const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV', 'Epigenetic modification', 'Surviral', 'Corr. annalysis', 'Diff. annalysis']
 class GenePage extends React.Component {
   constructor (props) {
     super(props)
@@ -57,7 +56,9 @@ class GenePage extends React.Component {
   }
   render () {
     const { location, history, match } = this.props
-    const { dataSource, loading, graphData, step, item, type } = this.state
+    const {
+      dataSource, loading, graphData, step, item, type,
+    } = this.state
     const BreadcrumbProps = {
       path: location.pathname,
       handleClick (index) {
@@ -89,7 +90,7 @@ class GenePage extends React.Component {
       dataSource,
       loading,
     }
-    
+
     const ExpressionProps = {
 
     }
@@ -112,16 +113,16 @@ class GenePage extends React.Component {
 
     const CorrProps = {
       type,
-      onChange (type) {
-        history.push(`${location.pathname}?step=8&type=${type}`)
-      }
+      onChange (t) {
+        history.push(`${location.pathname}?step=8&type=${t}`)
+      },
     }
 
     const DiffProps = {
       type,
-      onChange (type) {
-        history.push(`${location.pathname}?step=9&type=${type}`)
-      }
+      onChange (t) {
+        history.push(`${location.pathname}?step=9&type=${t}`)
+      },
     }
 
     let itemByStep
@@ -175,6 +176,7 @@ class GenePage extends React.Component {
 GenePage.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default GenePage

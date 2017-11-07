@@ -10,10 +10,10 @@ class GeneList extends React.Component {
     this.state = {
       dataSource: [],
       loading: false,
-      pagination: { 
+      pagination: {
         current: 1,
         total: 100,
-      }
+      },
     }
   }
   componentDidMount () {
@@ -87,7 +87,7 @@ class GeneList extends React.Component {
 
     const SearchProps = {
       title: <Icon type="search" />,
-      placeholder:'Search id/hgncid/symbol',
+      placeholder: 'Search id/hgncid/symbol',
       onSearch: value => {
         history.push(`/Annalysis/Gene?q=${value}`)
       },

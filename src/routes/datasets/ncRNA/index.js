@@ -10,9 +10,7 @@ class GenePage extends React.Component {
     this.state = {
       dataSource: [],
       loading: false,
-      item: {},
       step: 0,
-      type: null,
     }
   }
   componentDidMount () {
@@ -36,17 +34,15 @@ class GenePage extends React.Component {
       .then(blob => blob.json())
       .then(code => {
         this.setState({
-          item: code.item,
           dataSource: code.list,
           step: code.step,
           loading: false,
-          type: params.type,
         })
       })
   }
   render () {
     const { location, history, match } = this.props
-    const { dataSource, loading, graphData, step, item, type } = this.state
+    const { dataSource, loading, step } = this.state
     const BreadcrumbProps = {
       path: location.pathname,
       handleClick (index) {
@@ -65,7 +61,7 @@ class GenePage extends React.Component {
         history.push(`${location.pathname}?step=${index}`)
       },
     }
-  
+
     const TableProps = {
       dataSource,
       loading,
@@ -101,7 +97,7 @@ class GenePage extends React.Component {
       }, {
         key: 'Graph',
         title: 'Graph',
-        content: <div style={{display: 'flex',flexWrap: 'wrap'}}><PieChart /><PieChart /><PieChart /></div>,
+        content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /></div>,
       }],
       onChange (key) {
         console.log(key)
@@ -125,6 +121,7 @@ class GenePage extends React.Component {
 GenePage.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default GenePage

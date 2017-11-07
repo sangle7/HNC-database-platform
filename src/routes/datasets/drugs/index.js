@@ -47,7 +47,7 @@ const DatasetsDrugs = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <div style={{display: 'flex',flexWrap: 'wrap'}}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
+      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
     }],
     onChange (key) {
       console.log(key)
@@ -62,6 +62,8 @@ const DatasetsDrugs = props => {
 }
 
 DatasetsDrugs.propTypes = {
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 export default DatasetsDrugs

@@ -20,9 +20,10 @@ class SearchWithState extends React.Component {
   render () {
     const { title, placeholder } = this.props
     const menu = array => {
-      return (<Menu onClick={e => this.props.onSearch(e.key, this.state.value)} >
-        {array.map((elem, index) => <Menu.Item key={String(index)}>{elem}</Menu.Item>)}
-      </Menu>)
+      return (
+        <Menu onClick={e => this.props.onSearch(e.key, this.state.value)} >
+          {array.map((elem, index) => <Menu.Item key={String(index)}>{elem}</Menu.Item>)}
+        </Menu>)
     }
     return (
       <div>
@@ -35,9 +36,9 @@ class SearchWithState extends React.Component {
 
 
 SearchWithState.propTypes = {
-  title: PropTypes.string,
-  placeholder: PropTypes.string,
-  onSearch: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
 }
 
 export default SearchWithState

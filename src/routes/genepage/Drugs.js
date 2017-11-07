@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { DatasourceTable } from '../../components'
 
@@ -23,10 +24,15 @@ const Drugs = props => {
     }, {
       title: 'More',
       dataIndex: 'more',
-      render:(value,record) => (<Link to={`/Datasets/drugs/${record.name}`}>more</Link>),
+      render: (value, record) => (<Link to={`/Datasets/drugs/${record.name}`}>more</Link>),
     }],
   }
   return <DatasourceTable {...TableProps} />
+}
+
+Drugs.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  dataSource: PropTypes.array.isRequired,
 }
 
 export default Drugs

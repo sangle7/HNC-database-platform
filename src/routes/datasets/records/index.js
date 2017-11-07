@@ -44,7 +44,7 @@ const DatasetsRecords = props => {
     tabs: [{
       key: 'Graph',
       title: 'Graph',
-      content: <div style={{display: 'flex',flexWrap: 'wrap'}}><PieChart /><PieChart /><PieChart /></div>,
+      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /></div>,
     }, {
       key: 'Table',
       title: 'Table',
@@ -63,6 +63,8 @@ const DatasetsRecords = props => {
 }
 
 DatasetsRecords.propTypes = {
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 export default DatasetsRecords

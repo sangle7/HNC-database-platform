@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Row } from 'antd'
 import { Breadcrumb, Label } from '../../components'
 
 class DrugPage extends React.Component {

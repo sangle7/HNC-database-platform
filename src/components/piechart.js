@@ -21,7 +21,7 @@ const data01 = [
   }, {
     name: 'Group F',
     value: 189,
-  }
+  },
 ]
 
 const Chart = () => (
@@ -32,9 +32,10 @@ const Chart = () => (
       cx={150}
       cy={150}
       outerRadius={80}
-      fill='#333'
-      label>
-      {data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+      fill="#333"
+      label
+    >
+      {data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)}
     </Pie>
   </PieChart>
 )

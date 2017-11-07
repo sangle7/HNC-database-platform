@@ -6,13 +6,12 @@ function countFromArray (array, countkey) {
     })
     return pre
   }, {})
-  const data = []
-  for (let key in dataObj) {
-    data.push({
-      name: key,
-      count: dataObj[key],
-    })
-  }
+  const data = Object.entries(dataObj).map(elem => {
+    return {
+      name: elem[0],
+      count: elem[1],
+    }
+  })
   return data
 }
 

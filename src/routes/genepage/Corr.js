@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { Select } from 'antd'
 import { DatasourceTable } from '../../components'
 
@@ -78,25 +78,34 @@ const getColumn = _type => {
 
 const Option = Select.Option
 const Corr = props => {
-  const { loading, dataSource, type, onChange } = props
+  const {
+    loading, dataSource, type, onChange,
+  } = props
   const TableProps = {
     dataSource,
     loading,
     columns: getColumn(type),
   }
-  return (<div>
-    <Select defaultValue="mRNA" style={{ width: 120 }} onChange={key => onChange(key)}>
-      <Option value="mRNA">mRNA</Option>
-      <Option value="IncRNA">IncRNA</Option>
-      <Option value="miRNA">miRNA</Option>
-      <Option value="CNV">CNV</Option>
-      <Option value="Surviral">Surviral</Option>
-      <Option value="Methylation">Methylation</Option>
-      <Option value="m6A">m6A</Option>
-      <Option value="Phosphorylation">Phosphorylation</Option>
-    </Select>
-    <DatasourceTable {...TableProps} />
+  return (
+    <div>
+      <Select defaultValue="mRNA" style={{ width: 120 }} onChange={key => onChange(key)}>
+        <Option value="mRNA">mRNA</Option>
+        <Option value="IncRNA">IncRNA</Option>
+        <Option value="miRNA">miRNA</Option>
+        <Option value="CNV">CNV</Option>
+        <Option value="Surviral">Surviral</Option>
+        <Option value="Methylation">Methylation</Option>
+        <Option value="m6A">m6A</Option>
+        <Option value="Phosphorylation">Phosphorylation</Option>
+      </Select>
+      <DatasourceTable {...TableProps} />
     </div>)
+}
+Corr.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  dataSource: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Corr

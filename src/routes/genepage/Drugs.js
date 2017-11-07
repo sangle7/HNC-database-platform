@@ -23,7 +23,7 @@ const Drugs = props => {
     }, {
       title: 'More',
       dataIndex: 'more',
-      render:(value,record) => (<Link to={`/drug/${record.name}`}>more</Link>),
+      render:(value,record) => (<Link to={`/Datasets/drugs/${record.name}`}>more</Link>),
     }],
   }
   return <DatasourceTable {...TableProps} />

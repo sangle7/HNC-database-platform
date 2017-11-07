@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Breadcrumb } from '../../components'
+import { Row } from 'antd'
+import { Breadcrumb, Label } from '../../components'
 
 class DrugPage extends React.Component {
   constructor (props) {
@@ -48,7 +49,7 @@ class DrugPage extends React.Component {
     return (
       <div>
         <Breadcrumb {...BreadcrumbProps} />
-        <pre>{JSON.stringify(item, null, 4)}</pre>
+        <Label item={item} />
       </div>
     )
   }

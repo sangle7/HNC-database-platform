@@ -3,81 +3,82 @@ import { Link } from 'react-router-dom'
 import { Select } from 'antd'
 import { DatasourceTable } from '../../components'
 
+const getColumn = _type => {
+  switch (_type) {
+    case 'mRNA':
+      return [{
+        title: 'Gene',
+        dataIndex: 'Gene',
+      }, {
+        title: 'Corr.Gene',
+        dataIndex: 'Corr.Gene',
+      }, {
+        title: 'r(Pearson)',
+        dataIndex: 'r',
+      }, {
+        title: 'P-value',
+        dataIndex: 'P-value',
+      }, {
+        title: 'Plot',
+        dataIndex: 'Plot',
+      }]
+    case 'IncRNA':
+      return [{
+        title: 'Gene',
+        dataIndex: 'Gene',
+      }, {
+        title: 'Corr.IncRNA',
+        dataIndex: 'Corr.IncRNA',
+      }, {
+        title: 'r(Pearson)',
+        dataIndex: 'r',
+      }, {
+        title: 'P-value',
+        dataIndex: 'P-value',
+      }, {
+        title: 'Plot',
+        dataIndex: 'Plot',
+      }]
+    case 'miRNA':
+      return [{
+        title: 'Gene',
+        dataIndex: 'Gene',
+      }, {
+        title: 'Corr.miRNA',
+        dataIndex: 'Corr.miRNA',
+      }, {
+        title: 'r(Pearson)',
+        dataIndex: 'r',
+      }, {
+        title: 'P-value',
+        dataIndex: 'P-value',
+      }, {
+        title: 'Plot',
+        dataIndex: 'Plot',
+      }]
+    case 'CNV':
+    case 'Surviral':
+      return [{
+        title: 'Gene',
+        dataIndex: 'Gene',
+      }, {
+        title: 'Sample ID',
+        dataIndex: 'Sample ID',
+      }, {
+        title: 'log2RPKM',
+        dataIndex: 'log2RPKM',
+      }, {
+        title: 'Segment mean',
+        dataIndex: 'Segment mean',
+      }]
+    default:
+      return []
+  }
+}
+
 const Option = Select.Option
 const Corr = props => {
   const { loading, dataSource, type, onChange } = props
-  const getColumn = _type => {
-    switch (_type) {
-      case 'mRNA':
-        return [{
-          title: 'Gene',
-          dataIndex: 'Gene',
-        }, {
-          title: 'Corr.Gene',
-          dataIndex: 'Corr.Gene',
-        }, {
-          title: 'r(Pearson)',
-          dataIndex: 'r',
-        }, {
-          title: 'P-value',
-          dataIndex: 'P-value',
-        }, {
-          title: 'Plot',
-          dataIndex: 'Plot',
-        }]
-      case 'IncRNA':
-        return [{
-          title: 'Gene',
-          dataIndex: 'Gene',
-        }, {
-          title: 'Corr.IncRNA',
-          dataIndex: 'Corr.IncRNA',
-        }, {
-          title: 'r(Pearson)',
-          dataIndex: 'r',
-        }, {
-          title: 'P-value',
-          dataIndex: 'P-value',
-        }, {
-          title: 'Plot',
-          dataIndex: 'Plot',
-        }]
-      case 'miRNA':
-        return [{
-          title: 'Gene',
-          dataIndex: 'Gene',
-        }, {
-          title: 'Corr.miRNA',
-          dataIndex: 'Corr.miRNA',
-        }, {
-          title: 'r(Pearson)',
-          dataIndex: 'r',
-        }, {
-          title: 'P-value',
-          dataIndex: 'P-value',
-        }, {
-          title: 'Plot',
-          dataIndex: 'Plot',
-        }]
-      case 'CNV':
-      case 'Surviral':
-        return [{
-          title: 'Gene',
-          dataIndex: 'Gene',
-        }, {
-          title: 'Sample ID',
-          dataIndex: 'Sample ID',
-        }, {
-          title: 'log2RPKM',
-          dataIndex: 'log2RPKM',
-        }, {
-          title: 'Segment mean',
-          dataIndex: 'Segment mean',
-        }]
-      default:
-        return []
-    }
-  }
   const TableProps = {
     dataSource,
     loading,

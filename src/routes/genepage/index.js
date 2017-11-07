@@ -9,7 +9,7 @@ import Corr from './Corr'
 import Diff from './Diff'
 import CNV from './CNV'
 import style from './style.less'
-import { Menu, Breadcrumb } from '../../components'
+import { Menu, Breadcrumb, Label } from '../../components'
 import HNCDBrecords from './HNCDBrecords'
 import Drugs from './Drugs'
 
@@ -51,7 +51,7 @@ class GenePage extends React.Component {
           dataSource: code.list,
           step: code.step,
           loading: false,
-          type: params.type,
+          type: params.type || 'mRNA',
         })
       })
   }
@@ -127,7 +127,7 @@ class GenePage extends React.Component {
     let itemByStep
     switch (step) {
       case 0:
-        itemByStep = <pre>{JSON.stringify(item,null,4)}</pre>
+        itemByStep = <Label item={item} />
         break
       case 1:
         itemByStep = <HNCDBrecords {...HNCDBrecordsProps} />

@@ -82,6 +82,42 @@ exports.init = function* (ctx) {
           ret: 200,
         }
         break
+      case '4':
+        body = {
+          step: 4,
+          ret: 200,
+        }
+        break
+      case '5':
+        body = {
+          step: 5,
+          ret: 200,
+        }
+        break
+      case '6':
+        body = {
+          step: 6,
+          ret: 200,
+        }
+        break
+      case '7':
+        body = {
+          step: 7,
+          ret: 200,
+        }
+        break
+      case '8':
+        body = {
+          step: 8,
+          ret: 200,
+        }
+        break
+      case '9':
+        body = {
+          step: 9,
+          ret: 200,
+        }
+        break
       default:
         var { item } = yield ctx.service.gene.getIdByName(geneId)
         body = {

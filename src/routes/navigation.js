@@ -10,7 +10,7 @@ const generateType = (path, url) => {
     case '/':
       return path === '/' ? 'primary' : 'default'
     default:
-      return path.indexOf(url) === 0 ? 'primary' : 'default'
+      return path.toLowerCase().indexOf(url.toLowerCase()) === 0 ? 'primary' : 'default'
   }
 }
 const Navigation = ({ history, location }) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Menu, Breadcrumb } from '../../../components'
+import { Menu, Breadcrumb, PieChart, Tabs, DatasourceTable } from '../../../components'
 
 const genemenu = ['IncRNA', 'miRNA', 'piRNA', 'snoRNA', 'cirRNA']
 class GenePage extends React.Component {
@@ -23,11 +23,10 @@ class GenePage extends React.Component {
   }
   init = props => {
     const params = queryString.parse(props.location.search)
-    params.geneId = props.match.params.geneId
     this.setState({
       loading: true,
     })
-    fetch('/gene/init', {
+    fetch('/ncRNA/init', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -66,66 +65,56 @@ class GenePage extends React.Component {
         history.push(`${location.pathname}?step=${index}`)
       },
     }
-
-    const HNCDBrecordsProps = {
-      ...this.props,
+  
+    const TableProps = {
       dataSource,
       loading,
-      graphData,
+      columns: [{
+        title: `${genemenu[step]} ID`,
+        dataIndex: 'ID',
+      }, {
+        title: 'Ref.pubID',
+        dataIndex: 'Ref.pubID',
+      }, {
+        title: 'Tumer Expr.',
+        dataIndex: 'Tumer Expr.',
+      }, {
+        title: 'Sample number',
+        dataIndex: 'Sample number',
+      }, {
+        title: 'Annotation',
+        dataIndex: 'Annotation',
+      }, {
+        title: 'Over/Nearest gene ID',
+        dataIndex: 'Over/Nearest gene ID',
+      }, {
+        title: 'Distance/bp',
+        dataIndex: 'Distance',
+      }],
     }
 
-    const DrugsProps = {
-      ...this.props,
-      dataSource,
-      loading,
-    }
-    
-    const ExpressionProps = {
-
-    }
-
-    const MutationProps = {
-
-    }
-
-    const CNVProps = {
-
+    const TabProps = {
+      tabs: [{
+        key: 'Table',
+        title: 'Table',
+        content: <DatasourceTable {...TableProps} />,
+      }, {
+        key: 'Graph',
+        title: 'Graph',
+        content: <div style={{display: 'flex',flexWrap: 'wrap'}}><PieChart /><PieChart /><PieChart /></div>,
+      }],
+      onChange (key) {
+        console.log(key)
+      },
     }
 
-    const EpigeneticProps = {
-
-    }
-
-    const SurviralProps = {
-
-    }
-
-    const CorrProps = {
-      type,
-      onChange (type) {
-        history.push(`${location.pathname}?step=8&type=${type}`)
-      }
-    }
-
-    const DiffProps = {
-      type,
-      onChange (type) {
-        history.push(`${location.pathname}?step=9&type=${type}`)
-      }
-    }
-
-    let itemByStep
-    switch (step) {
-      default:
-        itemByStep = <h1> 还没写完呢- -</h1>
-    }
     return (
       <div>
         <Breadcrumb {...BreadcrumbProps} />
         <main>
           <h1>{match.params.geneId}</h1>
           <Menu {...MenuProps} />
-          {itemByStep}
+          <Tabs {...TabProps} />
         </main>
       </div>
     )

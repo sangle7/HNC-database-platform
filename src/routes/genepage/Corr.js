@@ -1,86 +1,88 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Select } from 'antd'
-import { DatasourceTable } from '../../components'
+import { Select, Button } from 'antd'
+import { DatasourceTable, ScatterChart } from '../../components'
 
-const getColumn = _type => {
-  switch (_type) {
-    case 'mRNA':
-      return [{
-        title: 'Gene',
-        dataIndex: 'Gene',
-      }, {
-        title: 'Corr.Gene',
-        dataIndex: 'Corr.Gene',
-      }, {
-        title: 'r(Pearson)',
-        dataIndex: 'r',
-      }, {
-        title: 'P-value',
-        dataIndex: 'P-value',
-      }, {
-        title: 'Plot',
-        dataIndex: 'Plot',
-      }]
-    case 'IncRNA':
-      return [{
-        title: 'Gene',
-        dataIndex: 'Gene',
-      }, {
-        title: 'Corr.IncRNA',
-        dataIndex: 'Corr.IncRNA',
-      }, {
-        title: 'r(Pearson)',
-        dataIndex: 'r',
-      }, {
-        title: 'P-value',
-        dataIndex: 'P-value',
-      }, {
-        title: 'Plot',
-        dataIndex: 'Plot',
-      }]
-    case 'miRNA':
-      return [{
-        title: 'Gene',
-        dataIndex: 'Gene',
-      }, {
-        title: 'Corr.miRNA',
-        dataIndex: 'Corr.miRNA',
-      }, {
-        title: 'r(Pearson)',
-        dataIndex: 'r',
-      }, {
-        title: 'P-value',
-        dataIndex: 'P-value',
-      }, {
-        title: 'Plot',
-        dataIndex: 'Plot',
-      }]
-    case 'CNV':
-    case 'Surviral':
-      return [{
-        title: 'Gene',
-        dataIndex: 'Gene',
-      }, {
-        title: 'Sample ID',
-        dataIndex: 'Sample ID',
-      }, {
-        title: 'log2RPKM',
-        dataIndex: 'log2RPKM',
-      }, {
-        title: 'Segment mean',
-        dataIndex: 'Segment mean',
-      }]
-    default:
-      return []
-  }
-}
 
 const Option = Select.Option
 const Corr = props => {
-  const {
-    loading, dataSource, type, onChange,
-  } = props
+  const { loading, dataSource, type, onChange, showModal } = props
+  const isChart = ['CNV','Surviral'].includes(type)
+  const getColumn = _type => {
+    switch (_type) {
+      case 'mRNA':
+        return [{
+          title: 'Gene',
+          dataIndex: 'Gene',
+        }, {
+          title: 'Corr.Gene',
+          dataIndex: 'Corr.Gene',
+        }, {
+          title: 'r(Pearson)',
+          dataIndex: 'r',
+        }, {
+          title: 'P-value',
+          dataIndex: 'P-value',
+        }, {
+          title: 'Plot',
+          dataIndex: 'Plot',
+          render: (value, record) => <Button type="primary" shape="circle" onClick={() => showModal(record)} icon="search" />,
+        }]
+      case 'IncRNA':
+        return [{
+          title: 'Gene',
+          dataIndex: 'Gene',
+        }, {
+          title: 'Corr.IncRNA',
+          dataIndex: 'Corr.IncRNA',
+        }, {
+          title: 'r(Pearson)',
+          dataIndex: 'r',
+        }, {
+          title: 'P-value',
+          dataIndex: 'P-value',
+        }, {
+          title: 'Plot',
+          dataIndex: 'Plot',
+          render: (value, record) => <Button type="primary" shape="circle" onClick={() => showModal(record)} icon="search" />,
+        }]
+      case 'miRNA':
+        return [{
+          title: 'Gene',
+          dataIndex: 'Gene',
+        }, {
+          title: 'Corr.miRNA',
+          dataIndex: 'Corr.miRNA',
+        }, {
+          title: 'r(Pearson)',
+          dataIndex: 'r',
+        }, {
+          title: 'P-value',
+          dataIndex: 'P-value',
+        }, {
+          title: 'Plot',
+          dataIndex: 'Plot',
+          render: (value, record) => <Button type="primary" shape="circle" onClick={() => showModal(record)} icon="search" />,
+        }]
+      case 'CNV':
+      case 'Surviral':
+        return [{
+          title: 'Gene',
+          dataIndex: 'Gene',
+        }, {
+          title: 'Sample ID',
+          dataIndex: 'id',
+        }, {
+          title: 'log2RPKM',
+          dataIndex: 'log2RPKM',
+        }, {
+          title: 'Segment mean',
+          dataIndex: 'Segment mean',
+        }]
+      default:
+        return []
+    }
+  }
   const TableProps = {
     dataSource,
     loading,
@@ -98,7 +100,10 @@ const Corr = props => {
         <Option value="m6A">m6A</Option>
         <Option value="Phosphorylation">Phosphorylation</Option>
       </Select>
-      <DatasourceTable {...TableProps} />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <DatasourceTable {...TableProps} />
+        { isChart ? <ScatterChart /> : null}
+      </div>
     </div>)
 }
 Corr.propTypes = {
@@ -106,6 +111,7 @@ Corr.propTypes = {
   dataSource: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
 }
 
 export default Corr

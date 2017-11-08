@@ -13,7 +13,7 @@ const Surviral = props => {
       dataIndex: 'Mut. Gene',
     }, {
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'Surviral time(Mon.)',
       dataIndex: 'Surviral time',
@@ -24,13 +24,13 @@ const Surviral = props => {
   }
   const TabProps = {
     tabs: [{
-      key: 'Graph',
-      title: 'Graph',
-      content: <LineChart />,
-    }, {
       key: 'Table',
       title: 'Table',
       content: <DatasourceTable {...TableProps} />,
+    }, {
+      key: 'Graph',
+      title: 'Graph',
+      content: <LineChart />,
     }],
     onChange (key) {
       console.log(key)

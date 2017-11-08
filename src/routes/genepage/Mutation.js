@@ -10,7 +10,7 @@ const Mutation = props => {
     loading,
     columns: [{
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'AA Change',
       dataIndex: 'AA Change',
@@ -33,13 +33,13 @@ const Mutation = props => {
   }
   const TabProps = {
     tabs: [{
-      key: 'Graph',
-      title: 'Graph',
-      content: <LineChart />,
-    }, {
       key: 'Table',
       title: 'Table',
       content: <DatasourceTable {...TableProps} />,
+    }, {
+      key: 'Graph',
+      title: 'Graph',
+      content: <LineChart />,
     }],
     onChange (key) {
       console.log(key)

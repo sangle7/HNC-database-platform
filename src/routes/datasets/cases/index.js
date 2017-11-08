@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Breadcrumb, Tabs, DatasourceTable, StackedBarChart } from '../../../components'
 
 const DatasetsCases = props => {
-  const { location, history } = props
+  const { location, history, dataSource } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -15,10 +15,10 @@ const DatasetsCases = props => {
   }
 
   const TableProps = {
-    dataSource: [],
+    dataSource,
     columns: [{
       title: 'Case UUID',
-      dataIndex: 'Case UUID',
+      dataIndex: 'id',
     }, {
       title: 'TCGA',
       dataIndex: 'TCGA',
@@ -94,6 +94,7 @@ const DatasetsCases = props => {
 DatasetsCases.propTypes = {
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  dataSource: PropTypes.array.isRequired,
 }
 
 export default DatasetsCases

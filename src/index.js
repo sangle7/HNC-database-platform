@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import style from './index.less'
 
+import ErrorBoundary from './ErrorBoundary'
 import Homepage from './homepage'
 import { GenePage, Navigation, Annalysis, GeneList, Datasets, DrugPage, DatasetsGenes, DatasetsDrugs, DatasetsCases, DatasetsRecords, DatasetsNCRNA, CasePage } from './routes'
 
@@ -20,6 +21,7 @@ if (module.hot) {
 }
 
 ReactDOM.render(
+<ErrorBoundary>
   <Router>
     <main className={style.main}>
       <Route path="/" component={Navigation} />
@@ -45,5 +47,6 @@ ReactDOM.render(
       </div>
     </main>
   </Router>
+  </ErrorBoundary>
   , document.getElementById('root'),
 )

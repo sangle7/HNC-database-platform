@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
+import { Link } from 'react-router-dom'
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
 const DatasetsDrugs = props => {
-  const { location, history } = props
+  const { location, history, dataSource } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -15,13 +17,13 @@ const DatasetsDrugs = props => {
   }
 
   const TableProps = {
-    dataSource: [],
+    dataSource,
     columns: [{
       title: 'Drug name',
       dataIndex: 'Drug name',
     }, {
       title: 'Ref. No.',
-      dataIndex: 'Ref. No.',
+      dataIndex: 'id',
     }, {
       title: 'Target genes',
       dataIndex: 'Target genes',
@@ -37,6 +39,7 @@ const DatasetsDrugs = props => {
     }, {
       title: 'More',
       dataIndex: 'More',
+      render: (value, record) => (<Link to={`/Datasets/drugs/${record.name}`}><Icon type="arrow-right" /></Link>),
     }],
   }
   const TabProps = {
@@ -64,6 +67,7 @@ const DatasetsDrugs = props => {
 DatasetsDrugs.propTypes = {
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  dataSource: PropTypes.array.isRequired,
 }
 
 export default DatasetsDrugs

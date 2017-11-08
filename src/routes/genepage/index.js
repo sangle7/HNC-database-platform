@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import Surviral from './Surviral'
 import Expression from './Expression'
+import Modal from './Modal'
 import Epigenetic from './Epigenetic'
 import Mutation from './Mutation'
 import Corr from './Corr'
@@ -21,6 +22,7 @@ class GenePage extends React.Component {
       loading: false,
       item: {},
       step: 0,
+      modalvisible: false,
       type: null,
     }
   }
@@ -54,11 +56,12 @@ class GenePage extends React.Component {
         })
       })
   }
+  reducer = func => {
+    this.setState(func)
+  }
   render () {
     const { location, history, match } = this.props
-    const {
-      dataSource, loading, graphData, step, item, type,
-    } = this.state
+    const { dataSource, loading, modalvisible, step, item, type } = this.state
     const BreadcrumbProps = {
       path: location.pathname,
       handleClick (index) {
@@ -82,7 +85,6 @@ class GenePage extends React.Component {
       ...this.props,
       dataSource,
       loading,
-      graphData,
     }
 
     const DrugsProps = {
@@ -92,36 +94,60 @@ class GenePage extends React.Component {
     }
 
     const ExpressionProps = {
-
+      dataSource,
+      loading,
     }
 
     const MutationProps = {
-
+      dataSource,
+      loading,
     }
 
     const CNVProps = {
-
+      dataSource,
+      loading,
     }
 
     const EpigeneticProps = {
-
+      dataSource,
+      loading,
     }
 
     const SurviralProps = {
-
+      dataSource,
+      loading,
     }
 
     const CorrProps = {
+      dataSource,
+      loading,
       type,
       onChange (t) {
         history.push(`${location.pathname}?step=8&type=${t}`)
       },
+      showModal: record => {
+        this.reducer((state, props) => {
+          return { ...state, modalvisible: true }
+        })
+      },
     }
 
     const DiffProps = {
+      dataSource,
+      loading,
       type,
       onChange (t) {
         history.push(`${location.pathname}?step=9&type=${t}`)
+      },
+    }
+
+    const ModalProps = {
+      title: 'here is the title',
+      visible: modalvisible,
+      handleCancel: () => {
+        this.reducer((state, props) => {
+          return { ...state, modalvisible: false }
+        })
       },
     }
 
@@ -167,6 +193,7 @@ class GenePage extends React.Component {
           <h1>{match.params.geneId}</h1>
           <Menu {...MenuProps} />
           {itemByStep}
+          <Modal {...ModalProps} />
         </main>
       </div>
     )

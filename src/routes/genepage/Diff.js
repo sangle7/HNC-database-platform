@@ -1,47 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Select } from 'antd'
-import { DatasourceTable, LineChart } from '../../components'
+import { DatasourceTable, ScatterChart } from '../../components'
 
 const Option = Select.Option
 const Diff = props => {
-  const { loading, dataSource, onChange } = props
+  const { loading, dataSource, onChange, type } = props
 
   const TableProps = {
     dataSource,
     loading,
     columns: [{
-      title: 'Gene',
-      dataIndex: 'Gene',
+      title: 'Sample ID',
+      dataIndex: 'id',
     }, {
-      title: 'Corr.miRNA',
-      dataIndex: 'Corr.miRNA',
+      title: type,
+      dataIndex: type,
     }, {
-      title: 'r(Pearson)',
-      dataIndex: 'r',
-    }, {
-      title: 'P-value',
-      dataIndex: 'P-value',
-    }, {
-      title: 'Plot',
-      dataIndex: 'Plot',
+      title: 'Expr.log2',
+      dataIndex: 'Expr.log2',
     }],
   }
   return (
     <div>
-      <Select defaultValue="mRNA" style={{ width: 120 }} onChange={key => onChange(key)}>
-        <Option value="mRNA">mRNA</Option>
-        <Option value="IncRNA">IncRNA</Option>
-        <Option value="miRNA">miRNA</Option>
-        <Option value="CNV">CNV</Option>
-        <Option value="Surviral">Surviral</Option>
-        <Option value="Methylation">Methylation</Option>
-        <Option value="m6A">m6A</Option>
-        <Option value="Phosphorylation">Phosphorylation</Option>
+      <Select defaultValue="HPV" style={{ width: 120 }} onChange={key => onChange(key)}>
+        <Option value="HPV">HPV</Option>
+        <Option value="Age">Age</Option>
+        <Option value="Gender">Gender</Option>
+        <Option value="Alcohol">Alcohol</Option>
+        <Option value="Smoke">Smoke</Option>
+        <Option value="Drug">Drug</Option>
+        <Option value="Grade">Grade</Option>
+        <Option value="Stage">Stage</Option>
+        <Option value="Prognosis">Prognosis</Option>
+        <Option value="Metastasis">Metastasis</Option>
+        <Option value="Recurrence">Recurrence</Option>
+        <Option value="Differentiation">Differentiation</Option>
+        <Option value="Radiotherapy">Radiotherapy</Option>
+        <Option value="Chemotherapy">Chemotherapy</Option>
       </Select>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <DatasourceTable {...TableProps} />
-        <LineChart />
+        <ScatterChart />
       </div>
     </div>)
 }
@@ -50,6 +50,7 @@ Diff.propTypes = {
   loading: PropTypes.bool.isRequired,
   dataSource: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 export default Diff

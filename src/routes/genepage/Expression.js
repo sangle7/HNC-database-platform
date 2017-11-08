@@ -13,7 +13,7 @@ const Expression = props => {
       dataIndex: 'Annotation',
     }, {
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'Gender',
       dataIndex: 'Gender',
@@ -27,13 +27,13 @@ const Expression = props => {
   }
   const TabProps = {
     tabs: [{
-      key: 'Graph',
-      title: 'Graph',
-      content: <LineChart />,
-    }, {
       key: 'Table',
       title: 'Table',
       content: <DatasourceTable {...TableProps} />,
+    }, {
+      key: 'Graph',
+      title: 'Graph',
+      content: <LineChart />,
     }],
     onChange (key) {
       console.log(key)

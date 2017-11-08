@@ -4,12 +4,12 @@ exports.item = function* (ctx) {
     ret: 500,
   }
 
-  const { drugId } = ctx.request.body
+  const { caseId } = ctx.request.body
 
   try {
-    const { item } = yield ctx.service.drugbank.queryByName(drugId)
+    const { item } = yield ctx.service.hnclinc.queryById(caseId)
     body = {
-      item,
+      item: item || {},
       ret: 200,
     }
   } catch (error) {

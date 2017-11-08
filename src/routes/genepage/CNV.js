@@ -10,7 +10,7 @@ const CNV = props => {
     loading,
     columns: [{
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'Gene',
       dataIndex: 'Gene',
@@ -24,13 +24,13 @@ const CNV = props => {
   }
   const TabProps = {
     tabs: [{
-      key: 'Graph',
-      title: 'Graph',
-      content: <LineChart />,
-    }, {
       key: 'Table',
       title: 'Table',
       content: <DatasourceTable {...TableProps} />,
+    }, {
+      key: 'Graph',
+      title: 'Graph',
+      content: <LineChart />,
     }],
     onChange (key) {
       console.log(key)

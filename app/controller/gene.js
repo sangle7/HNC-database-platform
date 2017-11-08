@@ -78,30 +78,35 @@ exports.init = function* (ctx) {
         break
       case '3':
         body = {
+          list: [{id:'12321'}],
           step: 3,
           ret: 200,
         }
         break
       case '4':
         body = {
+          list: [{id:'12321'}],
           step: 4,
           ret: 200,
         }
         break
       case '5':
         body = {
+          list: [{id:'12321'}],
           step: 5,
           ret: 200,
         }
         break
       case '6':
         body = {
+          list: [{id:'12321'}],
           step: 6,
           ret: 200,
         }
         break
       case '7':
         body = {
+          list: [{id:'12321'}],
           step: 7,
           ret: 200,
         }
@@ -109,11 +114,13 @@ exports.init = function* (ctx) {
       case '8':
         body = {
           step: 8,
+          list: [{Gene:'12321'}],
           ret: 200,
         }
         break
       case '9':
         body = {
+          list: [{id:'12321'}],
           step: 9,
           ret: 200,
         }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
 const DatasetsGenes = props => {
-  const { location, history } = props
+  const { location, history, dataSource } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -15,13 +15,13 @@ const DatasetsGenes = props => {
   }
 
   const TableProps = {
-    dataSource: [],
+    dataSource,
     columns: [{
       title: 'Offical symbol',
       dataIndex: 'Offical symbol',
     }, {
       title: 'Gene ID',
-      dataIndex: 'Gene ID',
+      dataIndex: 'id',
     }, {
       title: 'Trans. ID',
       dataIndex: 'Trans. ID',
@@ -53,13 +53,13 @@ const DatasetsGenes = props => {
   }
   const TabProps = {
     tabs: [{
-      key: 'Graph',
-      title: 'Graph',
-      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
-    }, {
       key: 'Table',
       title: 'Table',
       content: <DatasourceTable {...TableProps} />,
+    }, {
+      key: 'Graph',
+      title: 'Graph',
+      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
     }],
     onChange (key) {
       console.log(key)
@@ -76,6 +76,7 @@ const DatasetsGenes = props => {
 DatasetsGenes.propTypes = {
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  dataSource: PropTypes.array.isRequired,
 }
 
 export default DatasetsGenes

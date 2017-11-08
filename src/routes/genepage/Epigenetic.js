@@ -13,7 +13,7 @@ const Epigenetic = props => {
       dataIndex: 'Mut.Gene',
     }, {
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'Methylation site',
       dataIndex: 'Methylation site',
@@ -28,7 +28,7 @@ const Epigenetic = props => {
       dataIndex: 'Mut.Gene',
     }, {
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'm6A site',
       dataIndex: 'm6A site',
@@ -43,7 +43,7 @@ const Epigenetic = props => {
       dataIndex: 'Mut.Gene',
     }, {
       title: 'Sample ID',
-      dataIndex: 'Sample ID',
+      dataIndex: 'id',
     }, {
       title: 'Phosphorylation site',
       dataIndex: 'Phosphorylation site',

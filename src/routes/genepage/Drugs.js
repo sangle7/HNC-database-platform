@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { Icon } from 'antd'
 import { DatasourceTable } from '../../components'
 
 const Drugs = props => {
@@ -24,7 +25,7 @@ const Drugs = props => {
     }, {
       title: 'More',
       dataIndex: 'more',
-      render: (value, record) => (<Link to={`/Datasets/drugs/${record.name}`}>more</Link>),
+      render: (value, record) => (<Link to={`/Datasets/drugs/${record.name}`}><Icon type="arrow-right" /></Link>),
     }],
   }
   return <DatasourceTable {...TableProps} />

@@ -27,7 +27,7 @@ const config = {
       },
       {
         test: /\.less$/,
-        loaders: ['style-loader', 'css-loader?modules', 'less-loader'],
+        loaders: ['style-loader', 'css-loader?modules&localIdentName=[name]--[local]--[hash:base64:5]', 'less-loader'],
         exclude: /node_modules/,
       }, 
       {

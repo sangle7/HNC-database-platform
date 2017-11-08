@@ -67,7 +67,7 @@ class GenePage extends React.Component {
       loading,
       columns: [{
         title: `${genemenu[step]} ID`,
-        dataIndex: 'ID',
+        dataIndex: 'id',
       }, {
         title: 'Ref.pubID',
         dataIndex: 'Ref.pubID',

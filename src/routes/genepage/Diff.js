@@ -5,7 +5,9 @@ import { DatasourceTable, ScatterChart } from '../../components'
 
 const Option = Select.Option
 const Diff = props => {
-  const { loading, dataSource, onChange, type } = props
+  const {
+    loading, dataSource, onChange, type,
+  } = props
 
   const TableProps = {
     dataSource,

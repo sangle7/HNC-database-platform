@@ -24,7 +24,7 @@ class GenePage extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/ncRNA/init', {
+    fetch('/datasets/ncRNA', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

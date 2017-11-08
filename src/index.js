@@ -21,32 +21,32 @@ if (module.hot) {
 }
 
 ReactDOM.render(
-<ErrorBoundary>
-  <Router>
-    <main className={style.main}>
-      <Route path="/" component={Navigation} />
-      <div className={style.container}>
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/FAQ" component={FAQ} />
-          <Route exact path="/Resources" component={Resources} />
-          <Route exact path="/Contact" component={Contact} />
-          <Route exact path="/Annalysis" component={Annalysis} />
-          <Route exact path="/Annalysis/Gene" component={GeneList} />
-          <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
-          <Route exact path="/Datasets" component={Datasets} />
-          <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
-          <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />
-          <Route exact path="/Datasets/Drugs/:drugId" component={DrugPage} />
-          <Route exact path="/Datasets/Cases" component={DatasetsCases} />
-          <Route exact path="/Datasets/Cases/:caseId" component={CasePage} />
-          <Route exact path="/Datasets/Records" component={DatasetsRecords} />
-          <Route exact path="/Datasets/ncRNA" component={DatasetsNCRNA} />
-          <Route component={Error} />
-        </Switch>
-      </div>
-    </main>
-  </Router>
+  <ErrorBoundary>
+    <Router>
+      <main className={style.main}>
+        <Route path="/" component={Navigation} />
+        <div className={style.container}>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/FAQ" component={FAQ} />
+            <Route exact path="/Resources" component={Resources} />
+            <Route exact path="/Contact" component={Contact} />
+            <Route exact path="/Annalysis" component={Annalysis} />
+            <Route exact path="/Annalysis/Gene" component={GeneList} />
+            <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
+            <Route exact path="/Datasets" component={Datasets} />
+            <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
+            <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />
+            <Route exact path="/Datasets/Drugs/:drugId" component={DrugPage} />
+            <Route exact path="/Datasets/Cases" component={DatasetsCases} />
+            <Route exact path="/Datasets/Cases/:caseId" component={CasePage} />
+            <Route exact path="/Datasets/Records" component={DatasetsRecords} />
+            <Route exact path="/Datasets/ncRNA" component={DatasetsNCRNA} />
+            <Route component={Error} />
+          </Switch>
+        </div>
+      </main>
+    </Router>
   </ErrorBoundary>
   , document.getElementById('root'),
 )

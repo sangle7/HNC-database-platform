@@ -6,8 +6,10 @@ import { DatasourceTable, ScatterChart } from '../../components'
 
 const Option = Select.Option
 const Corr = props => {
-  const { loading, dataSource, type, onChange, showModal } = props
-  const isChart = ['CNV','Surviral'].includes(type)
+  const {
+    loading, dataSource, type, onChange, showModal,
+  } = props
+  const isChart = ['CNV', 'Surviral'].includes(type)
   const getColumn = _type => {
     switch (_type) {
       case 'mRNA':

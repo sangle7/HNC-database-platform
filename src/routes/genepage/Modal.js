@@ -14,4 +14,11 @@ const ModalChart = ({ title, visible, handleCancel }) => (
   </Modal>
 )
 
+ModalChart.propTypes = {
+  title: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+}
+
+
 export default ModalChart

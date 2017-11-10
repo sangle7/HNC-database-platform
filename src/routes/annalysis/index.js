@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'antd'
 import { Breadcrumb } from '../../components'
 
 const Annalysis = props => {
@@ -17,7 +18,7 @@ const Annalysis = props => {
   return (
     <div>
       <Breadcrumb {...BreadcrumbProps} />
-      <button onClick={() => history.push('/Annalysis/Gene')}>Gene</button>
+      <Button onClick={() => history.push('/Annalysis/Gene')}>Gene</Button>
     </div>
   )
 }

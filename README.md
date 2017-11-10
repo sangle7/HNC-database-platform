@@ -6,6 +6,11 @@
 + npm v3.6+
 
 ## develop
+``` bash
+git clone https://github.com/sangle7/HNC-database-platform.git
+cd HNC-database-platform
+npm install
+```
 + 启动前端项目
 ``` bash
 npm run dev:fe 

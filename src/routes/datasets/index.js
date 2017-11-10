@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'antd'
 import { Breadcrumb } from '../../components'
 
 const Datasets = props => {
@@ -17,11 +18,11 @@ const Datasets = props => {
   return (
     <div>
       <Breadcrumb {...BreadcrumbProps} />
-      <button onClick={() => history.push('/Datasets/Genes')}>Genes</button>
-      <button onClick={() => history.push('/Datasets/Drugs')}>Drugs</button>
-      <button onClick={() => history.push('/Datasets/Cases')}>Cases</button>
-      <button onClick={() => history.push('/Datasets/ncRNA')}>ncRNA</button>
-      <button onClick={() => history.push('/Datasets/Records')}>Records</button>
+      <Button onClick={() => history.push('/Datasets/Genes')}>Genes</Button>
+      <Button onClick={() => history.push('/Datasets/Drugs')}>Drugs</Button>
+      <Button onClick={() => history.push('/Datasets/Cases')}>Cases</Button>
+      <Button onClick={() => history.push('/Datasets/ncRNA')}>ncRNA</Button>
+      <Button onClick={() => history.push('/Datasets/Records')}>Records</Button>
     </div>
   )
 }

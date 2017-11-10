@@ -1,4 +1,5 @@
-# gene-database
+# HNC-database-platform
+头颈瘤数据库平台
 
 ## requirement
 + node v8.5+

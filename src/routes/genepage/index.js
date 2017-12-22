@@ -196,8 +196,11 @@ class GenePage extends React.Component {
       <div>
         <Breadcrumb {...BreadcrumbProps} />
         <main>
-          <h1>{match.params.geneId}</h1>
-          <div style={{display:'flex'}}>
+          <div style={{display:'flex',alignItems: 'center'}}>
+            <span className={style.circle}></span> 
+            <h1 className={style.title}>{match.params.geneId}</h1>
+          </div>
+          <div style={{display:'flex',marginTop:'5px'}}>
             <Menu {...MenuProps} />
             <div className={style.mainCon}>
               {itemByStep}

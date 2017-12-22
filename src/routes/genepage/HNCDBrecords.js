@@ -24,7 +24,7 @@ const HNCDB = props => {
     }, {
       title: 'Function in HNC',
       dataIndex: 'note',
-      render: value => <span title={value}>{value.length > 100 ? `${value.slice(0, 100)}...` : value}</span>,
+      render: value => <span title={value}>{value.length > 50 ? `${value.slice(0, 50)}...` : value}</span>,
     }],
   }
   const TabProps = {

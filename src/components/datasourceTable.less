@@ -1,4 +1,10 @@
 .table {
+  table{
+    border-collapse:collapse;
+  }
+  th,td{
+    border: 5px solid white;
+  }
   flex-grow: 100;
   td.avatar {
     img {
@@ -62,7 +68,6 @@
         &>tr {
           transition: none;
           display: block;
-          border-bottom: 1px solid #f5f5f5;
           &>td {
             border-bottom: none;
             display: inline-flex;
@@ -76,4 +81,26 @@
       }
     }
   }
+}
+
+.labelG{
+  background: rgb(223,205,173);
+  padding: 3px 12px;
+  margin-left: 10%;
+  text-align: center;
+  display: inline-block;
+  min-width:80%;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.labelY{
+  background: rgb(226,226,175);
+  padding: 3px 12px;
+  margin-left: 10%;
+  text-align: center;
+  display: inline-block;
+  min-width:80%;
+  font-weight: 700;
+  border-radius: 10px;
 }

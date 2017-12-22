@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon } from 'antd'
+import style from './menu.less'
 
 const Sider = props => (
   <Menu
     onClick={props.onChange}
-    style={{ width: 240, float: 'left' }}
+    style={{ width: 240, flexShrink: 0 }}
     mode="inline"
     selectedKeys={[props.genemenu[props.highlight]]}
+    className={style.menu}
   >
     {props.genemenu.map(elem => (
       <Menu.Item key={elem}>
-        <Icon type="mail" />{elem}
+         {elem}
       </Menu.Item>))}
   </Menu>
 )

@@ -13,6 +13,8 @@ import { Menu, Breadcrumb, Label } from '../../components'
 import HNCDBrecords from './HNCDBrecords'
 import Drugs from './Drugs'
 
+import style from './style.less'
+
 const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV', 'Epigenetic modification', 'Surviral', 'Corr. annalysis', 'Diff. annalysis']
 class GenePage extends React.Component {
   constructor (props) {
@@ -195,8 +197,12 @@ class GenePage extends React.Component {
         <Breadcrumb {...BreadcrumbProps} />
         <main>
           <h1>{match.params.geneId}</h1>
-          <Menu {...MenuProps} />
-          {itemByStep}
+          <div style={{display:'flex'}}>
+            <Menu {...MenuProps} />
+            <div className={style.mainCon}>
+              {itemByStep}
+            </div>
+          </div>
           <Modal {...ModalProps} />
         </main>
       </div>

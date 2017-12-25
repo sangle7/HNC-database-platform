@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Select, Button } from 'antd'
 import { DatasourceTable, ScatterChart } from '../../components'
+import style from './style.less'
 
 
 const Option = Select.Option
@@ -91,17 +92,20 @@ const Corr = props => {
     columns: getColumn(type),
   }
   return (
-    <div>
-      <Select defaultValue="mRNA" style={{ width: 120 }} onChange={key => onChange(key)}>
-        <Option value="mRNA">mRNA</Option>
-        <Option value="IncRNA">IncRNA</Option>
-        <Option value="miRNA">miRNA</Option>
-        <Option value="CNV">CNV</Option>
-        <Option value="Surviral">Surviral</Option>
-        <Option value="Methylation">Methylation</Option>
-        <Option value="m6A">m6A</Option>
-        <Option value="Phosphorylation">Phosphorylation</Option>
-      </Select>
+    <div className={style.notab}>
+      <div className={style.select}>
+        Select an object category
+        <Select defaultValue="mRNA" style={{ width: 120 }} onChange={key => onChange(key)}>
+          <Option value="mRNA">mRNA</Option>
+          <Option value="IncRNA">IncRNA</Option>
+          <Option value="miRNA">miRNA</Option>
+          <Option value="CNV">CNV</Option>
+          <Option value="Surviral">Surviral</Option>
+          <Option value="Methylation">Methylation</Option>
+          <Option value="m6A">m6A</Option>
+          <Option value="Phosphorylation">Phosphorylation</Option>
+        </Select>
+      </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <DatasourceTable {...TableProps} />
         { isChart ? <ScatterChart /> : null}

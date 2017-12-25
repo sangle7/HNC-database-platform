@@ -9,8 +9,8 @@ const DatasourceTable = props => {
       className={classnames({ [style.table]: true })}
       bordered
       simple
-      rowKey={record => record.id}
-      {...props}
+      rowKey={record  => record.id}
+      {...props}   
       columns={
         props.columns.map((elem,index)=>{
           elem.title = <span className={index%2===0?style.labelG:style.labelY}>{elem.title}</span>

@@ -14,9 +14,24 @@ module.exports = app => {
       });
       return { item: list[0] }
     }
+    * getItemById(id) {
+      const list = yield app.mysql.select('gene', {
+        where: { id },
+      });
+      return { item: list[0] }
+    }
     * search (q) {
       const result = yield app.mysql.query(`SELECT * FROM gene WHERE hgncid like '%${q}%' or id like '%${q}%' or symbol like '%${q}%'`)
-      return { list: result, total: result.length }
+      const list = []
+      for(let elem of result){
+        let isValid = yield app.mysql.select('hncgene',{
+          where:{gene_id:elem.id},
+        })
+        if(isValid[0]){
+          list.push(elem)
+        }
+      }
+      return { list, total: list.length }
     }
   }
 }

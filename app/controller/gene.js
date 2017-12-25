@@ -1,19 +1,49 @@
-
 exports.info = function* (ctx) {
   let body = {
     ret: 500,
   }
 
-  const { page, q } = ctx.request.body
+  const {
+    page,
+    q
+  } = ctx.request.body
 
   try {
-    const { list, total } = q ? yield ctx.service.gene.search(q) : yield ctx.service.gene.query(page ? parseInt(page): 1)
-    body = {
-      list,
-      ret: 200,
-      pagination:{
-        current: page ? parseInt(page): 1,
-        total,
+    if (q) {
+      const {
+        list,
+        total
+      } = yield ctx.service.gene.search(q)
+
+      body = {
+        list,
+        ret: 200,
+        pagination: {
+          current: page ? parseInt(page) : 1,
+          total,
+        }
+      }
+    } else {
+      const {
+        geneIds,
+        total
+      } = yield ctx.service.hncgene.query(page ? parseInt(page) : 1)
+      const list = []
+      for (let elem of geneIds) {
+        console.log(elem)
+        const {
+          item
+        } = yield ctx.service.gene.getItemById(elem.gene_id)
+        list.push(item)
+      }
+
+      body = {
+        list,
+        ret: 200,
+        pagination: {
+          current: page ? parseInt(page) : 1,
+          total,
+        }
       }
     }
   } catch (error) {
@@ -28,11 +58,16 @@ exports.init = function* (ctx) {
     ret: 500,
   }
 
-  const { geneId, step } = ctx.request.body
-  try{
-    switch(step){
+  const {
+    geneId,
+    step
+  } = ctx.request.body
+  try {
+    switch (step) {
       case '0':
-        var { item } = yield ctx.service.gene.getIdByName(geneId)
+        var {
+          item
+        } = yield ctx.service.gene.getIdByName(geneId)
         body = {
           item,
           step: 0,
@@ -40,10 +75,16 @@ exports.init = function* (ctx) {
         }
         break
       case '1':
-        var { item } = yield ctx.service.gene.getIdByName(geneId)
-        var { list } = yield ctx.service.gene2pubmed.query(item.id)
-        for(let elem of list){
-          var { result } = yield ctx.service.pubmed.getById(elem.pubmed_id) 
+        var {
+          item
+        } = yield ctx.service.gene.getIdByName(geneId)
+        var {
+          list
+        } = yield ctx.service.gene2pubmed.query(item.id)
+        for (let elem of list) {
+          var {
+            result
+          } = yield ctx.service.pubmed.getById(elem.pubmed_id)
           elem.pmid = result.pmid
         }
         body = {
@@ -53,22 +94,35 @@ exports.init = function* (ctx) {
         }
         break
       case '2':
-        var { item } = yield ctx.service.gene.getIdByName(geneId)
-        var { list } = yield ctx.service.gene2pubmed.query(item.id)
+        var {
+          item
+        } = yield ctx.service.gene.getIdByName(geneId)
+        var {
+          list
+        } = yield ctx.service.gene2pubmed.query(item.id)
         let newlist = []
-        for(let elem of list){
-          var { result } = yield ctx.service.pubmed.getById(elem.pubmed_id) 
-          var obj1 = yield ctx.service.drug2pubmed.query(elem.pubmed_id) 
+        for (let elem of list) {
+          var {
+            result
+          } = yield ctx.service.pubmed.getById(elem.pubmed_id)
+          var obj1 = yield ctx.service.drug2pubmed.query(elem.pubmed_id)
           let _list = []
-          for (let item of obj1.list){
+          for (let item of obj1.list) {
             // 这里获得药名,两步 先查获取dbid 再查durgbank
             const drugid = item.hncdrug_id
-            const { dbid } = yield ctx.service.hncdrug.queryById(drugid) 
-            const { drug } = yield ctx.service.drugbank.queryById(dbid) 
-            _list = [..._list,{...item,pmid:result.pmid,name:drug.name}]
+            const {
+              dbid
+            } = yield ctx.service.hncdrug.queryById(drugid)
+            const {
+              drug
+            } = yield ctx.service.drugbank.queryById(dbid)
+            _list = [..._list, { ...item,
+              pmid: result.pmid,
+              name: drug.name
+            }]
           }
           //_list 中每个pmid都为result.pmid
-          newlist = [...newlist,..._list]
+          newlist = [...newlist, ..._list]
         }
         body = {
           list: newlist,
@@ -78,35 +132,45 @@ exports.init = function* (ctx) {
         break
       case '3':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 3,
           ret: 200,
         }
         break
       case '4':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 4,
           ret: 200,
         }
         break
       case '5':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 5,
           ret: 200,
         }
         break
       case '6':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 6,
           ret: 200,
         }
         break
       case '7':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 7,
           ret: 200,
         }
@@ -114,25 +178,31 @@ exports.init = function* (ctx) {
       case '8':
         body = {
           step: 8,
-          list: [{Gene:'12321'}],
+          list: [{
+            Gene: '12321'
+          }],
           ret: 200,
         }
         break
       case '9':
         body = {
-          list: [{id:'12321'}],
+          list: [{
+            id: '12321'
+          }],
           step: 9,
           ret: 200,
         }
         break
       default:
-        var { item } = yield ctx.service.gene.getIdByName(geneId)
+        var {
+          item
+        } = yield ctx.service.gene.getIdByName(geneId)
         body = {
           item,
           step: 0,
           ret: 200,
         }
-      }
+    }
   } catch (error) {
     body.error = error
   }

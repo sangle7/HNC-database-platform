@@ -1,5 +1,5 @@
 'use strict';
-
+const path = require('path');
 exports.keys = '0904'
 
 exports.security = {
@@ -14,9 +14,6 @@ exports.security = {
   }
 }
 
-exports.view = {
-  defaultViewEngine: 'nunjucks'
-}
 exports.bodyParser = {
   enable: true,
   encoding: 'utf8',
@@ -27,3 +24,8 @@ exports.bodyParser = {
     'json', 'form', 'text'
   ], // content-type
 }
+exports.view = {
+  defaultViewEngine: 'nunjucks',
+  root: path.join(__dirname, 'app/public'),
+}
+

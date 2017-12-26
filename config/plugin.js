@@ -12,4 +12,8 @@ module.exports = {
     package: 'egg-mysql',
   },
   static: true,
+  nunjucks:{
+    enable: true,
+    package: 'egg-view-nunjucks'
+  }
 };

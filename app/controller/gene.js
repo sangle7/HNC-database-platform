@@ -30,7 +30,6 @@ exports.info = function* (ctx) {
       } = yield ctx.service.hncgene.query(page ? parseInt(page) : 1)
       const list = []
       for (let elem of geneIds) {
-        console.log(elem)
         const {
           item
         } = yield ctx.service.gene.getItemById(elem.gene_id)

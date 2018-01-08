@@ -31,7 +31,8 @@ const config = {
     }),
     new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({
-      title:'HNC-gene-database'
+      title:'HNC-gene-database',
+      filename:'../view/index.html'
     })
   ],
   devtool: false,

@@ -25,7 +25,6 @@ exports.bodyParser = {
   ], // content-type
 }
 exports.view = {
-  defaultViewEngine: 'nunjucks',
-  root: path.join(__dirname, 'app/public'),
+  defaultViewEngine: 'nunjucks'
 }
 

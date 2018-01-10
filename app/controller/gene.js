@@ -1,7 +1,11 @@
+const R = require('../utils/R');
+
 exports.info = function* (ctx) {
   let body = {
     ret: 500,
   }
+
+  console.log(R())
 
   const {
     page,

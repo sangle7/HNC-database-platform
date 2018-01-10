@@ -28,6 +28,7 @@ const HNCDB = props => {
     }],
   }
   const TabProps = {
+    transform: true,
     tabs: [{
       key: 'Graph',
       title: 'Graph',

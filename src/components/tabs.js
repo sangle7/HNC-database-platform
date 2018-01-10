@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classNames from 'classnames/bind'
 import { Tabs } from 'antd'
 import style from './tabs.less'
 
 const TabPane = Tabs.TabPane
 
+const cx = classNames.bind(style)
+
 const TabWithRoute = props => {
-  const { onChange, tabs } = props
+  const { onChange, tabs, transform } = props
 
   return (
-    <Tabs className={classnames({ [style.tabs]: true })} onChange={onChange} type="card" >
+    <Tabs className={cx({ tabs: true, tabsTransform: transform })} onChange={onChange} type="card" >
       {tabs.map(elem => <TabPane tab={elem.title} key={elem.key}>{elem.content}</TabPane>)}
     </Tabs>)
 }
@@ -18,6 +20,7 @@ const TabWithRoute = props => {
 TabWithRoute.propTypes = {
   onChange: PropTypes.func.isRequired,
   tabs: PropTypes.array.isRequired,
+  transform: PropTypes.bool,
 }
 
 export default TabWithRoute

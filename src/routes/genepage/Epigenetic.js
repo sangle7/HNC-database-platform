@@ -50,6 +50,7 @@ const Epigenetic = props => {
     }],
   }
   const TabProps = {
+    transform: true,
     tabs: [{
       key: 'Methylation',
       title: 'Methylation',

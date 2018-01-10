@@ -23,6 +23,7 @@ const Surviral = props => {
     }],
   }
   const TabProps = {
+    transform: true,
     tabs: [{
       key: 'Table',
       title: 'Table',

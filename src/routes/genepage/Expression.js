@@ -26,6 +26,7 @@ const Expression = props => {
     }],
   }
   const TabProps = {
+    transform: true,
     tabs: [{
       key: 'Table',
       title: 'Table',

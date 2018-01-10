@@ -74,13 +74,20 @@ exports.init = function* (ctx) {
         }
         break
       case '1':
+        // 获取基因在gene表中的id
         var {
           item
         } = yield ctx.service.gene.getIdByName(geneId)
+        // 根据基因id查找在hncgene表中的hncGeneId
+        var {
+          hncGeneId
+        } = yield ctx.service.hncgene.getIdByGeneId(item.id)
+        // 根据hncGeneId查找在gene2pubmed表中的数据
         var {
           list
-        } = yield ctx.service.gene2pubmed.query(item.id)
+        } = yield ctx.service.gene2pubmed.query(hncGeneId)
         for (let elem of list) {
+          // 在pubmed表中查询pmid
           var {
             result
           } = yield ctx.service.pubmed.getById(elem.pubmed_id)
@@ -93,12 +100,17 @@ exports.init = function* (ctx) {
         }
         break
       case '2':
+        // 获取基因在gene表中的id
         var {
           item
         } = yield ctx.service.gene.getIdByName(geneId)
+        // 根据基因id查找在hncgene表中的hncGeneId
+        var {
+          hncGeneId
+        } = yield ctx.service.hncgene.getIdByGeneId(item.id)
         var {
           list
-        } = yield ctx.service.gene2pubmed.query(item.id)
+        } = yield ctx.service.gene2pubmed.query(hncGeneId)
         let newlist = []
         for (let elem of list) {
           var {

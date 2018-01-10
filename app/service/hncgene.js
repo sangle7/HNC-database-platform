@@ -1,5 +1,12 @@
 module.exports = app => {
     return class Databaselist extends app.Service {
+      * getIdByGeneId (geneId) {
+        const list = yield app.mysql.select('hncgene',{
+          where: { gene_id: geneId }
+        });
+        console.log(list)
+        return { hncGeneId: list[0].id }
+      }
       * query (page) {
         const geneIds = yield app.mysql.select('hncgene',{
           limit: 10,

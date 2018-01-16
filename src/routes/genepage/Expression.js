@@ -34,7 +34,7 @@ const Expression = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <div>{BoxPlot()}</div>,
+      content: <BoxPlot />,
     }],
     onChange (key) {
       console.log(key)

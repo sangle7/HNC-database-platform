@@ -1,6 +1,10 @@
-'use strict';
-const path = require('path');
 
-exports.index = function* (ctx) {
-  ctx.render('index.html')
+
+module.exports = (app) => {
+  return class HomeController extends app.Controller {
+    * index () {
+      const { ctx } = this
+      yield ctx.render('index.html', {})
+    }
+  }
 }

@@ -10,3 +10,4 @@ run/
 .DS_Store
 *.swp
 app/public/
+app/view/

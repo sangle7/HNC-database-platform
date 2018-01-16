@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV;
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ToxicWebpackManifestPlugin = require('toxic-webpack-manifest-plugin');
 const theme = require('./src/theme.js');
 
 const config = {
@@ -12,6 +13,7 @@ const config = {
   },
   output: {
     path: path.join(__dirname, 'app', 'public'),
+    publicPath:'/public/',
     filename: '[name]-[hash].js',
   },
   plugins: [
@@ -32,7 +34,8 @@ const config = {
     new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({
       title:'HNC-gene-database',
-      filename:'../view/index.html'
+      filename:'../view/index.html',
+      template:'./index.html'
     })
   ],
   devtool: false,

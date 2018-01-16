@@ -2,6 +2,7 @@
 
 module.exports = app => {
   app.get('/', 'home.index');
+  app.get('*', 'home.index');
   app.post('/gene/info', app.controller.gene.info)
   app.post('/gene/init', app.controller.gene.init)
 

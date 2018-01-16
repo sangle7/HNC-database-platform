@@ -25,6 +25,6 @@ exports.bodyParser = {
   ], // content-type
 }
 exports.view = {
-  defaultViewEngine: 'nunjucks'
+  defaultViewEngine: 'nunjucks',
 }
 

@@ -9,5 +9,6 @@ import StackedBarChart from './stackedbarchart'
 import BarChart from './barchart'
 import ScatterChart from './scatterchart'
 import LineChart from './linechart'
+import BoxPlot from './BoxPlot'
 
-export { Menu, Breadcrumb, Tabs, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart }
+export { Menu, Breadcrumb, Tabs, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot }

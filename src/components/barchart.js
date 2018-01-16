@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, Text } from 'recharts'
 import { COLORS } from '../const'
 
+const CustomBarLabel = (props) => {
+  const { x, y, value, width, height } = props
+  return <Text x={x + width + 5} y={y} fill="#666" textAnchor="start" verticalAnchor="middle" dy={height / 2}>{`${value}`}</Text>;
+}
 
 const chart = ({ data }) => (
   <BarChart layout="vertical"
@@ -19,7 +23,7 @@ const chart = ({ data }) => (
     <YAxis dataKey="name" type="category" />
     <CartesianGrid strokeDasharray="3 3" />
     <Tooltip />
-    <Bar dataKey="count" >
+    <Bar dataKey="count" label={<CustomBarLabel />}>
       {data.map((entry, index) => (<Cell fill={COLORS[index % COLORS.length]} />))}
     </Bar>
   </BarChart>

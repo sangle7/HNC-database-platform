@@ -66,7 +66,6 @@ function MutsNeedlePlot (config) {
 
     // IIMPORT AND CONFIGURE TIPS
     var d3tip = require('d3-tip');
-    console.log(d3)
 
     addd3svg(d3)
 

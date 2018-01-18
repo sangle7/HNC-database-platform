@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tabs, DatasourceTable, LineChart } from '../../components'
+import { Tabs, DatasourceTable, NeedlePlot } from '../../components'
 
 const Mutation = props => {
   const { loading, dataSource } = props
@@ -40,7 +40,7 @@ const Mutation = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <LineChart />,
+      content: <NeedlePlot />,
     }],
     onChange (key) {
       console.log(key)

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Tabs, DatasourceTable, BarChart } from '../../components'
-import { countFromArray } from '../../const/function'
+import { countFromArray } from '../../const'
 
 const HNCDB = props => {
   const { loading, dataSource } = props

@@ -15,4 +15,4 @@ function countFromArray (array, countkey) {
   return data
 }
 
-export { countFromArray }
+export default countFromArray

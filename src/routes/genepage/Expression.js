@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tabs, DatasourceTable, LineChart, BoxPlot } from '../../components'
+import { Tabs, DatasourceTable, Heatmap, BoxPlot } from '../../components'
 
 const Expression = props => {
   const { loading, dataSource } = props
@@ -34,7 +34,7 @@ const Expression = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <BoxPlot />,
+      content: <div style={{display: 'flex'}}><Heatmap /><BoxPlot /></div>,
     }],
     onChange (key) {
       console.log(key)

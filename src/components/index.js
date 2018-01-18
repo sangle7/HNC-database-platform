@@ -10,5 +10,7 @@ import BarChart from './barchart'
 import ScatterChart from './scatterchart'
 import LineChart from './linechart'
 import BoxPlot from './boxPlot'
+import Heatmap from './heatmap'
+import NeedlePlot from './needlePlot'
 
-export { Menu, Breadcrumb, Tabs, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot }
+export { Menu, Breadcrumb, Tabs, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot, Heatmap, NeedlePlot }

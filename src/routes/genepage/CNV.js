@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tabs, DatasourceTable, Heatmap, PieChart } from '../../components'
+import { Tabs, DatasourceTable, Heatmap, PieChart, NeedlePlot } from '../../components'
 
 const CNV = props => {
   const { loading, dataSource } = props
@@ -31,7 +31,7 @@ const CNV = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <div style={{display: 'flex', flexDirection:'column'}}><div style={{display: 'flex'}}><div /><PieChart /></div><Heatmap /></div>,
+      content: <div style={{display: 'flex', flexDirection:'column'}}><div style={{display: 'flex'}}><NeedlePlot /><PieChart /></div><Heatmap /></div>,
     }],
     onChange (key) {
       console.log(key)

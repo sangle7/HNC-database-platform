@@ -14,7 +14,7 @@ const SimpleScatterChart = () => (
     <XAxis dataKey="x" name="stature" unit="cm" />
     <YAxis dataKey="y" name="weight" unit="kg" />
     <CartesianGrid />
-    <Scatter name="A school" data={data} fill="#8884d8" />
+    <Scatter name="A school" data={data} fill="#8884d8" lineType="fitting"  line={{stroke: 'red', strokeWidth: 2}}/>
     <Tooltip cursor={{ strokeDasharray: '3 3' }} />
   </ScatterChart>
 )

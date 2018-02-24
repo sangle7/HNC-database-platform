@@ -42,7 +42,11 @@ const config = {
       {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader'
-      }
+      },
+      {
+        test: /\.md$/,
+        loaders:['html-loader','markdown-loader'],
+      },
     ],
   },
 };

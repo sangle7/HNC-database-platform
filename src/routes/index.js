@@ -11,6 +11,8 @@ import Genes from './datasets/genes'
 import Drugs from './datasets/drugs'
 import Cases from './datasets/cases'
 import Records from './datasets/records'
+import ErrorPage from './errorpage'
+import MdPage from './mdPage'
 
 
 const DatasetsGenes = Wrapper(Genes, '/datasets/genes')
@@ -18,4 +20,19 @@ const DatasetsDrugs = Wrapper(Drugs, '/datasets/drugs')
 const DatasetsCases = Wrapper(Cases, '/datasets/cases')
 const DatasetsRecords = Wrapper(Records, '/datasets/records')
 
-export { GenePage, CasePage, Navigation, Annalysis, GeneList, Datasets, DatasetsGenes, DatasetsDrugs, DatasetsCases, DatasetsRecords, DatasetsNCRNA, DrugPage }
+export {
+    GenePage,
+    CasePage,
+    Navigation,
+    Annalysis,
+    GeneList,
+    Datasets,
+    DatasetsGenes,
+    DatasetsDrugs,
+    DatasetsCases,
+    DatasetsRecords,
+    DatasetsNCRNA,
+    DrugPage,
+    ErrorPage,
+    MdPage
+}

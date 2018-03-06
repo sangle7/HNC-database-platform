@@ -13,7 +13,7 @@ zdf=data.frame(zdf)
 # arg1 = as.character(strsplit('GSM1359236_FaDu.shG9a.67.824.x,GSM277644',',')[[1]])
 arg1 = as.character(strsplit(Args[2],',')[[1]])
 
-# arg2 = as.character(strsplit('GSM1359236_FaDu.shG9a.67.824.x,GSM277644',',')[[1]])
+# arg2 = as.character(strsplit('GSM338297,GSM338296',',')[[1]])
 arg2 = as.character(strsplit(Args[3],',')[[1]])
 
 

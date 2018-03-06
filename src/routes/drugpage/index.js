@@ -19,7 +19,7 @@ class DrugPage extends React.Component {
   init = props => {
     const params = queryString.parse(props.location.search)
     params.drugId = props.match.params.drugId
-    fetch('/drug/item', {
+    fetch('/cgi/drug/item', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

@@ -41,7 +41,7 @@ class GenePage extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/gene/init', {
+    fetch('/cgi/gene/init', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

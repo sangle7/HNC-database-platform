@@ -5,8 +5,6 @@ exports.info = function* (ctx) {
     ret: 500,
   }
 
-  console.log(R())
-
   const {
     page,
     q
@@ -57,6 +55,7 @@ exports.info = function* (ctx) {
 
 
 exports.init = function* (ctx) {
+  const app = ctx.app
   let body = {
     ret: 500,
   }
@@ -200,6 +199,12 @@ exports.init = function* (ctx) {
         }
         break
       case '9':
+        const rResult =R(`${app.config.Rpath}/diff.analysis.R`,`${app.config.Rpath}/00.txt ${app.config.Rpath}/01.txt test`)
+        if( rResult.code === 0 ){
+          console.log(rResult.code) //状态码
+        } else {
+          console.log(rResult.stderr) //错误日志
+        }
         body = {
           list: [{
             id: '12321'

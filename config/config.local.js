@@ -25,4 +25,4 @@ exports.mysql = {
   agent: false,
 }
 
-exports.Rpath = '/Users/sanglewang/Downloads'
+exports.Rpath = '/Users/sanglewang/documents'

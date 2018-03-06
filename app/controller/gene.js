@@ -1,4 +1,5 @@
 const R = require('../utils/R');
+const md5 = require('md5');
 
 exports.info = function* (ctx) {
   let body = {
@@ -199,7 +200,8 @@ exports.init = function* (ctx) {
         }
         break
       case '9':
-        const rResult =R(`${app.config.Rpath}/diff.analysis.R`,`${app.config.Rpath}/00.txt ${app.config.Rpath}/01.txt test`)
+        const md5String = md5('sangle-test')
+        const rResult =R(`diff.analysis.R`,`${app.config.Rpath}/lncRNA.matrix.adj.txt GSM1359236_FaDu.shG9a.67.824.x,GSM277644 GSM1359236_FaDu.shG9a.67.824.x,GSM277644 ${md5String}`)
         if( rResult.code === 0 ){
           console.log(rResult.code) //状态码
         } else {

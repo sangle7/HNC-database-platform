@@ -68,6 +68,7 @@ const DatasetsCases = props => {
       title: 'Ref. pubID',
       dataIndex: 'Ref. pubID',
     }],
+    scroll: { x: 800, y: 300 }
   }
   const TabProps = {
     tabs: [{

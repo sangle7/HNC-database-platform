@@ -12,13 +12,14 @@ zdf=data.frame(zdf)
 
 # arg1 = as.character(strsplit('GSM1359236_FaDu.shG9a.67.824.x,GSM277644',',')[[1]])
 arg1 = as.character(strsplit(Args[2],',')[[1]])
+print(mode(arg1))
 
 # arg2 = as.character(strsplit('GSM338297,GSM338296',',')[[1]])
 arg2 = as.character(strsplit(Args[3],',')[[1]])
 
-
 rpkm_data_1 = zdf[,arg1]
 rpkm_data_2 = zdf[,arg2]
+
 # write.table(df2,file = 'df2.txt')
 # write.table(df2,file = 'df3.txt')
 
@@ -63,7 +64,6 @@ degene$t=NULL
 degene$B=NULL
 write.table(degene,file = paste(Args[4],".table.txt",sep=""),row.names = F,col.names = T,quote = F)
 
-print(degene)
 #drawing heatmap
 gene_exp_data=cbind(Gene=rownames(rpkm_data),rpkm_data)
 de_gene_exp=merge(degene,gene_exp_data,by="Gene",all.x=T)

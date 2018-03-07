@@ -12,5 +12,7 @@ import LineChart from './linechart'
 import BoxPlot from './boxPlot'
 import Heatmap from './heatmap'
 import NeedlePlot from './needlePlot'
+import MinLabel from './minlabel'
 
-export { Menu, Breadcrumb, Tabs, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot, Heatmap, NeedlePlot }
+
+export { Menu, Breadcrumb, Tabs, MinLabel, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot, Heatmap, NeedlePlot }

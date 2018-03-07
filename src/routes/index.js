@@ -15,10 +15,10 @@ import ErrorPage from './errorpage'
 import MdPage from './mdPage'
 
 
-const DatasetsGenes = Wrapper(Genes, '/datasets/genes')
-const DatasetsDrugs = Wrapper(Drugs, '/datasets/drugs')
-const DatasetsCases = Wrapper(Cases, '/datasets/cases')
-const DatasetsRecords = Wrapper(Records, '/datasets/records')
+const DatasetsGenes = Wrapper(Genes, '/cgi/datasets/genes')
+const DatasetsDrugs = Wrapper(Drugs, '/cgi/datasets/drugs')
+const DatasetsCases = Wrapper(Cases, '/cgi/datasets/cases', '/cgi/datasets/caseschart')
+const DatasetsRecords = Wrapper(Records, '/cgi/datasets/records')
 
 export {
     GenePage,

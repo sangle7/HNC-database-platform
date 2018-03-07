@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Breadcrumb, Label } from '../../components'
+import { Breadcrumb, MinLabel } from '../../components'
 
 class DrugPage extends React.Component {
   constructor (props) {
@@ -48,7 +48,7 @@ class DrugPage extends React.Component {
     return (
       <div>
         <Breadcrumb {...BreadcrumbProps} />
-        <Label item={item} />
+        <MinLabel item={item} />
       </div>
     )
   }

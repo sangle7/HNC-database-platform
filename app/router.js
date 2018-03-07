@@ -12,6 +12,7 @@ module.exports = app => {
 
   app.post('/cgi/datasets/genes', app.controller.datasets.genes)
   app.post('/cgi/datasets/drugs', app.controller.datasets.drugs)
+  app.post('/cgi/datasets/drugschart', app.controller.datasets.drugschart)  
   app.post('/cgi/datasets/cases', app.controller.datasets.cases)
   app.post('/cgi/datasets/caseschart', app.controller.datasets.caseschart)  
   app.post('/cgi/datasets/records', app.controller.datasets.records)

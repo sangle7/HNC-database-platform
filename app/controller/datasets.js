@@ -15,6 +15,25 @@ exports.genes = function* (ctx) {
   ctx.body = body
 }
 
+exports.drugschart = function* (ctx) {
+  let body = {
+    ret: 500,
+  }
+
+  const { chart2 } = yield ctx.service.drug2pubmed.generateChart()
+  const { chart } = yield ctx.service.target.generateChart()
+
+  try {
+    body = {
+      chart:[...chart,...chart2],
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
+
 exports.drugs = function* (ctx) {
   let body = {
     ret: 500,

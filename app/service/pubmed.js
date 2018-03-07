@@ -11,8 +11,8 @@ module.exports = app => {
       * queryByPage(page) {
         const total = yield app.mysql.count('pubmed')
         const list = yield app.mysql.select('pubmed', {
-          limit: 20,
-          offset: (Number(page) - 1) * 20
+          limit: 10,
+          offset: (Number(page) - 1) * 10
         });
         return {
           list,

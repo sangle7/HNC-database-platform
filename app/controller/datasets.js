@@ -84,7 +84,7 @@ exports.cases = function* (ctx) {
       pagination:{
         total,
         current: Number(page),
-        pageSize:20,
+        pageSize:10,
       },
       ret: 200,
     }
@@ -107,7 +107,7 @@ exports.records = function* (ctx) {
       pagination:{
         total,
         current: Number(page),
-        pageSize:20,
+        pageSize:10,
       },
       ret: 200,
     }

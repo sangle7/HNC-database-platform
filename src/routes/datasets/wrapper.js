@@ -8,6 +8,7 @@ const Wrapper = (Component, url, charturl) => {
       super(props)
       this.state = {
         dataSource: [],
+        chartSource: [],        
         loading: false,
       }
     }

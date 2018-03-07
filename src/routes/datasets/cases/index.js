@@ -53,13 +53,129 @@ const DatasetsCases = props => {
   const TableProps = {
     dataSource,
     loading,
-    columns: Object.keys(a).map((elem,i) => ({
-      title: elem,
-      dataIndex: elem,
-      width: elem.length * 50,
-      render: v =>  (i === 0 ? <span onClick={()=>goToCase(v)}>{v}</span> : v || 'N/A'),
-    })),
-    scroll: { x: '500%', y: 600 },
+    columns: [{
+      "title": "ID",
+      "dataIndex": "SampleID",
+      "width": 130,
+      render: v => <span onClick = {() => goToCase(v)}>{v}</span>,      
+    }, {
+      "title": "PMID",
+      "dataIndex": "PMID",
+      "width": 130
+    }, {
+      "title": "Author",
+      "dataIndex": "Author",
+      "width": 130
+    }, {
+      "title": "Year",
+      "dataIndex": "Year",
+      "width": 100
+    }, {
+      "title": "Data Type",
+      "dataIndex": "Data Type",
+      "width": 150
+    }, {
+      "title": "Dataset ID",
+      "dataIndex": "Dataset ID",
+      "width": 150
+    }, {
+      "title": "Patient ID",
+      "dataIndex": "Patient ID",
+      "width": 150
+    }, {
+      "title": "molecule",
+      "dataIndex": "molecule",
+      "width": 150
+    }, {
+      "title": "Cell Type",
+      "dataIndex": "Cell Type",
+      "width": 130
+    }, {
+      "title": "Cell_line",
+      "dataIndex": "Cell_line",
+      "width": 150
+    }, {
+      "title": "anatomicSite",
+      "dataIndex": "anatomicSite",
+      "width": 170
+    }, {
+      "title": "age",
+      "dataIndex": "age",
+      "width": 100
+    }, {
+      "title": "gender",
+      "dataIndex": "gender",
+      "width": 120
+    }, {
+      "title": "race",
+      "dataIndex": "race",
+      "width": 130
+    }, {
+      "title": "Tumor",
+      "dataIndex": "Tumor/Normal",
+      "width": 120
+    }, {
+      "title": "Tgrade",
+      "dataIndex": "Tgrade",
+      "width": 120
+    }, {
+      "title": "C",
+      "dataIndex": "ClinicalStage",
+      "width": 100
+    }, {
+      "title": "T",
+      "dataIndex": "Tstage",
+      "width": 80
+    }, {
+      "title": "N",
+      "dataIndex": "Nstage",
+      "width": 80
+    }, {
+      "title": "M",
+      "dataIndex": "Mstage",
+      "width": 80
+    }, {
+      "title": "tobacco",
+      "dataIndex": "tobacco",
+      "width": 120
+    }, {
+      "title": "alcohol",
+      "dataIndex": "alcohol",
+      "width": 120
+    }, {
+      "title": "vital",
+      "dataIndex": "vital",
+      "width": 120
+    }, {
+      "title": "hpv",
+      "dataIndex": "hpv",
+      "width": 120
+    }, {
+      "title": "recurrence",
+      "dataIndex": "recurrence",
+      "width": 150
+    }, {
+      "title": "followUpMonths",
+      "dataIndex": "followUpMonths",
+      "width": 200
+    }, {
+      "title": "survival",
+      "dataIndex": "survival",
+      "width": 120
+    }, {
+      "title": "OS Time",
+      "dataIndex": "OS Time",
+      "width": 120
+    }, {
+      "title": "PFS Time",
+      "dataIndex": "PFS Time",
+      "width": 130
+    }, {
+      "title": "source",
+      "dataIndex": "source",
+      "width": 120
+    }],
+    scroll: { x: '300%', y: 600 },
     pagination,
     onChange: page => {
       const search = {

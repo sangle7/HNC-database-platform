@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
 const DatasetsDrugs = props => {
-  const { location, history, dataSource,pagination, loading } = props
+  const { location, history, dataSource, pagination, loading, chartSource } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -65,7 +65,7 @@ const DatasetsDrugs = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
+      content: <div style={{ display: 'flex', flexWrap: 'wrap' }}>{chartSource.map(el=><PieChart dataSource={el} />)}</div>,
     }],
     onChange (key) {
       console.log(key)

@@ -1,6 +1,8 @@
 import React from 'react'
-import { PieChart, Pie, Cell } from 'recharts'
+import ColorHash from 'color-hash'
+import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { COLORS } from '../const'
+const colorHash = new ColorHash()
 
 const data01 = [
   {
@@ -24,20 +26,23 @@ const data01 = [
   },
 ]
 
-const Chart = () => (
-  <PieChart width={300} height={300}>
+const Chart = props => {
+  const { dataSource } = props
+  return (<PieChart width={300} height={300}>
     <Pie
       isAnimationActive
-      data={data01}
+      data={dataSource}
       cx={150}
       cy={150}
       outerRadius={80}
       fill="#333"
       label
     >
-      {data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)}
+      {dataSource.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)}
     </Pie>
+    <Tooltip />
   </PieChart>
-)
+  )
+}
 
 export default Chart

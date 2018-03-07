@@ -16,7 +16,7 @@ import MdPage from './mdPage'
 
 
 const DatasetsGenes = Wrapper(Genes, '/cgi/datasets/genes')
-const DatasetsDrugs = Wrapper(Drugs, '/cgi/datasets/drugs')
+const DatasetsDrugs = Wrapper(Drugs, '/cgi/datasets/drugs', '/cgi/datasets/drugschart')
 const DatasetsCases = Wrapper(Cases, '/cgi/datasets/cases', '/cgi/datasets/caseschart')
 const DatasetsRecords = Wrapper(Records, '/cgi/datasets/records')
 

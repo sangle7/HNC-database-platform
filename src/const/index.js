@@ -1,7 +1,7 @@
 import countFromArray from './countFromArray'
 import mutsNeedlePlot from './mutsNeedlePlot'
 
-const COLORS = ['#689F38', '#AFB42B','#F4A460', '#0097A7', '#00796B', '#0288D1', '#1976D2', '#303F9F', '#5D4037', '#616161', '#546E7A']
+const COLORS = ['#689F38', '#AFB42B', '#F4A460', '#0097A7', '#00796B', '#0288D1', '#1976D2', '#303F9F', '#5D4037', '#616161', '#546E7A']
 const menuWithIcon = [{
   text: 'Home',
   src: '/',

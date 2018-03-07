@@ -1,21 +1,68 @@
 module.exports = app => {
   return class Databaselist extends app.Service {
-    * queryById (id) {
-      const item = yield app.mysql.get('hnclinc',{id})
-      return { item }
-    }
-    * filterByType(type = 'hpv') {
-      const colnames1=[],colnames2= []
-      const results = yield app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;',[type]);
-      results.forEach(element => {
-        if(/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)){
-          colnames1.push(element.SampleID)
+    * queryById(SampleID) {
+        const item = yield app.mysql.get('hnclinc', {
+          SampleID
+        })
+        return {
+          item
         }
-        else if(/^neg/i.test(element[type]) && /^GSM/.test(element.SampleID)){
-          colnames2.push(element.SampleID)
+      }
+      * filterByType(type = 'hpv') {
+        const colnames1 = [],
+          colnames2 = []
+        const results = yield app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;', [type]);
+        results.forEach(element => {
+          if (/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+            colnames1.push(element.SampleID)
+          } else if (/^neg/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+            colnames2.push(element.SampleID)
+          }
+        });
+        return {
+          colnames1,
+          colnames2
         }
-      });
-      return { colnames1, colnames2}
-    }
+      }
+      * queryByPage(page) {
+        const total = yield app.mysql.count('hnclinc')
+        const list = yield app.mysql.select('hnclinc', {
+          limit: 20,
+          offset: (Number(page) - 1) * 20
+        });
+        return {
+          list,
+          total
+        }
+      }
+      * generateChart() {
+        const total = yield app.mysql.count('hnclinc')
+        const female = yield app.mysql.count('hnclinc', {gender: 'Female'});
+        const male = yield app.mysql.count('hnclinc', {gender: 'Male'});
+        const hpvP = yield app.mysql.count('hnclinc', {hpv: 'positive'});
+        const hpvN = yield app.mysql.count('hnclinc', {hpv: 'negative'});
+        const vitalA = yield app.mysql.count('hnclinc', {vital: 'alive'});
+        const vitalD = yield app.mysql.count('hnclinc', {vital: 'dead'});        
+        const chart = [{
+            name:'gender',
+            male,
+            female,
+            unknown: total -female -male
+          },{
+            name: 'hpv',
+            positive: hpvP,
+            negative: hpvN,
+            unknown: total -hpvP -hpvN            
+          },{
+            name:'vital',
+            alive:vitalA,
+            dead:vitalD,
+            unknown: total -vitalA -vitalD            
+          }
+        ]
+        return {
+          chart
+        }
+      }
   }
 }

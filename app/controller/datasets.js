@@ -19,10 +19,50 @@ exports.drugs = function* (ctx) {
   let body = {
     ret: 500,
   }
+  const { page = 1 } = ctx.request.body
+  const { list, total } = yield ctx.service.target.queryByPage(page)
+
+  for (let el of list){
+    const { item } = yield ctx.service.gene.getItemById(el.gene_id)
+    const { dbid } = yield ctx.service.hncdrug.queryById(el.hncdrug_id)
+    const { drug } = yield ctx.service.drugbank.queryById(dbid)
+    const { result } = yield ctx.service.pubmed.getById(el.pubmed_id)
+    const r = yield ctx.service.drug2pubmed.queryByIds(el.hncdrug_id,el.pubmed_id)
+    
+    
+    el.target_gene = item.hgncid
+    el.drug_name = drug.name
+    el.pmid = result.pmid
+    el.efficacy = r && r.efficacy
+    el.evidence = r && r.evidence
+    el.tumor_site = r && r.tumor_site
+    el.note = r && r.note
+  }
 
   try {
     body = {
-      list: [{ id: '213143' }],
+      list,
+      pagination:{
+        total,
+        current: Number(page),
+        pageSize:10,
+      },
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
+
+exports.caseschart = function* (ctx){
+  let body = {
+    ret: 500,
+  }
+  const { chart } = yield ctx.service.hnclinc.generateChart()
+  try {
+    body = {
+      chart,
       ret: 200,
     }
   } catch (error) {
@@ -35,10 +75,17 @@ exports.cases = function* (ctx) {
   let body = {
     ret: 500,
   }
+  const { page = 1 } = ctx.request.body
+  const { list, total } = yield ctx.service.hnclinc.queryByPage(page)
 
   try {
     body = {
-      list: [{ id: '213143' }],
+      list,
+      pagination:{
+        total,
+        current: Number(page),
+        pageSize:20,
+      },
       ret: 200,
     }
   } catch (error) {
@@ -51,10 +98,17 @@ exports.records = function* (ctx) {
   let body = {
     ret: 500,
   }
+  const { page = 1 } = ctx.request.body
+  const { list, total } = yield ctx.service.pubmed.queryByPage(page)
 
   try {
     body = {
-      list: [{ id: '213143' }],
+      list,
+      pagination:{
+        total,
+        current: Number(page),
+        pageSize:20,
+      },
       ret: 200,
     }
   } catch (error) {

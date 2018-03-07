@@ -1,7 +1,8 @@
 import React from 'react'
 import queryString from 'query-string'
+import chart from '../../components';
 
-const Wrapper = (Component, url) => {
+const Wrapper = (Component, url, charturl) => {
   return class Wrapped extends React.Component {
     constructor (props) {
       super(props)
@@ -12,6 +13,7 @@ const Wrapper = (Component, url) => {
     }
     componentDidMount () {
       this.init(this.props)
+      charturl && this.fetchChart(charturl)
     }
     componentWillReceiveProps (nextProps) {
       this.init(nextProps)
@@ -32,19 +34,41 @@ const Wrapper = (Component, url) => {
         .then(code => {
           this.setState({
             dataSource: code.list,
+            pagination: code.pagination,
             loading: false,
           })
         })
+    }
+    fetchChart = x => {
+      this.setState({
+        loading: true,
+      })
+      fetch(x, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(blob => blob.json())
+        .then(code => {
+          this.setState({
+            chartSource: code.chart,
+            loading: false,
+          })
+        })
+
     }
     reducer = func => {
       this.setState(func)
     }
     render () {
-      const { dataSource, loading } = this.state
+      const { dataSource, loading, pagination, chartSource } = this.state
       const ComponentProps = {
         ...this.props,
         dataSource,
         loading,
+        pagination,
+        chartSource,
       }
       return <Component {...ComponentProps} />
     }

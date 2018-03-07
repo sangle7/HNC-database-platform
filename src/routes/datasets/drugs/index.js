@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import queryString from 'query-string'
 import { Icon } from 'antd'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
 const DatasetsDrugs = props => {
-  const { location, history, dataSource } = props
+  const { location, history, dataSource,pagination, loading } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -16,31 +17,45 @@ const DatasetsDrugs = props => {
     },
   }
 
+
   const TableProps = {
+    loading,
+    pagination,    
     dataSource,
     columns: [{
       title: 'Drug name',
-      dataIndex: 'Drug name',
+      dataIndex: 'drug_name',
     }, {
-      title: 'Ref. No.',
-      dataIndex: 'id',
+      title: 'PMID',
+      dataIndex: 'pmid',
     }, {
-      title: 'Target genes',
-      dataIndex: 'Target genes',
+      title: 'Target gene',
+      dataIndex: 'target_gene',
     }, {
       title: 'Interaction',
-      dataIndex: 'Interaction',
+      dataIndex: 'interaction',
     }, {
       title: 'Regulation',
-      dataIndex: 'Regulation',
+      dataIndex: 'regulation',
     }, {
       title: 'Efficacy',
-      dataIndex: 'Efficacy',
-    }, {
-      title: 'More',
-      dataIndex: 'More',
-      render: (value, record) => (<Link to={`/Datasets/drugs/${record.name}`}><Icon type="arrow-right" /></Link>),
+      dataIndex: 'efficacy',
+    },{
+      title: 'Evidence',
+      dataIndex: 'evidence',
+    },{
+      title: 'Tumor Site',
+      dataIndex: 'tumor_site',
     }],
+    expandedRowRender: record => record.note ? <span>{record.note}</span> : null,
+    expandRowByClick: true,
+    onChange: page => {
+      const search = {
+        ...queryString.parse(location.search),
+        page: page.current,
+      }
+      props.history.push(`/Datasets/Drugs?${queryString.stringify(search)}`)
+    },
   }
   const TabProps = {
     tabs: [{

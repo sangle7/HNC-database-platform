@@ -1,9 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import queryString from 'query-string'
 import { Breadcrumb, Tabs, DatasourceTable, StackedBarChart } from '../../../components'
 
+const a = {
+  "SampleID": "GSM2260037",
+  "PMID": "28433800",
+  "Author": "Mahimkar",
+  "Year": 2017,
+  "Data Type": "Expression",
+  "Dataset ID": "GSE85195",
+  "Patient ID": "Patient_OSCC_OC 1760",
+  "molecule": "RNA",
+  "Cell Type": "",
+  "Cell_line": "",
+  "anatomicSite": "ORAL CAVITY",
+  "age": "43",
+  "gender": "Male",
+  "race": "",
+  "Tumor/Normal": "Tumor",
+  "Tgrade": "",
+  "ClinicalStage": "2",
+  "Tstage": "",
+  "Nstage": "",
+  "Mstage": "",
+  "tobacco": "",
+  "alcohol": "",
+  "vital": "",
+  "hpv": "",
+  "recurrence": "",
+  "followUpMonths": "",
+  "survival": "",
+  "OS Time": "",
+  "PFS Time": "",
+  "source": "GEO\r"
+}
+
 const DatasetsCases = props => {
-  const { location, history, dataSource } = props
+  const { location, history, dataSource, pagination, loading, chartSource } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -14,61 +48,26 @@ const DatasetsCases = props => {
     },
   }
 
+  const goToCase = v => props.history.push(`/Datasets/Cases/${v}`)
+
   const TableProps = {
     dataSource,
-    columns: [{
-      title: 'Case UUID',
-      dataIndex: 'id',
-    }, {
-      title: 'TCGA',
-      dataIndex: 'TCGA',
-    }, {
-      title: 'Gender',
-      dataIndex: 'Gender',
-    }, {
-      title: 'Age',
-      dataIndex: 'Age',
-    }, {
-      title: 'HPV',
-      dataIndex: 'HPV',
-    }, {
-      title: 'Alcohol',
-      dataIndex: 'Alcohol',
-    }, {
-      title: 'Smoke',
-      dataIndex: 'Smoke',
-    }, {
-      title: 'Grade',
-      dataIndex: 'Grade',
-    }, {
-      title: 'Drug',
-      dataIndex: 'Drug',
-    }, {
-      title: 'Stage',
-      dataIndex: 'Stage',
-    }, {
-      title: 'Prognosis',
-      dataIndex: 'Prognosis',
-    }, {
-      title: 'Chemotherapy',
-      dataIndex: 'Chemotherapy',
-    }, {
-      title: 'Metastasis',
-      dataIndex: 'Metastasis',
-    }, {
-      title: 'Recurrence',
-      dataIndex: 'Recurrence',
-    }, {
-      title: 'Differentiation',
-      dataIndex: 'Differentiation',
-    }, {
-      title: 'Radiotherapy',
-      dataIndex: 'Radiotherapy',
-    }, {
-      title: 'Ref. pubID',
-      dataIndex: 'Ref. pubID',
-    }],
-    scroll: { x: 800, y: 300 }
+    loading,
+    columns: Object.keys(a).map((elem,i) => ({
+      title: elem,
+      dataIndex: elem,
+      width: elem.length * 50,
+      render: v =>  (i === 0 ? <span onClick={()=>goToCase(v)}>{v}</span> : v || 'N/A'),
+    })),
+    scroll: { x: '500%', y: 600 },
+    pagination,
+    onChange: page => {
+      const search = {
+        ...queryString.parse(location.search),
+        page: page.current,
+      }
+      props.history.push(`/Datasets/Cases?${queryString.stringify(search)}`)
+    },
   }
   const TabProps = {
     tabs: [{
@@ -78,7 +77,7 @@ const DatasetsCases = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <StackedBarChart />,
+      content: <StackedBarChart chartSource={chartSource}/>,
     }],
     onChange (key) {
       console.log(key)

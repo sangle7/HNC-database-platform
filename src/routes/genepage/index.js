@@ -11,7 +11,7 @@ import Drugs from './Drugs'
 
 import style from './style.less'
 
-const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV', 'Surviral', 'Corr. annalysis', 'Diff. annalysis']
+const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV']
 class GenePage extends React.Component {
   constructor (props) {
     super(props)

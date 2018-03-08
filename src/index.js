@@ -16,6 +16,7 @@ import {
   Navigation,
   Annalysis,
   GeneList,
+  DrugList,
   Datasets,
   DrugPage,
   DatasetsGenes,
@@ -51,6 +52,8 @@ ReactDOM.render(
             <Route exact path="/Contact" component={MdPage} />
             <Route exact path="/Annalysis" component={Annalysis} />
             <Route exact path="/Annalysis/Gene" component={GeneList} />
+            <Route exact path="/Annalysis/Drug" component={DrugList} />
+            <Route path="/Annalysis/Drug/:drugId" component={DrugPage} />
             <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
             <Route exact path="/Annalysis/Surviral" component={AnnalysisSurviral} />
             <Route exact path="/Annalysis/Corr" component={AnnalysisCorr} />
@@ -58,7 +61,6 @@ ReactDOM.render(
             <Route exact path="/Datasets" component={Datasets} />
             <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
             <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />
-            <Route exact path="/Datasets/Drugs/:drugId" component={DrugPage} />
             <Route exact path="/Datasets/Cases" component={DatasetsCases} />
             <Route exact path="/Datasets/Cases/:caseId" component={CasePage} />
             <Route exact path="/Datasets/Records" component={DatasetsRecords} />

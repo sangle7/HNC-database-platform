@@ -5,7 +5,8 @@ import Diff from './annalysis/diff'
 import Corr from './annalysis/corr'
 import Surviral from './annalysis/surviral'
 import Datasets from './datasets'
-import GeneListd from './genelist'
+import DrugListd from './annalysis/druglist'
+import GeneListd from './annalysis/genelist'
 import DatasetsNCRNA from './datasets/ncRNA'
 import DrugPage from './drugpage'
 import CasePage from './casepage'
@@ -20,6 +21,7 @@ import MdPage from './mdPage'
 const AnnalysisCorr = Wrapper(Corr, '/cgi/datasets/genes')
 const AnnalysisDiff = Wrapper(Diff, '/cgi/diff/init')
 const AnnalysisSurviral = Wrapper(Surviral, '/cgi/datasets/genes')
+const DrugList = Wrapper(DrugListd, '/cgi/drugs')
 const GeneList = Wrapper(GeneListd, '/cgi/genes')
 
 const DatasetsGenes = Wrapper(Genes, '/cgi/datasets/genes')
@@ -36,6 +38,7 @@ export {
     Navigation,
     Annalysis,
     GeneList,
+    DrugList,
     Datasets,
     DatasetsGenes,
     DatasetsDrugs,

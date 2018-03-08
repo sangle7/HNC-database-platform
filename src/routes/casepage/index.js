@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Breadcrumb, MinLabel } from '../../components'
+import { Breadcrumb, Document } from '../../components'
 
 class DrugPage extends React.Component {
   constructor (props) {
@@ -48,7 +48,9 @@ class DrugPage extends React.Component {
     return (
       <div>
         <Breadcrumb {...BreadcrumbProps} />
-        <MinLabel item={item} />
+        <div className="markdown-body">
+        <pre>{JSON.stringify(item,null,4)}</pre></div>
+        {/* <Document item={item} h1='pmid'/> */}
       </div>
     )
   }

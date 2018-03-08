@@ -19,6 +19,10 @@ const Annalysis = props => {
     <div>
       <Breadcrumb {...BreadcrumbProps} />
       <Button onClick={() => history.push('/Annalysis/Gene')}>Gene</Button>
+      <Button onClick={() => history.push('/Annalysis/Drug')}>Drug</Button>
+      <Button onClick={() => history.push('/Annalysis/Surviral')}>Surviral</Button>
+      <Button onClick={() => history.push('/Annalysis/Corr')}>Corr. annalysis</Button>
+      <Button onClick={() => history.push('/Annalysis/Diff')}>Diff. annalysis</Button>
     </div>
   )
 }

@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import Surviral from './Surviral'
 import Expression from './Expression'
 import Modal from './Modal'
-import Epigenetic from './Epigenetic'
 import Mutation from './Mutation'
-import Corr from './Corr'
-import Diff from './Diff'
 import CNV from './CNV'
 import { Menu, Breadcrumb, Label } from '../../components'
 import HNCDBrecords from './HNCDBrecords'
@@ -15,7 +11,7 @@ import Drugs from './Drugs'
 
 import style from './style.less'
 
-const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV', 'Epigenetic modification', 'Surviral', 'Corr. annalysis', 'Diff. annalysis']
+const genemenu = ['General Information', 'HNCDB record', 'Drugs', 'Expression', 'Mutation', 'CNV', 'Surviral', 'Corr. annalysis', 'Diff. annalysis']
 class GenePage extends React.Component {
   constructor (props) {
     super(props)
@@ -113,11 +109,6 @@ class GenePage extends React.Component {
       loading,
     }
 
-    const EpigeneticProps = {
-      dataSource,
-      loading,
-    }
-
     const SurviralProps = {
       dataSource,
       loading,
@@ -176,18 +167,6 @@ class GenePage extends React.Component {
         break
       case 5:
         itemByStep = <CNV {...CNVProps} />
-        break
-      case 6:
-        itemByStep = <Epigenetic {...EpigeneticProps} />
-        break
-      case 7:
-        itemByStep = <Surviral {...SurviralProps} />
-        break
-      case 8:
-        itemByStep = <Corr {...CorrProps} />
-        break
-      case 9:
-        itemByStep = <Diff {...DiffProps} />
         break
       default:
         itemByStep = <h1> 还没写完呢- -</h1>

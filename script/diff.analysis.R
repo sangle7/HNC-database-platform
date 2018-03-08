@@ -1,36 +1,18 @@
 #Rscript diff.analysis.R <path to matrix file> <group one input colnames> <group two input colnames>> <output file prefix>
 library("data.table")
-
 Args=commandArgs(trailingOnly = TRUE)
 
 #reading file
 library(limma)
 library(pheatmap)
 zdf<-fread(Args[1],header=TRUE)
-# zdf = read.table(Args[1],header=T,row.names = 1)
 zdf=data.frame(zdf)
 
-# arg1 = as.character(strsplit('GSM1359236_FaDu.shG9a.67.824.x,GSM277644',',')[[1]])
 arg1 = as.character(strsplit(Args[2],',')[[1]])
-print(mode(arg1))
-
-# arg2 = as.character(strsplit('GSM338297,GSM338296',',')[[1]])
 arg2 = as.character(strsplit(Args[3],',')[[1]])
 
 rpkm_data_1 = zdf[,arg1]
 rpkm_data_2 = zdf[,arg2]
-
-# write.table(df2,file = 'df2.txt')
-# write.table(df2,file = 'df3.txt')
-
-# rpkm_data_o_1 = cbind(df1,df2)
-# rpkm_data_o_2 = cbind(df1,df3)
-
-# fwrite(rpkm_data_o_1,file = 'df2.txt',sep = "\t",quote=FALSE)
-# fwrite(rpkm_data_o_2,file = 'df3.txt',sep = "\t",quote=FALSE)
-
-# rpkm_data_1=read.table('df2.txt',header=T,row.names = 1)
-# rpkm_data_1=read.table('df3.txt',header=T,row.names = 1)
 
 rpkm_data=cbind(rpkm_data_1,rpkm_data_2)
 

@@ -1,9 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tabs, DatasourceTable, LineChart } from '../../components'
+import { Tabs, DatasourceTable, LineChart, Breadcrumb } from '../../components'
 
 const Surviral = props => {
-  const { loading, dataSource } = props
+  const { loading, dataSource, location, history } = props
+
+  const BreadcrumbProps = {
+    path: location.pathname,
+    handleClick (index) {
+      const newpath = location.pathname.split('/').slice(0, index + 1).join('/')
+      if (newpath !== location.pathname) {
+        history.push(newpath)
+      }
+    },
+  }
 
   const TableProps = {
     dataSource,
@@ -23,7 +33,7 @@ const Surviral = props => {
     }],
   }
   const TabProps = {
-    transform: true,
+    transform: false,
     tabs: [{
       key: 'Table',
       title: 'Table',
@@ -37,7 +47,12 @@ const Surviral = props => {
       console.log(key)
     },
   }
-  return <Tabs {...TabProps} />
+  return ( <div>
+    <Breadcrumb {...BreadcrumbProps} />
+    <main>
+      <Tabs {...TabProps} />
+    </main>
+  </div>)
 }
 
 Surviral.propTypes = {

@@ -1,6 +1,9 @@
 import Navigation from './navigation'
 import GenePage from './genepage'
 import Annalysis from './annalysis'
+import Diff from './annalysis/diff'
+import Corr from './annalysis/corr'
+import Surviral from './annalysis/surviral'
 import Datasets from './datasets'
 import GeneList from './genelist'
 import DatasetsNCRNA from './datasets/ncRNA'
@@ -21,6 +24,9 @@ const DatasetsCases = Wrapper(Cases, '/cgi/datasets/cases', '/cgi/datasets/cases
 const DatasetsRecords = Wrapper(Records, '/cgi/datasets/records')
 
 export {
+    Corr,
+    Diff,
+    Surviral,
     GenePage,
     CasePage,
     Navigation,

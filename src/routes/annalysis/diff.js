@@ -1,14 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Select } from 'antd'
-import { DatasourceTable, ScatterChart } from '../../components'
+import { DatasourceTable, ScatterChart, Breadcrumb } from '../../components'
 import style from './style.less'
 
 const Option = Select.Option
 const Diff = props => {
   const {
-    loading, dataSource, onChange, type,
+    loading, dataSource, onChange, type,location,history
   } = props
+
+  const BreadcrumbProps = {
+    path: location.pathname,
+    handleClick (index) {
+      const newpath = location.pathname.split('/').slice(0, index + 1).join('/')
+      if (newpath !== location.pathname) {
+        history.push(newpath)
+      }
+    },
+  }
 
   const TableProps = {
     dataSource,
@@ -25,7 +35,9 @@ const Diff = props => {
     }],
   }
   return (
-    <div className={style.notab}>
+    <div>
+    <Breadcrumb {...BreadcrumbProps} />
+    <main>
       <div className={style.select}>
         Select an object category
         <Select defaultValue="HPV" style={{ width: 120 }} onChange={key => onChange(key)}>
@@ -49,7 +61,9 @@ const Diff = props => {
         <DatasourceTable {...TableProps} />
         <ScatterChart />
       </div>
-    </div>)
+      </main>
+      </div>
+    )
 }
 
 Diff.propTypes = {

@@ -26,6 +26,9 @@ import {
   CasePage,
   ErrorPage,
   MdPage,
+  Diff,
+  Corr,
+  Surviral,
 } from './routes'
 
 if (module.hot) {
@@ -49,6 +52,9 @@ ReactDOM.render(
             <Route exact path="/Annalysis" component={Annalysis} />
             <Route exact path="/Annalysis/Gene" component={GeneList} />
             <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
+            <Route exact path="/Annalysis/Surviral" component={Surviral} />
+            <Route exact path="/Annalysis/Corr" component={Corr} />
+            <Route exact path="/Annalysis/Diff" component={Diff} />
             <Route exact path="/Datasets" component={Datasets} />
             <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
             <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />

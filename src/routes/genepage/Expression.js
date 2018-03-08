@@ -40,7 +40,7 @@ const Expression = props => {
       console.log(key)
     },
   }
-  return <Tabs {...TabProps} />
+  return <BoxPlot />
 }
 Expression.propTypes = {
   loading: PropTypes.bool.isRequired,

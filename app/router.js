@@ -3,8 +3,9 @@
 module.exports = app => {
   app.get('/', 'home.index');
   app.get('*', 'home.index');
-  app.post('/cgi/gene/info', app.controller.gene.info)
+  app.post('/cgi/genes', app.controller.gene.info)
   app.post('/cgi/gene/init', app.controller.gene.init)
+  app.post('/cgi/diff/init', app.controller.diff.init)
 
   app.post('/cgi/drug/item', app.controller.drug.item)
 

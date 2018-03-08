@@ -11,11 +11,18 @@ module.exports = app => {
       * filterByType(type = 'hpv') {
         const colnames1 = [],
           colnames2 = []
-        const results = yield app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;', [type]);
+        const results = yield app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;', ['vital']);
+        // results.forEach(element => {
+        //   if (/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+        //     colnames1.push(element.SampleID)
+        //   } else if (/^neg/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+        //     colnames2.push(element.SampleID)
+        //   }
+        // });
         results.forEach(element => {
-          if (/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+          if (/^dead/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
             colnames1.push(element.SampleID)
-          } else if (/^neg/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
+          } else if (/^alive/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
             colnames2.push(element.SampleID)
           }
         });

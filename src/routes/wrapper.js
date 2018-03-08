@@ -1,6 +1,5 @@
 import React from 'react'
 import queryString from 'query-string'
-import chart from '../../components';
 
 const Wrapper = (Component, url, charturl) => {
   return class Wrapped extends React.Component {
@@ -8,7 +7,8 @@ const Wrapper = (Component, url, charturl) => {
       super(props)
       this.state = {
         dataSource: [],
-        chartSource: [],        
+        chartSource: [],
+        md5String: null,
         loading: false,
       }
     }
@@ -36,6 +36,7 @@ const Wrapper = (Component, url, charturl) => {
           this.setState({
             dataSource: code.list,
             pagination: code.pagination,
+            md5String: code.md5String,
             loading: false,
           })
         })

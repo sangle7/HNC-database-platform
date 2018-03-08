@@ -13,6 +13,9 @@ const generateBoxPlot = () => {
       }
     })
 
+
+    console.log(box1)
+
   const box2 = d3.range(100).map(d3.random.normal(Math.random() * 100, 30))
     .map(function (d, i) {
       return {

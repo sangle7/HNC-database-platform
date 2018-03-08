@@ -8,11 +8,12 @@ const CustomBarLabel = (props) => {
   return <Text x={x + width + 5} y={y} fill="#666" textAnchor="start" verticalAnchor="middle" dy={height / 2}>{`${value}`}</Text>;
 }
 
-const chart = ({ data }) => (
-  <BarChart layout="vertical"
+const chart = ({ data }) =>{
+  const dateSource = data.filter(el=>el.name)
+  return (<BarChart layout="vertical"
     width={800}
     height={300}
-    data={data}
+    data={dateSource}
     barCategoryGap="20%"
     barSize={40}
     margin={{
@@ -24,10 +25,10 @@ const chart = ({ data }) => (
     <CartesianGrid strokeDasharray="3 3" />
     <Tooltip />
     <Bar dataKey="count" label={<CustomBarLabel />}>
-      {data.map((entry, index) => (<Cell fill={COLORS[index % COLORS.length]} />))}
+      {dateSource.map((entry, index) => (<Cell fill={COLORS[index % COLORS.length]} />))}
     </Bar>
   </BarChart>
-)
+)}
 
 chart.propTypes = {
   data: PropTypes.array.isRequired,

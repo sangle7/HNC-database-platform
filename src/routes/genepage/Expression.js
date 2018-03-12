@@ -34,13 +34,13 @@ const Expression = props => {
     }, {
       key: 'Graph',
       title: 'Graph',
-      content: <div style={{display: 'flex'}}><Heatmap /><BoxPlot /></div>,
+      content: <div style={{display: 'flex'}}><Heatmap /><BoxPlot/></div>,
     }],
     onChange (key) {
       console.log(key)
     },
   }
-  return <BoxPlot />
+  return <BoxPlot dataSource={dataSource}/>
 }
 Expression.propTypes = {
   loading: PropTypes.bool.isRequired,

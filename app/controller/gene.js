@@ -1,4 +1,6 @@
 const R = require('../utils/R');
+const path = require('path')
+const fs = require('fs')
 const md5 = require('md5');
 
 exports.info = function* (ctx) {
@@ -147,12 +149,40 @@ exports.init = function* (ctx) {
         }
         break
       case '3':
-        body = {
-          list: [{
-            id: '12321'
-          }],
-          step: 3,
-          ret: 200,
+          try {
+            let newlist = []
+            const filepath = path.join(__dirname,'..','..',`${geneId}expression.table.txt`)
+            const isExist = fs.existsSync(filepath)
+            if(isExist){
+              newlist = read(filepath)
+            }else{
+              const rResult = R(`expression.R`, `${app.config.Rpath}/coding.matrix.adj.txt ${geneId}`)
+              if (rResult.code === 0) {
+                // 读取文件内容
+                newlist = read(filepath)
+              } else {
+                console.log(rResult.stderr) //错误日志
+              }
+            }
+
+            body = {
+              list: newlist,
+              step: 3,
+              ret: 200,
+            }
+
+            function read (filepath){
+              const str = fs.readFileSync(filepath,'utf8')
+              const arr = str.split(',')
+              newlist = arr.map((e,i) => ({
+                v:e,
+                g:'box1',
+                t:i
+              }))
+              return newlist
+            }
+        } catch (error) {
+            body.error = error
         }
         break
       case '4':

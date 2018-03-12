@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import queryString from 'query-string'
 import { Select } from 'antd'
 import { DatasourceTable, ScatterChart, Breadcrumb } from '../../components'
 import style from './style.less'
@@ -7,8 +8,12 @@ import style from './style.less'
 const Option = Select.Option
 const Diff = props => {
   const {
-    loading, dataSource, onChange, type,location,history
+    loading, dataSource, location, history
   } = props
+
+  const onChange = t => {
+    history.push(`${location.pathname}?type=${t}`)
+  }
 
   const BreadcrumbProps = {
     path: location.pathname,
@@ -19,6 +24,8 @@ const Diff = props => {
       }
     },
   }
+
+  const type = queryString.parse(location.search).type || 'hpv'
 
   const TableProps = {
     dataSource,
@@ -36,33 +43,33 @@ const Diff = props => {
   }
   return (
     <div>
-    <Breadcrumb {...BreadcrumbProps} />
-    <main>
-      <div className={style.select}>
-        Select an object category
-        <Select defaultValue="HPV" style={{ width: 120 }} onChange={key => onChange(key)}>
-          <Option value="HPV">HPV</Option>
-          <Option value="Age">Age</Option>
-          <Option value="Gender">Gender</Option>
-          <Option value="Alcohol">Alcohol</Option>
-          <Option value="Smoke">Smoke</Option>
-          <Option value="Drug">Drug</Option>
-          <Option value="Grade">Grade</Option>
-          <Option value="Stage">Stage</Option>
-          <Option value="Prognosis">Prognosis</Option>
-          <Option value="Metastasis">Metastasis</Option>
-          <Option value="Recurrence">Recurrence</Option>
-          <Option value="Differentiation">Differentiation</Option>
-          <Option value="Radiotherapy">Radiotherapy</Option>
-          <Option value="Chemotherapy">Chemotherapy</Option>
-        </Select>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <DatasourceTable {...TableProps} />
-        <ScatterChart />
-      </div>
+      <Breadcrumb {...BreadcrumbProps} />
+      <main>
+        <div className={style.select}>
+          Select an object category
+          <Select defaultValue="HPV" style={{ width: 120 }} onChange={key => onChange(key)}>
+            <Option value="HPV">HPV</Option>
+            <Option value="Age">Age</Option>
+            <Option value="Gender">Gender</Option>
+            <Option value="Alcohol">Alcohol</Option>
+            <Option value="Smoke">Smoke</Option>
+            <Option value="Drug">Drug</Option>
+            <Option value="Grade">Grade</Option>
+            <Option value="Stage">Stage</Option>
+            <Option value="Prognosis">Prognosis</Option>
+            <Option value="Metastasis">Metastasis</Option>
+            <Option value="Recurrence">Recurrence</Option>
+            <Option value="Differentiation">Differentiation</Option>
+            <Option value="Radiotherapy">Radiotherapy</Option>
+            <Option value="Chemotherapy">Chemotherapy</Option>
+          </Select>
+        </div>
+        <div className={style.container}>
+          <DatasourceTable {...TableProps} />
+          <ScatterChart />
+        </div>
       </main>
-      </div>
+    </div>
     )
 }
 

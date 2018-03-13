@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Tabs, DatasourceTable, LineChart } from '../../components'
 
 const Epigenetic = props => {

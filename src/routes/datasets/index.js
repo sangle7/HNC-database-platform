@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { Button } from 'antd'
 import { Breadcrumb } from '../../components'
+import style from '../annalysis/style.less'
 
 const Datasets = props => {
   const { location, history } = props
@@ -14,15 +16,19 @@ const Datasets = props => {
       }
     },
   }
+  const Card = ({path,i}) => (
+    <div className={classnames({ [style.card]: true },`bg${i}`)}>
+      <h1>{path}</h1>
+      <Button ghost onClick={() => history.push(`/Datasets/${path}`)}>Get In Touch</Button>
+    </div>
+  )
 
   return (
     <div>
       <Breadcrumb {...BreadcrumbProps} />
-      <Button onClick={() => history.push('/Datasets/Genes')}>Genes</Button>
-      <Button onClick={() => history.push('/Datasets/Drugs')}>Drugs</Button>
-      <Button onClick={() => history.push('/Datasets/Cases')}>Cases</Button>
-      <Button onClick={() => history.push('/Datasets/ncRNA')}>ncRNA</Button>
-      <Button onClick={() => history.push('/Datasets/Records')}>Records</Button>
+      <div className={style.butcontainer}>
+      {["Genes","Drugs","Cases","ncRNA","Records"].map((el,i)=><Card path={el} i={i}/>)}
+      </div>
     </div>
   )
 }

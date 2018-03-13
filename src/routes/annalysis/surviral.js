@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Tabs, DatasourceTable, LineChart, Breadcrumb } from '../../components'
 
 const Surviral = props => {
@@ -36,11 +37,11 @@ const Surviral = props => {
     transform: false,
     tabs: [{
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }, {
       key: 'Graph',
-      title: 'Graph',
+      title: <span><Icon type="line-chart" />Graph</span>,
       content: <LineChart />,
     }],
     onChange (key) {

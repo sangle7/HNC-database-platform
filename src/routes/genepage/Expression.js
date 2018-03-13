@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Tabs, DatasourceTable, Heatmap, BoxPlot } from '../../components'
 
 const Expression = props => {
@@ -29,7 +30,7 @@ const Expression = props => {
     transform: true,
     tabs: [{
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }, {
       key: 'Graph',

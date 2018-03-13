@@ -92,11 +92,11 @@ class GenePage extends React.Component {
     const TabProps = {
       tabs: [{
         key: 'Table',
-        title: 'Table',
+        title: <span><Icon type="layout" />Table</span>,
         content: <DatasourceTable {...TableProps} />,
       }, {
         key: 'Graph',
-        title: 'Graph',
+        title: <span><Icon type="pie-chart" />Graph</span>,
         content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /></div>,
       }],
       onChange (key) {

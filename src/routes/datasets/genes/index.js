@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
 const DatasetsGenes = props => {
@@ -54,11 +55,11 @@ const DatasetsGenes = props => {
   const TabProps = {
     tabs: [{
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }, {
       key: 'Graph',
-      title: 'Graph',
+      title: <span><Icon type="pie-chart" />Graph</span>,
       content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /><PieChart /></div>,
     }],
     onChange (key) {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
+import { Icon } from 'antd'
 
 import { Breadcrumb, Tabs, DatasourceTable, PieChart } from '../../../components'
 
@@ -66,11 +67,11 @@ const DatasetsRecords = props => {
   const TabProps = {
     tabs: [{
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }, {
       key: 'Graph',
-      title: 'Graph',
+      title: <span><Icon type="pie-chart" />Graph</span>,
       content: <div style={{ display: 'flex', flexWrap: 'wrap' }}><PieChart /><PieChart /><PieChart /></div>,
     }],
     onChange (key) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Tabs, DatasourceTable, BarChart } from '../../components'
 import { countFromArray } from '../../const'
 
@@ -31,11 +32,11 @@ const HNCDB = props => {
     transform: true,
     tabs: [{
       key: 'Graph',
-      title: 'Graph',
+      title: <span><Icon type="bar-chart" />Graph</span>,
       content: <BarChart data={data} />,
     }, {
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }],
     onChange (key) {

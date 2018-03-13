@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'antd'
 import { Tabs, DatasourceTable, NeedlePlot } from '../../components'
 
 const Mutation = props => {
@@ -35,11 +36,11 @@ const Mutation = props => {
     transform: true,
     tabs: [{
       key: 'Table',
-      title: 'Table',
+      title: <span><Icon type="layout" />Table</span>,
       content: <DatasourceTable {...TableProps} />,
     }, {
       key: 'Graph',
-      title: 'Graph',
+      title: <span><Icon type="dot-chart" />Graph</span>,
       content: <NeedlePlot />,
     }],
     onChange (key) {

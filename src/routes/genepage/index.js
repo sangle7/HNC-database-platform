@@ -176,7 +176,7 @@ class GenePage extends React.Component {
       <div>
         <Breadcrumb {...BreadcrumbProps} />
         <main>
-          <div style={{display:'flex',alignItems: 'center'}}>
+          <div style={{display:'flex',alignItems: 'center', margin: '20px 0'}}>
             <span className={style.circle}></span> 
             <h1 className={style.title}>{match.params.geneId}</h1>
           </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import * as d3 from 'd3'
 import exploding_boxplot from 'd3_exploding_boxplot'
 
-const generateBoxPlot = (dataSource) => {
+const generateBoxPlot = ({dataSource,onclickcb}) => {
   // chart(data,aes)
   // aesthetic :
   // y : point's value on y axis
@@ -15,7 +15,7 @@ const generateBoxPlot = (dataSource) => {
     group: 'g',
     color: 'g',
     label: 't'
-  })
+  },onclickcb)
 
   //call chart on a div
   chart('#chartContainer')
@@ -23,7 +23,7 @@ const generateBoxPlot = (dataSource) => {
 
 export default class BoxPlot extends React.Component {
   componentDidMount () {
-    generateBoxPlot(this.props.dataSource)
+    generateBoxPlot({dataSource: this.props.dataSource, onclickcb: this.props.onclickcb})
   }
   render () {
     return <div id="chartContainer" />

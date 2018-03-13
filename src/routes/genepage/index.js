@@ -97,6 +97,7 @@ class GenePage extends React.Component {
     const ExpressionProps = {
       dataSource,
       loading,
+      onclickcb: e => history.push(`/Datasets/Cases/${e.t}`),
     }
 
     const MutationProps = {

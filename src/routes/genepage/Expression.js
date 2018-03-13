@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Tabs, DatasourceTable, Heatmap, BoxPlot } from '../../components'
 
 const Expression = props => {
-  const { loading, dataSource } = props
+  const { loading, dataSource, onclickcb } = props
 
   const TableProps = {
     dataSource,
@@ -40,7 +40,7 @@ const Expression = props => {
       console.log(key)
     },
   }
-  return <BoxPlot dataSource={dataSource}/>
+  return <BoxPlot dataSource={dataSource} onclickcb={onclickcb}/>
 }
 Expression.propTypes = {
   loading: PropTypes.bool.isRequired,

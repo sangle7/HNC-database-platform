@@ -16,10 +16,7 @@ const chart = ({ data }) =>{
     data={dateSource}
     barCategoryGap="20%"
     barSize={40}
-    margin={{
- top: 5, right: 30, left: 50, bottom: 5,
-}}
-  >
+    margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
     <XAxis type="number" />
     <YAxis dataKey="name" type="category" />
     <CartesianGrid strokeDasharray="3 3" />

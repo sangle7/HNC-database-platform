@@ -25,7 +25,7 @@ const Diff = props => {
     },
   }
 
-  const type = queryString.parse(location.search).type || 'hpv'
+  const type = queryString.parse(location.search).type || 'HPV'
 
   const TableProps = {
     dataSource,

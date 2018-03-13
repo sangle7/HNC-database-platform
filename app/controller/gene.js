@@ -173,11 +173,13 @@ exports.init = function* (ctx) {
 
             function read (filepath){
               const str = fs.readFileSync(filepath,'utf8')
-              const arr = str.split(',')
+              const temp = str.split('\n')
+              const header = temp[0].split(',')
+              const arr = temp[1].split(',')
               newlist = arr.map((e,i) => ({
                 v:e,
                 g:'box1',
-                t:i
+                t:header[i]
               }))
               return newlist
             }

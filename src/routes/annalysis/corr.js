@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import queryString from 'query-string'
 import { Select, Button } from 'antd'
 import { DatasourceTable, ScatterChart, Breadcrumb } from '../../components'
 import style from './style.less'
@@ -8,8 +9,12 @@ import style from './style.less'
 const Option = Select.Option
 const Corr = props => {
   const {
-    loading, dataSource, type, onChange, showModal, location, history
+    loading, dataSource, showModal, location, history
   } = props
+
+  const onChange = t => {
+    history.push(`${location.pathname}?type=${t}`)
+  }
 
   const BreadcrumbProps = {
     path: location.pathname,
@@ -20,6 +25,8 @@ const Corr = props => {
       }
     },
   }
+
+  const type = queryString.parse(location.search).type || 'mRNA'  
 
   const isChart = ['CNV', 'Surviral'].includes(type)
   const getColumn = _type => {
@@ -119,7 +126,7 @@ const Corr = props => {
                 <Option value="Phosphorylation">Phosphorylation</Option>
                 </Select>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className={style.container}>
                 <DatasourceTable {...TableProps} />
                 { isChart ? <ScatterChart /> : null}
             </div>

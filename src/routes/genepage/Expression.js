@@ -9,21 +9,13 @@ const Expression = props => {
   const TableProps = {
     dataSource,
     loading,
+    grow: false,
     columns: [{
-      title: 'Annotation',
-      dataIndex: 'Annotation',
-    }, {
       title: 'Sample ID',
-      dataIndex: 'id',
+      dataIndex: 't',
     }, {
-      title: 'Gender',
-      dataIndex: 'Gender',
-    }, {
-      title: 'Project',
-      dataIndex: 'Project',
-    }, {
-      title: 'Expr.(log2)',
-      dataIndex: 'Expr',
+      title: 'Value',
+      dataIndex: 'v',
     }],
   }
   const TabProps = {
@@ -41,7 +33,11 @@ const Expression = props => {
       console.log(key)
     },
   }
-  return <BoxPlot dataSource={dataSource} onclickcb={onclickcb}/>
+  return (
+  <div style={{display: 'flex',justifyContent: 'space-around'}}>
+    <BoxPlot dataSource={dataSource} onclickcb={onclickcb}/>
+    <DatasourceTable {...TableProps} />
+  </div>)
 }
 Expression.propTypes = {
   loading: PropTypes.bool.isRequired,

@@ -4,9 +4,10 @@ import { Table } from 'antd'
 import style from './datasourceTable.less'
 
 const DatasourceTable = props => {
+  const { grow = true }  = props
   return (
     <Table
-      className={classnames({ [style.table]: true })}
+      className={classnames({ [style.table]: true, [style.grow]: grow })}
       bordered
       simple
       rowKey={record  => record.id}

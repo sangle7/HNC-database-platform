@@ -15,6 +15,26 @@ import NeedlePlot from './needlePlot'
 import Document from './document'
 import MinLabel from './minlabel'
 import Download from './download'
+import WrappedDynamicFieldSet from './dynamicFieldSet'
 
 
-export { Menu, Download, Document, Breadcrumb, Tabs, MinLabel, ScatterChart, DatasourceTable, Search, Label, PieChart, StackedBarChart, BarChart, LineChart, BoxPlot, Heatmap, NeedlePlot }
+export {
+    WrappedDynamicFieldSet,
+    Menu,
+    Download,
+    Document,
+    Breadcrumb,
+    Tabs,
+    MinLabel,
+    ScatterChart,
+    DatasourceTable,
+    Search,
+    Label,
+    PieChart,
+    StackedBarChart,
+    BarChart,
+    LineChart,
+    BoxPlot,
+    Heatmap,
+    NeedlePlot
+}

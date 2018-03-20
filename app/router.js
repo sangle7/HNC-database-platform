@@ -6,7 +6,11 @@ module.exports = app => {
   app.post('/cgi/drugs', app.controller.drug.info)
   app.post('/cgi/genes', app.controller.gene.info)
   app.post('/cgi/gene/init', app.controller.gene.init)
+
+  app.post('/cgi/gene/sug', app.controller.gene.sug)
+
   app.post('/cgi/diff/init', app.controller.diff.init)
+  app.post('/cgi/corr/init', app.controller.corr.init)
 
   app.post('/cgi/drug/item', app.controller.drug.item)
 

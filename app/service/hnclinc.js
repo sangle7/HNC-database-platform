@@ -1,18 +1,18 @@
 module.exports = app => {
   return class Databaselist extends app.Service {
-    * queryById(SampleID) {
-        const item = yield app.mysql.get('hnclinc', {
+    async queryById(SampleID) {
+        const item = await app.mysql.get('hnclinc', {
           SampleID
         })
         return {
           item
         }
       }
-      * filterByType(type) {
+      async filterByType(type) {
         type = type.toLowerCase()
         const colnames1 = [],
           colnames2 = []
-        const results = yield app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;', [type]);
+        const results = await app.mysql.query('SELECT async FROM hnclinc WHERE ? IS NOT NULL;', [type]);
 
         for (let element of results){
           if (/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)) {
@@ -34,9 +34,9 @@ module.exports = app => {
           colnames2
         }
       }
-      * queryByPage(page) {
-        const total = yield app.mysql.count('hnclinc')
-        const list = yield app.mysql.select('hnclinc', {
+      async queryByPage(page) {
+        const total = await app.mysql.count('hnclinc')
+        const list = await app.mysql.select('hnclinc', {
           limit: 10,
           offset: (Number(page) - 1) * 10
         });
@@ -45,14 +45,14 @@ module.exports = app => {
           total
         }
       }
-      * generateChart() {
-        const total = yield app.mysql.count('hnclinc')
-        const female = yield app.mysql.count('hnclinc', {gender: 'Female'});
-        const male = yield app.mysql.count('hnclinc', {gender: 'Male'});
-        const hpvP = yield app.mysql.count('hnclinc', {hpv: 'positive'});
-        const hpvN = yield app.mysql.count('hnclinc', {hpv: 'negative'});
-        const vitalA = yield app.mysql.count('hnclinc', {vital: 'alive'});
-        const vitalD = yield app.mysql.count('hnclinc', {vital: 'dead'});        
+      async generateChart() {
+        const total = await app.mysql.count('hnclinc')
+        const female = await app.mysql.count('hnclinc', {gender: 'Female'});
+        const male = await app.mysql.count('hnclinc', {gender: 'Male'});
+        const hpvP = await app.mysql.count('hnclinc', {hpv: 'positive'});
+        const hpvN = await app.mysql.count('hnclinc', {hpv: 'negative'});
+        const vitalA = await app.mysql.count('hnclinc', {vital: 'alive'});
+        const vitalD = await app.mysql.count('hnclinc', {vital: 'dead'});        
         const chart = [{
             name:'gender',
             male,

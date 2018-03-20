@@ -1,5 +1,5 @@
 
-exports.item = function* (ctx) {
+exports.item = async ctx =>{
   let body = {
     ret: 500,
   }
@@ -7,7 +7,7 @@ exports.item = function* (ctx) {
   const { caseId } = ctx.request.body
 
   try {
-    const { item } = yield ctx.service.hnclinc.queryById(caseId)
+    const { item } = await ctx.service.hnclinc.queryById(caseId)
     body = {
       item: item || {},
       ret: 200,

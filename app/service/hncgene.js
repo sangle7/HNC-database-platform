@@ -1,7 +1,7 @@
 module.exports = app => {
   return class Databaselist extends app.Service {
-    * getIdByGeneId(geneId) {
-        const list = yield app.mysql.select('hncgene', {
+    async getIdByGeneId(geneId) {
+        const list = await app.mysql.select('hncgene', {
           where: {
             gene_id: geneId
           }
@@ -11,19 +11,19 @@ module.exports = app => {
           hncGeneId: list[0].id
         }
       }
-    * query(page) {
-      const geneIds = yield app.mysql.select('hncgene', {
+    async query(page) {
+      const geneIds = await app.mysql.select('hncgene', {
         limit: 10,
         offset: 10 * (page - 1)
       })
-      const total = yield app.mysql.count('hncgene')
+      const total = await app.mysql.count('hncgene')
       return {
         geneIds,
         total,
       }
     }
-    * getAll() {
-      const geneIds = yield app.mysql.select('hncgene', {})
+    async getAll() {
+      const geneIds = await app.mysql.select('hncgene', {})
       return {
         geneIds,
       }

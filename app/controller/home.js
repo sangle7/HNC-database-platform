@@ -2,9 +2,9 @@
 
 module.exports = (app) => {
   return class HomeController extends app.Controller {
-    * index () {
+    async index () {
       const { ctx } = this
-      yield ctx.render('index.html', {})
+      await ctx.render('index.html', {})
     }
   }
 }

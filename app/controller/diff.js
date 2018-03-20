@@ -1,7 +1,7 @@
 const R = require('../utils/R');
 const md5 = require('md5');
 
-exports.init = function* (ctx) {
+exports.init = async ctx => {
     const app = ctx.app
     let body = {
         ret: 500,
@@ -15,7 +15,7 @@ exports.init = function* (ctx) {
         const {
             colnames1,
             colnames2
-        } = yield ctx.service.hnclinc.filterByType(`i${type}`)
+        } = await ctx.service.hnclinc.filterByType(`i${type}`)
         const str1 = colnames1.join(','),
             str2 = colnames2.join(',')
         const md5String = md5(str1 + str2) //这里按照select的选项判断md5？还是按照columnname吧 数据库可能会改

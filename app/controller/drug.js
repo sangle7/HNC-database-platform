@@ -1,6 +1,6 @@
 var csv = require("fast-csv");
 
-exports.item = function* (ctx) {
+exports.item = async ctx => {
   let body = {
     ret: 500,
   }
@@ -8,7 +8,7 @@ exports.item = function* (ctx) {
   const { drugId } = ctx.request.body
 
   try {
-    const { item } = yield ctx.service.drugbank.queryByName(drugId)
+    const { item } = await ctx.service.drugbank.queryByName(drugId)
     body = {
       item,
       ret: 200,
@@ -19,7 +19,7 @@ exports.item = function* (ctx) {
   ctx.body = body
 }
 
-exports.info = function* (ctx) {
+exports.info = async ctx => {
   let body = {
     ret: 500,
   }
@@ -37,7 +37,7 @@ exports.info = function* (ctx) {
       const {
         list,
         total
-      } = yield ctx.service.drugbank.search(q)
+      } = await ctx.service.drugbank.search(q)
 
       if(download === true){
         downloadURL = writeToCSV(q,list)
@@ -56,12 +56,12 @@ exports.info = function* (ctx) {
       const {
         geneIds,
         total
-      } = download === true ? yield ctx.service.hncdrug.getAll() : yield ctx.service.hncdrug.query(page ? parseInt(page) : 1)
+      } = download === true ? await ctx.service.hncdrug.getAll() : await ctx.service.hncdrug.query(page ? parseInt(page) : 1)
       const list = []
       for (let elem of geneIds) {
         const {
           drug
-        } = yield ctx.service.drugbank.queryById(elem.drug_id)
+        } = await ctx.service.drugbank.queryById(elem.drug_id)
         list.push(drug)
       }
 

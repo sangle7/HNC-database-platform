@@ -4,7 +4,7 @@ const fs = require('fs')
 const md5 = require('md5');
 var csv = require("fast-csv");
 
-exports.info = function* (ctx) {
+exports.info = async ctx => {
   let body = {
     ret: 500,
   }
@@ -22,7 +22,7 @@ exports.info = function* (ctx) {
       const {
         list,
         total
-      } = yield ctx.service.gene.search(q)
+      } = await ctx.service.gene.search(q)
       /*惊 这里居然没做分页*/
       if(download === true){
         downloadURL = writeToCSV(q,list)
@@ -41,12 +41,12 @@ exports.info = function* (ctx) {
       const {
         geneIds,
         total
-      } = download === true ? yield ctx.service.hncgene.getAll() : yield ctx.service.hncgene.query(page ? parseInt(page) : 1)
+      } = download === true ? await ctx.service.hncgene.getAll() : await ctx.service.hncgene.query(page ? parseInt(page) : 1)
       const list = []
       for (let elem of geneIds) {
         const {
           item
-        } = yield ctx.service.gene.getItemById(elem.gene_id)
+        } = await ctx.service.gene.getItemById(elem.gene_id)
         list.push(item)
       }
 
@@ -79,7 +79,7 @@ function writeToCSV (q,list) {
 }
 
 
-exports.init = function* (ctx) {
+exports.init = async ctx => {
   const app = ctx.app
   let body = {
     ret: 500,
@@ -95,7 +95,7 @@ exports.init = function* (ctx) {
       case '0':
         var {
           item
-        } = yield ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId)
         body = {
           item,
           step: 0,
@@ -106,20 +106,20 @@ exports.init = function* (ctx) {
         // 获取基因在gene表中的id
         var {
           item
-        } = yield ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId)
         // 根据基因id查找在hncgene表中的hncGeneId
         var {
           hncGeneId
-        } = yield ctx.service.hncgene.getIdByGeneId(item.id)
+        } = await ctx.service.hncgene.getIdByGeneId(item.id)
         // 根据hncGeneId查找在gene2pubmed表中的数据
         var {
           list
-        } = yield ctx.service.gene2pubmed.query(hncGeneId)
+        } = await ctx.service.gene2pubmed.query(hncGeneId)
         for (let elem of list) {
           // 在pubmed表中查询pmid
           var {
             result
-          } = yield ctx.service.pubmed.getById(elem.pubmed_id)
+          } = await ctx.service.pubmed.getById(elem.pubmed_id)
           elem.pmid = result.pmid
         }
         body = {
@@ -132,30 +132,30 @@ exports.init = function* (ctx) {
         // 获取基因在gene表中的id
         var {
           item
-        } = yield ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId)
         // 根据基因id查找在hncgene表中的hncGeneId
         var {
           hncGeneId
-        } = yield ctx.service.hncgene.getIdByGeneId(item.id)
+        } = await ctx.service.hncgene.getIdByGeneId(item.id)
         var {
           list
-        } = yield ctx.service.gene2pubmed.query(hncGeneId)
+        } = await ctx.service.gene2pubmed.query(hncGeneId)
         let newlist = []
         for (let elem of list) {
           var {
             result
-          } = yield ctx.service.pubmed.getById(elem.pubmed_id)
-          var obj1 = yield ctx.service.drug2pubmed.query(elem.pubmed_id)
+          } = await ctx.service.pubmed.getById(elem.pubmed_id)
+          var obj1 = await ctx.service.drug2pubmed.query(elem.pubmed_id)
           let _list = []
           for (let item of obj1.list) {
             // 这里获得药名,两步 先查获取dbid 再查durgbank
             const drugid = item.hncdrug_id
             const {
               dbid
-            } = yield ctx.service.hncdrug.queryById(drugid)
+            } = await ctx.service.hncdrug.queryById(drugid)
             const {
               drug
-            } = yield ctx.service.drugbank.queryById(dbid)
+            } = await ctx.service.drugbank.queryById(dbid)
             _list = [..._list, { ...item,
               pmid: result.pmid,
               name: drug.name
@@ -255,7 +255,7 @@ exports.init = function* (ctx) {
         }
         break
       case '9':
-        const { colnames1, colnames2 } = yield ctx.service.hnclinc.filterByType(type)
+        const { colnames1, colnames2 } = await ctx.service.hnclinc.filterByType(type)
         const str1 = colnames1.join(','),str2 = colnames2.join(',')
         const md5String = md5(str1+str2) //这里按照select的选项判断md5？还是按照columnname吧 数据库可能会改
         const rResult =R(`diff.analysis.R`,`${app.config.Rpath}/lncRNA.matrix.adj.txt ${str1} ${str2} ${md5String}`)
@@ -276,12 +276,33 @@ exports.init = function* (ctx) {
       default:
         var {
           item
-        } = yield ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId)
         body = {
           item,
           step: 0,
           ret: 200,
         }
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
+
+exports.sug = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const {
+    q
+  } = ctx.request.body
+
+  try {
+    const result = q ? await ctx.service.genename.search(q) : []
+    body = {
+      result:result,
+      ret: 200,
     }
   } catch (error) {
     body.error = error

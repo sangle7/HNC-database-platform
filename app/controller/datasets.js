@@ -1,5 +1,5 @@
 
-exports.genes = function* (ctx) {
+exports.genes = async ctx => {
   let body = {
     ret: 500,
   }
@@ -15,13 +15,13 @@ exports.genes = function* (ctx) {
   ctx.body = body
 }
 
-exports.drugschart = function* (ctx) {
+exports.drugschart = async ctx => {
   let body = {
     ret: 500,
   }
 
-  const { chart2 } = yield ctx.service.drug2pubmed.generateChart()
-  const { chart } = yield ctx.service.target.generateChart()
+  const { chart2 } = await ctx.service.drug2pubmed.generateChart()
+  const { chart } = await ctx.service.target.generateChart()
 
   try {
     body = {
@@ -34,19 +34,19 @@ exports.drugschart = function* (ctx) {
   ctx.body = body
 }
 
-exports.drugs = function* (ctx) {
+exports.drugs = async ctx => {
   let body = {
     ret: 500,
   }
   const { page = 1 } = ctx.request.body
-  const { list, total } = yield ctx.service.target.queryByPage(page)
+  const { list, total } = await ctx.service.target.queryByPage(page)
 
   for (let el of list){
-    const { item } = yield ctx.service.gene.getItemById(el.gene_id)
-    const { dbid } = yield ctx.service.hncdrug.queryById(el.hncdrug_id)
-    const { drug } = yield ctx.service.drugbank.queryById(dbid)
-    const { result } = yield ctx.service.pubmed.getById(el.pubmed_id)
-    const r = yield ctx.service.drug2pubmed.queryByIds(el.hncdrug_id,el.pubmed_id)
+    const { item } = await ctx.service.gene.getItemById(el.gene_id)
+    const { dbid } = await ctx.service.hncdrug.queryById(el.hncdrug_id)
+    const { drug } = await ctx.service.drugbank.queryById(dbid)
+    const { result } = await ctx.service.pubmed.getById(el.pubmed_id)
+    const r = await ctx.service.drug2pubmed.queryByIds(el.hncdrug_id,el.pubmed_id)
     
     
     el.target_gene = item.hgncid
@@ -74,11 +74,11 @@ exports.drugs = function* (ctx) {
   ctx.body = body
 }
 
-exports.caseschart = function* (ctx){
+exports.caseschart = async ctx =>{
   let body = {
     ret: 500,
   }
-  const { chart } = yield ctx.service.hnclinc.generateChart()
+  const { chart } = await ctx.service.hnclinc.generateChart()
   try {
     body = {
       chart,
@@ -90,12 +90,12 @@ exports.caseschart = function* (ctx){
   ctx.body = body
 }
 
-exports.cases = function* (ctx) {
+exports.cases = async ctx => {
   let body = {
     ret: 500,
   }
   const { page = 1 } = ctx.request.body
-  const { list, total } = yield ctx.service.hnclinc.queryByPage(page)
+  const { list, total } = await ctx.service.hnclinc.queryByPage(page)
 
   try {
     body = {
@@ -113,12 +113,12 @@ exports.cases = function* (ctx) {
   ctx.body = body
 }
 
-exports.records = function* (ctx) {
+exports.records = async ctx => {
   let body = {
     ret: 500,
   }
   const { page = 1 } = ctx.request.body
-  const { list, total } = yield ctx.service.pubmed.queryByPage(page)
+  const { list, total } = await ctx.service.pubmed.queryByPage(page)
 
   try {
     body = {
@@ -136,7 +136,7 @@ exports.records = function* (ctx) {
   ctx.body = body
 }
 
-exports.ncRNA = function* (ctx) {
+exports.ncRNA = async ctx => {
   let body = {
     ret: 500,
   }

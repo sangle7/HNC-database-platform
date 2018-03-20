@@ -1,8 +1,8 @@
 module.exports = app => {
   return class Databaselist extends app.Service {
-    * queryByPage(page) {
-        const total = yield app.mysql.count('target')
-        const list = yield app.mysql.select('target', {
+    async queryByPage(page) {
+        const total = await app.mysql.count('target')
+        const list = await app.mysql.select('target', {
           orders: [
             ['hncdrug_id', 'asc']
           ],
@@ -14,17 +14,17 @@ module.exports = app => {
           total
         }
       }
-      * generateChart() {
-        const regulationI = yield app.mysql.count('target', {
+      async generateChart() {
+        const regulationI = await app.mysql.count('target', {
           regulation: 'inhibit'
         })
-        const regulationA = yield app.mysql.count('target', {
+        const regulationA = await app.mysql.count('target', {
           regulation: 'activate'
         })
-        const interactionD = yield app.mysql.count('target', {
+        const interactionD = await app.mysql.count('target', {
           interaction: 'directly'
         })
-        const interactionI = yield app.mysql.count('target', {
+        const interactionI = await app.mysql.count('target', {
           interaction: 'Indirectly'
         })
         const chart = [

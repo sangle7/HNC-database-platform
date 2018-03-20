@@ -11,16 +11,22 @@ module.exports = app => {
           hncGeneId: list[0].id
         }
       }
-      * query(page) {
-        const geneIds = yield app.mysql.select('hncgene', {
-          limit: 10,
-          offset: 10 * (page - 1)
-        })
-        const total = yield app.mysql.count('hncgene')
-        return {
-          geneIds,
-          total,
-        }
+    * query(page) {
+      const geneIds = yield app.mysql.select('hncgene', {
+        limit: 10,
+        offset: 10 * (page - 1)
+      })
+      const total = yield app.mysql.count('hncgene')
+      return {
+        geneIds,
+        total,
       }
+    }
+    * getAll() {
+      const geneIds = yield app.mysql.select('hncgene', {})
+      return {
+        geneIds,
+      }
+    }
   }
 }

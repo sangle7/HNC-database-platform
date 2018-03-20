@@ -71,6 +71,7 @@ const Wrapper = (Component, url, charturl) => {
         loading,
         pagination,
         chartSource,
+        url,
       }
       return <Component {...ComponentProps} />
     }

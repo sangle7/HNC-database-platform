@@ -24,12 +24,8 @@ exports.info = function* (ctx) {
         total
       } = yield ctx.service.gene.search(q)
       /*惊 这里居然没做分页*/
-      if(download === '1'){
-        downloadURL = "/public/test.csv"
-        csv.writeToPath('app/public/test.csv', list, {headers: true})
-          .on("finish", function(){
-              console.log("done!");
-          });
+      if(download === true){
+        downloadURL = writeToCSV(q,list)
       }
 
       body = {
@@ -45,7 +41,7 @@ exports.info = function* (ctx) {
       const {
         geneIds,
         total
-      } = yield ctx.service.hncgene.query(page ? parseInt(page) : 1)
+      } = download === true ? yield ctx.service.hncgene.getAll() : yield ctx.service.hncgene.query(page ? parseInt(page) : 1)
       const list = []
       for (let elem of geneIds) {
         const {
@@ -54,9 +50,14 @@ exports.info = function* (ctx) {
         list.push(item)
       }
 
+      if(download === true){
+        downloadURL = writeToCSV('',list)
+      }
+
       body = {
         list,
         ret: 200,
+        downloadURL,
         pagination: {
           current: page ? parseInt(page) : 1,
           total,
@@ -67,6 +68,14 @@ exports.info = function* (ctx) {
     body.error = error
   }
   ctx.body = body
+}
+
+function writeToCSV (q,list) {
+  csv.writeToPath(`app/public/gene-${q}.csv`, list, {headers: true})
+    .on("finish", function(){
+        console.log("done!");
+  });
+  return `/public/gene-${q}.csv`
 }
 
 
@@ -164,7 +173,7 @@ exports.init = function* (ctx) {
       case '3':
           try {
             let newlist = []
-            const filepath = path.join(__dirname,'..','..',`${geneId}expression.table.txt`)
+            const filepath = path.join(__dirname,'..','public','expression',`${geneId}expression.table.txt`)
             const isExist = fs.existsSync(filepath)
             if(isExist){
               newlist = read(filepath)

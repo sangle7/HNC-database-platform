@@ -1,3 +1,4 @@
+var csv = require("fast-csv");
 
 exports.item = function* (ctx) {
   let body = {
@@ -25,8 +26,11 @@ exports.info = function* (ctx) {
 
   const {
     page,
-    q
+    q,
+    download
   } = ctx.request.body
+
+  let downloadURL = null
 
   try {
     if (q) {
@@ -35,8 +39,13 @@ exports.info = function* (ctx) {
         total
       } = yield ctx.service.drugbank.search(q)
 
+      if(download === true){
+        downloadURL = writeToCSV(q,list)
+      }
+
       body = {
         list,
+        downloadURL,
         ret: 200,
         pagination: {
           current: page ? parseInt(page) : 1,
@@ -47,7 +56,7 @@ exports.info = function* (ctx) {
       const {
         geneIds,
         total
-      } = yield ctx.service.hncdrug.query(page ? parseInt(page) : 1)
+      } = download === true ? yield ctx.service.hncdrug.getAll() : yield ctx.service.hncdrug.query(page ? parseInt(page) : 1)
       const list = []
       for (let elem of geneIds) {
         const {
@@ -56,8 +65,13 @@ exports.info = function* (ctx) {
         list.push(drug)
       }
 
+      if(download === true){
+        downloadURL = writeToCSV('',list)
+      }
+
       body = {
         list,
+        downloadURL,
         ret: 200,
         pagination: {
           current: page ? parseInt(page) : 1,
@@ -71,3 +85,10 @@ exports.info = function* (ctx) {
   ctx.body = body
 }
 
+function writeToCSV (q,list) {
+  csv.writeToPath(`app/public/drug-${q}.csv`, list, {headers: true})
+    .on("finish", function(){
+        console.log("done!");
+  });
+  return `/public/drug-${q}.csv`
+}

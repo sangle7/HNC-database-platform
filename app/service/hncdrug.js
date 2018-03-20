@@ -8,16 +8,22 @@ module.exports = app => {
           dbid: result.drug_id
         }
       }
-      * query(page) {
-        const geneIds = yield app.mysql.select('hncdrug', {
-          limit: 10,
-          offset: 10 * (page - 1)
-        })
-        const total = yield app.mysql.count('hncdrug')
-        return {
-          geneIds,
-          total,
-        }
+    * query(page) {
+      const geneIds = yield app.mysql.select('hncdrug', {
+        limit: 10,
+        offset: 10 * (page - 1)
+      })
+      const total = yield app.mysql.count('hncdrug')
+      return {
+        geneIds,
+        total,
       }
+    }
+    * getAll() {
+      const geneIds = yield app.mysql.select('hncdrug', {})
+      return {
+        geneIds,
+      }
+    }
   }
 }

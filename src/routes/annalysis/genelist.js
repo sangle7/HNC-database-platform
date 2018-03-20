@@ -5,7 +5,7 @@ import { Icon, Button } from 'antd'
 import { Breadcrumb, DatasourceTable, Search, Download } from '../../components'
 
 const GeneList = props => {
-  const { location, history, dataSource, loading, pagination } = props
+  const { location, history, dataSource, loading, pagination, url } = props
   const BreadcrumbProps = {
     path: location.pathname,
     handleClick (index) {
@@ -54,15 +54,6 @@ const GeneList = props => {
     },
   }
 
-  const DownloadProps= {
-    onClick: () => {
-      const search = {
-        ...queryString.parse(location.search),
-        download: 1,
-      }
-      history.push(`/Annalysis/Gene?${queryString.stringify(search)}`)
-    },
-  }
 
   return (
     <div>
@@ -70,7 +61,7 @@ const GeneList = props => {
         <Breadcrumb {...BreadcrumbProps} />
         <Search {...SearchProps} />
       </div>
-      <Download query={location.search}/>
+      <Download query={location.search} url={url}/>
       <DatasourceTable {...TableProps} />
     </div>
   )

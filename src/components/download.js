@@ -10,11 +10,11 @@ class Download extends React.Component {
     }
   }
   render () {
-    const { url = '/cgi/genes', query } = this.props
+    const { url, query } = this.props
 
     const handleClick = () => {
       const params = {
-        download: '1',
+        download: true,
         ...queryString.parse(query)
       }
       fetch(url, {
@@ -34,8 +34,10 @@ class Download extends React.Component {
           }
         })
     }
-    return [<Button type = "dashed" icon = "download" onClick ={handleClick}>Download</Button>,
-      <a ref={a=>this.a=a} download="111" href={this.state.downloadURL}></a>]
+    return [<div style={{display:'flex',justifyContent:'flex-end'}}>
+      <Button type = "primary" icon = "download" onClick ={handleClick}>Download</Button>
+      </div>,
+      <a ref={a=>this.a=a} download={url + query} href={this.state.downloadURL}></a>]
   }
 }
 

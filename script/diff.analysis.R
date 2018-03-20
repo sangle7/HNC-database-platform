@@ -59,7 +59,7 @@ if(nrow(degene)==0){
 	print("Erro: there is no different expression gene in data!")
 	q()
 }
-write.table(degene,file = paste(Args[4],".table.txt",sep=""),row.names = F,col.names = T,quote = F)
+write.table(degene,file = paste("app/public/diff/",Args[4],".table.txt",sep=""),row.names = F,col.names = T,quote = F)
 
 #drawing heatmap
 gene_exp_data=cbind(Gene=rownames(rpkm_data),rpkm_data)
@@ -77,7 +77,7 @@ while(i<=ncol(de_gene_exp)){
 annotation_col=data.frame(Sample_type=factor(rep(c("Group_one","Group_two"),c(ncol(rpkm_data_1),ncol(rpkm_data_2)))))
 rownames(annotation_col)=colnames(rpkm_data)
 
-png(filename = paste(Args[4],".heatmap.png",sep=""),width =800,height = 600)
+png(filename = paste("app/public/diff/",Args[4],".heatmap.png",sep=""),width =800,height = 600)
 pheatmap(de_gene_exp,scale="row",color = colorRampPalette(c("green","black", "red"))(50),
          annotation_col = annotation_col,annotation_colors = list(Sample_type=c(Group_one="#BB3B29",Group_two="#0071B5"))[1],
          show_rownames = F,cluster_cols = F,cluster_rows = F,fontsize = 9)

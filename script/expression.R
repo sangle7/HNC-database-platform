@@ -13,4 +13,4 @@ zdf = zdf[,-1]
 rpkm_data_1 = zdf[Args[2],]
 
 
-fwrite(rpkm_data_1,file = paste(Args[2],"expression.table.txt",sep=""),append=FALSE,row.names = FALSE,sep = ",", sep2 = c("","|",""),col.names = TRUE,quote = FALSE)
+fwrite(rpkm_data_1,file = paste("app/public/expression/",Args[2],"expression.table.txt",sep=""),append=FALSE,row.names = FALSE,sep = ",", sep2 = c("","|",""),col.names = TRUE,quote = FALSE)

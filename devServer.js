@@ -28,11 +28,11 @@ app.use('/', proxy(`localhost:${conf.serverPort}`, {
     return require('url').parse(req.url).path;
   },
   filter: function (req, res) {
-    return req.method == 'POST';
+    return req.method == 'POST' || /^\/public/.test(req.path);
   }
 }));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'));
+app.use('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './index.html'));
 });
 
 

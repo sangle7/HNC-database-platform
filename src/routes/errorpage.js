@@ -137,6 +137,7 @@ class ErrorPage extends React.Component {
                 </div>
                 <div className="buttons-container">
                     <a className="border-button" href="/">Go To Homepage</a>
+                    <a className="border-button" onClick={()=>history.back()}>Go Back To Previous Page</a>
                 </div>
             </div>
             </div>

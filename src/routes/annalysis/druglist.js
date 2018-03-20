@@ -24,9 +24,12 @@ const GeneList = props => {
       title: 'name',
       dataIndex: 'name',
     }, {
+      title: 'category',
+      dataIndex: 'category',
+    },{
       title: 'description',
       dataIndex: 'description',
-      render:v=><span title={v}>{v.length > 120 ? v.slice(0,120)+'...' : v}</span>
+      render:v=><span title={v}>{v.length > 100 ? v.slice(0,100)+'...' : v}</span>
     }],
     dataSource,
     loading,

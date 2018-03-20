@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Icon } from 'antd'
-import { Breadcrumb, DatasourceTable, Search } from '../../components'
+import { Icon, Button } from 'antd'
+import { Breadcrumb, DatasourceTable, Search, Download } from '../../components'
 
 const GeneList = props => {
   const { location, history, dataSource, loading, pagination } = props
@@ -37,6 +37,7 @@ const GeneList = props => {
       const search = {
         ...queryString.parse(location.search),
         page: page.current,
+        download: 0,
       }
       history.push(`/Annalysis/Gene?${queryString.stringify(search)}`)
     },
@@ -53,12 +54,23 @@ const GeneList = props => {
     },
   }
 
+  const DownloadProps= {
+    onClick: () => {
+      const search = {
+        ...queryString.parse(location.search),
+        download: 1,
+      }
+      history.push(`/Annalysis/Gene?${queryString.stringify(search)}`)
+    },
+  }
+
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Breadcrumb {...BreadcrumbProps} />
         <Search {...SearchProps} />
       </div>
+      <Download query={location.search}/>
       <DatasourceTable {...TableProps} />
     </div>
   )

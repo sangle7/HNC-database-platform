@@ -2,6 +2,7 @@ const R = require('../utils/R');
 const path = require('path')
 const fs = require('fs')
 const md5 = require('md5');
+var csv = require("fast-csv");
 
 exports.info = function* (ctx) {
   let body = {
@@ -10,8 +11,11 @@ exports.info = function* (ctx) {
 
   const {
     page,
-    q
+    q,
+    download
   } = ctx.request.body
+
+  let downloadURL = null
 
   try {
     if (q) {
@@ -19,10 +23,19 @@ exports.info = function* (ctx) {
         list,
         total
       } = yield ctx.service.gene.search(q)
+      /*惊 这里居然没做分页*/
+      if(download === '1'){
+        downloadURL = "/public/test.csv"
+        csv.writeToPath('app/public/test.csv', list, {headers: true})
+          .on("finish", function(){
+              console.log("done!");
+          });
+      }
 
       body = {
         list,
         ret: 200,
+        downloadURL,
         pagination: {
           current: page ? parseInt(page) : 1,
           total,

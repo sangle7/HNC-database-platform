@@ -1,0 +1,80 @@
+.table {
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        transition: .3s;
+        &:hover {
+            outline: 1px solid rgba(82, 168, 236, .8);
+            outline-offset: -1px;
+            cursor: pointer;
+        }
+    }
+    th {
+        height: 100px !important;
+        position: relative;
+        vertical-align: bottom;
+        padding: 0 !important;
+        font-size: 12px;
+        line-height: 1.0;
+        overflow:inherit !important;
+        background: transparent !important;
+    }
+    th>span {
+        border-top: 10px solid #fc257b;
+        position: relative;
+        top: 0;
+        left: 50px;
+        -ms-transform: skew(-45deg, 0deg);
+        -moz-transform: skew(-45deg, 0deg);
+        -webkit-transform: skew(-45deg, 0deg);
+        -o-transform: skew(-45deg, 0deg);
+        transform: skew(-45deg, 0deg);
+        overflow: hidden;
+        border-left: 1px solid #cccccc;
+        /* border-right: 1px solid #cccccc; */
+        // border-top: 1px solid #cccccc;
+        height: 100px !important;
+        display: block;
+        &>span {
+            -ms-transform: skew(45deg, 0deg) rotate(315deg);
+            -moz-transform: skew(45deg, 0deg) rotate(315deg);
+            -webkit-transform: skew(45deg, 0deg) rotate(315deg);
+            -o-transform: skew(45deg, 0deg) rotate(315deg);
+            transform: skew(45deg, 0deg) rotate(315deg);
+            position: absolute;
+            bottom: 95px;
+            display: inline-block;
+            width: 270px;
+            text-overflow: ellipsis;
+            left: -120px;
+        }
+    }
+    :global {
+        .ant-table-tbody>tr>td,
+        .ant-table-thead>tr>th {
+            height: 40px;
+            white-space: nowrap;
+            padding: 8px
+        }
+        .ant-table-column-sorter{
+            position: absolute;
+            transform: skew(45deg,0deg);
+            display: block;
+            bottom: 8px;
+            right: 16px;
+        }
+        .ant-table-footer {
+            border: 0;
+            background: transparent;
+        }
+    }
+}
+
+.colorbar {
+    margin: 0 5px;
+    display: inline-block;
+    width: 200px;
+    height: 10px;
+    background: linear-gradient(to right, rgb(0, 255, 0), rgb(191, 255, 128), rgb(255, 255, 255), rgb(255, 191, 128), rgb(255, 0, 0));
+}

@@ -17,6 +17,9 @@ const menuWithIcon = [{
 }]
 
 const menu = [{
+  text: 'Gene',
+  src: '/Gene',
+}, {
   text: 'FAQ',
   src: '/FAQ',
 }, {
@@ -27,4 +30,10 @@ const menu = [{
   src: '/Contact',
 }]
 
-export { menu, menuWithIcon, COLORS, mutsNeedlePlot, countFromArray }
+export {
+  menu,
+  menuWithIcon,
+  COLORS,
+  mutsNeedlePlot,
+  countFromArray
+}

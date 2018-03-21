@@ -4,7 +4,7 @@ const path = require('path');
 const theme = require('./src/theme.js');
 
 const config = {
-  entry: ['./src/index','webpack-hot-middleware/client'],
+  entry: ['./src/index', 'webpack-hot-middleware/client'],
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name]-dev.js',
@@ -18,8 +18,7 @@ const config = {
   ],
   devtool: 'source-map',
   module: {
-    loaders: [
-      {
+    loaders: [{
         test: /\.js$/,
         loaders: ['babel-loader'],
         exclude: /node_modules/,
@@ -29,7 +28,7 @@ const config = {
         test: /\.less$/,
         loaders: ['style-loader', 'css-loader?modules&localIdentName=[name]--[local]--[hash:base64:5]', 'less-loader'],
         exclude: /node_modules/,
-      }, 
+      },
       {
         test: /\.less$/,
         loaders: ['style-loader', 'css-loader', `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`],
@@ -45,7 +44,7 @@ const config = {
       },
       {
         test: /\.md$/,
-        loaders:['html-loader','markdown-loader'],
+        loaders: ['html-loader', 'markdown-loader'],
       },
     ],
   },

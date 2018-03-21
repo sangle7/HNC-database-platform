@@ -3,6 +3,7 @@ import marked from 'marked'
 import contact from './contact.md'
 import resources from './resources.md'
 import faq from './faq.md'
+import { Header, Card } from '../../components'
 import './style.less'
 
 let renderer = new marked.Renderer();
@@ -41,9 +42,15 @@ class MdPage extends React.Component{
     }
     render(){
         return (
-            <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(this.state.content,{
-                renderer: renderer
-            })}}></div>
+            <div>
+                <Header title={this.props.location.pathname.slice(1)}/>
+                <Card>
+                    <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(this.state.content,{
+                        renderer: renderer
+                    })}}>
+                    </div>
+                </Card>
+            </div>
         )
     }
 }

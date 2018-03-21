@@ -7,8 +7,8 @@ import {
   Redirect,
 } from 'react-router-dom'
 import style from './index.less'
-import '../node_modules/react-vis/dist/style.css';
-
+import '../node_modules/react-vis/dist/style.css'
+import { spring, AnimatedSwitch } from 'react-router-transition'
 import ErrorBoundary from './ErrorBoundary'
 import Homepage from './homepage'
 import {
@@ -46,6 +46,7 @@ ReactDOM.render(
         </Switch>
         <div className={style.container}>
           <Switch>
+            <Route exact path="/Gene" component={GeneList} />
             <Route exact path="/" component={Homepage} />
             <Route exact path="/FAQ" component={MdPage} />
             <Route exact path="/Resources" component={MdPage} />

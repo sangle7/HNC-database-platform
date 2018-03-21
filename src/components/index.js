@@ -16,11 +16,15 @@ import Document from './document'
 import MinLabel from './minlabel'
 import Download from './download'
 import WrappedDynamicFieldSet from './dynamicFieldSet'
-
+import Header from './header'
+import Card from './card'
+import HeatMapTable from './heatMapTable'
 
 export {
     WrappedDynamicFieldSet,
+    HeatMapTable,
     Menu,
+    Header,
     Download,
     Document,
     Breadcrumb,
@@ -36,5 +40,6 @@ export {
     LineChart,
     BoxPlot,
     Heatmap,
-    NeedlePlot
+    NeedlePlot,
+    Card,
 }

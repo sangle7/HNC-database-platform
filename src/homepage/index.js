@@ -1,11 +1,17 @@
 import React from 'react'
-import './home.less'
+import style from './home.less'
+import {Link } from 'react-router-dom'
 
 const Homepage = () => {
-  return (<div className="text-wrapper">
+  return (
+  <div className={style.wrapper}>
+  <div className={style.textwrapper}>
     <h1>HNC database</h1>
-    <p><span>这里是介绍词，介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍，大约80个字。</span></p>
-  </div>)
+    <h2>这里是介绍词，介绍介绍介绍</h2>
+    <Link className={style.button} to="/Gene">start here</Link>
+  </div>
+  </div>
+  )
 }
 
 

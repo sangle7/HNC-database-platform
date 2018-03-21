@@ -31,26 +31,16 @@ const Navigation = ({ history, location }) => (
 )
 
 const MMM = ({history,location}) => (
-  <header className={style.header}>
-    <Row>
-      <Col xxl={4} xl={5} lg={5} md={6} sm={24} xs={24}>
-        <img src={hncdb} alt="hncdb" style={{ height: '50px' }} onClick={()=>history.push('/')}/>
-      </Col>
-      <Col xxl={20} xl={19} lg={19} md={18} sm={0} xs={0}>
-        <div className={style.searchbox}>
-          <Icon type="search" />
-        </div>
-        <Menu
-          id="nav"
-          onClick={(e)=>history.push(e.key)}
-          selectedKeys={[location.pathname]}
-          mode="horizontal">
-          {menuWithIcon.map(elem => <Menu.Item key={elem.src}><Icon type={elem.icon} />{elem.text}</Menu.Item>)}
-          {menu.map(elem => <Menu.Item key={elem.src}>{elem.text}</Menu.Item>)}
-        </Menu>
-      </Col>
-    </Row>
-  </header>
+  <Row>
+    <Menu
+      id="nav"
+      onClick={(e)=>history.push(e.key)}
+      selectedKeys={[location.pathname]}
+      mode="horizontal">
+      {menuWithIcon.map(elem => <Menu.Item key={elem.src}>{elem.text}</Menu.Item>)}
+      {menu.map(elem => <Menu.Item key={elem.src}>{elem.text}</Menu.Item>)}
+    </Menu>
+  </Row>
 )
 
 
@@ -59,4 +49,4 @@ Navigation.propTypes = {
   location: PropTypes.object.isRequired,
 }
 
-export default Navigation
+export default MMM

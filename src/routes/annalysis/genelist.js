@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Icon, Button } from 'antd'
-import { Breadcrumb, DatasourceTable, Search, Download } from '../../components'
+import { Breadcrumb, HeatMapTable, Header, DatasourceTable, Search, Download, Card } from '../../components'
 
 const GeneList = props => {
   const { location, history, dataSource, loading, pagination, url } = props
@@ -39,10 +39,10 @@ const GeneList = props => {
         page: page.current,
         download: 0,
       }
-      history.push(`/Annalysis/Gene?${queryString.stringify(search)}`)
+      history.push(`/Gene?${queryString.stringify(search)}`)
     },
     onRowClick: record => {
-      history.push(`/Annalysis/Gene/${record.symbol}`)
+      history.push(`/Gene/${record.symbol}`)
     },
   }
 
@@ -50,19 +50,31 @@ const GeneList = props => {
     title: <Icon type="search" />,
     placeholder: 'Search id/hgncid/symbol',
     onSearch: value => {
-      history.push(`/Annalysis/Gene?q=${value}`)
+      history.push(`/Gene?q=${value}`)
     },
+  }
+
+  const HeatmapProps = {
+    // dataSource,
+    loading
   }
 
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Breadcrumb {...BreadcrumbProps} />
-        <Search {...SearchProps} />
-      </div>
-      <Download query={location.search} url={url}/>
-      <DatasourceTable {...TableProps} />
+      <Header title="gene data"/>
+      <Card title={<div><Icon type="appstore" />Gene Data List</div>}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Search {...SearchProps} />
+        </div>
+        <DatasourceTable {...TableProps} />
+      </Card>
+      <Card title="Data Heat Map">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Search {...SearchProps} />
+        </div>
+        <HeatMapTable {...HeatmapProps} />
+      </Card>
     </div>
   )
 }

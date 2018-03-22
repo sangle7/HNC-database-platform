@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import style from './index.less'
 import '../node_modules/react-vis/dist/style.css'
+import { BackTop } from 'antd'
 import { spring, AnimatedSwitch } from 'react-router-transition'
 import ErrorBoundary from './ErrorBoundary'
 import Homepage from './homepage'
@@ -57,8 +58,8 @@ ReactDOM.render(
             <Route path="/Annalysis/Drug/:drugId" component={DrugPage} />
             <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
             <Route exact path="/Annalysis/Surviral" component={AnnalysisSurviral} />
-            <Route exact path="/Annalysis/Corr" component={AnnalysisCorr} />
-            <Route exact path="/Annalysis/Diff" component={AnnalysisDiff} />
+            <Route exact path="/Corr" component={AnnalysisCorr} />
+            <Route exact path="/Diff" component={AnnalysisDiff} />
             <Route exact path="/Datasets" component={Datasets} />
             <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
             <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />
@@ -69,6 +70,7 @@ ReactDOM.render(
             <Route render={() => (<Redirect to="/404"/>)}/>
           </Switch>
         </div>
+        <BackTop />
       </main>
     </Router>
   </ErrorBoundary>

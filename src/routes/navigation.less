@@ -1,56 +1,36 @@
-.nav {
-  border-bottom: 10px solid #002766;
-  padding: 10px;
+.menu{
+  transition: 1s;
+  position: fixed;
+  right: 0;
   width: 100%;
-}
-
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.iconBtn {
-  border-radius: 15px;
-  max-width: 138px;
-  height: 38px;
-}
-
-.btn {
-  border-radius: 0;
-  min-width: 80px;
-  height: 30px;
-  margin: 0 2px;
-}
-
-.header {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  background: #fff;
-  -webkit-box-shadow: 0 2px 8px #f0f1f2;
-  box-shadow: 0 2px 8px #f0f1f2;
-  position: relative;
-  z-index: 10;
-  max-width: 100%;
-}
-
-.searchbox {
-  border-left: 1px solid #ebedf0;
-  float: left;
-  height: 22px;
-  line-height: 22px;
-  padding-left: 16px;
-  margin: 22px auto 0;
-}
-
-:global {
-  #nav {
-    border: 0;
-    float: right;
-    font-size: 14px;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  :global{
+    .ant-menu{
+      float: right;
+      text-transform: uppercase;
+      background: transparent;
+      border-bottom: 0;
+      color:rgba(255,255,255,0.7);
+      line-height: 64px;
+    }
+    .ant-menu-item-selected,
+    .ant-menu-item-active,
+    .ant-menu-submenu-selected,
+    .ant-menu-submenu-active,
+    .ant-menu-submenu-open{
+      border-bottom: 2px solid white !important;
+      color:white !important;
+    }
+    .ant-menu-submenu-title:hover{
+      color:white;
+    }
+    .ant-menu-item-active:hover{
+      background:rgba(255,255,255,0.2);
+    }
   }
+}
+
+.scroll{
+  z-index: 100;
+  background: #921221;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
 }

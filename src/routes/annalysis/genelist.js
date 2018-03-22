@@ -63,7 +63,7 @@ const GeneList = props => {
   return (
     <div>
       <Header title="gene data"/>
-      <Card title={<div><Icon type="appstore" />Gene Data List</div>}>
+      <Card title={<div><Icon type="appstore" /><span>Gene Data List</span></div>}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <Search {...SearchProps} />
         </div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Button } from 'antd'
-import { DatasourceTable, ScatterChart, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
+import { Button, Icon, Spin } from 'antd'
+import { DatasourceTable, ScatterChart, Header, Card, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
 
 class Corr extends React.Component {
@@ -33,50 +33,32 @@ class Corr extends React.Component {
     const { showModal, location, history } = this.props
     const { dataSource, loading } = this.state
 
-    const BreadcrumbProps = {
-      path: location.pathname,
-      handleClick (index) {
-        const newpath = location.pathname.split('/').slice(0, index + 1).join('/')
-        if (newpath !== location.pathname) {
-          history.push(newpath)
-        }
-      },
-    }
     const TableProps = {
       dataSource,
       loading,
-      columns: [{
-        title: 'Gene',
-        dataIndex: 'Gene',
-      }, {
-        title: 'Corr.IncRNA',
-        dataIndex: 'Corr.IncRNA',
-      }, {
-        title: 'r(Pearson)',
-        dataIndex: 'r',
-      }, {
-        title: 'P-value',
-        dataIndex: 'P-value',
-      }, {
-        title: 'Plot',
-        dataIndex: 'Plot',
-        render: (value, record) => <Button type="primary" shape="circle" onClick={() => showModal(record)} icon="search" />,
-      }],
+      columns: dataSource[0] ? Object.keys(dataSource[0]).map(e => ({
+        title: e || 'sample',
+        dataIndex: e,
+        width: 100
+      })) : [],
     }
     const ChartProps = {
       dataSource,
+      size:1000,
     }
     return (
       <div>
-          <Breadcrumb {...BreadcrumbProps} />
-          <main>
-            <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
-            <div className={style.container}>
-              <DatasourceTable {...TableProps} />
-              <ScatterChart {...ChartProps}/>
-            </div>
-          </main>
-      </div>)
+      <Header title="Corr annalysis"/>
+        <Card title={<div><Icon type="edit" /><span>select gene</span></div>}>
+          <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
+        </Card>
+        <Card title="annalysis result">
+          <div className={style.container}>
+            {loading ? <Spin /> : dataSource[0] && <ScatterChart {...ChartProps}/>}
+            {!loading && <DatasourceTable {...TableProps} />}
+          </div>
+        </Card>
+    </div>)
   }
 }
 

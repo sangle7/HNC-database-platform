@@ -6,20 +6,30 @@ const menuWithIcon = [{
   text: 'Home',
   src: '/',
   icon: 'home',
-}, {
-  text: 'Annalysis',
-  src: '/Annalysis',
-  icon: 'line-chart',
-}, {
-  text: 'Datasets',
-  src: '/Datasets',
-  icon: 'copy',
 }]
 
 const menu = [{
+  text: 'Home',
+  src: '/',
+},{
   text: 'Gene',
   src: '/Gene',
-}, {
+},{
+  text: 'Drug',
+  src: '/Drug',
+},{
+  text:'Annalysis',
+  child:[{
+    text: 'Diff',
+    src: '/Diff',
+  },{
+    text: 'Corr',
+    src: '/Corr',
+  },{
+    text: 'Survival',
+    src: '/Survival',
+  }]
+},{
   text: 'FAQ',
   src: '/FAQ',
 }, {

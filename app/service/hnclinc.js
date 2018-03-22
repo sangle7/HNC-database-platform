@@ -12,7 +12,7 @@ module.exports = app => {
         type = type.toLowerCase()
         const colnames1 = [],
           colnames2 = []
-        const results = await app.mysql.query('SELECT async FROM hnclinc WHERE ? IS NOT NULL;', [type]);
+        const results = await app.mysql.query('SELECT * FROM hnclinc WHERE ? IS NOT NULL;', [type]);
 
         for (let element of results){
           if (/^pos/i.test(element[type]) && /^GSM/.test(element.SampleID)) {

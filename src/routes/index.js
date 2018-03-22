@@ -20,7 +20,8 @@ import MdPage from './mdPage'
 
 // const AnnalysisCorr = Wrapper(Corr, '/cgi/datasets/genes')
 const AnnalysisCorr = Corr
-const AnnalysisDiff = Wrapper(Diff, '/cgi/diff/init')
+const AnnalysisDiff = Diff
+// const AnnalysisDiff = Wrapper(Diff, '/cgi/diff/init')
 const AnnalysisSurviral = Wrapper(Surviral, '/cgi/datasets/genes')
 const DrugList = Wrapper(DrugListd, '/cgi/drugs')
 const GeneList = Wrapper(GeneListd, '/cgi/genes')

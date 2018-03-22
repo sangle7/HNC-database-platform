@@ -96,7 +96,7 @@ const DatasourceTable = props => {
           width:70,
           sorter:(a, b) => a[e] - b[e],
           onCell:record => ({
-            onClick: () => { console.log(record[e]); },
+            onClick: () => { console.log(record.id , e); },
             style: {background: gColor(record[e])}
           })
       }))}

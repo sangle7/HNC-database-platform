@@ -1,18 +1,23 @@
 import React from 'react'
+import classnames from 'classnames'
 import { Button, Form, Icon } from 'antd'
 import SearchInput from './searchInput'
+import style from './dynamicFieldSet.less'
 
 const FormItem = Form.Item
 
-let uuid = 0
+let uuid = 1
 class DynamicFieldSet extends React.Component {
   state = {
     names:[],
   }
-  remove = (k) => {
+  remove = (k,i) => {
     const { form } = this.props;
     // can use data-binding to get
     const keys = form.getFieldValue('keys');
+    const names = this.state.names
+    names.splice(i,1)
+    console.log(k,keys,i)
     // We need at least one passenger
     if (keys.length === 1) {
       return;
@@ -22,6 +27,9 @@ class DynamicFieldSet extends React.Component {
     form.setFieldsValue({
       keys: keys.filter(key => key !== k),
     });
+    this.setState({
+      names,
+    })
   }
 
   onChange= (v,i)=>{
@@ -53,51 +61,37 @@ class DynamicFieldSet extends React.Component {
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 4 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 20 },
-      },
-    };
-    const formItemLayoutWithOutLabel = {
-      wrapperCol: {
-        xs: { span: 24, offset: 0 },
-        sm: { span: 20, offset: 4 },
-      },
-    };
-    getFieldDecorator('keys', { initialValue: [] });
+    getFieldDecorator('keys', { initialValue: [0] });
     const keys = getFieldValue('keys');
     const formItems = keys.map((k, index) => (
-        <FormItem
-          {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-          label={index === 0 ? 'Genes' : ''}
-          required={false}
-          key={k}
-        >
+      <FormItem
+        label={index === 0 ? 'Genes' : ''}
+        required={false}
+        key={k}
+      >
         <SearchInput onChange={v=>this.onChange(v,index)} placeholder="input gene here" style={{ width: 200 }} />     
         {keys.length > 1 ? (
           <Icon
             className="dynamic-delete-button"
             type="minus-circle-o"
             disabled={keys.length === 1}
-            onClick={() => this.remove(k)}
+            onClick={() => this.remove(k,index)}
           />
         ) : null}
-        </FormItem>
-      ));
+      </FormItem>
+    ));
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form
+        className={classnames({ [style.form]: true })}
+        onSubmit={this.handleSubmit} 
+        layout="inline">
         {formItems}
-       { keys.length <= 1 && <FormItem {...formItemLayoutWithOutLabel}>
-          <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
-            <Icon type="plus" /> Add field
-          </Button>
-        </FormItem>}
-        <FormItem {...formItemLayoutWithOutLabel}>
+        { keys.length <= 1 && <FormItem>
+            <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
+              <Icon type="plus" /> Add field
+            </Button>
+          </FormItem>}
+        <FormItem>
           <Button type="primary" htmlType="submit">Submit</Button>
         </FormItem>
       </Form>

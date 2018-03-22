@@ -55,6 +55,11 @@ function promiseCSV(path, options) {
             var records = [];
             csv.fromPath(path, options)
                 .on('data', function (record) {
+                    for(let key in record){
+                        if(key){
+                            record[key] = parseFloat(record[key])
+                        }
+                    }
                     records.push(record);
                 })
                 .on('end', function () {

@@ -70,11 +70,11 @@ const gColor = val => {
   }
 }
 
-const keys = ["id", "GSM1111", "GSM2222", "GSM2223", "GSM2224", "GSM2225", "GSM2226", "GSM22w3", "GSM22e24", "GSM2243525", "GSM22f26", "GSM2bb27", "GSM22dv28", "GSM2229", "GSM2211", "GSM2212", "GSM2213", "GSM2214", "GSM2215", "GSM2216", "GSM2716", "GSM2218", "GSM2220", "GSM2444", "GSM2438", "GSM2443", "GSM21d20", "GSM2qw38", "GSMdd43", "GSM21asd0", "GSM2qee44", "GSM2q2w38"]
+const keys = ["id", "GSM2260040", "GSM2222", "GSM2223", "GSM2224", "GSM2225", "GSM2226", "GSM22w3", "GSM22e24", "GSM2243525", "GSM22f26", "GSM2bb27", "GSM22dv28", "GSM2229", "GSM2211", "GSM2212", "GSM2213", "GSM2214", "GSM2215", "GSM2216", "GSM2716", "GSM2218", "GSM2220", "GSM2444", "GSM2438", "GSM2443", "GSM21d20", "GSM2qw38", "GSMdd43", "GSM21asd0", "GSM2qee44", "GSM2q2w38"]
 
 const DatasourceTable = props => {
-  let { dataSource = [] }  = props
-  for(let i = 0 ;i <50;i++){
+  let { dataSource = [], onCellClick, t}  = props
+  for(let i = 50 ;i <100;i++){
     let obj = {}
     for(let item of keys){
       obj[item] = (3-(Math.random()*6)).toFixed(4)
@@ -96,7 +96,7 @@ const DatasourceTable = props => {
           width:70,
           sorter:(a, b) => a[e] - b[e],
           onCell:record => ({
-            onClick: () => { console.log(record.id , e); },
+            onClick: () => { onCellClick(record.id , e, t); },
             style: {background: gColor(record[e])}
           })
       }))}

@@ -2,19 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Icon } from 'antd'
-import { Breadcrumb, DatasourceTable, Search, Download } from '../../components'
+import { Header, Card, HeatMapTable, DatasourceTable, Search } from '../../components'
 
 const GeneList = props => {
   const { location, history, dataSource, loading, pagination, url } = props
-  const BreadcrumbProps = {
-    path: location.pathname,
-    handleClick (index) {
-      const newpath = location.pathname.split('/').slice(0, index + 1).join('/')
-      if (newpath !== location.pathname) {
-        history.push(newpath)
-      }
-    },
-  }
 
   const TableProps = {
     columns: [{
@@ -54,14 +45,26 @@ const GeneList = props => {
     },
   }
 
+  const HeatmapProps = {
+    // dataSource,
+    loading
+  }
+
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Breadcrumb {...BreadcrumbProps} />
-        <Search {...SearchProps} />
-      </div>
-      <Download query={location.search} url={url}/>      
-      <DatasourceTable {...TableProps} />
+      <Header title="drug data"/>
+      <Card title={<div><Icon type="appstore" /><span>Drug Data List</span></div>}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Search {...SearchProps} />
+        </div>
+        <DatasourceTable {...TableProps} />
+      </Card>
+      <Card title="Data Heat Map">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Search {...SearchProps} />
+        </div>
+        <HeatMapTable {...HeatmapProps} />
+      </Card>
     </div>
   )
 }

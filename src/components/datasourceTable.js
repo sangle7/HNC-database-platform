@@ -9,7 +9,7 @@ const DatasourceTable = props => {
     <Table
       className={classnames({ [style.table]: true, [style.grow]: grow })}
       bordered
-      simple
+
       rowKey={record  => record.id}
       {...props}   
       columns={

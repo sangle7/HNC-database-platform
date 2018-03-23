@@ -2,19 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Icon, Button } from 'antd'
-import { Breadcrumb, HeatMapTable, Header, DatasourceTable, Search, Download, Card } from '../../components'
+import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
 
 const GeneList = props => {
   const { location, history, dataSource, loading, pagination, url } = props
-  const BreadcrumbProps = {
-    path: location.pathname,
-    handleClick (index) {
-      const newpath = location.pathname.split('/').slice(0, index + 1).join('/')
-      if (newpath !== location.pathname) {
-        history.push(newpath)
-      }
-    },
-  }
 
   const TableProps = {
     columns: [{
@@ -56,7 +47,32 @@ const GeneList = props => {
 
   const HeatmapProps = {
     // dataSource,
-    loading
+    loading,
+    onCellClick: (gene, c, t) => {
+      history.push(`/statistics?t=${t}&geneId=${gene}&caseId=${c}`)      
+    },
+  }
+
+  const TabProps = {
+    transform: false,
+    tabs: [{
+      key: 'tab1',
+      title: 'tab1',
+      content: [
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <Search {...SearchProps} />
+      </div>,<HeatMapTable t={'tab1'} {...HeatmapProps} />],
+    }, {
+      key: 'Graph',
+      title: 'tab2',
+      content: [
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <Search {...SearchProps} />
+      </div>,<HeatMapTable t={'tab2'} {...HeatmapProps} />],
+    }],
+    onChange (key) {
+      console.log(key)
+    },
   }
 
 
@@ -70,10 +86,7 @@ const GeneList = props => {
         <DatasourceTable {...TableProps} />
       </Card>
       <Card title="Data Heat Map">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Search {...SearchProps} />
-        </div>
-        <HeatMapTable {...HeatmapProps} />
+        <Tabs {...TabProps}/>
       </Card>
     </div>
   )

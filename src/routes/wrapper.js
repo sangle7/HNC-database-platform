@@ -10,6 +10,7 @@ const Wrapper = (Component, url, charturl) => {
         chartSource: [],
         md5String: null,
         loading: false,
+        item: null,
       }
     }
     componentDidMount () {
@@ -35,6 +36,7 @@ const Wrapper = (Component, url, charturl) => {
         .then(code => {
           this.setState({
             dataSource: code.list,
+            item: code.item,
             pagination: code.pagination,
             md5String: code.md5String,
             loading: false,
@@ -64,7 +66,7 @@ const Wrapper = (Component, url, charturl) => {
       this.setState(func)
     }
     render () {
-      const { dataSource, loading, pagination, chartSource } = this.state
+      const { dataSource, loading, pagination, chartSource, item } = this.state
       const ComponentProps = {
         ...this.props,
         dataSource,
@@ -72,6 +74,7 @@ const Wrapper = (Component, url, charturl) => {
         pagination,
         chartSource,
         url,
+        item,
       }
       return <Component {...ComponentProps} />
     }

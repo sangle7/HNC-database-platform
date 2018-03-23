@@ -87,7 +87,7 @@ exports.init = async ctx => {
 
   const {
     geneId,
-    step,
+    step = '0',
     type
   } = ctx.request.body
   try {

@@ -17,19 +17,24 @@ import Cases from './datasets/cases'
 import Records from './datasets/records'
 import ErrorPage from './errorpage'
 import MdPage from './mdPage'
+import Statistic from './statistic'
 
 // const AnnalysisCorr = Wrapper(Corr, '/cgi/datasets/genes')
 const AnnalysisCorr = Corr
 const AnnalysisDiff = Diff
 // const AnnalysisDiff = Wrapper(Diff, '/cgi/diff/init')
 const AnnalysisSurviral = Wrapper(Surviral, '/cgi/datasets/genes')
-const DrugList = Wrapper(DrugListd, '/cgi/drugs')
+const DrugList = DrugListd
+// const DrugList = Wrapper(DrugListd, '/cgi/drugs')
 const GeneList = Wrapper(GeneListd, '/cgi/genes')
 
 const DatasetsGenes = Wrapper(Genes, '/cgi/datasets/genes')
 const DatasetsDrugs = Wrapper(Drugs, '/cgi/datasets/drugs', '/cgi/datasets/drugschart')
 const DatasetsCases = Wrapper(Cases, '/cgi/datasets/cases', '/cgi/datasets/caseschart')
 const DatasetsRecords = Wrapper(Records, '/cgi/datasets/records')
+
+const StatisticPage = Statistic
+// const StatisticPage = Wrapper(Statistic,'/cgi/statistic')
 
 export {
     AnnalysisCorr,
@@ -49,5 +54,6 @@ export {
     DatasetsNCRNA,
     DrugPage,
     ErrorPage,
-    MdPage
+    MdPage,
+    StatisticPage
 }

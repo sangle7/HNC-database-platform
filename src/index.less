@@ -1,55 +1,92 @@
 .main {
   width: 100%;
   height: 100%;
-  font-family: "Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Helvetica,Arial,Tahoma,sans-serif;
-  pre{
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Helvetica, Arial, Tahoma, sans-serif;
+  pre {
     word-wrap: break-word;
     white-space: pre-wrap
   }
 }
 
-:global{
+:global {
+  #TransitionGroup {
+    position: relative;
+    &>div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  body {
+    background-color: #f5f5f5
+  }
   .switch-wrapper {
     position: relative;
   }
-   
-  .switch-wrapper > div {
+  .switch-wrapper>div {
     position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .fade-enter {
+    opacity: 0.01;
+  }
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit.fade-exit-active {
+    opacity: 0.01;
+    transition: all 0.4s ease-in-out;
+  }
+  .swipe-enter {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  .swipe-enter.swipe-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.4s ease-out;
+  }
+  .swipe-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .swipe-exit.swipe-exit-active {
+    opacity: 1;
+    transform: translateX(-100%);
+    transition: all 0.4s ease-out;
   }
 }
 
-:global{
+:global {
   .axis {
     font: 10px sans-serif;
   }
-  
   .axis path,
   .axis line {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
   }
-  
   .x.axis path {
     /*display: none;*/
   }
-  
-  rect.d3-exploding-boxplot.box{
+  rect.d3-exploding-boxplot.box {
     /*opacity: 0.8;*/
   }
-  
   line.d3-exploding-boxplot.line,
-  rect.d3-exploding-boxplot.box
-  {
+  rect.d3-exploding-boxplot.box {
     stroke: #888;
     stroke-width: 2px;
   }
-  
-  line.d3-exploding-boxplot.vline{
-    stroke-dasharray:5,5;
+  line.d3-exploding-boxplot.vline {
+    stroke-dasharray: 5, 5;
   }
-  
-  .d3-exploding-boxplot.tip{
+  .d3-exploding-boxplot.tip {
     font: normal 13px 'Lato', 'Open sans', sans-serif;
     line-height: 1;
     font-weight: bold;
@@ -58,9 +95,8 @@
     color: #DDDDDD;
     border-radius: 2px;
   }
-  
   g.tick text,
-  g.axis text{
+  g.axis text {
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;

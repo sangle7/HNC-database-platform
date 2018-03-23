@@ -12,7 +12,7 @@ const TabWithRoute = props => {
   const { onChange, tabs, transform } = props
 
   return (
-    <Tabs className={cx({ tabs: true, tabsTransform: transform })} onChange={onChange} >
+    <Tabs type="card" className={cx({ tabs: true, tabsTransform: transform })} onChange={onChange} >
       {tabs.map(elem => <TabPane tab={elem.title} key={elem.key}>{elem.content}</TabPane>)}
     </Tabs>)
 }

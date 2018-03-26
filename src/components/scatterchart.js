@@ -1,7 +1,7 @@
 import React from 'react'
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { ScatterChart, Scatter, XAxis, YAxis,Cell, CartesianGrid, Tooltip } from 'recharts'
 
-const SimpleScatterChart = ({dataSource, size = 400}) => {
+const SimpleScatterChart = ({dataSource, onDotClick, size = 400}) => {
   return (
   <ScatterChart width={size}
     height={size}
@@ -11,7 +11,7 @@ const SimpleScatterChart = ({dataSource, size = 400}) => {
     <XAxis dataKey="AA06" name="AA06" unit="" />
     <YAxis dataKey="TP53TG1" name="TP53TG1" unit="" />
     <CartesianGrid />
-    <Scatter name="A school" data={dataSource} fill="#8884d8" lineType="fitting"  line={{stroke: 'red', strokeWidth: 2}}/>
+    <Scatter onClick={onDotClick} name="A school" data={dataSource} fill="#8884d8" lineType="fitting"  line={{stroke: 'red', strokeWidth: 2}} />
     <Tooltip cursor={{ strokeDasharray: '3 3' }} />
   </ScatterChart>
 )}

@@ -1,7 +1,7 @@
 import React from 'react'
 import queryString from 'query-string'
 
-const Wrapper = (Component, url, charturl) => {
+const Wrapper = (Component, url, charturl, q) => {
   return class Wrapped extends React.Component {
     constructor (props) {
       super(props)
@@ -30,7 +30,7 @@ const Wrapper = (Component, url, charturl) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(params),
+        body: JSON.stringify({ ...params, ...q }),
       })
         .then(blob => blob.json())
         .then(code => {

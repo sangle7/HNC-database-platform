@@ -4,7 +4,7 @@ import { Table } from 'antd'
 import style from './datasourceTable.less'
 
 const DatasourceTable = props => {
-  const { grow = true }  = props
+  const { grow = true,columns }  = props
   return (
     <Table
       className={classnames({ [style.table]: true, [style.grow]: grow })}
@@ -12,12 +12,7 @@ const DatasourceTable = props => {
 
       rowKey={record  => record.id}
       {...props}   
-      columns={
-        props.columns.map((elem,index)=>{
-          elem.title = <span className={index%2===0?style.labelG:style.labelY}>{elem.title}</span>
-          return elem
-        })
-      }
+      columns={columns}
     />
   )
 }

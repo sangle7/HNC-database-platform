@@ -60,13 +60,15 @@ const hsv2rgb = (h, s, v) => { //color range function adapted from http://schinc
 const gColor = val => {
   if (val > 0) {
     const p = val > 2.55 ? 1 : (val / 2.55).toFixed(2)
-    const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)
-    return hsv2rgb(d, p, 1)
+    const v = val > 2.55 ? 0.86 : (1 - (val / 2.55) * 0.14).toFixed(2)
+    // const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)
+    return hsv2rgb(0, p, v)
   } else {
-    const p = -val > 2.55 ? 1 : (-val / 2.55).toFixed(2)
-    const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
+    const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
+    const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
+    // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
     
-    return hsv2rgb(120, p, 1)
+    return hsv2rgb(221, p, v)
   }
 }
 
@@ -78,8 +80,8 @@ const DatasourceTable = props => {
     let obj = {}
     for(let item of keys){
       obj[item] = (3-(Math.random()*6)).toFixed(4)
-      obj.id = `TP${i}`
     }
+    obj.id = `TP${i}`
     dataSource.push(obj)
   } 
   return (

@@ -10,6 +10,13 @@
             cursor: pointer;
         }
     }
+    th:first-child{
+        :global{
+            .ant-table-column-sorter{
+                display: none;
+            }
+        }
+    }
     th:not(:first-child) {
         height: 100px !important;
         position: relative;
@@ -96,5 +103,5 @@
     display: inline-block;
     width: 200px;
     height: 10px;
-    background: linear-gradient(to right, rgb(0, 255, 0), rgb(191, 255, 128), rgb(255, 255, 255), rgb(255, 191, 128), rgb(255, 0, 0));
+    background: linear-gradient(to right, rgb(65, 88, 140),white,rgb(219, 0, 0));
 }

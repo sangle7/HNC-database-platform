@@ -1,21 +1,21 @@
 import React from 'react'
-import {Icon} from 'antd'
+import { Icon } from 'antd'
 import { Card, DatasourceTable } from '../../components' 
 import Wrapper from '../wrapper'
 
 const gData = item => {
-    const arr = []
-    for (let key in item) {
-        arr.push({
-            id: key,
-            key: key,
-            value: item[key] || 'N/A'
-        })
-    }
-    return arr
+  const arr = []
+  for (let key in item) {
+    arr.push({
+      id: key,
+      key: key,
+      value: item[key] || 'N/A'
+    })
+  }
+  return arr
 }
 
-const Genecard = props => {
+const Casecard = props => {
   const { item, loading } = props
   const TableProps = {
     showHeader: false,
@@ -30,14 +30,13 @@ const Genecard = props => {
       width:'70%'
     }],
     loading,
-    pagination:false,
   }
   return (
-    <Card title={<div><i className="fa fa-list-alt fa-fw fa-lg"/><span>Gene Basic Information</span></div>}>
+    <Card title={<div><i className="fa fa-medkit fa-fw fa-lg"/><span>Drug Information</span></div>}>
       <DatasourceTable {...TableProps} />
     </Card>
   )
 }
 
-const HGenecard = Wrapper(Genecard, '/cgi/gene/init', null, { step: '0' })
-export default HGenecard
+const HCasecard = Wrapper(Casecard, '/cgi/drug/item')
+export default HCasecard

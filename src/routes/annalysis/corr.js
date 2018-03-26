@@ -29,6 +29,17 @@ class Corr extends React.Component {
         })
       })
   }
+  deleteItem = name => {
+    this.setState({
+      loading: true
+    })
+    const { dataSource } = this.state
+    const list = dataSource.filter(i=>i['']!==name)
+    this.setState({
+      dataSource: list,
+      loading: false
+    })
+  }
   render () {
     const { showModal, location, history } = this.props
     const { dataSource, loading } = this.state
@@ -44,18 +55,19 @@ class Corr extends React.Component {
     }
     const ChartProps = {
       dataSource,
+      onDotClick:(i)=>(this.deleteItem(i[''])),
       size:1000,
     }
     return (
       <div>
       <Header title="Corr annalysis"/>
-        <Card title={<div><Icon type="edit" /><span>select gene</span></div>}>
+        <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
         </Card>
-        <Card title="annalysis result">
+        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>annalysis result</span></div>}>
           <div className={style.container}>
             {loading ? <Spin /> : dataSource[0] && <ScatterChart {...ChartProps}/>}
-            {!loading && <DatasourceTable {...TableProps} />}
+            {/* {!loading && <DatasourceTable {...TableProps} />} */}
           </div>
         </Card>
     </div>)

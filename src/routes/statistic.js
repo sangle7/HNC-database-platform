@@ -14,7 +14,7 @@ const Statistic = props => {
     <div>
       <Header title={params.geneId}/>
       <Card>
-        <a onClick={()=>window.history.back()}><i className="fa fa-arrow-left"></i>Back to previous</a>
+        <a onClick={()=>window.history.back()}><i className="fa fa-lg fa-fw fa-angle-left"></i>Back to previous</a>
       </Card>
       <HGenecard history={history} location={location}/>
       <HCasecard history={history} location={location}/>

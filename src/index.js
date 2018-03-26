@@ -6,32 +6,20 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import style from './index.less'
 import '../node_modules/react-vis/dist/style.css'
 import { BackTop } from 'antd'
-import { spring, AnimatedSwitch } from 'react-router-transition'
 import ErrorBoundary from './ErrorBoundary'
-import Homepage from './homepage'
 import {
-  GenePage,
+  HomePage,
   Navigation,
-  Annalysis,
   GeneList,
   DrugList,
-  Datasets,
-  DrugPage,
-  DatasetsGenes,
-  DatasetsDrugs,
-  DatasetsCases,
-  DatasetsRecords,
-  DatasetsNCRNA,
-  CasePage,
   ErrorPage,
   MdPage,
-  AnnalysisCorr,
-  AnnalysisDiff,
-  AnnalysisSurviral,
+  Corr,
+  Diff,
+  Survival,
   StatisticPage,
 } from './routes'
 
@@ -81,27 +69,16 @@ ReactDOM.render(
           <main className={style.main}>
             <Navigation location={location} history={history}/>
             <Switch location={location}>
-              <Route exact path="/" component={Homepage} />
+              <Route exact path="/" component={HomePage} />
               <Route exact path="/FAQ" component={MdPage} />
               <Route exact path="/Resources" component={MdPage} />
               <Route exact path="/Contact" component={MdPage} />
               <Route exact path="/Gene" component={GeneList} />
               <Route exact path="/Drug" component={DrugList} />
-              <Route exact path="/Corr" component={AnnalysisCorr} />
-              <Route exact path="/Diff" component={AnnalysisDiff} />
-              <Route exact path="/Surviral" component={AnnalysisSurviral} />
+              <Route exact path="/Corr" component={Corr} />
+              <Route exact path="/Diff" component={Diff} />
+              <Route exact path="/Survival" component={Survival} />
               <Route exact path="/statistics" component={StatisticPage} />
-
-              <Route exact path="/Annalysis" component={Annalysis} />
-              <Route path="/Annalysis/Drug/:drugId" component={DrugPage} />
-              <Route path="/Annalysis/Gene/:geneId" component={GenePage} />
-              <Route exact path="/Datasets" component={Datasets} />
-              <Route exact path="/Datasets/Genes" component={DatasetsGenes} />
-              <Route exact path="/Datasets/Drugs" component={DatasetsDrugs} />
-              <Route exact path="/Datasets/Cases" component={DatasetsCases} />
-              <Route exact path="/Datasets/Cases/:caseId" component={CasePage} />
-              <Route exact path="/Datasets/Records" component={DatasetsRecords} />
-              <Route exact path="/Datasets/ncRNA" component={DatasetsNCRNA} />
               <Route exact path="/404" component={ErrorPage}/>
               <Route render={() => (<Redirect to="/404"/>)}/>
             </Switch>

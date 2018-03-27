@@ -32,9 +32,6 @@ const GeneList = props => {
       }
       history.push(`/Gene?${queryString.stringify(search)}`)
     },
-    onRowClick: record => {
-      history.push(`/Gene/${record.symbol}`)
-    },
   }
 
   const SearchProps = {
@@ -47,7 +44,7 @@ const GeneList = props => {
 
 
   return (
-    <Card title={<div><Icon type="appstore" /><span>Gene Data List</span></div>}>
+    <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt"></i><span>Gene Data List</span></div>}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
         <Search {...SearchProps} />
       </div>

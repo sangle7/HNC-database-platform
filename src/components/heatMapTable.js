@@ -11,9 +11,9 @@ const ColorWrapper = () => (
     </div>
 )
 
-const Entries = ({min,max,total}) => (
+const Entries = ({min,max,total,filtedtotal}) => (
     <div>
-        <span> Showing {min} to {max} of {total} entries </span>
+        <span> Showing {min} to {max} of {filtedtotal} entries {total!== filtedtotal &&`(filtered from ${total} total entries)`}</span>
     </div>
 )
 
@@ -95,6 +95,9 @@ class DatasourceTable extends React.Component {
   }
   componentWillReceiveProps (nextProps) {
     if (nextProps.filter !== this.props.filter) {
+      this.setState({
+        loading: true,
+      })
       this.fetchData({
         offset: 0,
         filter: nextProps.filter,
@@ -144,7 +147,7 @@ class DatasourceTable extends React.Component {
     if (list.length) {
       list.push({
         id: '',
-        GSM2260021: list.length >= filtedtotal ? 'no more records': <Spin />
+        GSM2260021: list.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true"></i> No More Records</span>: <Spin />
       })
     }
 
@@ -174,7 +177,7 @@ class DatasourceTable extends React.Component {
             render:(v,row,index) => gRender(e,v,index,list)
             /*最后一行的id column span才为全部 */
         })) : []}
-        footer={()=>(<Footer min={min} max={dataSource.length} total={filtedtotal}/>)}
+        footer={()=>(<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal}/>)}
         {...this.props}
       />
     )

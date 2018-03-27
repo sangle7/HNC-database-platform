@@ -21,6 +21,7 @@ class GeneList extends React.Component {
       title: <Icon type="search" />,
       placeholder: 'Search id/hgncid/symbol',
       onKeyUp:v => {this.onSearch(v.target.value)},
+      onSearch:v => {this.onSearch(v)},
     }
 
     const HeatmapProps = {
@@ -54,7 +55,7 @@ class GeneList extends React.Component {
     }
 
     return (
-      <Card title="Data Heat Map">
+      <Card title={<div><i className="fa fa-th fa-fw fa-lg"></i><span>Data Heat Map</span></div>}>
         <Tabs {...TabProps}/>
       </Card>
     )

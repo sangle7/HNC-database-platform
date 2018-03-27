@@ -15,8 +15,8 @@ const menu = [{
   text: 'Gene',
   src: '/Gene',
 },{
-  text: 'Drug',
-  src: '/Drug',
+  text: 'Connective Map',
+  src: '/ConnectiveMap',
 },{
   text:'Annalysis',
   child:[{

@@ -46,28 +46,28 @@ ReactDOM.render(
   <ErrorBoundary>
     <Router>
       <WScrollToTop>
-      <Route
-        render={({ location, history }) => (
-          <main className={style.main}>
-            <Navigation location={location} history={history}/>
-            <Switch location={location}>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/FAQ" component={MdPage} />
-              <Route exact path="/Resources" component={MdPage} />
-              <Route exact path="/Contact" component={MdPage} />
-              <Route exact path="/Gene" component={GeneList} />
-              <Route exact path="/Drug" component={DrugList} />
-              <Route exact path="/Corr" component={Corr} />
-              <Route exact path="/Diff" component={Diff} />
-              <Route exact path="/Survival" component={Survival} />
-              <Route exact path="/statistics" component={StatisticPage} />
-              <Route exact path="/404" component={ErrorPage}/>
-              <Route render={() => (<Redirect to="/404"/>)}/>
-            </Switch>
-            <footer>lnCAR © 2018 The Ren Lab. All Rights Reserved</footer>
-          </main>
-        )}
-    />
+        <Route
+          render={({ location, history }) => (
+            <main className={style.main}>
+              <Navigation location={location} history={history}/>
+              <Switch location={location}>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/FAQ" component={MdPage} />
+                <Route exact path="/Resources" component={MdPage} />
+                <Route exact path="/Contact" component={MdPage} />
+                <Route exact path="/Gene" component={GeneList} />
+                <Route exact path="/ConnectiveMap" component={DrugList} />
+                <Route exact path="/Corr" component={Corr} />
+                <Route exact path="/Diff" component={Diff} />
+                <Route exact path="/Survival" component={Survival} />
+                <Route exact path="/statistics" component={StatisticPage} />
+                <Route exact path="/404" component={ErrorPage}/>
+                <Route render={() => (<Redirect to="/404"/>)}/>
+              </Switch>
+              <footer>lnCAR © 2018 The Ren Lab. All Rights Reserved</footer>
+            </main>
+          )}
+      />
     </WScrollToTop>
     </Router>
     <BackTop />

@@ -6,7 +6,6 @@ module.exports = app => {
             gene_id: geneId
           }
         });
-        console.log(list)
         return {
           hncGeneId: list[0].id
         }

@@ -2,20 +2,13 @@
     table {
         border-collapse: collapse;
     }
-    td:not(:first-child){
+    td:not(:first-child) {
         transition: .3s;
         text-align: center;
         &:hover {
             outline: 1px solid rgba(82, 168, 236, .8);
             outline-offset: -1px;
             cursor: pointer;
-        }
-    }
-    th:first-child{
-        :global{
-            .ant-table-column-sorter{
-                display: none;
-            }
         }
     }
     th:not(:first-child) {
@@ -25,8 +18,17 @@
         padding: 0 !important;
         font-size: 12px;
         line-height: 1.0;
-        overflow:inherit !important;
+        overflow: inherit !important;
         background: transparent !important;
+        :global {
+            .ant-table-column-sorter {
+                position: absolute;
+                transform: skew(45deg, 0deg);
+                display: block;
+                bottom: 8px;
+                right: 16px;
+            }
+        }
     }
     th:not(:first-child)>span {
         border-top: 10px solid #fc257b;
@@ -57,8 +59,7 @@
             text-overflow: ellipsis;
             left: -120px;
         }
-    }
-    // th:first-child>span{
+    } // th:first-child>span{
     //     border:0;
     //     position: relative;
     //     top: 0;
@@ -82,15 +83,12 @@
             white-space: nowrap;
             padding: 8px
         }
-        .ant-table-header{
+        .ant-table-header {
+            &>tr>th {
+                background: transparent !important;
+            }
             overflow: hidden !important;
-        }
-        .ant-table-column-sorter{
-            position: absolute;
-            transform: skew(45deg,0deg);
-            display: block;
-            bottom: 8px;
-            right: 16px;
+            background: transparent !important;
         }
         .ant-table-footer {
             border: 0;
@@ -104,5 +102,5 @@
     display: inline-block;
     width: 200px;
     height: 10px;
-    background: linear-gradient(to right, rgb(65, 88, 140),white,rgb(219, 0, 0));
+    background: linear-gradient(to right, rgb(65, 88, 140), white, rgb(219, 0, 0));
 }

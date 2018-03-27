@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Table } from 'antd'
+import { Table, Spin } from 'antd'
 import style from './heatMapTable.less'
 
 const ColorWrapper = () => (
@@ -72,40 +72,147 @@ const gColor = val => {
   }
 }
 
-const keys = ["id", "GSM2260040", "GSM2222", "GSM2223", "GSM2224", "GSM2225", "GSM2226", "GSM22w3", "GSM22e24", "GSM2243525", "GSM22f26", "GSM2bb27", "GSM22dv28", "GSM2229", "GSM2211", "GSM2212", "GSM2213", "GSM2214", "GSM2215", "GSM2216", "GSM2716", "GSM2218", "GSM2220", "GSM2444", "GSM2438", "GSM2443", "GSM21d20", "GSM2qw38", "GSMdd43", "GSM21asd0", "GSM2qee44", "GSM2q2w38"]
 
-const DatasourceTable = props => {
-  let { dataSource = [], onCellClick, t}  = props
-  for(let i = 50 ;i <100;i++){
-    let obj = {}
-    for(let item of keys){
-      obj[item] = (3-(Math.random()*6)).toFixed(4)
+class DatasourceTable extends React.Component {
+  state = {
+    dataSource: [],
+    loading: false,
+    min: 1,
+    max: 10,
+  }
+  componentDidMount () {
+    this.fetchData({})
+    this.elem = document.getElementById('hmtable').getElementsByClassName('ant-table-body')[0]
+    this.elem.onscroll = e => {
+      if (checkIsPartialVisible(this.elem, 'test', 360)) {
+        this.fetchData({
+          offset: this.state.dataSource.length,
+          filter: this.state.filter,
+          sorter: this.state.sorter,
+        })
+      }
     }
-    obj.id = `TP${i}`
-    dataSource.push(obj)
-  } 
-  return (
-    <Table
-      className={classnames({ [style.table]: true })}
-      simple
-      rowKey={record  => record.id}
-      dataSource={dataSource}
-      pagination={false}
-      scroll={{x:true,y:400}}
-      columns={Object.keys(dataSource[0]).map(e=>({
-          title:<span>{e}</span>,
-          dataIndex:e,
-          width:70,
-          sorter:(a, b) => a[e] - b[e],
-          onCell:record => ({
-            onClick: () => { onCellClick(record.id , e, t); },
-            style: {background: gColor(record[e])}
-          })
-      }))}
-      footer={()=>(<Footer min={1} max={10} total={dataSource.length}/>)}
-      {...props}
-    />
-  )
+  }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.filter !== this.props.filter) {
+      this.fetchData({
+        offset: 0,
+        filter: nextProps.filter,
+        sorter: this.state.sorter,
+      })
+    }
+  }
+  onChange = (pagination, filters, sorter) => {
+    this.setState({
+      loading: true,
+    })
+    this.fetchData({
+      offset:0,
+      filter:this.props.filter,
+      sorter:{
+        columnKey:sorter.columnKey,
+        order:sorter.order,
+      }
+    })
+  }
+  fetchData = params => {
+    const { dataSource } = this.state
+    fetch(this.props.url, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params)
+    })
+      .then(blob => blob.json())
+      .then(code => {
+        this.setState({
+          dataSource: code.reset ? code.list : [...dataSource, ...code.list],
+          loading: false,
+          filter: code.filter,
+          sorter: code.sorter,
+          total: code.total,
+          filtedtotal: code.filtedtotal,
+        })
+      })
+  }
+  render () {
+    let { onCellClick, t }  = this.props
+    const { dataSource, filtedtotal, min, max, total, loading }  = this.state
+
+    const list = [...dataSource]
+    if (list.length) {
+      list.push({
+        id: '',
+        GSM2260021: list.length >= filtedtotal ? 'no more records': <Spin />
+      })
+    }
+
+    return (
+      <Table
+        ref={t => this.hmtable = t}
+        onChange = {this.onChange}
+        id="hmtable"
+        className={classnames({ [style.table]: true })}
+        simple
+        loading={loading}
+        rowKey={record  => record.id}
+        dataSource={list}
+        pagination={false}
+        scroll={{x:true,y:400}}
+        columns={list[0] ? Object.keys(list[0]).map(e=>({
+            title:<span>{e}</span>,
+            dataIndex:e,
+            fixed: e === 'id',
+            width:e === 'id' ? 100 : 70,
+            sorter:true,
+            onCell:record => ({
+              onClick: () => { e!=='id' && onCellClick(record.id , e, t); },
+              style: {background: gColor(record[e])},
+              id: (e === 'GSM2260021' && record.id === '') ? 'test' : null
+            }),
+            render:(v,row,index) => gRender(e,v,index,list)
+            /*最后一行的id column span才为全部 */
+        })) : []}
+        footer={()=>(<Footer min={min} max={dataSource.length} total={filtedtotal}/>)}
+        {...this.props}
+      />
+    )
+  }
 }
 
 export default DatasourceTable
+
+function gRender (e, v, index, list) {
+  if (index === list.length - 1) {
+    return {
+      children: e === 'id' ? null : <span id="test">{v}</span>,
+      props: {
+        colSpan: gColSpan(e,list)
+      },
+    }
+  } else {
+    return v
+  }
+}
+
+function checkIsPartialVisible (a, domid, query) {
+  const element = document.getElementById(domid)
+  const recta = a.getBoundingClientRect()
+  const rect = element.getBoundingClientRect()
+  const isPartialVisible = rect.top - recta.top <= query
+  return isPartialVisible
+}
+
+function gColSpan (e, list) {
+  switch (e) {
+    case 'GSM2260021':
+      return 15
+      break;
+    case 'id':
+      return 1
+      break;
+    default:
+      return 0
+  }
+}

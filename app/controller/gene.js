@@ -78,6 +78,34 @@ function writeToCSV (q,list) {
   return `/public/gene-${q}.csv`
 }
 
+exports.heatmap = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const { offset = 0, sorter = {}, filter = '' } = ctx.request.body
+
+  try {
+    const { list,total, filtedtotal } = await ctx.service.heatmap.getByPagi({
+      offset, 
+      size:20,
+      sorter,
+      filter
+    })
+    body = {
+      list,
+      total,
+      sorter,
+      filter,
+      filtedtotal,
+      reset: offset === 0,
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
 
 exports.init = async ctx => {
   const app = ctx.app

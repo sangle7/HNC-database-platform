@@ -7,7 +7,7 @@ import Wrapper from '../wrapper'
 
 
 const HNCDB = props => {
-  const { loading, dataSource, geneId } = props
+  const { loading, dataSource = [], geneId } = props
 
   const data = countFromArray(dataSource, 'mol_event')
 

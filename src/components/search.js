@@ -18,7 +18,7 @@ class SearchWithState extends React.Component {
     })
   }
   render () {
-    const { title, placeholder } = this.props
+    const { title, placeholder, onKeyUp } = this.props
     const menu = array => {
       return (
         <Menu onClick={e => this.props.onSearch(e.key, this.state.value)} >
@@ -27,7 +27,7 @@ class SearchWithState extends React.Component {
     }
     return (
       <div>
-        <Input style={searchStyle} placeholder={placeholder} onPressEnter={() => this.props.onSearch(this.state.value)} onChange={e => this.onChange(e.target.value)} />
+        <Input style={searchStyle} placeholder={placeholder} onKeyUp={onKeyUp} onPressEnter={() => this.props.onSearch(this.state.value)} onChange={e => this.onChange(e.target.value)} />
         {Array.isArray(title) ? <Dropdown overlay={menu(title)}><Button type="primary" style={{ padding: '0 20px', borderRadius: 0 }}>搜索 <Icon type="down" /></Button></Dropdown> : <Button style={{ padding: '0 20px', borderRadius: 0 }} type="primary" onClick={() => this.props.onSearch(this.state.value)}>{title}</Button>}
       </div>
     )

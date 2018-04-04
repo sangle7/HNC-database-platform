@@ -36,9 +36,9 @@ const Druglist = props => {
 
   const SearchProps = {
     title: <Icon type="search" />,
-    placeholder: 'Search id/hgncid/symbol',
+    placeholder: 'Search drug name',
     onSearch: value => {
-      history.push(`/Gene?q=${value}`)
+      history.push(`/ConnectiveMap?q=${value}`)
     },
   }
 

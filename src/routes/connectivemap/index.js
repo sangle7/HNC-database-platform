@@ -12,7 +12,7 @@ const ConnectiveMap = props => {
 
   return (
     <div>
-      <Header title="Gene Data"/>
+      <Header title="Connective Map"/>
       <HDruglist history={history} location={location} />
       <HHeatmap history={history} location={location}/>
     </div>

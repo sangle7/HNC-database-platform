@@ -30,7 +30,6 @@ class Download extends React.Component {
             this.setState({
               downloadURL: code.downloadURL
             }, () => this.a.click())
-            // downloadFile('111', '/static/main-dev.js')
           }
         })
     }

@@ -97,6 +97,29 @@
     }
 }
 
+.mincol {
+    :global{
+        .ant-table-header{
+            table{
+                width: auto !important;
+            }
+        }
+    }
+    table{
+        min-width: auto !important;
+    }
+}
+.higher {
+    margin-top:1rem;
+    th:not(:first-child) {
+        height: 150px !important;
+    }
+    th:not(:first-child)>span {
+        left: 75px;
+        height: 150px !important;
+    }
+}
+
 .colorbar {
     margin: 0 5px;
     display: inline-block;

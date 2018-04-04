@@ -140,15 +140,20 @@ class DatasourceTable extends React.Component {
       })
   }
   render () {
-    let { onCellClick, t }  = this.props
+    let { onCellClick, t, higher = false }  = this.props
     const { dataSource, filtedtotal, min, max, total, loading }  = this.state
 
-    const list = [...dataSource]
-    if (list.length) {
-      list.push({
-        id: '',
-        GSM2260021: list.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true"></i> No More Records</span>: <Spin />
-      })
+    const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
+
+
+    let list = []
+    let mincol = false
+    if (dataSource.length) {
+      const obj = { id: '' }
+      console.log(firstKey,dataSource.length,filtedtotal,dataSource.length>= filtedtotal)
+      obj[firstKey] = dataSource.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true"></i> No More Records</span>: <Spin />
+      list = [...dataSource, obj]
+      mincol = Object.keys(dataSource[0]).length <= 16
     }
 
     return (
@@ -156,7 +161,7 @@ class DatasourceTable extends React.Component {
         ref={t => this.hmtable = t}
         onChange = {this.onChange}
         id="hmtable"
-        className={classnames({ [style.table]: true })}
+        className={classnames({ [style.table]: true,[style.higher]: higher,[style.mincol]: mincol })}
         simple
         loading={loading}
         rowKey={record  => record.id}
@@ -172,9 +177,9 @@ class DatasourceTable extends React.Component {
             onCell:record => ({
               onClick: () => { e!=='id' && onCellClick(record.id , e, t); },
               style: {background: gColor(record[e])},
-              id: (e === 'GSM2260021' && record.id === '') ? 'test' : null
+              id: (e === firstKey && record.id === '') ? 'test' : null
             }),
-            render:(v,row,index) => gRender(e,v,index,list)
+            render:(v,row,index) => gRender(e,v,index,list,firstKey)
             /*最后一行的id column span才为全部 */
         })) : []}
         footer={()=>(<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal}/>)}
@@ -186,12 +191,12 @@ class DatasourceTable extends React.Component {
 
 export default DatasourceTable
 
-function gRender (e, v, index, list) {
+function gRender (e, v, index, list, key) {
   if (index === list.length - 1) {
     return {
       children: e === 'id' ? null : <span id="test">{v}</span>,
       props: {
-        colSpan: gColSpan(e,list)
+        colSpan: gColSpan(e,list, key)
       },
     }
   } else {
@@ -207,9 +212,9 @@ function checkIsPartialVisible (a, domid, query) {
   return isPartialVisible
 }
 
-function gColSpan (e, list) {
+function gColSpan (e, list, key) {
   switch (e) {
-    case 'GSM2260021':
+    case key:
       return 15
       break;
     case 'id':

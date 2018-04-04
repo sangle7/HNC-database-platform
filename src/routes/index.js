@@ -3,7 +3,7 @@ import Diff from './annalysis/diff'
 import Corr from './annalysis/corr'
 import Survival from './annalysis/survival'
 import GeneList from './gene'
-import DrugListd from './annalysis/druglist'
+import DrugList from './connectivemap'
 // import GeneListd from './annalysis/genelist'
 import Wrapper from './wrapper'
 import ErrorPage from './errorpage'
@@ -12,7 +12,6 @@ import Statistic from './statistic'
 import HomePage from './homepage'
 
 
-const DrugList = DrugListd
 // const DrugList = Wrapper(DrugListd, '/cgi/drugs')
 // const GeneList = Wrapper(GeneListd, '/cgi/genes')
 

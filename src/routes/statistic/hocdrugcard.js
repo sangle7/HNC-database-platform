@@ -19,6 +19,8 @@ const Casecard = props => {
   const { item, loading } = props
   const TableProps = {
     showHeader: false,
+    pagination: false,
+    scroll:{y:500},
     dataSource: item ? gData(item) :[],
     columns: [{
       title:'key',

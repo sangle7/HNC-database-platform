@@ -85,6 +85,35 @@ exports.info = async ctx => {
   ctx.body = body
 }
 
+exports.heatmap = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const { offset = 0, sorter = {}, filter = '' } = ctx.request.body
+
+  try {
+    const { list,total, filtedtotal } = await ctx.service.connectivemap.getByPagi({
+      offset, 
+      size:20,
+      sorter,
+      filter
+    })
+    body = {
+      list,
+      total,
+      sorter,
+      filter,
+      filtedtotal,
+      reset: offset === 0,
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
+
 function writeToCSV (q,list) {
   csv.writeToPath(`app/public/drug-${q}.csv`, list, {headers: true})
     .on("finish", function(){

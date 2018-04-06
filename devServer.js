@@ -32,7 +32,6 @@ app.use('/cgi/', proxy(`localhost:${conf.serverPort}`, {
   // }
 }));
 app.use('/', (req, res, next) => {
-  console.log(req.path, req.path.indexOf('/cgi/'))
   if(req.path.indexOf('/cgi/') === 0){
     next()
   }

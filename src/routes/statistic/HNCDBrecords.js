@@ -15,26 +15,25 @@ const HNCDB = props => {
     dataSource,
     loading,
     pagination:false,
-    scroll:{y:330,x:false},
-    nwrap: true,
+    scroll:{y:330,x:true},
     columns: [{
       title: 'Gene Name',
       dataIndex: 'name',
       render: () => (geneId),
-      width:'10%',
+      width:100,
     }, {
       title: 'PMID',
       dataIndex: 'pmid',
-      width:'10%',
+      width:100,
       render:v => <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a>
     }, {
       title: 'Molecular Event',
       dataIndex: 'mol_event',
-      width:'15%',
+      width:200,
     }, {
       title: 'Function in HNC',
       dataIndex: 'note',
-      width:'55%',
+      width:600,
       render: value => <span title={value}>{value.length > 80 ? `${value.slice(0, 80)}...` : value}</span>,
     }],
   }

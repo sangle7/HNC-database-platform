@@ -3,6 +3,9 @@
         border-collapse: collapse;
         font-size: 0.1rem;
     }
+    // tbody td:last-child,thead th:last-child{
+    //     display: none;
+    // }
     td:not(:first-child) {
         transition: .3s;
         text-align: center;
@@ -78,6 +81,12 @@
     //     display: block;
     // }
     :global {
+        .ant-table-scroll .ant-table-thead>tr>th:last-child{
+            display: none;
+        }
+        .ant-table-scroll .ant-table-row>td:last-child{
+            display: none;
+        }
         .ant-table-tbody>tr>td,
         .ant-table-thead>tr>th {
             height: 40px;

@@ -4,7 +4,7 @@ exports.item = async ctx =>{
     ret: 500,
   }
 
-  const { caseId } = ctx.request.body
+  const { caseId } = ctx.request.query
 
   try {
     const { item } = await ctx.service.hnclinc.queryById(caseId)

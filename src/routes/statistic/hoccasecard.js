@@ -21,7 +21,7 @@ const Casecard = props => {
     showHeader: false,
     dataSource: item ? gData(item) :[],
     pagination: false,
-    scroll:{y:300},
+    scroll:{y:300,x:false},
     columns: [{
       title:'key',
       dataIndex:'key',

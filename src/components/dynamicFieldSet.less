@@ -1,16 +1,41 @@
-.form{
+.form {
     display: flex;
     justify-content: space-between;
-    padding: 0 30px;
-    :global{
-        .ant-form-item{
-            min-width: 200px;
-            button{
-                width:200% !important;
+    padding: 0 .6rem;
+    :global {
+        .ant-form-item-label {
+            padding: 0;
+        }
+        .ant-form-item-children {
+            display: flex;
+            align-items: center;
+        }
+        .ant-form-item {
+            display: flex;
+            align-items: center;
+            button {
+                width: 2rem !important;
             }
         }
-        .anticon{
-            margin-left: 10px;
+        .anticon {
+            margin-left: .2rem;
+        }
+    }
+    @media screen and (max-width:600px) {
+        flex-direction: column;
+        :global {
+            .ant-form-item {
+                margin-bottom: .2rem;
+                button {
+                    width: 5rem !important;
+                }
+            }
+            .ant-form-item:nth-child(2) {
+                align-self: flex-end;
+            }
+            .ant-form-item:nth-child(3) {
+                align-self: center;
+            }
         }
     }
 }

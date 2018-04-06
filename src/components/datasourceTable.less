@@ -1,8 +1,9 @@
 .table {
-  margin: 0 20px;
+  margin: 0 0.2rem;
   table {
     border-collapse: collapse;
     border: 1px solid #ddd;
+    font-size: 0.1rem;
   }
   tr {
     &:hover {
@@ -30,13 +31,8 @@
   :global {
     .ant-table-tbody>tr>td,
     .ant-table-thead>tr>th {
-      padding: 4px 8px
-    } // .ant-table-thead>tr>th{
-    //   background: #f7f7f7;
-    // }
-    // .ant-table-tbody>tr>td{
-    //   background: #e8e8e8;
-    // }
+      padding: .1rem .2rem;
+    }
   }
   &.motion {
     :global {
@@ -103,26 +99,12 @@
   }
 }
 
-.labelG {
-  background: #ffd8bf;
-  padding: 3px 12px;
-  margin-left: 10%;
-  text-align: center;
-  display: inline-block;
-  min-width: 80%;
-  text-transform: capitalize;
-  font-weight: 700;
-  border-radius: 10px;
-}
-
-.labelY {
-  background: #fff1b8;
-  padding: 3px 12px;
-  margin-left: 10%;
-  text-align: center;
-  display: inline-block;
-  min-width: 80%;
-  text-transform: capitalize;
-  font-weight: 700;
-  border-radius: 10px;
+.nwrap{
+  table{
+    table-layout: initial !important;
+  }
+  td{
+    word-break: keep-all !important;
+    white-space: nowrap !important;
+  }
 }

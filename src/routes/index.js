@@ -11,11 +11,6 @@ import MdPage from './mdPage'
 import Statistic from './statistic'
 import HomePage from './homepage'
 
-
-// const DrugList = Wrapper(DrugListd, '/cgi/drugs')
-// const GeneList = Wrapper(GeneListd, '/cgi/genes')
-
-
 const StatisticPage = Statistic
 
 export {

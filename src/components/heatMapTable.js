@@ -18,7 +18,7 @@ const Entries = ({min,max,total,filtedtotal}) => (
 )
 
 const Footer = props => (
-    <div style={{display:'flex',justifyContent:'space-between'}}>
+    <div className={style.footer}>
     <Entries {...props}/>
     <ColorWrapper/>
     </div>

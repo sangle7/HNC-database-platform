@@ -13,7 +13,7 @@ exports.info = async ctx => {
     page,
     q,
     download
-  } = ctx.request.body
+  } = ctx.request.query
 
   let downloadURL = null
 
@@ -117,7 +117,7 @@ exports.init = async ctx => {
     geneId,
     step = '0',
     type
-  } = ctx.request.body
+  } = ctx.request.query
   try {
     switch (step) {
       case '0':
@@ -324,7 +324,7 @@ exports.sug = async ctx => {
 
   const {
     q
-  } = ctx.request.body
+  } = ctx.request.query
 
   try {
     const result = q ? await ctx.service.genename.search(q) : []

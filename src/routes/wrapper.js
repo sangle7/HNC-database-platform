@@ -22,15 +22,16 @@ const Wrapper = (Component, url, charturl, q) => {
     }
     init = props => {
       const params = queryString.parse(props.location.search)
+      const querystr = queryString.stringify({ ...params, ...q })
       this.setState({
         loading: true,
       })
-      fetch(url, {
-        method: 'post',
+      fetch(`${url}?${querystr}`, {
+        method: 'get',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...params, ...q }),
+        // body: JSON.stringify({ ...params, ...q }),
       })
         .then(blob => blob.json())
         .then(code => {
@@ -48,7 +49,7 @@ const Wrapper = (Component, url, charturl, q) => {
         loading: true,
       })
       fetch(x, {
-        method: 'post',
+        method: 'get',
         headers: {
           'Content-Type': 'application/json',
         },

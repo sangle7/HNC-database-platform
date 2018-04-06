@@ -17,8 +17,8 @@ class Download extends React.Component {
         download: true,
         ...queryString.parse(query)
       }
-      fetch(url, {
-        method: 'post',
+      fetch(`${url}${query}&download=true`, {
+        method: 'get',
         headers: {
           'Content-Type': 'application/json',
         },

@@ -9,7 +9,6 @@ const Express = require('express');
 
 const app = new Express();
 const port = 3001;
-
 const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
   stats: {
@@ -17,24 +16,30 @@ app.use(webpackDevMiddleware(compiler, {
   },
   publicPath: config.output.publicPath,
   hot: true,
+  historyApiFallback: true,
 }));
 app.use(webpackHotMiddleware(compiler, {
   log: console.log,
   path: '/__webpack_hmr',
   heartbeat: 10 * 1000
 }));
-app.use('/', proxy(`localhost:${conf.serverPort}`, {
+app.use('/cgi/', proxy(`localhost:${conf.serverPort}`, {
   proxyReqPathResolver: function (req) {
     return require('url').parse(req.url).path;
   },
-  filter: function (req, res) {
-    return req.method == 'POST' || /^\/public/.test(req.path);
-  }
+  // filter: function (req, res) {
+  //   return req.method == 'POST' || /^\/public/.test(req.path);
+  // }
 }));
-app.use('/', (req, res) => {
+app.use('/', (req, res, next) => {
+  console.log(req.path, req.path.indexOf('/cgi/'))
+  if(req.path.indexOf('/cgi/') === 0){
+    next()
+  }
+  else {
     res.sendFile(path.join(__dirname, './index.html'));
+  }
 });
-
 
 app.listen(port, error => {
   /* eslint-disable no-console */

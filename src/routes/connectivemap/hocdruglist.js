@@ -25,13 +25,16 @@ const Druglist = props => {
     dataSource,
     loading,
     pagination,
+    nwrap: true,
+    scroll:{x:true},
     onChange: page => {
       const search = {
         ...queryString.parse(location.search),
         page: page.current,
       }
-      history.push(`/Annalysis/Drug?${queryString.stringify(search)}`)
+      history.push(`/ConnectiveMap?${queryString.stringify(search)}`)
     }
+    
   }
 
   const SearchProps = {
@@ -45,7 +48,7 @@ const Druglist = props => {
 
   return (
     <Card title={<div><Icon type="appstore" /><span>Drug Data List</span></div>}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' , marginBottom: '.2rem'}}>
         <Search {...SearchProps} />
       </div>
       <DatasourceTable {...TableProps} />

@@ -9,10 +9,14 @@
 }
 
 :global {
-  .recharts-wrapper{
+  @media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+      font-size: 10px;
+    }
+  }
+  .recharts-wrapper {
     margin: 0 auto;
   }
-
   #TransitionGroup {
     position: relative;
     &>div {

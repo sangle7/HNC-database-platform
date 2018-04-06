@@ -13,15 +13,11 @@ class Expression extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch(this.props.url, {
-      method: 'post',
+    fetch(`${this.props.url}?geneId=${this.props.geneId}&step=3`, {
+      method: 'get',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        geneId: this.props.geneId,
-        step: '3',
-      })
     })
       .then(blob => blob.json())
       .then(code => {
@@ -41,7 +37,7 @@ class Expression extends React.Component {
       dataSource: list,
       showHeader: false,
       pagination: false,
-      scroll:{y:440},
+      scroll:{y:440,x:false},
       columns: [{
         title: 'Sample ID',
         dataIndex: 't',

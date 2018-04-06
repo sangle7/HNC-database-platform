@@ -5,7 +5,7 @@ exports.item = async ctx => {
     ret: 500,
   }
 
-  const { drugId } = ctx.request.body
+  const { drugId } = ctx.request.query
 
   try {
     const { item } = await ctx.service.drugbank.queryByName(drugId)
@@ -28,7 +28,7 @@ exports.info = async ctx => {
     page,
     q,
     download
-  } = ctx.request.body
+  } = ctx.request.query
 
   let downloadURL = null
 

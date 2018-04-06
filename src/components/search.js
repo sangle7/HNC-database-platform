@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from './search.less'
 import { Input, Icon, Button, Dropdown, Menu } from 'antd'
 
-const searchStyle = {
-  width: 200,
-}
 class SearchWithState extends React.Component {
   constructor (props) {
     super(props)
@@ -27,7 +25,7 @@ class SearchWithState extends React.Component {
     }
     return (
       <div>
-        <Input style={searchStyle} placeholder={placeholder} onKeyUp={onKeyUp} onPressEnter={() => this.props.onSearch(this.state.value)} onChange={e => this.onChange(e.target.value)} />
+        <Input className={style.search} placeholder={placeholder} onKeyUp={onKeyUp} onPressEnter={() => this.props.onSearch(this.state.value)} onChange={e => this.onChange(e.target.value)} />
         {Array.isArray(title) ? <Dropdown overlay={menu(title)}><Button type="primary" style={{ padding: '0 20px', borderRadius: 0 }}>搜索 <Icon type="down" /></Button></Dropdown> : <Button style={{ padding: '0 20px', borderRadius: 0 }} type="primary" onClick={() => this.props.onSearch(this.state.value)}>{title}</Button>}
       </div>
     )

@@ -43,12 +43,11 @@ function fetchForSuggest(value, callback) {
   currentValue = value;
 
   function fake() {
-    fetch('/cgi/gene/sug',{
-      method: 'post',
+    fetch(`/cgi/gene/sug?q=${value}`,{
+      method: 'get',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({q: value}),
+      }
     })
       .then(response => response.json())
       .then((d) => {

@@ -16,6 +16,7 @@ const HNCDB = props => {
     loading,
     pagination:false,
     scroll:{y:330,x:false},
+    nwrap: true,
     columns: [{
       title: 'Gene Name',
       dataIndex: 'name',
@@ -29,7 +30,7 @@ const HNCDB = props => {
     }, {
       title: 'Molecular Event',
       dataIndex: 'mol_event',
-      width:'25%',
+      width:'15%',
     }, {
       title: 'Function in HNC',
       dataIndex: 'note',

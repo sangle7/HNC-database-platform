@@ -1,4 +1,3 @@
-import Menu from './menu'
 import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import DatasourceTable from './datasourceTable'
@@ -23,7 +22,6 @@ import HeatMapTable from './heatMapTable'
 export {
     WrappedDynamicFieldSet,
     HeatMapTable,
-    Menu,
     Header,
     Download,
     Document,

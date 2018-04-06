@@ -38,14 +38,14 @@ class GeneList extends React.Component {
         key: 'tab1',
         title: 'tab1',
         content: [
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '.2rem' }}>
           <Search {...SearchProps} />
         </div>,<HeatMapTable t={'tab1'} {...HeatmapProps} />],
       }, {
         key: 'Graph',
         title: 'tab2',
         content: [
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '.2rem' }}>
           <Search {...SearchProps} />
         </div>,<HeatMapTable t={'tab2'} {...HeatmapProps} />],
       }],

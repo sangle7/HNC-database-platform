@@ -41,6 +41,17 @@ class ScrollToTop extends React.Component {
 }
 const WScrollToTop =  withRouter(ScrollToTop)
 
+const footerstyle = {
+  position: 'absolute',
+  width: '100%',
+  bottom: 0,
+  height: '1rem',
+  lineHeight: '1rem',
+  textAlign: 'center',
+  backgroundColor: '#424242',
+  color: '#ffffff',
+}
+
 
 ReactDOM.render(
   <ErrorBoundary>
@@ -64,7 +75,7 @@ ReactDOM.render(
                 <Route exact path="/404" component={ErrorPage}/>
                 <Route render={() => (<Redirect to="/404"/>)}/>
               </Switch>
-              <footer>lnCAR © 2018 The Ren Lab. All Rights Reserved</footer>
+              <footer style={footerstyle}>lnCAR © 2018 The Ren Lab. All Rights Reserved</footer>
             </main>
           )}
       />

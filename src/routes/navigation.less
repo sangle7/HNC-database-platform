@@ -1,37 +1,68 @@
-.menu{
+.menu {
   z-index: 1;
   transition: 1s;
   position: fixed;
+  background-color: transparent;
+  @media screen and (max-width: 600px) {
+    background-color: rgba(169, 46, 61, 0.9);
+  }
+  border: 0;
   right: 0;
   width: 100%;
-  :global{
-    .ant-menu{
-      float: right;
-      text-transform: uppercase;
-      background: transparent;
-      border-bottom: 0;
-      color:rgba(255,255,255,0.7);
+  :global {
+    .navbar-toggle{
+      border-color: rgba(255,255,255,0.5) !important;
+      &:hover{
+        background-color: transparent !important;
+      }
+    }
+    .icon-bar{
+      background-color: rgba(255,255,255,0.5) !important;
+    }
+    .navbar-brand {
+      padding: 0 15px;
       line-height: 64px;
+      height: 64px;
+      color: white !important;
+      @media screen and (max-width: 600px) {
+        height: 1.5rem;
+        line-height: 1.5rem;
+      }
     }
-    .ant-menu-item-selected,
-    .ant-menu-item-active,
-    .ant-menu-submenu-selected,
-    .ant-menu-submenu-active,
-    .ant-menu-submenu-open{
-      border-bottom: 2px solid white !important;
-      color:white !important;
-    }
-    .ant-menu-submenu-title:hover{
-      color:white;
-    }
-    .ant-menu-item-active:hover{
-      background:rgba(255,255,255,0.2);
+    .navbar-nav>li {
+      transition: .3s;
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom: 2px solid white !important;
+        color: white !important;
+      }
+      &.active,
+      &.open {
+        border-bottom: 2px solid white !important;
+        color: white !important;
+        a {
+          background: transparent !important;
+        }
+        @media screen and (max-width: 600px) {
+          background: rgba(255, 255, 255, 0.3);
+          border-bottom:0 !important;
+        }
+      }
+      a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        padding: 0 15px;
+        line-height: 64px;
+        @media screen and (max-width: 600px) {
+          line-height: 1.2rem;
+          padding:0 .5rem;
+        }
+      }
     }
   }
 }
 
-.scroll{
+.scroll {
   z-index: 100;
   background: #a92e3d;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
 }

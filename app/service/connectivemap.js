@@ -16,7 +16,7 @@ module.exports = app => {
         filterColStr = filterCol.join(',')
       }
 
-      const orderquery = columnKey ?  `ORDER BY ${columnKey} ${orderMap[order]}` : ''
+      const orderquery = columnKey ?  'ORDER BY `'+ columnKey +'`' + orderMap[order]: ''
       const list = await app.mysql.query(`SELECT ${filterColStr} FROM connectivemap WHERE id like '%${gene}%' ${orderquery} LIMIT ${size} OFFSET ${offset}`)
       const count = await app.mysql.query(`SELECT COUNT(*) AS count FROM connectivemap WHERE id like '%${gene}%'`)
       const total = await app.mysql.count('connectivemap')        

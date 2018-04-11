@@ -2,7 +2,6 @@ import React from 'react'
 import queryString from 'query-string'
 import { Icon, Button } from 'antd'
 import Wrapper from '../wrapper'
-import style from './style.less'
 import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
 
 class GeneList extends React.Component {
@@ -47,7 +46,7 @@ class GeneList extends React.Component {
     
     return (
       <Card title={<div><i className="fa fa-th fa-fw fa-lg"></i><span>Data Heat Map</span></div>}>
-        <div className={style.searchs}>
+        <div className='flexdc'>
           <Search {...Search2Props} />
           <Search {...SearchProps} />
         </div>

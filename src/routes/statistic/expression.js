@@ -33,6 +33,12 @@ class Expression extends React.Component {
     const { loading, isShow, list } = this.state
     const { onclickcb } = this.props
 
+    const BoxPlotProps = {
+      dataSource: list,
+      onclickcb,
+      width: Math.min(Math.floor(document.body.clientWidth * 0.85),600)
+    }
+
     const TableProps = {
       dataSource: list,
       showHeader: false,
@@ -49,8 +55,8 @@ class Expression extends React.Component {
     return (
       <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
         {isShow ? 
-        <div style={{display: 'flex'}}>
-          <BoxPlot dataSource={list} onclickcb={onclickcb} />
+        <div className='flexdc'>
+          <BoxPlot {...BoxPlotProps}/>
           <DatasourceTable {...TableProps} />
         </div> : 
         <Button icon="clock-circle-o" loading={loading} type="primary" onClick={() => this.fetchData()}>Generate Boxplot</Button> }

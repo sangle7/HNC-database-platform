@@ -1,7 +1,7 @@
 import React from 'react'
 import queryString from 'query-string'
 
-const Wrapper = (Component, url, charturl, q) => {
+const Wrapper = (Component, url, chartUrl, q) => {
   return class Wrapped extends React.Component {
     constructor (props) {
       super(props)
@@ -15,18 +15,18 @@ const Wrapper = (Component, url, charturl, q) => {
     }
     componentDidMount () {
       this.init(this.props)
-      charturl && this.fetchChart(charturl)
+      chartUrl && this.fetchChart(chartUrl)
     }
     componentWillReceiveProps (nextProps) {
       this.init(nextProps)
     }
     init = props => {
       const params = queryString.parse(props.location.search)
-      const querystr = queryString.stringify({ ...params, ...q })
+      const queryStr = queryString.stringify({ ...params, ...q })
       this.setState({
         loading: true,
       })
-      fetch(`${url}?${querystr}`, {
+      fetch(`${url}?${queryStr}`, {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',

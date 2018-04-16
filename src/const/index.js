@@ -18,7 +18,7 @@ const menu = [{
   text: 'Connective Map',
   src: '/ConnectiveMap',
 },{
-  text:'Annalysis',
+  text:'Analysis',
   child:[{
     text: 'Diff',
     src: '/Diff',

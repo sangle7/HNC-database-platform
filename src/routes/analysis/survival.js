@@ -5,7 +5,7 @@ import { Button, Icon, Spin } from 'antd'
 import { DatasourceTable, ScatterChart, Header, Card, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
 
-class Corr extends React.Component {
+class Survival extends React.Component {
   state = {
     loading: false,
     dataSource: [],
@@ -60,11 +60,11 @@ class Corr extends React.Component {
     }
     return (
       <div>
-      <Header title="Corr annalysis"/>
+      <Header title="Survival analysis"/>
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
         </Card>
-        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>annalysis result</span></div>}>
+        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
             {loading ? <Spin /> : dataSource[0] && <ScatterChart {...ChartProps}/>}
             {/* {!loading && <DatasourceTable {...TableProps} />} */}
@@ -74,4 +74,4 @@ class Corr extends React.Component {
   }
 }
 
-export default Corr
+export default Survival

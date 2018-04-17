@@ -4,74 +4,25 @@ import { Table, Spin } from 'antd'
 import style from './heatMapTable.less'
 
 const ColorWrapper = () => (
-    <div>
-        <span>Low Expression</span>
-        <span className={style.colorbar}></span>
-        <span>High Expression</span>
-    </div>
+  <div>
+    <span>Low Expression</span>
+    <span className={style.colorbar} />
+    <span>High Expression</span>
+  </div>
 )
 
 const Entries = ({min,max,total,filtedtotal}) => (
-    <div>
-        <span> Showing {min} to {max} of {filtedtotal} entries {total!== filtedtotal &&`(filtered from ${total} total entries)`}</span>
-    </div>
+  <div>
+    <span> Showing {min} to {max} of {filtedtotal} entries {total!== filtedtotal &&`(filtered from ${total} total entries)`}</span>
+  </div>
 )
 
 const Footer = props => (
-    <div className={style.footer}>
-    <Entries {...props}/>
-    <ColorWrapper/>
-    </div>
+  <div className={style.footer}>
+    <Entries {...props} />
+    <ColorWrapper />
+  </div>
 )
-const hsv2rgb = (h, s, v) => { //color range function adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
-  var rgb, i, data = [];
-  if (s === 0) {
-    rgb = [v, v, v];
-  } else {
-    h = h / 60;
-    i = Math.floor(h);
-    data = [v * (1 - s), v * (1 - s * (h - i)), v * (1 - s * (1 - (h - i)))];
-    switch (i) {
-      case 0:
-        rgb = [v, data[2], data[0]];
-        break;
-      case 1:
-        rgb = [data[1], v, data[0]];
-        break;
-      case 2:
-        rgb = [data[0], v, data[2]];
-        break;
-      case 3:
-        rgb = [data[0], data[1], v];
-        break;
-      case 4:
-        rgb = [data[2], data[0], v];
-        break;
-      default:
-        rgb = [v, data[0], data[1]];
-        break;
-    }
-  }
-  return '#' + rgb.map(function (x) {
-    return ("0" + Math.round(x * 255).toString(16)).slice(-2);
-  }).join('');
-}
-
-const gColor = val => {
-  if (val > 0) {
-    const p = val > 2.55 ? 1 : (val / 2.55).toFixed(2)
-    const v = val > 2.55 ? 0.86 : (1 - (val / 2.55) * 0.14).toFixed(2)
-    // const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)
-    return hsv2rgb(0, p, v)
-  } else {
-    const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
-    const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
-    // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
-    
-    return hsv2rgb(221, p, v)
-  }
-}
-
 
 class DatasourceTable extends React.Component {
   state = {
@@ -81,11 +32,14 @@ class DatasourceTable extends React.Component {
     max: 10,
   }
   componentDidMount () {
-    this.fetchData({})
+    this.fetchData({
+      t: this.props.t,      
+    })
     this.elem = document.getElementById('hmtable').getElementsByClassName('ant-table-body')[0]
     this.elem.onscroll = e => {
       if (checkIsPartialVisible(this.elem, 'test', 360)) {
         this.fetchData({
+          t: this.props.t,
           offset: this.state.dataSource.length,
           filter: this.state.filter,
           sorter: this.state.sorter,
@@ -99,6 +53,7 @@ class DatasourceTable extends React.Component {
         loading: true,
       })
       this.fetchData({
+        t: nextProps.t,        
         offset: 0,
         filter: nextProps.filter,
         sorter: this.state.sorter,
@@ -112,6 +67,7 @@ class DatasourceTable extends React.Component {
     this.fetchData({
       offset:0,
       filter:this.props.filter,
+      t: this.props.t,
       sorter:{
         columnKey:sorter.columnKey,
         order:sorter.order,
@@ -176,7 +132,7 @@ class DatasourceTable extends React.Component {
             sorter:true,
             onCell:record => ({
               onClick: () => { e!=='id' && onCellClick(record.id , e, t); },
-              style: {background: gColor(record[e])},
+              style: gStyle(e, record[e]),
               id: (e === firstKey && record.id === '') ? 'test' : null
             }),
             render:(v,row,index) => gRender(e,v,index,list,firstKey)
@@ -222,5 +178,69 @@ function gColSpan (e, list, key) {
       break;
     default:
       return 0
+  }
+}
+
+function hsv2rgb (h, s, v) { //color range function adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
+  var rgb, i, data = [];
+  if (s === 0) {
+    rgb = [v, v, v];
+  } else {
+    h = h / 60;
+    i = Math.floor(h);
+    data = [v * (1 - s), v * (1 - s * (h - i)), v * (1 - s * (1 - (h - i)))];
+    switch (i) {
+      case 0:
+        rgb = [v, data[2], data[0]];
+        break;
+      case 1:
+        rgb = [data[1], v, data[0]];
+        break;
+      case 2:
+        rgb = [data[0], v, data[2]];
+        break;
+      case 3:
+        rgb = [data[0], data[1], v];
+        break;
+      case 4:
+        rgb = [data[2], data[0], v];
+        break;
+      default:
+        rgb = [v, data[0], data[1]];
+        break;
+    }
+  }
+  return '#' + rgb.map(function (x) {
+    return ("0" + Math.round(x * 255).toString(16)).slice(-2);
+  }).join('');
+}
+
+function gStyle (key, val) {
+  if (key === 'last') {
+    return {
+      display: 'none',
+    }
+  }
+  try {
+    if (val > 0) {
+      const p = val > 2.55 ? 1 : (val / 2.55).toFixed(2)
+      const v = val > 2.55 ? 0.86 : (1 - (val / 2.55) * 0.14).toFixed(2)
+      // const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)
+      return {
+        background: hsv2rgb(0, p, v),
+      }
+    } else {
+      const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
+      const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
+      // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
+
+      return {
+        background: hsv2rgb(221, p, v),
+      }
+    }
+  } catch (error) {
+    return {
+      background: '#FFFFFF',
+    }
   }
 }

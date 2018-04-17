@@ -71,14 +71,3 @@ function promiseCSV(path, options) {
       });
   });
 }
-
-new Promise(function (resolve, reject) {
-  let records = [];
-  csv.fromPath(path, options)
-    .on('data', function (record) {
-      records.push(record);
-    })
-    .on('end', function () {
-      resolve(records);
-    });
-}); //读取csv

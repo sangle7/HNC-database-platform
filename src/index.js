@@ -8,7 +8,6 @@ import {
   withRouter
 } from 'react-router-dom'
 import style from './index.less'
-import '../node_modules/react-vis/dist/style.css'
 import { BackTop } from 'antd'
 import ErrorBoundary from './ErrorBoundary'
 import {

@@ -45,7 +45,7 @@ class MMM extends React.Component {
     return (<Navbar className={classnames({ [style.menu]: true ,[style.scroll]: this.state.scroll})} collapseOnSelect onSelect={e=> history.push(e)}>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">HNC database</a>
+          <a href="/">HNC Database</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

@@ -4,7 +4,6 @@ import { Icon, Button } from 'antd'
 import Wrapper from '../wrapper'
 import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
 
-
 class WithSearch extends React.Component {
   state = {
     filter: '',
@@ -15,12 +14,12 @@ class WithSearch extends React.Component {
     })
   }
   render () {
-    const { location, history, dataSource, loading, pagination, url } = this.props
+    const { history, t } = this.props
     const { filter } = this.state
 
     const SearchProps = {
       title: <Icon type="search" />,
-      placeholder: 'Search id/hgncid/symbol',
+      placeholder: 'Search Gene Name',
       onKeyUp:v => {this.onSearch(v.target.value)},
       onSearch:v => {this.onSearch(v)},
     }
@@ -28,7 +27,7 @@ class WithSearch extends React.Component {
     const HeatmapProps = {
       url: '/cgi/gene/heatmap',
       filter,
-      t: this.props.t,
+      t,
       onCellClick: (gene, c, t) => {
         history.push(`/statistics?t=${t}&geneId=${gene}&caseId=${c}`)      
       },

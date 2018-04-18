@@ -58,7 +58,20 @@ class SimpleScatterChart extends React.Component {
         subtext: 'click on dot to remove item',
         left: 'center',
       },
-      animation: false,
+      toolbox: {
+        show: true,
+        right: 30,
+        feature: {
+          saveAsImage: {
+            show: true,
+            pixelRatio: 2,
+          },
+          dataZoom:{
+            show: true,
+          }
+        }
+      },
+      animation: true,
       xAxis: {name:xAxis},
       yAxis: {name:yAxis},
       tooltip: {

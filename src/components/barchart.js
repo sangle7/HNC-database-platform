@@ -22,6 +22,16 @@ class Barchart extends React.Component {
       title:{
         show: false,
       },
+      toolbox: {
+        show: true,
+        right: 30,
+        feature: {
+          saveAsImage: {
+            show: true,
+            pixelRatio: 2,
+          }
+        }
+      },
       xAxis: {
         type: 'value',
       },

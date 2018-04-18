@@ -56,7 +56,7 @@ class Survival extends React.Component {
     const ChartProps = {
       dataSource,
       onDotClick:(i)=>(this.deleteItem(i[''])),
-      size:1000,
+      size:600,
     }
     return (
       <div>

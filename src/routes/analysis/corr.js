@@ -30,14 +30,10 @@ class Corr extends React.Component {
       })
   }
   deleteItem = name => {
-    this.setState({
-      loading: true
-    })
     const { dataSource } = this.state
     const list = dataSource.filter(i=>i['']!==name)
     this.setState({
-      dataSource: list,
-      loading: false
+      dataSource: list
     })
   }
   render () {
@@ -55,8 +51,8 @@ class Corr extends React.Component {
     }
     const ChartProps = {
       dataSource,
-      onDotClick:(i)=>(this.deleteItem(i[''])),
-      size:1000,
+      onDotClick:(i)=>(this.deleteItem(i)),
+      size: 600,
     }
     return (
       <div>

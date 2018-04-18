@@ -45,7 +45,7 @@ class Diff extends React.Component {
     }
     const ChartProps = {
       dataSource,
-      size:1000,
+      size:600,
     }
     return (
       <div>

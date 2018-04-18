@@ -12,7 +12,6 @@
       }
     ], 
     "transform-object-rest-spread", 
-    "transform-react-jsx",
-    "recharts"
+    "transform-react-jsx"
   ]
 }

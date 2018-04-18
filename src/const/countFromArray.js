@@ -9,7 +9,7 @@ function countFromArray (array, countkey) {
   const data = Object.entries(dataObj).map(elem => {
     return {
       name: elem[0],
-      count: elem[1],
+      value: elem[1],
     }
   })
   return data

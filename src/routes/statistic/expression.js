@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon, Button } from 'antd'
 import { Card, DatasourceTable, BoxPlot } from '../../components'
 
-class Expression extends React.Component {
+/* class Expression extends React.Component {
   state = {
     list: [],
     isShow: false,
@@ -63,5 +63,17 @@ class Expression extends React.Component {
       </Card>
     )
   }
+} */
+
+const Expression = props => {
+  const { geneId } = props
+  return (
+    <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
+    <div style={{display:'flex'}}>
+      <img src={`/cgi/public/expression/${geneId}-boxplot.png`} alt="图片XX" onError={e => e.target.style.display = 'none'} />
+      <img src={`/cgi/public/expression/${geneId}-heatmap.png`} alt="图片XX" onError={e => e.target.style.display = 'none'} />    
+    </div>
+    </Card>
+  )
 }
 export default Expression

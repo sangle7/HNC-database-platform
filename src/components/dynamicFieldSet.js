@@ -11,13 +11,21 @@ class DynamicFieldSet extends React.Component {
   state = {
     names:[],
   }
+
+  onChange= (v,i)=>{
+    const names = this.state.names
+    names[i] = v
+    this.setState({
+      names
+    })
+  }
+
   remove = (k,i) => {
     const { form } = this.props;
     // can use data-binding to get
     const keys = form.getFieldValue('keys');
     const names = this.state.names
     names.splice(i,1)
-    console.log(k,keys,i)
     // We need at least one passenger
     if (keys.length === 1) {
       return;
@@ -29,14 +37,6 @@ class DynamicFieldSet extends React.Component {
     });
     this.setState({
       names,
-    })
-  }
-
-  onChange= (v,i)=>{
-    const names = this.state.names
-    names[i] = v
-    this.setState({
-      names
     })
   }
 
@@ -54,12 +54,13 @@ class DynamicFieldSet extends React.Component {
   }
   
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state)
   }
 
-  render() {
+  render () {
+    const { max = 2 } = this.props
     const { getFieldDecorator, getFieldValue } = this.props.form;
     getFieldDecorator('keys', { initialValue: [0] });
     const keys = getFieldValue('keys');
@@ -69,7 +70,7 @@ class DynamicFieldSet extends React.Component {
         required={false}
         key={k}
       >
-        <SearchInput onChange={v=>this.onChange(v,index)} placeholder="input gene here" style={{ width: 200 }} />     
+        <SearchInput onChange={v => this.onChange(v, index)} placeholder="input gene here" style={{ width: 200 }} />     
         {keys.length > 1 ? (
           <Icon
             className="dynamic-delete-button"
@@ -86,7 +87,7 @@ class DynamicFieldSet extends React.Component {
         onSubmit={this.handleSubmit} 
         layout="inline">
         {formItems}
-        { keys.length <= 1 && <FormItem>
+        { keys.length <= (max - 1) && <FormItem>
             <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
               <Icon type="plus" /> Add field
             </Button>

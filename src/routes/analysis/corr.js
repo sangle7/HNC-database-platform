@@ -9,6 +9,7 @@ class Corr extends React.Component {
   state = {
     loading: false,
     dataSource: [],
+    type: 1,
   }
   init = params => {
     this.setState({
@@ -26,6 +27,7 @@ class Corr extends React.Component {
         switch (code.ret) {
           case 200:
             this.setState({
+              type: code.type,
               dataSource: code.list,
               loading: false,
             })
@@ -50,7 +52,7 @@ class Corr extends React.Component {
   }
   render () {
     const { showModal, location, history } = this.props
-    const { dataSource, loading } = this.state
+    const { dataSource, loading, type } = this.state
 
     const TableProps = {
       dataSource,
@@ -74,8 +76,7 @@ class Corr extends React.Component {
         </Card>
         <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
-            {loading ? <Spin /> : dataSource[0] && <ScatterChart {...ChartProps}/>}
-            {/* {!loading && <DatasourceTable {...TableProps} />} */}
+            {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps}/> : <DatasourceTable {...TableProps} />}
           </div>
         </Card>
     </div>)

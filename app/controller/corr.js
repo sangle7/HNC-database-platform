@@ -39,12 +39,36 @@ exports.init = async ctx => {
             console.log(rResult.stderr) //错误日志
           }
         }
+        body = {
+          type: 2,
+          list: newList,
+          ret: 200,
+        }
       } else {
         /*1vn */
-      }
-      body = {
-        list: newList,
-        ret: 200,
+        const md5String = md5(name1)
+        const filePath = path.join(__dirname, '..', 'public', 'corr', `${md5String}.1vn.table.csv`)
+        const isExist = fs.existsSync(filePath)
+        if (isExist) {
+          newList = await promiseCSV(filePath, {
+            headers: true
+          })
+        } else {
+          const rResult = R(`corr.1vn.R`, `${app.config.Rpath}/coding.matrix.adj.txt ${app.config.Rpath}/lncRNA.matrix.adj.txt ${name1} ${md5String}`)
+          if (rResult.code === 0) {
+            // 读取文件内容
+            newList = await promiseCSV(filePath, {
+              headers: true
+            })
+          } else {
+            console.log(rResult.stderr) //错误日志
+          }
+        }
+        body = {
+          type: 1,
+          list: newList,
+          ret: 200,
+        }
       }
     } else {
       body = {

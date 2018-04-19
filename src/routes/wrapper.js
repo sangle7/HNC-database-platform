@@ -1,5 +1,6 @@
 import React from 'react'
 import queryString from 'query-string'
+import { message } from 'antd'
 
 const Wrapper = (Component, url, chartUrl, q) => {
   return class Wrapped extends React.Component {
@@ -35,13 +36,24 @@ const Wrapper = (Component, url, chartUrl, q) => {
       })
         .then(blob => blob.json())
         .then(code => {
-          this.setState({
-            dataSource: code.list,
-            item: code.item,
-            pagination: code.pagination,
-            md5String: code.md5String,
-            loading: false,
-          })
+          switch (code.ret) {
+            case 200:
+              this.setState({
+                dataSource: code.list,
+                item: code.item,
+                pagination: code.pagination,
+                md5String: code.md5String,
+                loading: false,
+              })
+              break
+            case 400:
+              this.setState({
+                loading: false,
+              })
+              message.error(code.msg)
+              break
+            default:
+          }
         })
     }
     fetchChart = x => {

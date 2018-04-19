@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
-import { Button, Icon, Spin } from 'antd'
+import { Button, Icon, Spin, message } from 'antd'
 import { DatasourceTable, ScatterChart, Header, Card, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
 
@@ -23,10 +23,22 @@ class Corr extends React.Component {
     })
       .then(blob => blob.json())
       .then(code => {
-        this.setState({
-          dataSource: code.list,
-          loading: false,
-        })
+        switch (code.ret) {
+          case 200:
+            this.setState({
+              dataSource: code.list,
+              loading: false,
+            })
+            break
+          case 400:
+            this.setState({
+              dataSource: [],              
+              loading: false,
+            })
+            message.error(code.msg)
+            break
+          default:
+        }
       })
   }
   deleteItem = name => {

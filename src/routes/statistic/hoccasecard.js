@@ -19,17 +19,17 @@ const Casecard = props => {
   const { item, loading } = props
   const TableProps = {
     showHeader: false,
-    dataSource: item ? gData(item) :[],
+    dataSource: item ? gData(item) : [],
     pagination: false,
-    scroll:{y:300,x:false},
+    scroll: { y: 300, x: false },
     columns: [{
-      title:'key',
-      dataIndex:'key',
-      width:'30%'
-    },{
-      title:'value',
-      dataIndex:'value',
-      width:'70%'
+      title: 'key',
+      dataIndex: 'key',
+      width: '30%'
+    }, {
+      title: 'value',
+      dataIndex: 'value',
+      width: '70%'
     }],
     loading,
   }

@@ -27,12 +27,12 @@ const Statistic = props => {
 
   return (
     <div>
-      <Header title={params.geneId || params.drugId || params.caseId}/>
+      <Header title={gTitle(params.drugId,params.geneId,params.caseId)}/>
       <Card>
         <a onClick={()=>window.history.back()}><i className="fa fa-lg fa-fw fa-arrow-left"></i>Back to previous</a>
       </Card>
-      {params.geneId && [<HGenecard history={history} location={location}/>, <HNCDB {...HNCDBProps}/>, <Expression {...ExpressionProps}/>]}
       {params.drugId && <HDrugcard history={history} location={location}/>}
+      {params.geneId && [<HGenecard history={history} location={location}/>, <HNCDB {...HNCDBProps}/>, <Expression {...ExpressionProps}/>]}
       {params.caseId && <HCasecard history={history} location={location}/>}
     </div>
   )
@@ -40,3 +40,10 @@ const Statistic = props => {
 
 
 export default Statistic
+
+
+function gTitle (...values) {
+  const arr = values.filter(e => e)
+  const result = arr.join(' - ')
+  return result
+}

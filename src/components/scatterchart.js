@@ -21,13 +21,13 @@ class SimpleScatterChart extends React.Component {
 
   updateChart = props => {
     const { dataSource } = props
-    const { xMin, xMax, a, b } = getlinearRegression(dataSource)
+    const { xMin, xMax, a, b, result } = getlinearRegression(dataSource)
     const linearExp = x => a * x + b
     const markLineOpt = {
       animation: false,
       label: {
         normal: {
-          formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)}`,
+          formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)} \n r = ${result.toFixed(4)}`,
           textStyle: {
             align: 'right'
           }
@@ -37,7 +37,7 @@ class SimpleScatterChart extends React.Component {
         color:'#333',
       },
       tooltip: {
-        formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)}`
+        formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)} <br /> r = ${result.toFixed(4)}`
       },
       data: [
         [{
@@ -66,13 +66,13 @@ class SimpleScatterChart extends React.Component {
             show: true,
             pixelRatio: 2,
           },
-          dataZoom:{
+          dataZoom: {
             show: true,
           }
         }
       },
       animation: true,
-      xAxis: {name:xAxis},
+      xAxis: {name:xAxis,nameGap:5},
       yAxis: {name:yAxis},
       tooltip: {
         formatter: '({c})'

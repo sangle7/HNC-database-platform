@@ -19,7 +19,7 @@
         if (width > 750) { // 750是设计稿大小
           width = 750;
         }
-        var fontS = width / 10; // 把设备宽度十等分 1rem=10px
+        var fontS = Math.max(width / 10,12) ; // 把设备宽度十等分 1rem=10px
         docEl.style.fontSize = fontS + "px";
       }
       win.addEventListener("resize", function () {

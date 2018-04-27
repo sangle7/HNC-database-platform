@@ -74,7 +74,7 @@ ReactDOM.render(
                 <Route exact path="/404" component={ErrorPage}/>
                 <Route render={() => (<Redirect to="/404"/>)}/>
               </Switch>
-              <footer style={footerstyle}>lnCAR © 2018 The Ren Lab. All Rights Reserved</footer>
+              <footer style={footerstyle}>HNC Database © 2018 The Ren Lab. All Rights Reserved</footer>
             </main>
           )}
       />

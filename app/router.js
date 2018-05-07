@@ -12,6 +12,9 @@ module.exports = app => {
   
 
   app.post('/diff/init', app.controller.diff.init)
+  app.post('/diff/table', app.controller.diff.table)
+  app.post('/diff/boxplot', app.controller.diff.boxplot)
+  
   app.post('/corr/init', app.controller.corr.init)
 
   app.get('/drug/item', app.controller.drug.item)

@@ -57,6 +57,7 @@
     background-color: #a92e3d;
     @media (max-width: 600px) {
         padding: 3rem 0;
+        height: 20rem;
     }
 }
 
@@ -71,6 +72,7 @@
         padding-left: .2rem;
     }
     h1 {
+        font-weight: 700;
         color: white;
         font-size: 1rem;
         font-family: "Cinzel Decorative", cursive;
@@ -95,6 +97,9 @@
         animation-delay: 2500ms;
         animation-fill-mode: forwards;
         animation-name: floating;
+        @media (max-width: 600px) {
+            font-size: .6rem;
+        }
     }
 }
 
@@ -138,6 +143,10 @@
         transform: scale(0);
         opacity: 0;
     }
+    95% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
     100% {
         transform: scale(1);
         opacity: 1;
@@ -166,6 +175,10 @@
     &:hover {
         color: white;
         box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.14), 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.12), 0 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 600px) {
+        color: #a92e3d;
+        background-color: white;
     }
 }
 
@@ -205,9 +218,12 @@
 
 .imgcontainer {
     display: flex;
-    padding: .4rem;
+    padding: .4rem calc(.4rem - 5px);
     max-width: 1200px;
     margin: .6rem auto 0 auto;
+    @media (max-width: 600px) {
+        display: none;
+    }
     &>div {
         height: 300px;
         width: 300px;
@@ -233,7 +249,6 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            background-color: #a92e3d;
             background-image: url('../../img/gplay.png');
             position: absolute;
             top: 0;
@@ -261,6 +276,9 @@
         animation-duration: 500ms;
         animation-fill-mode: forwards;
         animation-name: scaleIn;
+        &>main {
+            background-color: #2a99c7;
+        }
         &>div {
             background-image: url('../../img/gene.jpg');
         }
@@ -271,6 +289,9 @@
         animation-delay: 250ms;
         animation-fill-mode: forwards;
         animation-name: scaleIn;
+        &>main {
+            background-color: #174775;
+        }
         &>div {
             background-image: url("http://ai.ocu-radiology.jp/ai/wp-content/uploads/2018/02/pubmed-logo.jpg");
         }
@@ -281,6 +302,9 @@
         animation-duration: 500ms;
         animation-fill-mode: forwards;
         animation-name: scaleIn;
+        &>main {
+            background-color: #a92e3d;
+        }
         &>div {
             background-image: url("https://www.cdc.gov/cancer/headneck/images/headneck_diagram_english.jpg");
         }
@@ -291,9 +315,11 @@
         animation-delay: 750ms;
         animation-fill-mode: forwards;
         animation-name: scaleIn;
+        &>main {
+            background-color: #cc4e57;
+        }
         &>div {
             background-image: url("../../img/medocs_txt.jpg");
-            background-color: #336799;
         }
     }
 }

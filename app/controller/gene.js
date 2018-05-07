@@ -83,14 +83,15 @@ exports.heatmap = async ctx => {
     ret: 500,
   }
 
-  const { offset = 0, sorter = {}, filter = '' } = ctx.request.body
+  const { offset = 0, sorter = {}, filter = '', t } = ctx.request.body
 
   try {
     const { list,total, filtedtotal } = await ctx.service.heatmap.getByPagi({
       offset, 
       size:20,
       sorter,
-      filter
+      filter,
+      table:t
     })
     body = {
       list,

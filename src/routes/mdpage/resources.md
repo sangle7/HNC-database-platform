@@ -138,7 +138,7 @@
 
 - [NCBI C++ Toolkit Manual](https://ncbi.github.io/cxx-toolkit/)
 
-  A comprehensive manual on the NCBI C++ toolkit, including its design and development framework, a C++ library reference, software examples and demos, FAQs and release notes. The manual is searchable online and can be downloaded as a series of PDF documents.
+  A comprehensive manual on the NCBI C++ toolkit, including its design and development framework, a C++ library reference, software examples and demos, helps and release notes. The manual is searchable online and can be downloaded as a series of PDF documents.
 
 - [NCBI Education Page](https://www.ncbi.nlm.nih.gov/education/)
 

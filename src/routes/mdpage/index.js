@@ -2,7 +2,7 @@ import React from 'react'
 import marked from 'marked'
 import contact from './contact.md'
 import resources from './resources.md'
-import faq from './faq.md'
+import help from './help.md'
 import { Header, Card } from '../../components'
 import './style.less'
 
@@ -20,13 +20,13 @@ marked.setOptions({
 const mdMap = {
     Contact: contact,
     Resources: resources,
-    FAQ: faq,
+    help: help,
 }
 
 class MdPage extends React.Component{
     constructor(props){
         super(props)
-        let mdname = this.props.location ? this.props.location.pathname.slice(1) : 'FAQ'
+        let mdname = this.props.location ? this.props.location.pathname.slice(1) : 'help'
         this.state = {
             content: mdMap[mdname]
         }

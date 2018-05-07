@@ -8,7 +8,7 @@ import HDrugcard from './hocdrugcard'
 import Expression from './expression'
 import HNCDB from './HNCDBrecords'
 
-const Statistic = props => {
+const staticPage = props => {
   const { location, history } = props
 
   const params = queryString.parse(location.search)
@@ -39,7 +39,7 @@ const Statistic = props => {
 }
 
 
-export default Statistic
+export default staticPage
 
 
 function gTitle (...values) {

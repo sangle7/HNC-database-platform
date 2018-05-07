@@ -13,10 +13,14 @@ import WrappedDynamicFieldSet from './dynamicFieldSet'
 import Header from './header'
 import Card from './card'
 import HeatMapTable from './heatMapTable'
+import Stackchart from './stackChart'
+import PieChart from './piechart'
 
 export {
   WrappedDynamicFieldSet,
   HeatMapTable,
+  Stackchart,
+  PieChart,
   Header,
   Download,
   Document,

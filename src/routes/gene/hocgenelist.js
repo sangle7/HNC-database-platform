@@ -12,8 +12,9 @@ const GeneList = props => {
       title: 'id',
       dataIndex: 'id',
     }, {
-      title: 'hgncid',
+      title: 'hgncID',
       dataIndex: 'hgncid',
+      render:v => <a href={`https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=${v}`}>{v}</a> 
     }, {
       title: 'symbol',
       dataIndex: 'symbol',

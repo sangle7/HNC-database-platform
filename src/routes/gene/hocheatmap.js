@@ -44,13 +44,22 @@ const GeneList = props => {
   const TabProps = {
     transform: false,
     tabs: [{
-      key: 'hpv',
-      title: 'hpv positive & negative',
-      content: <WithSearch t="hpv" {...props} />,
+      key: 'tumorcoding',
+      title: 'Tumor vs Normal/Disease Coding',
+      content: <WithSearch t="tumorcoding" {...props} />,
+    },{
+      key: 'tumorlnc',
+      title: 'Tumor vs Normal/Disease lncRNA',
+      content: <WithSearch t="tumorlnc" {...props} />,
+      
+    },{
+      key: 'hpvcoding',
+      title: 'hpv positive & negative Coding',
+      content: <WithSearch t="hpvcoding" {...props} />,
     }, {
-      key: 'tumor',
-      title: 'Tumor vs Normal/Disease',
-      content: <WithSearch t="tumor" {...props} />,
+      key: 'hpvlnc',
+      title: 'hpv positive & negative lncRNA',
+      content: <WithSearch t="hpvlnc" {...props} />,
     }],
     onChange (key) {
       console.log(key)

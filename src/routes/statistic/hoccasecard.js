@@ -29,7 +29,8 @@ const Casecard = props => {
     }, {
       title: 'value',
       dataIndex: 'value',
-      width: '70%'
+      width: '70%',
+      render:(v,record) => record.key === 'PMID' ? <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a> : v
     }],
     loading,
   }

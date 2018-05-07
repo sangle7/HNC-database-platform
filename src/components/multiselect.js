@@ -29,11 +29,9 @@ const Multiselect = props => {
         })(
           <Select style={{width:150}}>
             <Option value="HPV">HPV</Option>
-            <Option value="Age">Age</Option>
-            <Option value="Gender">Gender</Option>
-            <Option value="Alcohol">Alcohol</Option>
+            <Option value="Tumor">Tumor</Option>
             <Option value="Tobacco">Tobacco</Option>
-            <Option value="Vital">Vital</Option>
+            <Option value="Recurrence">Recurrence</Option>
           </Select>
         )}
       </FormItem>

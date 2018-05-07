@@ -1,5 +1,8 @@
 const R = require('../utils/R');
+const fs = require('fs')
+const path = require('path');
 const md5 = require('md5');
+var csv = require("fast-csv");
 
 exports.init = async ctx => {
     const app = ctx.app
@@ -7,11 +10,30 @@ exports.init = async ctx => {
         ret: 500,
     }
 
+    let list = []
+
     const {
         type,
         genetype,
     } = ctx.request.body
-    try {
+
+    try{
+        //先获取所有文件列表
+        const filePath = path.join(__dirname,'..','public','diff');
+        const files = fs.readdirSync(filePath)
+        list = files.filter(elem=>{
+            const newReg = new RegExp(type,'gim')
+            const newReg1 = new RegExp(genetype,'gim')
+            return newReg.test(elem) && newReg1.test(elem)
+        })
+    
+
+    } catch (error) {
+        body.error = error
+    } 
+
+    body.list = list
+/*     try {
         const {
             colnames1,
             colnames2
@@ -37,6 +59,57 @@ exports.init = async ctx => {
         }
     } catch (error) {
         body.error = error
-    }
+    } */
+    
     ctx.body = body
 }
+
+exports.table = async ctx =>{
+    const app = ctx.app
+    let body = {
+        ret: 500,
+    }
+    let list = []
+
+    const {
+        tablename
+    } = ctx.request.body
+
+    const filePath = path.join(__dirname,'..','public','table',tablename);
+    list = await promiseCSV(filePath, {
+        headers: true
+    })
+
+    body.list = list
+
+    ctx.body = body
+}
+
+exports.boxplot = async ctx =>{
+    const app = ctx.app
+    let body = {
+        ret: 500,
+    }
+    const list = [
+        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
+    ]
+
+    body.list = list
+
+    ctx.body = body
+}
+
+function promiseCSV(path, options) {
+    return new Promise(function (resolve, reject) {
+      var records = [];
+      csv.fromPath(path, options)
+        .on('data', function (record) {
+          records.push(record);
+        })
+        .on('end', function () {
+          resolve(records);
+        });
+    });
+  }
+  

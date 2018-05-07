@@ -8,7 +8,7 @@ const Homepage = () => {
     <div className={style.bg} />
     <div className={style.textwrapper}>
       <h1>HNC Database</h1>
-      <h2>这里是介绍词，介绍介绍介绍</h2>
+      <h2>A comprehensive resource for the HNC community, including the related gene and medication information, provides a Genome Atlas platform to perform integrated analysis.</h2>
       <Link className={style.button} to="/Gene">start here</Link>
     </div>
   </div>

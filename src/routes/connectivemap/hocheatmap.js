@@ -40,7 +40,7 @@ class GeneList extends React.Component {
       url: '/cgi/drug/heatmap',
       filter,
       onCellClick: (gene, c, t) => {
-        history.push(`/statistics?t=${t}&geneId=${gene}&drugId=${c}`)      
+        history.push(`/statics?t=${t}&geneId=${gene}&drugId=${c}`)      
       },
     }
     

@@ -13,7 +13,9 @@ const ConnectiveMap = props => {
   return (
     <div>
       <Header title="Connective Map"/>
-      <HDruglist history={history} location={location} />
+      {/* <HDruglist history={history} location={location} /> */}
+      <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt"></i><span>Tutorial</span></div>}>
+      </Card>
       <HHeatmap history={history} location={location}/>
     </div>
   )

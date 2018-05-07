@@ -29,7 +29,7 @@ class WithSearch extends React.Component {
       filter,
       t,
       onCellClick: (gene, c, t) => {
-        history.push(`/statistics?t=${t}&geneId=${gene}&caseId=${c}`)      
+        history.push(`/statics?t=${t}&geneId=${gene}&caseId=${c}`)      
       },
     }
 

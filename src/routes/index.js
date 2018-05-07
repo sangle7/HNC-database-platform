@@ -8,10 +8,9 @@ import DrugList from './connectivemap'
 import Wrapper from './wrapper'
 import ErrorPage from './errorpage'
 import MdPage from './mdPage'
-import Statistic from './statistic'
+import staticPage from './static'
 import HomePage from './homepage'
-
-const StatisticPage = Statistic
+import Statistics from './statistics'
 
 export {
   Corr,
@@ -23,5 +22,6 @@ export {
   DrugList,
   ErrorPage,
   MdPage,
-  StatisticPage,
+  staticPage,
+  Statistics,
 }

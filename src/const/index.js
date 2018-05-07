@@ -30,12 +30,12 @@ const menu = [{
     src: '/Survival',
   }]
 },{
-  text: 'FAQ',
-  src: '/FAQ',
+  text: 'statistics',
+  src: '/statistics',
 }, {
-  text: 'Resources',
-  src: '/Resources',
-}, {
+  text: 'help',
+  src: '/help',
+},{
   text: 'Contact',
   src: '/Contact',
 }]

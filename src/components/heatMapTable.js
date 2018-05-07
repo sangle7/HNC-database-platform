@@ -148,7 +148,9 @@ class DatasourceTable extends React.Component {
 export default DatasourceTable
 
 function gRender (e, v, index, list, key) {
-  if (index === list.length - 1) {
+  if (v === 0) {
+    return '-'
+  } else if (index === list.length - 1) {
     return {
       children: e === 'id' ? null : <span id="test">{v}</span>,
       props: {
@@ -222,7 +224,11 @@ function gStyle (key, val) {
     }
   }
   try {
-    if (val > 0) {
+    if (val === 0) {
+      return {
+        background: 'rgb(241,241,241)',
+      }
+    } else if (val > 0) {
       const p = val > 2.55 ? 1 : (val / 2.55).toFixed(2)
       const v = val > 2.55 ? 0.86 : (1 - (val / 2.55) * 0.14).toFixed(2)
       // const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)

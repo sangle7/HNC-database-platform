@@ -54,7 +54,7 @@ class TabDefault extends React.Component {
 
     return (
       <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-        <img src={`/cgi/public/diff/${name}`} alt="diff" height="800" style={{margin:'0 auto'}}/>
+        <img src={`/cgi/public/diff/${name}`} alt="diff" height="400" style={{margin:'0 auto'}}/>
         <DiffModal {...ModalProps}/>
         <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>
       </div>

@@ -1,13 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { COLORS } from '../const'
 import echarts from 'echarts'
+
+require('./mdtheme')
 
 class PieChart extends React.Component {
 
   componentDidMount () {
     const { uuid } = this.props
-    this.myChart = echarts.init(document.getElementById(`echart-Pie-${uuid}`));  
+    this.myChart = echarts.init(document.getElementById(`echart-Pie-${uuid}`),'roma');  
     this.updateChart(this.props)
   }
 
@@ -23,12 +25,23 @@ class PieChart extends React.Component {
         trigger: 'item',
         formatter: "{a} <br/>{b}: {c} ({d}%)"
       },
+      toolbox: {
+        show: true,
+        right: 30,
+        feature: {
+          saveAsImage: {
+            show: true,
+            pixelRatio: 2,
+          }
+        }
+      },
       title: {
         text: `${obj.key} in HNClinc`,
         left: 'center',
         bottom:0,
       },
-      legend: {},
+      legend: {
+      },
       series: [{
         name: obj.key,
         type: 'pie',
@@ -37,7 +50,8 @@ class PieChart extends React.Component {
         label: {
           normal: {
             show: false,
-            position: 'center'
+            position: 'center',
+            formatter: "{d}%"
           },
           emphasis: {
             show: true,

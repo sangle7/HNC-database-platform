@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { Col } from 'antd'
 import style from './label.less'
 
@@ -17,10 +17,6 @@ const label = ({ item }) => {
        ))}
     </div>
   )
-}
-
-label.propTypes = {
-  item: PropTypes.object.isRequired,
 }
 
 export default label

@@ -1,12 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { COLORS } from '../const'
 import echarts from 'echarts'
+
+require('./mdtheme')
 
 class Barchart extends React.Component {
 
   componentDidMount () {
-    this.myChart = echarts.init(document.getElementById('echart-bar'));  
+    this.myChart = echarts.init(document.getElementById('echart-bar'),'roma');  
     this.updateChart(this.props)
   }
 

@@ -9,8 +9,9 @@ class SearchInput extends React.Component {
       value: '',
     }
     handleChange = (value) => {
+      const { cgi = 'sug' } = this.props
       this.setState({ value },this.props.onChange(value));
-      fetchForSuggest(value, data => this.setState({ data }));
+      fetchForSuggest(value, data => this.setState({ data }), cgi);
     }
     render() {
       const options = this.state.data.map(d => <Option key={d.value}>{d.text}</Option>);
@@ -35,7 +36,7 @@ class SearchInput extends React.Component {
 let timeout;
 let currentValue;
 
-function fetchForSuggest(value, callback) {
+function fetchForSuggest(value, callback, cgi) {
   if (timeout) {
     clearTimeout(timeout);
     timeout = null;
@@ -43,7 +44,7 @@ function fetchForSuggest(value, callback) {
   currentValue = value;
 
   function fake() {
-    fetch(`/cgi/gene/sug?q=${value}`,{
+    fetch(`/cgi/gene/${cgi}?q=${value}`,{
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

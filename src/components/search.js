@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import style from './search.less'
 import { Input, Icon, Button, Dropdown, Menu } from 'antd'
 
@@ -32,11 +32,5 @@ class SearchWithState extends React.Component {
   }
 }
 
-
-SearchWithState.propTypes = {
-  title: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  onSearch: PropTypes.func.isRequired,
-}
 
 export default SearchWithState

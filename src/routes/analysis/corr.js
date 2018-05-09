@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import queryString from 'query-string'
 import { Button, Icon, Spin, message } from 'antd'
 import { DatasourceTable, ScatterChart, Header, Card, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
@@ -74,11 +74,11 @@ class Corr extends React.Component {
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
         </Card>
-        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
+        {dataSource[0] && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
             {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps}/> : <DatasourceTable {...TableProps} />}
           </div>
-        </Card>
+        </Card>}
     </div>)
   }
 }

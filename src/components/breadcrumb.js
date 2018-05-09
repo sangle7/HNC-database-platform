@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { Breadcrumb, Icon } from 'antd'
 import style from './breadcrumb.less'
 
@@ -45,10 +45,5 @@ const bc = ({ path, handleClick }) => {
 //     ])}
 //   </Breadcrumb>
 // )
-
-bc.propTypes = {
-  path: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-}
 
 export default bc

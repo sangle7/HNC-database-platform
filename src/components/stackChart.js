@@ -1,12 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { COLORS } from '../const'
 import echarts from 'echarts'
-
+require('./mdtheme')
 class Stackchart extends React.Component {
 
   componentDidMount () {
-    this.myChart = echarts.init(document.getElementById('echart-stack'));  
+    this.myChart = echarts.init(document.getElementById('echart-stack'),'roma');  
     this.updateChart(this.props)
   }
 

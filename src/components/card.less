@@ -1,16 +1,21 @@
-.card{
+.card {
     background-color: #fff;
     padding: .4rem .3rem .8rem;
     margin: -1.2rem auto 1.6rem auto;
     border-radius: 0.12rem;
     max-width: 1200px;
-    box-shadow: 0 .1rem .1rem 0 rgba(0,0,0,.14), 0 .1rem .2rem 0 rgba(0,0,0,.12), 0 1rem 1rem -1rem rgba(0,0,0,.2);
-    &>a{
+    opacity: 0;
+    box-shadow: 0 .1rem .1rem 0 rgba(0, 0, 0, .14), 0 .1rem .2rem 0 rgba(0, 0, 0, .12), 0 1rem 1rem -1rem rgba(0, 0, 0, .2);
+    animation-duration: 1000ms;
+    animation-delay: 0;
+    animation-fill-mode: forwards;
+    animation-name: floating;
+    &>a {
         cursor: pointer;
         color: #1249A1;
         font-size: .4rem;
-        :global{
-            .anticon{
+        :global {
+            .anticon {
                 margin-right: .2rem;
                 font-weight: 700;
             }
@@ -18,7 +23,34 @@
     }
 }
 
-.cardtitle{
+.card:nth-child(3){
+    animation-delay: 1000ms;
+}
+.card:nth-child(4){
+    animation-delay: 1500ms;
+}
+.card:nth-child(5){
+    animation-delay: 2000ms;
+}
+.card:nth-child(6){
+    animation-delay: 2500ms;
+}
+.card:nth-child(7){
+    animation-delay: 3000ms;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cardtitle {
     padding-left: .2rem;
     border-left: .1rem solid #1249A1;
     color: #1249A1;
@@ -26,11 +58,11 @@
     margin-bottom: .3rem;
     margin-left: -.3rem;
     text-transform: capitalize;
-    span{
+    span {
         margin-left: .1rem;
     }
-    @media (max-width:600px){
+    @media (max-width:600px) {
         font-size: .4rem;
-        margin-bottom:.4rem;
+        margin-bottom: .4rem;
     }
 }

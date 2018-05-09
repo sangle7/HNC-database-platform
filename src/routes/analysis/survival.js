@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import queryString from 'query-string'
 import { Button, Icon, Spin } from 'antd'
 import { Header, Card, WrappedDynamicFieldSet } from '../../components'
@@ -8,13 +8,18 @@ import style from './style.less'
 class Survival extends React.Component {
   state = {
     loading: false,
-    dataSource: [],
+    gene:null,
   }
   init = params => {
-    this.setState({
+    /* this.setState({
       loading: true,
+    }) */
+    const { names } = params
+    const gene = names[0]
+    this.setState({
+      gene,
     })
-    fetch('/cgi/survival/init', {
+    /* fetch('/cgi/survival/init', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -27,19 +32,32 @@ class Survival extends React.Component {
           dataSource: code.list,
           loading: false,
         })
-      })
+      }) */
   }
   render () {
-
+    const { gene } = this.state
     return (
       <div>
       <Header title="Survival analysis"/>
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
-          <WrappedDynamicFieldSet max={1} onSubmit={v=>this.init(v)}/>
+          <WrappedDynamicFieldSet cgi="survivalsug" max={1} onSubmit={v=>this.init(v)}/>
         </Card>
-        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
-          
-        </Card>
+        {gene && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
+          <div className={style.imgcontainer}>
+            <div>
+              <img src={`/cgi/public/survival/GSE27020_PFS/${gene}.png`} />
+              <p>{gene} - GSE27020_PFS</p>
+            </div>
+            <div>  
+              <img src={`/cgi/public/survival/GSE31056_PFS/${gene}.png`}/>
+              <p>{gene} - GSE31056_PFS</p>              
+            </div>
+            <div>
+              <img src={`/cgi/public/survival/GSE41613_OS/${gene}.png`} />
+              <p>{gene} - GSE41613_OS</p>              
+            </div>
+          </div>
+        </Card> }
     </div>)
   }
 }

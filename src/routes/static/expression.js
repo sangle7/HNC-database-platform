@@ -69,9 +69,23 @@ const Expression = props => {
   const { geneId } = props
   return (
     <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
-    <div style={{display:'flex'}}>
-      <img src={`/cgi/public/expression/${geneId}-boxplot.png`} alt="图片XX" onError={e => e.target.style.display = 'none'} />
-      <img src={`/cgi/public/expression/${geneId}-heatmap.png`} alt="图片XX" onError={e => e.target.style.display = 'none'} />    
+    <div className="testtesttest">
+      <div>
+        <img src={`/cgi/public/diff/gene_boxplot/TP53.png`} />
+        <p>GSE1722 - Tumor vs Normal - Coding - TP53</p>              
+      </div>
+      <div>
+        <img src={`/cgi/public/survival/GSE27020_PFS/TP53.png`} />
+        <p>TP53 - GSE27020_PFS - survival</p>
+      </div>
+      <div>  
+        <img src={`/cgi/public/survival/GSE31056_PFS/TP53.png`}/>
+        <p>TP53 - GSE31056_PFS - survival</p>              
+      </div>
+      <div>
+        <img src={`/cgi/public/survival/GSE41613_OS/TP53.png`} />
+        <p>TP53 - GSE41613_OS - survival</p>              
+      </div>
     </div>
     </Card>
   )

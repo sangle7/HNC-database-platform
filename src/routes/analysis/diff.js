@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import queryString from 'query-string'
 import { Spin, Icon, Button, Modal } from 'antd'
 import DiffModal from './diffModal'
@@ -36,9 +36,14 @@ class TabDefault extends React.Component {
         this.setState({
           dataSource: code.list,
           loading: false,
-          modalVisible: true,
+          // modalVisible: true,
         })
       })
+  }
+  showModal = () => {
+    this.setState({
+      modalVisible: true,
+    })
   }
   render () {
     const { name } = this.props
@@ -51,12 +56,41 @@ class TabDefault extends React.Component {
       onCancel: this.hideModal
     }
 
+    const TableProps = {
+      dataSource,
+      scroll: { x:true, y: 300 },
+      pagination: false,
+      columns: [{
+        title: 'Gene',
+        dataIndex: 'Gene',
+        onCell: record => ({
+          onClick: () => this.showModal(),
+        }),
+      },{
+        title: 'logFC',
+        dataIndex: 'logFC',
+        render:v => parseFloat(v).toFixed(4)
+      },{
+        title: 'AveExpr',
+        dataIndex: 'AveExpr',
+        render:v => parseFloat(v).toFixed(4)        
+      },{
+        title: 'P.Value',
+        dataIndex: 'P.Value',
+        render:v => parseFloat(v).toExponential(2)        
+      },{
+        title: 'adj.P.Val',
+        dataIndex: 'adj.P.Val',
+        render:v => parseFloat(v).toFixed(4)        
+      }]
+    }
+
 
     return (
-      <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+      <div style={{display:'flex',alignItems:'center'}}>
         <img src={`/cgi/public/diff/${name}`} alt="diff" height="400" style={{margin:'0 auto'}}/>
         <DiffModal {...ModalProps}/>
-        <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>
+        {dataSource[0] ? <DatasourceTable {...TableProps} /> : <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>}
       </div>
     )
   }
@@ -108,9 +142,9 @@ class Diff extends React.Component {
         <Card title={<div><i className="fa fa-lg fa-fw fa-toggle-on" /><span>select query</span></div>}>
           <Multiselect onSubmit={this.init}/>
         </Card>
-        <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
-          {list[0] && <Tabs {...TabProps} />}
-        </Card>
+        { list[0] && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
+           <Tabs {...TabProps} />}
+        </Card> }
     </div>)
   }
 }

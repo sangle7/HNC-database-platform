@@ -37,7 +37,7 @@ class DiffModal extends React.Component {
 
     const { imgData, loading, gene } = this.state
 
-    const TableProps = {
+    /* const TableProps = {
       dataSource,
       scroll: { x:true, y: 500 },
       pagination: false,
@@ -64,7 +64,7 @@ class DiffModal extends React.Component {
         dataIndex: 'adj.P.Val',
         render:v => parseFloat(v).toFixed(4)        
       }]
-    }
+    } */
 
     const ModalProps = {
       width: 1200,
@@ -74,19 +74,20 @@ class DiffModal extends React.Component {
       footer:null,
     }
 
-    const BoxPlotProps = {
+    /* const BoxPlotProps = {
       title: gene,
       imgData,
-    }
+    } */
 
     return (
       <Modal {...ModalProps}>
-        <div style={{display: 'flex',justifyContent:'space-between'}}>
+        <img src="/cgi/public/diff/gene_boxplot/CYP2J2.png" />
+        {/* <div style={{display: 'flex',justifyContent:'space-between'}}>
           <DatasourceTable {...TableProps}/> 
           {imgData[0]? <BoxPlot {...BoxPlotProps}/>: <div>
             Click on Gene to generate picture here.
           </div>}
-        </div>
+        </div> */}
       </Modal>
     )
   }

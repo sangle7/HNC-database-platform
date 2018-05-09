@@ -86,7 +86,7 @@
     "dev:fe": "node devServer.js",
     "dev:ser": "NODE_ENV=development EGG_SERVER_ENV=local node index.js",
     "lint": "eslint ./src --fix",
-    "build": "rm -rf app/public && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color"
+    "build": "rm -rf app/public/js && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color"
   },
   "ci": {
     "version": "6, 8"

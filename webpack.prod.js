@@ -3,17 +3,16 @@ const env = process.env.NODE_ENV;
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ToxicWebpackManifestPlugin = require('toxic-webpack-manifest-plugin');
 const theme = require('./src/theme.js');
 
 const config = {
   entry: {
-    vendor: ['react', 'prop-types', 'classnames', 'react-dom', 'react-router-dom'],
+    vendor: ['react', 'echarts', 'classnames', 'react-dom', 'react-router-dom'],
     main: './src/index',
   },
   output: {
     path: path.join(__dirname, 'app', 'public'),
-    publicPath:'/public/',
+    publicPath:'/public/js/',
     filename: '[name]-[hash].js',
   },
   plugins: [

@@ -7,6 +7,7 @@ module.exports = app => {
   app.get('/gene/:geneId', app.controller.gene.init)
 
   app.get('/gene/sug', app.controller.gene.sug)
+  app.get('/gene/survivalsug', app.controller.gene.survivalsug)
   app.post('/gene/heatmap', app.controller.gene.heatmap)
 
   app.post('/drug/heatmap', app.controller.drug.heatmap)

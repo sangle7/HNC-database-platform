@@ -338,3 +338,24 @@ exports.sug = async ctx => {
   }
   ctx.body = body
 }
+
+exports.survivalsug = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const {
+    q
+  } = ctx.request.query
+
+  try {
+    const result = q ? await ctx.service.survivalgene.search(q) : []
+    body = {
+      result:result,
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}

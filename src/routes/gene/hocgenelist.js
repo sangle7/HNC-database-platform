@@ -1,8 +1,11 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon, Button } from 'antd'
+import { Icon } from 'antd'
 import Wrapper from '../wrapper'
-import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
+import { DatasourceTable, Search, Card } from '../../components'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 const GeneList = props => {
   const { location, history, dataSource, loading, pagination, url } = props
@@ -56,4 +59,4 @@ const GeneList = props => {
   )
 }
 
-export default Wrapper(GeneList,'/cgi/genes')
+export default Wrapper(GeneList,`${prefix}/genes`)

@@ -1,6 +1,5 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon } from 'antd'
 import { Header, Card, Tabs, Search, HeatMapTable } from '../../components'
 import HDruglist from './hocdruglist'
 import HHeatmap from './hocheatmap'

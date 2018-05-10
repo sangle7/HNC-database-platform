@@ -1,7 +1,9 @@
 import React from 'react'
-import {Icon} from 'antd'
 import { Card, DatasourceTable } from '../../components' 
 import Wrapper from '../wrapper'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 const gData = item => {
     const arr = []
@@ -39,5 +41,5 @@ const Genecard = props => {
   )
 }
 
-const HGenecard = Wrapper(Genecard, '/cgi/gene/init', null, { step: '0' })
+const HGenecard = Wrapper(Genecard, `${prefix}/gene/init`, null, { step: '0' })
 export default HGenecard

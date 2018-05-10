@@ -1,6 +1,8 @@
 import React from 'react'
-import { Icon, Button } from 'antd'
 import { Card, DatasourceTable, BoxPlot } from '../../components'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 /* class Expression extends React.Component {
   state = {
@@ -71,19 +73,19 @@ const Expression = props => {
     <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
     <div className="testtesttest">
       <div>
-        <img src={`/cgi/public/diff/gene_boxplot/TP53.png`} />
+        <img src={`${prefix}/public/diff/gene_boxplot/TP53.png`} />
         <p>GSE1722 - Tumor vs Normal - Coding - TP53</p>              
       </div>
       <div>
-        <img src={`/cgi/public/survival/GSE27020_PFS/TP53.png`} />
+        <img src={`${prefix}/public/survival/GSE27020_PFS/TP53.png`} />
         <p>TP53 - GSE27020_PFS - survival</p>
       </div>
       <div>  
-        <img src={`/cgi/public/survival/GSE31056_PFS/TP53.png`}/>
+        <img src={`${prefix}/public/survival/GSE31056_PFS/TP53.png`}/>
         <p>TP53 - GSE31056_PFS - survival</p>              
       </div>
       <div>
-        <img src={`/cgi/public/survival/GSE41613_OS/TP53.png`} />
+        <img src={`${prefix}/public/survival/GSE41613_OS/TP53.png`} />
         <p>TP53 - GSE41613_OS - survival</p>              
       </div>
     </div>

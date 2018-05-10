@@ -3,6 +3,9 @@ import { Select } from 'antd'
 
 const Option = Select.Option
 
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
+
 class SearchInput extends React.Component {
     state = {
       data: [],
@@ -44,7 +47,7 @@ function fetchForSuggest(value, callback, cgi) {
   currentValue = value;
 
   function fake() {
-    fetch(`/cgi/gene/${cgi}?q=${value}`,{
+    fetch(`${prefix}/gene/${cgi}?q=${value}`,{
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

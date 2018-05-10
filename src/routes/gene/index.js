@@ -1,7 +1,6 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon } from 'antd'
-import { Header, Card, Tabs, Search, HeatMapTable } from '../../components'
+import { Header, Card } from '../../components'
 import HGenelist from './hocgenelist'
 import HHeatmap from './hocheatmap'
 

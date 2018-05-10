@@ -1,8 +1,10 @@
 import React from 'react'
-import queryString from 'query-string'
-import { Icon, Button } from 'antd'
+import { Icon } from 'antd'
 import Wrapper from '../wrapper'
-import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
+import { HeatMapTable, Tabs, Search, Card } from '../../components'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 class WithSearch extends React.Component {
   state = {
@@ -25,7 +27,7 @@ class WithSearch extends React.Component {
     }
 
     const HeatmapProps = {
-      url: '/cgi/gene/heatmap',
+      url: `${prefix}/gene/heatmap`,
       filter,
       t,
       onCellClick: (gene, c, t) => {

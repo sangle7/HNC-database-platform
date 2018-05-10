@@ -1,9 +1,12 @@
 import React from 'react'
 
 import queryString from 'query-string'
-import { Button, Icon, Spin, message } from 'antd'
-import { DatasourceTable, ScatterChart, Header, Card, Breadcrumb, WrappedDynamicFieldSet } from '../../components'
+import { Spin, message } from 'antd'
+import { DatasourceTable, ScatterChart, Header, Card, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 class Corr extends React.Component {
   state = {
@@ -15,7 +18,7 @@ class Corr extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/cgi/corr/init', {
+    fetch(`${prefix}/corr/init`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

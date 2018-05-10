@@ -1,7 +1,6 @@
 import React from 'react'
 import style from './home.less'
 import { Link } from 'react-router-dom'
-import { Carousel } from 'antd';
 import { Header, Card } from '../../components'
 
 

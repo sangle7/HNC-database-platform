@@ -1,7 +1,7 @@
 import React from 'react'
 
 import style from './search.less'
-import { Input, Icon, Button, Dropdown, Menu } from 'antd'
+import { Input, Button } from 'antd'
 
 class SearchWithState extends React.Component {
   constructor (props) {
@@ -17,16 +17,10 @@ class SearchWithState extends React.Component {
   }
   render () {
     const { title, placeholder, onKeyUp } = this.props
-    const menu = array => {
-      return (
-        <Menu onClick={e => this.props.onSearch(e.key, this.state.value)} >
-          {array.map((elem, index) => <Menu.Item key={String(index)}>{elem}</Menu.Item>)}
-        </Menu>)
-    }
     return (
       <div>
         <Input className={style.search} placeholder={placeholder} onKeyUp={onKeyUp} onPressEnter={() => this.props.onSearch(this.state.value)} onChange={e => this.onChange(e.target.value)} />
-        {Array.isArray(title) ? <Dropdown overlay={menu(title)}><Button type="primary" style={{ padding: '0 20px', borderRadius: 0 }}>搜索 <Icon type="down" /></Button></Dropdown> : <Button style={{ padding: '0 20px', borderRadius: 0 }} type="primary" onClick={() => this.props.onSearch(this.state.value)}>{title}</Button>}
+        <Button style={{ padding: '0 20px', borderRadius: 0 }} type="primary" onClick={() => this.props.onSearch(this.state.value)}>{title}</Button>
       </div>
     )
   }

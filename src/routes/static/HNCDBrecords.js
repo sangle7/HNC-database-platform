@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { Icon } from 'antd'
-import { Tabs, Card,  DatasourceTable, BarChart } from '../../components'
+import { Tabs, Card, DatasourceTable, BarChart } from '../../components'
 import { countFromArray } from '../../const'
 import Wrapper from '../wrapper'
 
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 const HNCDB = props => {
   const { loading, dataSource = [], geneId } = props
@@ -57,6 +59,6 @@ const HNCDB = props => {
   </Card>)
 }
 
-const HHNCDB = Wrapper(HNCDB, '/cgi/gene/init', null, { step: '1' })
+const HHNCDB = Wrapper(HNCDB, `${prefix}/gene/init`, null, { step: '1' })
 
 export default HHNCDB

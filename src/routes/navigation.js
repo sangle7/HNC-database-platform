@@ -1,11 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Button, Menu, Icon, Col, Row,  } from 'antd'
 import style from './navigation.less'
 import { menu } from '../const'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
-
-const SubMenu = Menu.SubMenu;
+import Navbar from 'react-bootstrap/lib/Navbar';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+// import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 
 
 class MMM extends React.Component {

@@ -2,7 +2,7 @@
 
 ## [Zhixiang Zuo](https://www.researchgate.net/profile/Zhixiang_Zuo/publications)
 
- zuozhx@sysucc.org.cn
+zuozhx@sysucc.org.cn
 
 Associate Professor of Cancer Genomics
 

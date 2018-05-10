@@ -1,6 +1,5 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon } from 'antd'
 import { Header, Card } from '../../components'
 import HCasecard from './hoccasecard'
 import HGenecard from './hocgenecard'

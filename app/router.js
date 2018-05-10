@@ -24,5 +24,5 @@ module.exports = app => {
   app.get('/case/item', app.controller.case.item)
 
   app.get('/', 'home.index');
-  app.get('*', 'home.index');
+  // app.get('*', 'home.index');
 };

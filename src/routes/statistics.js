@@ -1,8 +1,9 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon } from 'antd'
 import { Header, Stackchart, PieChart,  Card } from '../components'
 
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 class Statistics extends React.Component {
   state = {
     loading: false,
@@ -18,7 +19,7 @@ class Statistics extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/cgi/statistics', {
+    fetch(`${prefix}/statistics`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

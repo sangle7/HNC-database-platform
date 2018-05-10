@@ -1,12 +1,14 @@
 import React from 'react'
 
 import queryString from 'query-string'
-import { Spin, Icon, Button, Modal } from 'antd'
+import { Button } from 'antd'
 import DiffModal from './diffModal'
 import { DatasourceTable, ScatterChart, Header, Card, Tabs } from '../../components'
 import style from './style.less'
 import Multiselect from '../../components/multiselect';
 
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 class TabDefault extends React.Component {
   state = {
     dataSource : [],
@@ -24,7 +26,7 @@ class TabDefault extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/cgi/diff/table', {
+    fetch(`${prefix}/diff/table`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +90,7 @@ class TabDefault extends React.Component {
 
     return (
       <div style={{display:'flex',alignItems:'center'}}>
-        <img src={`/cgi/public/diff/${name}`} alt="diff" height="400" style={{margin:'0 auto'}}/>
+        <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400" style={{margin:'0 auto'}}/>
         <DiffModal {...ModalProps}/>
         {dataSource[0] ? <DatasourceTable {...TableProps} /> : <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>}
       </div>
@@ -105,7 +107,7 @@ class Diff extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch('/cgi/diff/init', {
+    fetch(`${prefix}/diff/init`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

@@ -1,8 +1,11 @@
 import React from 'react'
 import queryString from 'query-string'
-import { Icon, Button } from 'antd'
+import { Icon } from 'antd'
 import Wrapper from '../wrapper'
-import { Breadcrumb, HeatMapTable, Header,Tabs, DatasourceTable, Search, Download, Card } from '../../components'
+import { HeatMapTable, Search, Card } from '../../components'
+
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 class GeneList extends React.Component {
   state = {
@@ -37,7 +40,7 @@ class GeneList extends React.Component {
     }
 
     const HeatmapProps = {
-      url: '/cgi/drug/heatmap',
+      url: `${prefix}/drug/heatmap`,
       filter,
       onCellClick: (gene, c, t) => {
         history.push(`/statics?t=${t}&geneId=${gene}&drugId=${c}`)      

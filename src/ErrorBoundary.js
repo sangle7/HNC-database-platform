@@ -1,7 +1,4 @@
 import React from 'react'
-import {
-  ErrorPage,
-} from './routes'
 
 class ErrorBoundary extends React.Component {
   constructor (props) {
@@ -19,7 +16,7 @@ class ErrorBoundary extends React.Component {
   render () {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <ErrorPage />
+      return <h1>404</h1>
     }
     return this.props.children
   }

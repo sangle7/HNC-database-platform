@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HNC-gene-database</title>
-  <link href="/public/style.css" rel="stylesheet"></head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <script src="/static/main-dev.js"></script>
-  <script type="text/javascript" src="/public/manifest-86bff0943054109491bd.js"></script><script type="text/javascript" src="/public/vendor-86bff0943054109491bd.js"></script><script type="text/javascript" src="/public/main-86bff0943054109491bd.js"></script></body>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0，minimum-scale=1.0">
+  <title>HNC Database</title>
+  <script>
+    (function (win) {
+      var docEl = win.document.documentElement;
+      var timer = '';
+
+      function changeRem() {
+        var width = docEl.getBoundingClientRect().width;
+        if (width > 750) { // 750是设计稿大小
+          width = 750;
+        }
+        var fontS = Math.max(width / 10, 12); // 把设备宽度十等分 1rem=10px
+        docEl.style.fontSize = fontS + "px";
+      }
+      win.addEventListener("resize", function () {
+        clearTimeout(timer);
+        timer = setTimeout(changeRem, 30);
+      }, false);
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) { //清除缓存
+          clearTimeout(timer);
+          timer = setTimeout(changeRem, 30);
+        }
+      }, false);
+      changeRem();
+    })(window)
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <style>
+    body {
+      min-height: 100%;
+      height: auto !important;
+      position: relative;
+    }
+  </style>
+  <link href="/public/static/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root" style="height:100%"></div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.min.js"></script>
+  
+  <script type="text/javascript" src="/public/static/manifest-718ec2ab8838fbdb3f08.js"></script>
+  <script type="text/javascript" src="/public/static/vendor-718ec2ab8838fbdb3f08.js"></script>
+  <script type="text/javascript" src="/public/static/ui-718ec2ab8838fbdb3f08.js"></script>
+  <script type="text/javascript" src="/public/static/main-718ec2ab8838fbdb3f08.js"></script>
+</body>
+
 </html>

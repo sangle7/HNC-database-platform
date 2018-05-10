@@ -1,5 +1,6 @@
 import countFromArray from './countFromArray'
 import getlinearRegression from './getlinearRegression'
+import cgiConfig from './cgiConfig'
 
 const COLORS = ['#E64B35','#4DBBD5','#00A087','#3C5488','#F3987F','#8491B4','#91D1C2','#7E6148','#B09C85','#DC0000']
 const menuWithIcon = [{
@@ -46,4 +47,5 @@ export {
   COLORS,
   countFromArray,
   getlinearRegression,
+  cgiConfig
 }

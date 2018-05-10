@@ -1,6 +1,4 @@
 import React from 'react'
-
-import { Breadcrumb, Icon } from 'antd'
 import style from './breadcrumb.less'
 
 const Separator = () => (

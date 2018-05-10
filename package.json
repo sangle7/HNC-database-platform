@@ -5,9 +5,6 @@
   "private": true,
   "dependencies": {
     "antd": "^3.3.1",
-    "axios": "^0.17.0",
-    "d3": "^3.5.1",
-    "d3_exploding_boxplot": "^0.2.1",
     "echarts": "^4.0.4",
     "egg": "^1.9.0",
     "egg-cors": "^1.2.0",
@@ -16,18 +13,14 @@
     "egg-view-nunjucks": "^2.1.4",
     "fast-csv": "^2.4.1",
     "html-loader": "^0.5.5",
-    "jquery": "^3.3.1",
     "markdown-loader": "^2.0.2",
-    "marked": "^0.3.16",
     "md5": "^2.2.1",
-    "prop-types": "^15.6.0",
     "query-string": "^5.1.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "shelljs": "^0.7.8",
-    "url-parse": "^1.1.9"
+    "shelljs": "^0.7.8"
   },
   "devDependencies": {
     "ant-design-pro": "^0.1.10",
@@ -67,6 +60,7 @@
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0",
     "webstorm-disable-index": "^1.2.0"
@@ -86,7 +80,7 @@
     "dev:fe": "node devServer.js",
     "dev:ser": "NODE_ENV=development EGG_SERVER_ENV=local node index.js",
     "lint": "eslint ./src --fix",
-    "build": "rm -rf app/public/js && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color"
+    "build": "rm -rf app/public/static && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color"
   },
   "ci": {
     "version": "6, 8"

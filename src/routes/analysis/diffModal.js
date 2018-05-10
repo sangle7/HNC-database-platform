@@ -2,6 +2,8 @@ import React from 'react'
 import { Modal } from 'antd'
 import { DatasourceTable, BoxPlot } from '../../components'
 
+const env = process.env.NODE_ENV;
+const prefix = env === 'production' ? '' : '/cgi'
 
 class DiffModal extends React.Component {
   state = {
@@ -15,7 +17,7 @@ class DiffModal extends React.Component {
     this.setState({
       loading: false,
     })
-    fetch('/cgi/diff/boxplot', {
+    fetch(`${prefix}/diff/boxplot`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ class DiffModal extends React.Component {
 
     return (
       <Modal {...ModalProps}>
-        <img src="/cgi/public/diff/gene_boxplot/CYP2J2.png" />
+        <img src={`${prefix}/public/diff/gene_boxplot/CYP2J2.png`} />
         {/* <div style={{display: 'flex',justifyContent:'space-between'}}>
           <DatasourceTable {...TableProps}/> 
           {imgData[0]? <BoxPlot {...BoxPlotProps}/>: <div>

@@ -44,7 +44,7 @@ const config = {
     "echarts": "window.echarts"
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       output: {
         beautify: false,

@@ -42,18 +42,36 @@ class TabDefault extends React.Component {
         })
       })
   }
-  showModal = () => {
+  showModal = gene => {
+    const type = this.props.name.split('_')[1]
     this.setState({
-      modalVisible: true,
+      loading: false,
+    })
+    fetch(`${prefix}/diff/boxplot`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ gene, type }),
+    })
+      .then(blob => blob.json())
+      .then(code => {
+        this.setState({
+          gene,
+          boxPlotData: code.list,
+          loading: false,
+          modalVisible: true,
+        })
     })
   }
   render () {
     const { name } = this.props
-    const { dataSource, modalVisible, loading } = this.state
+    const { dataSource, modalVisible, loading, boxPlotData } = this.state
 
     const ModalProps = {
       title: name,
       dataSource,
+      boxPlotData,
       visible: modalVisible,
       onCancel: this.hideModal
     }
@@ -66,7 +84,7 @@ class TabDefault extends React.Component {
         title: 'Gene',
         dataIndex: 'Gene',
         onCell: record => ({
-          onClick: () => this.showModal(),
+          onClick: () => this.showModal(record['Gene']),
         }),
       },{
         title: 'logFC',

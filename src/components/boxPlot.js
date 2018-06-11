@@ -1,7 +1,6 @@
 import React from 'react'
 import echarts from 'echarts'
 echarts.dataTool = require("echarts/extension/dataTool");
-import { prepareBoxplotData } from '../const'
 
 class Boxplot extends React.Component {
 
@@ -15,9 +14,11 @@ class Boxplot extends React.Component {
   }
 
   updateChart = props => {
-    const { title, imgData } = props
+    const { title, boxPlotData } = props
 
-    var data = echarts.dataTool.prepareBoxplotData(imgData);
+    console.log(boxPlotData)
+
+    var data = echarts.dataTool.prepareBoxplotData(boxPlotData);
   
     const option = {
       title: [{

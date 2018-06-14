@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { message } from 'antd'
 import queryString from 'query-string'
 import { Header, Card, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
@@ -17,23 +17,23 @@ class Survival extends React.Component {
     }) */
     const { names } = params
     const gene = names[0]
-    this.setState({
-      gene,
-    })
-    /* fetch('${prefix}/survival/init', {
+    fetch(`${prefix}/survival/init`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(params),
+      body: JSON.stringify({ gene }),
     })
       .then(blob => blob.json())
       .then(code => {
-        this.setState({
-          dataSource: code.list,
-          loading: false,
-        })
-      }) */
+        if (code.gene) {
+          this.setState({
+            gene: code.gene,
+          })
+        } else {
+          message.error(code.msg)
+        }
+      })
   }
   render () {
     const { gene } = this.state

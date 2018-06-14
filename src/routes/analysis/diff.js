@@ -82,7 +82,7 @@ class TabDefault extends React.Component {
 
     const TableProps = {
       dataSource,
-      scroll: { x:true, y: 300 },
+      scroll: { x: true, y: false },
       pagination,
       onChange: page => this.fetchData(null, page),
       columns: [{

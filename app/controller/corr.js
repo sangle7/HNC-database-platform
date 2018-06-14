@@ -84,7 +84,6 @@ exports.init = async ctx => {
 
   async function validate(names){
     for (let item of names){
-      console.log(item)
       const result = await ctx.service.genename.get(item)   
       if(!result){
         return false

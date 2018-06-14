@@ -19,6 +19,8 @@ module.exports = app => {
   
   app.post('/corr/init', app.controller.corr.init)
 
+  app.post('/survival/init', app.controller.survival.init)
+
   app.get('/drug/item', app.controller.drug.item)
 
   app.get('/case/item', app.controller.case.item)

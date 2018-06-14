@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { Table, Spin } from 'antd'
 import style from './heatMapTable.less'
+import ReactDOM from 'react-dom'
 
 const ColorWrapper = () => (
   <div>
@@ -35,9 +36,11 @@ class DatasourceTable extends React.Component {
     this.fetchData({
       t: this.props.t,      
     })
-    this.elem = document.getElementById('hmtable').getElementsByClassName('ant-table-body')[0]
+    this.elem = ReactDOM.findDOMNode(this.hmtable).getElementsByClassName('ant-table-body')[0]
     this.elem.onscroll = e => {
-      if (checkIsPartialVisible(this.elem, 'test', 360)) {
+      this.scrolltag = this.elem.getElementsByClassName('scrolltag')[0]
+      console.log('visible',checkIsPartialVisible(this.elem, this.scrolltag, 360))
+      if (checkIsPartialVisible(this.elem, this.scrolltag, 360)) {
         this.fetchData({
           t: this.props.t,
           offset: this.state.dataSource.length,
@@ -95,6 +98,22 @@ class DatasourceTable extends React.Component {
         })
       })
   }
+
+  gRender (e, v, index, list, key) {
+    if (v === 0) {
+      return '-'
+    } else if (index === list.length - 1) {
+      return {
+        children: e === 'id' ? null : <span className="scrolltag">{v}</span>,
+        props: {
+          colSpan: gColSpan(e,list, key)
+        },
+      }
+    } else {
+      return v
+    }
+  }
+
   render () {
     let { onCellClick, t, higher = false }  = this.props
     const { dataSource, filtedtotal, min, max, total, loading }  = this.state
@@ -116,7 +135,6 @@ class DatasourceTable extends React.Component {
       <Table
         ref={t => this.hmtable = t}
         onChange = {this.onChange}
-        id="hmtable"
         className={classnames({ [style.table]: true,[style.higher]: higher,[style.mincol]: mincol })}
         simple
         loading={loading}
@@ -133,9 +151,9 @@ class DatasourceTable extends React.Component {
             onCell:record => ({
               onClick: () => { e!=='id' && onCellClick(record.id , e, t); },
               style: gStyle(e, record[e]),
-              id: (e === firstKey && record.id === '') ? 'test' : null
+              className: (e === firstKey && record.id === '') && 'scrolltag'
             }),
-            render:(v,row,index) => gRender(e,v,index,list,firstKey)
+            render:(v,row,index) => this.gRender(e,v,index,list,firstKey)
             /*最后一行的id column span才为全部 */
         })) : []}
         footer={()=>(<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal}/>)}
@@ -147,23 +165,8 @@ class DatasourceTable extends React.Component {
 
 export default DatasourceTable
 
-function gRender (e, v, index, list, key) {
-  if (v === 0) {
-    return '-'
-  } else if (index === list.length - 1) {
-    return {
-      children: e === 'id' ? null : <span id="test">{v}</span>,
-      props: {
-        colSpan: gColSpan(e,list, key)
-      },
-    }
-  } else {
-    return v
-  }
-}
 
-function checkIsPartialVisible (a, domid, query) {
-  const element = document.getElementById(domid)
+function checkIsPartialVisible (a, element, query) {
   const recta = a.getBoundingClientRect()
   const rect = element.getBoundingClientRect()
   const isPartialVisible = rect.top - recta.top <= query

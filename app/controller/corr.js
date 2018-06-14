@@ -29,7 +29,7 @@ exports.init = async ctx => {
             headers: true
           })
         } else {
-          const rResult = R(`corr.1v1.R`, `${app.config.Rpath}/coding.matrix.adj.txt ${app.config.Rpath}/lncRNA.matrix.adj.txt ${name1} ${name2} ${md5String}`)
+          const rResult = R(`corr.1v1.R`, `${app.config.Rpath}/coding.matrix.txt ${app.config.Rpath}/lncRNA.matrix.txt ${name1} ${name2} ${md5String}`)
           if (rResult.code === 0) {
             // 读取文件内容
             newList = await promiseCSV(filePath, {

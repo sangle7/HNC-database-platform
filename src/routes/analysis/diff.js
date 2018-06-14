@@ -1,28 +1,26 @@
 import React from 'react'
-
-import queryString from 'query-string'
 import { Button } from 'antd'
 import DiffModal from './diffModal'
-import { DatasourceTable, ScatterChart, Header, Card, Tabs } from '../../components'
-import style from './style.less'
-import Multiselect from '../../components/multiselect';
+import { Multiselect, DatasourceTable, Header, Card, Tabs } from '../../components'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 class TabDefault extends React.Component {
   state = {
-    dataSource : [],
+    dataSource: [],
     modalVisible: false,
     loading: false,
+    subtitle: {},
+    pagination: {}
   }
   hideModal = () => {
     this.setState({
       modalVisible: false,
     })
   }
-  fetchData = () => {
+  fetchData = (e, pagination) => {
+    console.log(pagination)
     const { name } = this.props
-    const tablename = name.replace('heatmap.png','table.csv')
     this.setState({
       loading: true,
     })
@@ -31,19 +29,19 @@ class TabDefault extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ tablename }),
+      body: JSON.stringify({ name: name.replace('.heatmap.png',''), pagination }),
     })
       .then(blob => blob.json())
       .then(code => {
         this.setState({
           dataSource: code.list,
           loading: false,
+          pagination: code.pagination,
           // modalVisible: true,
         })
       })
   }
-  showModal = gene => {
-    const type = this.props.name.split('_')[1]
+  showModal = obj => {
     this.setState({
       loading: false,
     })
@@ -52,39 +50,47 @@ class TabDefault extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ gene, type }),
+      body: JSON.stringify({ ...obj, title: this.props.name.replace('.heatmap.png','') }),
     })
       .then(blob => blob.json())
       .then(code => {
         this.setState({
-          gene,
+          gene: obj.gene,
           boxPlotData: code.list,
           loading: false,
           modalVisible: true,
+          subtitle: {
+            'P.Value': parseFloat(code.p).toExponential(2),
+            'adj.P.Val': parseFloat(code.adjp).toFixed(4),
+          }
         })
-    })
+      })
   }
   render () {
     const { name } = this.props
-    const { dataSource, modalVisible, loading, boxPlotData } = this.state
+    const { dataSource, modalVisible, subtitle, pagination, gene, loading, boxPlotData } = this.state
 
     const ModalProps = {
-      title: name,
+      title: name.replace('.heatmap.png', ''),
       dataSource,
       boxPlotData,
+      subtitle,
+      gene,
       visible: modalVisible,
-      onCancel: this.hideModal
+      onCancel: this.hideModal,
     }
 
     const TableProps = {
       dataSource,
       scroll: { x:true, y: 300 },
-      pagination: false,
+      pagination,
+      onChange: page => this.fetchData(null, page),
       columns: [{
         title: 'Gene',
         dataIndex: 'Gene',
         onCell: record => ({
-          onClick: () => this.showModal(record['Gene']),
+          onClick: () => this.showModal({ gene: record.Gene, p: record['P.Value'], adjp: record['adj.P.Val'] }),
+          style: { cursor: 'pointer', color: '#a9303e', fontWeight: 400 },
         }),
       },{
         title: 'logFC',
@@ -107,8 +113,8 @@ class TabDefault extends React.Component {
 
 
     return (
-      <div style={{display:'flex',alignItems:'center'}}>
-        <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400" style={{margin:'0 auto'}}/>
+      <div style={{ display:'flex',alignItems:'center', justifyContent: 'space-around' }}>
+        <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400"/>
         <DiffModal {...ModalProps}/>
         {dataSource[0] ? <DatasourceTable {...TableProps} /> : <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>}
       </div>
@@ -150,10 +156,7 @@ class Diff extends React.Component {
         key: elem,
         title: elem.split('_')[0],
         content: <TabDefault name={elem}/>,
-      })),
-      onChange:(v)=>{
-        console.log(v)
-      }
+      }))
     }
 
     return (

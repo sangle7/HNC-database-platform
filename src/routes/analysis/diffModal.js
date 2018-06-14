@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV;
 const prefix = env === 'production' ? '' : '/cgi'
 
 const DiffModal = props =>{ 
-  const { title, visible, dataSource, onCancel, boxPlotData } = props
+  const { gene, title, subtitle, visible, dataSource, onCancel, boxPlotData } = props
 
   const ModalProps = {
     width: 600,
@@ -17,8 +17,10 @@ const DiffModal = props =>{
   }
 
   const BoxPlotProps = {
+    gene,
     title,
     boxPlotData,
+    subtitle,
   } 
 
   return (

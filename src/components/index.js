@@ -10,6 +10,7 @@ import Card from './card'
 import HeatMapTable from './heatMapTable'
 import Stackchart from './stackChart'
 import PieChart from './piechart'
+import Multiselect from './multiselect'
 
 export {
   WrappedDynamicFieldSet,
@@ -19,6 +20,7 @@ export {
   Header,
   Tabs,
   ScatterChart,
+  Multiselect,
   DatasourceTable,
   Search,
   BarChart,

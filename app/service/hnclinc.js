@@ -119,11 +119,13 @@ module.exports = app => {
       return arr
     }
     async queryById(SampleID) {
-        const item = await app.mysql.get('hnclinc', {
-          SampleID
+        const list = await app.mysql.select('hnclinc', {
+          where:{
+            DatasetID:SampleID,
+          }
         })
         return {
-          item
+          list
         }
       }
       async filterByType(type) {

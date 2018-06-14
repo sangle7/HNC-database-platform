@@ -24,5 +24,3 @@ exports.mysql = {
   app: true,
   agent: false,
 }
-
-exports.Rpath = '/Users/sanglewang/documents'

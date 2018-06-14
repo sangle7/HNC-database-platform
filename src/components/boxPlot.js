@@ -106,7 +106,7 @@ class Boxplot extends React.Component {
 
   render () {
     const { size = 550 } = this.props
-    return <div id="echart-boxplot" style={{width:`${size}px`,height:`${size}px`}} />
+    return <div id="echart-boxplot" style={{ margin: '0 auto', width: `${size}px`, height: `${size}px` }} />
   }
 }
 export default Boxplot

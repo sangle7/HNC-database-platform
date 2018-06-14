@@ -54,7 +54,7 @@ const HNCDB = props => {
     },
   }
   return (
-  <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Records</span></div>}>
+  <Card title={<div><i className="fa fa-bar-chart fa-lg"/><span>Gene Records</span></div>}>
     <Tabs {...TabProps} />
   </Card>)
 }

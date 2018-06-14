@@ -50,7 +50,7 @@ const Casecard = props => {
     loading,
   }
   return (
-    <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Dataset Information</span></div>}>
+    <Card title={<div><i className="fa fa-list-alt fa-fw fa-lg"/><span>Dataset Information</span></div>}>
       <DatasourceTable {...TableProps} />
     </Card>
   )

@@ -69,18 +69,43 @@ exports.table = async ctx =>{
     let body = {
         ret: 500,
     }
-    let list = []
+    let temp = {
+        list: []
+    }
 
     const {
-        tablename
+        pagination = {},
+        geneId,
+        name //GSE21866_Tumor_vs_Normal_coding
     } = ctx.request.body
 
-    const filePath = path.join(__dirname,'..','public','table',tablename);
-    list = await promiseCSV(filePath, {
-        headers: true
-    })
+    const { current = 1 } = pagination
 
-    body.list = list
+    if (geneId) {
+        temp = await ctx.service.difftable.getByGene({
+            geneId
+        })
+    } else {
+
+        const {
+            caseId,
+            geneType,
+            type
+        } = arrangeName(name)
+
+        temp = await ctx.service.difftable.getByCase({
+            caseId,
+            type,
+            geneType,
+            page: current
+        })
+    }
+
+    body.list = temp.list
+    body.pagination = {
+        page: current,
+        total: temp.total
+    }
 
     ctx.body = body
 }
@@ -90,12 +115,31 @@ exports.boxplot = async ctx =>{
     let body = {
         ret: 500,
     }
-    const list = [
-        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
-        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
-    ]
 
-    body.list = list
+    const {
+        gene,
+        p,
+        adjp,
+        title, //GSE1722_Tumor_vs_Normal_coding
+    } = ctx.request.body
+
+    const { caseId, geneType, type } = arrangeName(title)
+    
+    const { boxplot1, boxplot2 } = await ctx.service.submartix.getBoxPlot({
+        caseId, 
+        type,
+        geneType, 
+        gene
+    })
+
+    const list1 = Object.values(boxplot1).slice(1)
+    const list2 = Object.values(boxplot2).slice(1)
+
+    body = {
+        list:[list1,list2],
+        p,
+        adjp
+    }
 
     ctx.body = body
 }
@@ -112,4 +156,19 @@ function promiseCSV(path, options) {
         });
     });
   }
+
+  function arrangeName (name) {
+    const arr = name.split('_')
+    const caseId = arr[0]
+    const geneType = arr[arr.length-1]
+
+    arr.pop()
+    arr.shift()
+
+    const type = arr.join('@')
+    return {
+        caseId,geneType,type
+    }
+}
+
   

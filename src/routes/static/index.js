@@ -14,7 +14,9 @@ const staticPage = props => {
 
   const ExpressionProps = {
     url: 'cgi/gene/init',
+    caseId: params.caseId,
     geneId: params.geneId,
+    type:params.t,
     onclickcb:(e)=>{console.log(e)}
   }
 

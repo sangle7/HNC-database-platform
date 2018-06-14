@@ -1,95 +1,126 @@
 import React from 'react'
-import { Card, DatasourceTable, BoxPlot } from '../../components'
+import { Card, BoxPlot, DatasourceTable } from '../../components'
+import style from './style.less'
 
 const env = process.env.NODE_ENV;
 const prefix = env === 'production' ? '' : '/cgi'
 
-/* class Expression extends React.Component {
+const typeMap = {
+  tumorcoding: 'Tumor_vs_Normal_coding',
+  tumorlnc: 'Tumor_vs_Normal_lncRNA',
+  hpvcoding: 'HPV_positive_vs_HPV_negative_coding',
+  hpvlnc: 'HPV_positive_vs_HPV_negative_lncRNA',
+}
+const gTitle = (caseId, type) => {
+  const typeStr = typeMap[type] || ''
+  return `${caseId}_${typeStr}`
+}
+class Expression extends React.Component {
   state = {
-    list: [],
-    isShow: false,
+    boxPlotData: [],
     loading: false,
+    dataSource: [],
   }
-
-  fetchData = () => {
+  componentDidMount () {
+    const { caseId, type, geneId } = this.props
     this.setState({
       loading: true,
     })
-    fetch(`${this.props.url}?geneId=${this.props.geneId}&step=3`, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(blob => blob.json())
-      .then(code => {
-        this.setState({
-          list: code.list,
-          isShow: true,
-          loading: false,
-        })
+    if (caseId) {
+      fetch(`${prefix}/diff/boxplot`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ gene: geneId, title: gTitle(caseId, type) }),
       })
+        .then(blob => blob.json())
+        .then(code => {
+          this.setState({
+            boxPlotData: code.list,
+            loading: false,
+          })
+        })
+    } else {
+      fetch(`${prefix}/diff/table`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ geneId }),
+      })
+        .then(blob => blob.json())
+        .then(code => {
+          this.setState({
+            dataSource: code.list,
+            loading: false,
+          })
+        })
+    }
   }
-
   render () {
-    const { loading, isShow, list } = this.state
-    const { onclickcb } = this.props
+    const { caseId, type,geneId } = this.props
+    const { boxPlotData, dataSource } = this.state
 
     const BoxPlotProps = {
-      dataSource: list,
-      onclickcb,
-      width: Math.min(Math.floor(document.body.clientWidth * 0.85),600)
-    }
+      gene: geneId,
+      title: gTitle(caseId, type),
+      boxPlotData,
+    } 
 
     const TableProps = {
-      dataSource: list,
-      showHeader: false,
+      dataSource,
+      scroll: { x:true, y: 300 },
       pagination: false,
-      scroll:{y:440,x:false},
       columns: [{
-        title: 'Sample ID',
-        dataIndex: 't',
-      }, {
-        title: 'Value',
-        dataIndex: 'v',
-      }],
+        title: 'Gene',
+        dataIndex: 'Gene',
+        onCell: record => ({
+          // onClick: () => this.showModal(record['Gene']),
+        }),
+      },{
+        title: 'dataset',
+        dataIndex: 'dataset',
+      },{
+        title: 'logFC',
+        dataIndex: 'logFC',
+        render:v => parseFloat(v).toFixed(4)
+      },{
+        title: 'AveExpr',
+        dataIndex: 'AveExpr',
+        render:v => parseFloat(v).toFixed(4)        
+      },{
+        title: 'P.Value',
+        dataIndex: 'P.Value',
+        render:v => parseFloat(v).toExponential(2)        
+      },{
+        title: 'adj.P.Val',
+        dataIndex: 'adj.P.Val',
+        render:v => parseFloat(v).toFixed(4)        
+      }]
     }
+
     return (
       <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
-        {isShow ? 
-        <div className='flexdc'>
-          <BoxPlot {...BoxPlotProps}/>
-          <DatasourceTable {...TableProps} />
-        </div> : 
-        <Button icon="clock-circle-o" loading={loading} type="primary" onClick={() => this.fetchData()}>Generate Boxplot</Button> }
+      <div>
+        {caseId ? <BoxPlot {...BoxPlotProps}/> : <DatasourceTable {...TableProps}/>}        
+      </div>
+      <div className={style.imgcontainer}>
+        <div>
+          <img src={`${prefix}/public/survival/GSE27020_PFS/${geneId}.png`} />
+          <p>{geneId} - GSE27020_PFS - survival</p>
+        </div>
+        <div>  
+          <img src={`${prefix}/public/survival/GSE31056_PFS/${geneId}.png`}/>
+          <p>{geneId} - GSE31056_PFS - survival</p>              
+        </div>
+        <div>
+          <img src={`${prefix}/public/survival/GSE41613_OS/${geneId}.png`} />
+          <p>{geneId} - GSE41613_OS - survival</p>              
+        </div>
+      </div>
       </Card>
     )
   }
-} */
-
-const Expression = props => {
-  const { geneId } = props
-  return (
-    <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
-    <div className="testtesttest">
-      <div>
-        <img src={`${prefix}/public/diff/gene_boxplot/TP53.png`} />
-        <p>GSE1722 - Tumor vs Normal - Coding - TP53</p>              
-      </div>
-      <div>
-        <img src={`${prefix}/public/survival/GSE27020_PFS/TP53.png`} />
-        <p>TP53 - GSE27020_PFS - survival</p>
-      </div>
-      <div>  
-        <img src={`${prefix}/public/survival/GSE31056_PFS/TP53.png`}/>
-        <p>TP53 - GSE31056_PFS - survival</p>              
-      </div>
-      <div>
-        <img src={`${prefix}/public/survival/GSE41613_OS/TP53.png`} />
-        <p>TP53 - GSE41613_OS - survival</p>              
-      </div>
-    </div>
-    </Card>
-  )
 }
 export default Expression

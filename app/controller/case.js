@@ -7,9 +7,9 @@ exports.item = async ctx =>{
   const { caseId } = ctx.request.query
 
   try {
-    const { item } = await ctx.service.hnclinc.queryById(caseId)
+    const { list } = await ctx.service.hnclinc.queryById(caseId)
     body = {
-      item: item || {},
+      list: list || [],
       ret: 200,
     }
   } catch (error) {

@@ -24,26 +24,20 @@ npm run dev:ser
 
 ### 前端页面代码更新时
 （例如样式变化，页面增添等）
-1. 推荐的方式为：
+推荐的方式为：
   ```bash
-  npm restart
+  npm run build
   ```
 会自动进行打包构建 打包完毕后自动重启服务器
 
-2. 也可以手动构建
-  ```bash
-  npm run build //打包构建
-  npm stop //关闭服务器
-  npm start //开启服务器
-  ```
 
 ### 只有服务段代码更新时
 （例如数据库更换 etc）
-手动重启服务器即可：
+重启服务器即可：
   ```bash
-  npm stop //关闭服务器
-  npm start //开启服务器
+  npm restart 
   ```
+会自动重启服务器
 
 
 

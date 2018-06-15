@@ -69,7 +69,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "restart":"npm run build && npm stop && npm start",
+    "restart":"npm stop && npm start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "debug": "egg-bin debug",
@@ -81,7 +81,7 @@
     "dev:fe": "node devServer.js",
     "dev:ser": "NODE_ENV=development EGG_SERVER_ENV=local node index.js",
     "lint": "eslint ./src --fix",
-    "build": "rm -rf app/public/static && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color"
+    "build": "rm -rf app/public/static && NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.prod.js --color && npm stop && npm start"
   },
   "ci": {
     "version": "6, 8"

@@ -69,6 +69,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "restart":"npm run build && npm stop && npm start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "debug": "egg-bin debug",

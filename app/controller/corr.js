@@ -28,8 +28,8 @@ exports.init = async ctx => {
           newList = await promiseCSV(filePath, {
             headers: true
           })
-        } else {
-          const rResult = R(`corr.1v1.R`, `app/public/coding.matrix.adj.txt app/public/lncRNA.matrix.adj.txt ${name1} ${name2} ${md5String}`)
+        } else {   
+          const rResult = R(`corr.1v1.R`, `${path.join(__dirname, '..', 'public', 'coding.matrix.adj.txt')} ${path.join(__dirname, '..', 'public', 'lncRNA.matrix.adj.txt')} ${name1} ${name2} ${md5String}`)
           if (rResult.code === 0) {
             // 读取文件内容
             newList = await promiseCSV(filePath, {

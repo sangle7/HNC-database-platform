@@ -11,7 +11,6 @@ module.exports = app => {
   app.post('/gene/heatmap', app.controller.gene.heatmap)
 
   app.post('/drug/heatmap', app.controller.drug.heatmap)
-  
 
   app.post('/diff/init', app.controller.diff.init)
   app.post('/diff/table', app.controller.diff.table)
@@ -25,6 +24,6 @@ module.exports = app => {
 
   app.get('/case/item', app.controller.case.item)
 
-  app.get('/', 'home.index');
+  app.get('*', 'home.index');
   // app.get('*', 'home.index');
 };

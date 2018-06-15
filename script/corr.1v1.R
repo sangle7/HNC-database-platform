@@ -3,8 +3,8 @@ library("data.table")
 Args=commandArgs(trailingOnly = TRUE)
 
 #reading file
-library(limma)
-library(pheatmap)
+# library(limma)
+# library(pheatmap)
 zdf1<-fread(Args[1],header=TRUE)
 zdf2<-fread(Args[2],header=TRUE)
 zdf = rbind(zdf1,zdf2,fill=TRUE)

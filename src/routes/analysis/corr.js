@@ -77,7 +77,7 @@ class Corr extends React.Component {
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
         </Card>
-        {dataSource[0] && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
+        {(dataSource[0] || loading ) && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
             {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps}/> : <DatasourceTable {...TableProps} />}
           </div>

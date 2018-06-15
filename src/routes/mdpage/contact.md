@@ -1,5 +1,3 @@
-# People and Contacts
-
 ## [Zhixiang Zuo](https://www.researchgate.net/profile/Zhixiang_Zuo/publications)
 
 zuozhx@sysucc.org.cn

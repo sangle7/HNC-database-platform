@@ -6,7 +6,7 @@ import './style.less'
 
 const mdMap = {
   Contact: contact,
-  help: help,
+  help,
 }
 
 class MdPage extends React.Component {
@@ -19,7 +19,7 @@ class MdPage extends React.Component {
   }
   componentWillReceiveProps (nextProps) {
     const mdname = nextProps.location.pathname.slice(1)
-    this.setState ({
+    this.setState({
       data: mdMap[mdname],
     })
   }

@@ -6,10 +6,9 @@ import echarts from 'echarts'
 require('./mdtheme')
 
 class PieChart extends React.Component {
-
   componentDidMount () {
     const { uuid } = this.props
-    this.myChart = echarts.init(document.getElementById(`echart-Pie-${uuid}`),'roma');  
+    this.myChart = echarts.init(document.getElementById(`echart-Pie-${uuid}`), 'roma')
     this.updateChart(this.props)
   }
 
@@ -23,7 +22,7 @@ class PieChart extends React.Component {
     const option = {
       tooltip: {
         trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
+        formatter: '{a} <br/>{b}: {c} ({d}%)',
       },
       toolbox: {
         show: true,
@@ -32,13 +31,13 @@ class PieChart extends React.Component {
           saveAsImage: {
             show: true,
             pixelRatio: 2,
-          }
-        }
+          },
+        },
       },
       title: {
         text: `${obj.key} in HNClinc`,
         left: 'center',
-        bottom:0,
+        bottom: 0,
       },
       legend: {
       },
@@ -51,31 +50,31 @@ class PieChart extends React.Component {
           normal: {
             show: false,
             position: 'center',
-            formatter: "{d}%"
+            formatter: '{d}%',
           },
           emphasis: {
             show: true,
             textStyle: {
               fontSize: '30',
-              fontWeight: 'bold'
-            }
-          }
+              fontWeight: 'bold',
+            },
+          },
         },
         labelLine: {
           normal: {
-            show: false
-          }
+            show: false,
+          },
         },
         data: obj.value,
-      }]
-    };
+      }],
+    }
 
-    this.myChart.setOption(option);
+    this.myChart.setOption(option)
   }
 
   render () {
     const { size = 400, uuid } = this.props
-    return <div id={`echart-Pie-${uuid}`} style={{margin:'0 auto',width:'500px',height:'400px'}} />
+    return <div id={`echart-Pie-${uuid}`} style={{ margin: '0 auto', width: '500px', height: '400px' }} />
   }
 }
 

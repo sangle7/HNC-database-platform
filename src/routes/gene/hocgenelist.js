@@ -4,11 +4,11 @@ import { Icon } from 'antd'
 import Wrapper from '../wrapper'
 import { DatasourceTable, Search, Card } from '../../components'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 const GeneList = props => {
-  const { location, history, dataSource, loading, pagination, url } = props
+  const { location, history, dataSource, loading, pagination } = props
 
   const TableProps = {
     columns: [{
@@ -17,7 +17,7 @@ const GeneList = props => {
     }, {
       title: 'hgncID',
       dataIndex: 'hgncid',
-      render:v => <a href={`https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=${v}`}>{v}</a> 
+      render: v => <a href={`https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=${v}`}>{v}</a>,
     }, {
       title: 'symbol',
       dataIndex: 'symbol',
@@ -29,7 +29,7 @@ const GeneList = props => {
     loading,
     pagination,
     nwrap: true,
-    scroll:{x:true},    
+    scroll: { x: true },
     onChange: page => {
       const search = {
         ...queryString.parse(location.search),
@@ -50,7 +50,7 @@ const GeneList = props => {
 
 
   return (
-    <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt"></i><span>Gene Data List</span></div>}>
+    <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt" /><span>Gene Data List</span></div>}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '.2rem' }}>
         <Search {...SearchProps} />
       </div>
@@ -59,4 +59,4 @@ const GeneList = props => {
   )
 }
 
-export default Wrapper(GeneList,`${prefix}/genes`)
+export default Wrapper(GeneList, `${prefix}/genes`)

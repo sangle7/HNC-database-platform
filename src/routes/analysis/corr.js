@@ -1,11 +1,9 @@
 import React from 'react'
-
-import queryString from 'query-string'
 import { Spin, message } from 'antd'
 import { DatasourceTable, ScatterChart, Header, Card, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 class Corr extends React.Component {
@@ -37,7 +35,7 @@ class Corr extends React.Component {
             break
           case 400:
             this.setState({
-              dataSource: [],              
+              dataSource: [],
               loading: false,
             })
             message.error(code.msg)
@@ -48,13 +46,12 @@ class Corr extends React.Component {
   }
   deleteItem = name => {
     const { dataSource } = this.state
-    const list = dataSource.filter(i=>i['']!==name)
+    const list = dataSource.filter(i => i[''] !== name)
     this.setState({
-      dataSource: list
+      dataSource: list,
     })
   }
   render () {
-    const { showModal, location, history } = this.props
     const { dataSource, loading, type } = this.state
 
     const TableProps = {
@@ -63,26 +60,26 @@ class Corr extends React.Component {
       columns: dataSource[0] ? Object.keys(dataSource[0]).map(e => ({
         title: e || 'sample',
         dataIndex: e,
-        width: 100
+        width: 100,
       })) : [],
     }
     const ChartProps = {
       dataSource,
-      onDotClick:(i)=>(this.deleteItem(i)),
+      onDotClick: i => (this.deleteItem(i)),
       size: 600,
     }
     return (
       <div>
-      <Header title="Corr analysis"/>
+        <Header title="Corr analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
-          <WrappedDynamicFieldSet onSubmit={v=>this.init(v)}/>
+          <WrappedDynamicFieldSet onSubmit={v => this.init(v)} />
         </Card>
-        {(dataSource[0] || loading ) && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
+        {(dataSource[0] || loading) && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
-            {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps}/> : <DatasourceTable {...TableProps} />}
+            {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps} /> : <DatasourceTable {...TableProps} />}
           </div>
         </Card>}
-    </div>)
+      </div>)
   }
 }
 

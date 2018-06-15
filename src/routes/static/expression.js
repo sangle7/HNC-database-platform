@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, BoxPlot, DatasourceTable } from '../../components'
 import style from './style.less'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 const typeMap = {
@@ -59,14 +59,14 @@ class Expression extends React.Component {
     }
   }
   render () {
-    const { caseId, type,geneId } = this.props
+    const { caseId, type, geneId } = this.props
     const { boxPlotData, dataSource } = this.state
 
     const BoxPlotProps = {
       gene: geneId,
       title: gTitle(caseId, type),
       boxPlotData,
-    } 
+    }
 
     const TableProps = {
       dataSource,
@@ -84,44 +84,44 @@ class Expression extends React.Component {
       }, {
         title: 'logFC',
         dataIndex: 'logFC',
-        render: v => parseFloat(v).toFixed(4)
+        render: v => parseFloat(v).toFixed(4),
       }, {
         title: 'AveExpr',
         dataIndex: 'AveExpr',
-        render: v => parseFloat(v).toFixed(4)
+        render: v => parseFloat(v).toFixed(4),
       }, {
         title: 'P.Value',
         dataIndex: 'P.Value',
-        render: v => parseFloat(v).toExponential(2)
+        render: v => parseFloat(v).toExponential(2),
       }, {
         title: 'adj.P.Val',
         dataIndex: 'adj.P.Val',
-        render: v => parseFloat(v).toFixed(4)
-      }]
+        render: v => parseFloat(v).toFixed(4),
+      }],
     }
 
     return [
-      <Card title={<div><i className="fa fa-table fa-fw fa-lg"/><span>Gene Expression</span></div>}>
+      <Card title={<div><i className="fa fa-table fa-fw fa-lg" /><span>Gene Expression</span></div>}>
         <div>
-          {caseId ? <BoxPlot {...BoxPlotProps}/> : <DatasourceTable {...TableProps}/>}        
+          {caseId ? <BoxPlot {...BoxPlotProps} /> : <DatasourceTable {...TableProps} />}
         </div>
       </Card>,
-      <Card title={<div><i className="fa fa-area-chart fa-lg"/><span>Survival Chart</span></div>}>
+      <Card title={<div><i className="fa fa-area-chart fa-lg" /><span>Survival Chart</span></div>}>
         <div className={style.imgcontainer}>
-          <div>        
+          <div>
             <img src={`${prefix}/public/survival/GSE27020_PFS/${geneId}.png`} />
-            <p>{geneId} - GSE27020 PFS </p>  
+            <p>{geneId} - GSE27020 PFS </p>
           </div>
-          <div>  
-            <img src={`${prefix}/public/survival/GSE31056_PFS/${geneId}.png`}/>
-            <p>{geneId} - GSE31056 PFS </p>              
+          <div>
+            <img src={`${prefix}/public/survival/GSE31056_PFS/${geneId}.png`} />
+            <p>{geneId} - GSE31056 PFS </p>
           </div>
           <div>
             <img src={`${prefix}/public/survival/GSE41613_OS/${geneId}.png`} />
-            <p>{geneId} - GSE41613 OS </p>              
+            <p>{geneId} - GSE41613 OS </p>
           </div>
         </div>
-      </Card>
+      </Card>,
     ]
   }
 }

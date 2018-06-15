@@ -73,7 +73,6 @@ const Wrapper = (Component, url, chartUrl, q) => {
             loading: false,
           })
         })
-
     }
     reducer = func => {
       this.setState(func)

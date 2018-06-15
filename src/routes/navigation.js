@@ -2,30 +2,29 @@ import React from 'react'
 import classnames from 'classnames'
 import style from './navigation.less'
 import { menu } from '../const'
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
-import NavDropdown from 'react-bootstrap/lib/NavDropdown';
-import MenuItem from 'react-bootstrap/lib/MenuItem';
-// import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import Navbar from 'react-bootstrap/lib/Navbar'
+import Nav from 'react-bootstrap/lib/Nav'
+import NavItem from 'react-bootstrap/lib/NavItem'
+import NavDropdown from 'react-bootstrap/lib/NavDropdown'
+import MenuItem from 'react-bootstrap/lib/MenuItem'
 
 
 class MMM extends React.Component {
   state = {
-    scroll: false
+    scroll: false,
   }
   componentDidMount () {
-    /*监听滚动事件*/
-    window.addEventListener('scroll',this.listenScroll);
+    /* 监听滚动事件 */
+    window.addEventListener('scroll', this.listenScroll)
   }
   listenScroll = () => {
-    if(window.pageYOffset){
+    if (window.pageYOffset) {
       this.setState({
-        scroll:true
+        scroll: true,
       })
-    }else{
+    } else {
       this.setState({
-        scroll:false
+        scroll: false,
       })
     }
   }
@@ -44,7 +43,7 @@ class MMM extends React.Component {
     //     </Menu>
     //   </Row>
     // )
-    return (<Navbar className={classnames({ [style.menu]: true ,[style.scroll]: this.state.scroll})} collapseOnSelect onSelect={e=> history.push(e)}>
+    return (<Navbar className={classnames({ [style.menu]: true, [style.scroll]: this.state.scroll })} collapseOnSelect onSelect={e => history.push(e)}>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="/">HNC Database</a>
@@ -53,9 +52,9 @@ class MMM extends React.Component {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav pullRight activeKey={location.pathname}>
-        {menu.map(elem => elem.child ? <NavDropdown title={elem.text}>
-          {elem.child.map(e=><MenuItem eventKey={e.src}>{e.text}</MenuItem>)}
-        </NavDropdown> :<NavItem eventKey={elem.src}>{elem.text}</NavItem>)}
+          {menu.map(elem => (elem.child ? <NavDropdown title={elem.text}>
+            {elem.child.map(e => <MenuItem eventKey={e.src}>{e.text}</MenuItem>)}
+          </NavDropdown> : <NavItem eventKey={elem.src}>{elem.text}</NavItem>))}
         </Nav>
       </Navbar.Collapse>
     </Navbar>)

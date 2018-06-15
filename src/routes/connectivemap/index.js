@@ -9,11 +9,11 @@ const ConnectiveMap = props => {
 
   return (
     <div>
-      <Header title="Connective Map"/>
-      <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt"></i><span>Tutorial</span></div>}>
+      <Header title="Connective Map" />
+      <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt" /><span>Tutorial</span></div>}>
         <div className="markdown-body" dangerouslySetInnerHTML={{ __html: instruction }} />
       </Card>
-      <HHeatmap history={history} location={location}/>
+      <HHeatmap history={history} location={location} />
     </div>
   )
 }

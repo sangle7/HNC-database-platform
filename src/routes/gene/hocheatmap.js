@@ -1,9 +1,8 @@
 import React from 'react'
 import { Icon } from 'antd'
-import Wrapper from '../wrapper'
 import { HeatMapTable, Tabs, Search, Card } from '../../components'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 class WithSearch extends React.Component {
@@ -22,8 +21,8 @@ class WithSearch extends React.Component {
     const SearchProps = {
       title: <Icon type="search" />,
       placeholder: 'Search Gene Name',
-      onKeyUp:v => {this.onSearch(v.target.value)},
-      onSearch:v => {this.onSearch(v)},
+      onKeyUp: v => { this.onSearch(v.target.value) },
+      onSearch: v => { this.onSearch(v) },
     }
 
     const HeatmapProps = {
@@ -31,7 +30,7 @@ class WithSearch extends React.Component {
       filter,
       t,
       onCellClick: (gene, c, t) => {
-        history.push(`/statics?t=${t}&geneId=${gene}&caseId=${c}`)      
+        history.push(`/statics?t=${t}&geneId=${gene}&caseId=${c}`)
       },
     }
 
@@ -49,12 +48,12 @@ const GeneList = props => {
       key: 'tumorcoding',
       title: 'Tumor vs Normal/Disease Coding',
       content: <WithSearch t="tumorcoding" {...props} />,
-    },{
+    }, {
       key: 'tumorlnc',
       title: 'Tumor vs Normal/Disease lncRNA',
       content: <WithSearch t="tumorlnc" {...props} />,
-      
-    },{
+
+    }, {
       key: 'hpvcoding',
       title: 'hpv positive & negative Coding',
       content: <WithSearch t="hpvcoding" {...props} />,
@@ -69,7 +68,7 @@ const GeneList = props => {
   }
 
   return (
-    <Card title={<div><i className="fa fa-th fa-fw fa-lg"></i><span>Data Heat Map</span></div>}>
+    <Card title={<div><i className="fa fa-th fa-fw fa-lg" /><span>Data Heat Map</span></div>}>
       <Tabs {...TabProps} />
     </Card>
   )

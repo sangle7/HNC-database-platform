@@ -12,9 +12,9 @@ const ColorWrapper = () => (
   </div>
 )
 
-const Entries = ({min,max,total,filtedtotal}) => (
+const Entries = ({ min, max, total, filtedtotal }) => (
   <div>
-    <span> Showing {min} to {max} of {filtedtotal} entries {total!== filtedtotal &&`(filtered from ${total} total entries)`}</span>
+    <span> Showing {min} to {max} of {filtedtotal} entries {total !== filtedtotal && `(filtered from ${total} total entries)`}</span>
   </div>
 )
 
@@ -34,12 +34,12 @@ class DatasourceTable extends React.Component {
   }
   componentDidMount () {
     this.fetchData({
-      t: this.props.t,      
+      t: this.props.t,
     })
     this.elem = ReactDOM.findDOMNode(this.hmtable).getElementsByClassName('ant-table-body')[0]
     this.elem.onscroll = e => {
       this.scrolltag = this.elem.getElementsByClassName('scrolltag')[0]
-      console.log('visible',checkIsPartialVisible(this.elem, this.scrolltag, 360))
+      console.log('visible', checkIsPartialVisible(this.elem, this.scrolltag, 360))
       if (checkIsPartialVisible(this.elem, this.scrolltag, 360)) {
         this.fetchData({
           t: this.props.t,
@@ -56,7 +56,7 @@ class DatasourceTable extends React.Component {
         loading: true,
       })
       this.fetchData({
-        t: nextProps.t,        
+        t: nextProps.t,
         offset: 0,
         filter: nextProps.filter,
         sorter: this.state.sorter,
@@ -68,13 +68,13 @@ class DatasourceTable extends React.Component {
       loading: true,
     })
     this.fetchData({
-      offset:0,
-      filter:this.props.filter,
+      offset: 0,
+      filter: this.props.filter,
       t: this.props.t,
-      sorter:{
-        columnKey:sorter.columnKey,
-        order:sorter.order,
-      }
+      sorter: {
+        columnKey: sorter.columnKey,
+        order: sorter.order,
+      },
     })
   }
   fetchData = params => {
@@ -84,7 +84,7 @@ class DatasourceTable extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(params)
+      body: JSON.stringify(params),
     })
       .then(blob => blob.json())
       .then(code => {
@@ -106,17 +106,16 @@ class DatasourceTable extends React.Component {
       return {
         children: e === 'id' ? null : <span className="scrolltag">{v}</span>,
         props: {
-          colSpan: gColSpan(e,list, key)
+          colSpan: gColSpan(e, list, key),
         },
       }
-    } else {
-      return v
     }
+    return v
   }
 
   render () {
-    let { onCellClick, t, higher = false }  = this.props
-    const { dataSource, filtedtotal, min, max, total, loading }  = this.state
+    const { onCellClick, t, higher = false } = this.props
+    const { dataSource, filtedtotal, min, max, total, loading } = this.state
 
     const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
 
@@ -125,8 +124,8 @@ class DatasourceTable extends React.Component {
     let mincol = false
     if (dataSource.length) {
       const obj = { id: '' }
-      console.log(firstKey,dataSource.length,filtedtotal,dataSource.length>= filtedtotal)
-      obj[firstKey] = dataSource.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true"></i> No More Records</span>: <Spin />
+      console.log(firstKey, dataSource.length, filtedtotal, dataSource.length >= filtedtotal)
+      obj[firstKey] = dataSource.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true" /> No More Records</span> : <Spin />
       list = [...dataSource, obj]
       mincol = Object.keys(dataSource[0]).length <= 16
     }
@@ -134,29 +133,29 @@ class DatasourceTable extends React.Component {
     return (
       <Table
         ref={t => this.hmtable = t}
-        onChange = {this.onChange}
-        className={classnames({ [style.table]: true,[style.higher]: higher,[style.mincol]: mincol })}
+        onChange={this.onChange}
+        className={classnames({ [style.table]: true, [style.higher]: higher, [style.mincol]: mincol })}
         simple
         loading={loading}
-        rowKey={record  => record.id}
+        rowKey={record => record.id}
         dataSource={list}
         pagination={false}
-        scroll={{x:true,y:400}}
-        columns={list[0] ? [...Object.keys(list[0]),'last'].map(e=>({
-            title:<span>{e}</span>,
-            dataIndex:e,
-            fixed: e === 'id',
-            width:e === 'id' ? 100 : 70,
-            sorter:true,
-            onCell:record => ({
-              onClick: () => { e!=='id' && onCellClick(record.id , e, t); },
-              style: gStyle(e, record[e]),
-              className: (e === firstKey && record.id === '') && 'scrolltag'
-            }),
-            render:(v,row,index) => this.gRender(e,v,index,list,firstKey)
-            /*最后一行的id column span才为全部 */
+        scroll={{ x: true, y: 400 }}
+        columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
+          title: <span>{e}</span>,
+          dataIndex: e,
+          fixed: e === 'id',
+          width: e === 'id' ? 100 : 70,
+          sorter: true,
+          onCell: record => ({
+            onClick: () => { e !== 'id' && onCellClick(record.id, e, t) },
+            style: gStyle(e, record[e]),
+            className: (e === firstKey && record.id === '') && 'scrolltag',
+          }),
+          render: (v, row, index) => this.gRender(e, v, index, list, firstKey),
+          /* 最后一行的id column span才为全部 */
         })) : []}
-        footer={()=>(<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal}/>)}
+        footer={() => (<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal} />)}
         {...this.props}
       />
     )
@@ -177,47 +176,49 @@ function gColSpan (e, list, key) {
   switch (e) {
     case key:
       return 15
-      break;
+      break
     case 'id':
       return 1
-      break;
+      break
     default:
       return 0
   }
 }
 
-function hsv2rgb (h, s, v) { //color range function adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
-  var rgb, i, data = [];
+function hsv2rgb (h, s, v) { // color range function adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
+  let rgb,
+    i,
+    data = []
   if (s === 0) {
-    rgb = [v, v, v];
+    rgb = [v, v, v]
   } else {
-    h = h / 60;
-    i = Math.floor(h);
-    data = [v * (1 - s), v * (1 - s * (h - i)), v * (1 - s * (1 - (h - i)))];
+    h /= 60
+    i = Math.floor(h)
+    data = [v * (1 - s), v * (1 - s * (h - i)), v * (1 - s * (1 - (h - i)))]
     switch (i) {
       case 0:
-        rgb = [v, data[2], data[0]];
-        break;
+        rgb = [v, data[2], data[0]]
+        break
       case 1:
-        rgb = [data[1], v, data[0]];
-        break;
+        rgb = [data[1], v, data[0]]
+        break
       case 2:
-        rgb = [data[0], v, data[2]];
-        break;
+        rgb = [data[0], v, data[2]]
+        break
       case 3:
-        rgb = [data[0], data[1], v];
-        break;
+        rgb = [data[0], data[1], v]
+        break
       case 4:
-        rgb = [data[2], data[0], v];
-        break;
+        rgb = [data[2], data[0], v]
+        break
       default:
-        rgb = [v, data[0], data[1]];
-        break;
+        rgb = [v, data[0], data[1]]
+        break
     }
   }
-  return '#' + rgb.map(function (x) {
-    return ("0" + Math.round(x * 255).toString(16)).slice(-2);
-  }).join('');
+  return `#${rgb.map(x => {
+    return (`0${ Math.round(x * 255).toString(16)}`).slice(-2)
+  }).join('')}`
 }
 
 function gStyle (key, val) {
@@ -238,14 +239,13 @@ function gStyle (key, val) {
       return {
         background: hsv2rgb(0, p, v),
       }
-    } else {
-      const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
-      const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
-      // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
+    }
+    const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
+    const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
+    // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
 
-      return {
-        background: hsv2rgb(221, p, v),
-      }
+    return {
+      background: hsv2rgb(221, p, v),
     }
   } catch (error) {
     return {

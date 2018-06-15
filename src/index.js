@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
   Redirect,
-  withRouter
+  withRouter,
 } from 'react-router-dom'
 import style from './index.less'
 import { BackTop } from 'antd'
@@ -29,17 +29,17 @@ if (module.hot) {
 }
 
 class ScrollToTop extends React.Component {
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)
     }
   }
 
-  render() {
+  render () {
     return this.props.children
   }
 }
-const WScrollToTop =  withRouter(ScrollToTop)
+const WScrollToTop = withRouter(ScrollToTop)
 
 const footerstyle = {
   position: 'absolute',
@@ -60,7 +60,7 @@ ReactDOM.render(
         <Route
           render={({ location, history }) => (
             <main className={style.main}>
-              <Navigation location={location} history={history}/>
+              <Navigation location={location} history={history} />
               <Switch location={location}>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/help" component={MdPage} />
@@ -72,14 +72,14 @@ ReactDOM.render(
                 <Route exact path="/Survival" component={Survival} />
                 <Route exact path="/statics" component={staticPage} />
                 <Route exact path="/statistics" component={Statistics} />
-                <Route exact path="/404" component={ErrorPage}/>
-                <Route render={() => (<Redirect to="/404"/>)}/>
+                <Route exact path="/404" component={ErrorPage} />
+                <Route render={() => (<Redirect to="/404" />)} />
               </Switch>
               <footer style={footerstyle}>HNC Database © 2018 The Ren Lab. All Rights Reserved</footer>
             </main>
           )}
-      />
-    </WScrollToTop>
+        />
+      </WScrollToTop>
     </Router>
     <BackTop />
   </ErrorBoundary>

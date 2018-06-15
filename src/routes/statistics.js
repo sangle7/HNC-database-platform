@@ -1,14 +1,13 @@
 import React from 'react'
-import queryString from 'query-string'
-import { Header, Stackchart, PieChart,  Card } from '../components'
+import { Header, Stackchart, PieChart, Card } from '../components'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 class Statistics extends React.Component {
   state = {
     loading: false,
     lincStats: [],
-    pieStats:[]
+    pieStats: [],
   }
 
   componentDidMount () {
@@ -39,13 +38,13 @@ class Statistics extends React.Component {
     const { lincStats, pieStats } = this.state
     return (
       <div>
-        <Header title="Statistics"/>
-        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg"></i><span>HNClinc</span></div>}>
+        <Header title="Statistics" />
+        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>HNClinc</span></div>}>
           <Stackchart data={lincStats} />
         </Card>
-        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg"></i><span>PieChart</span></div>}>
-          <div style={{display:'flex'}}>
-          {pieStats.map((e,i) => <PieChart obj={e} uuid={i} /> )}
+        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>PieChart</span></div>}>
+          <div style={{ display: 'flex' }}>
+            {pieStats.map((e, i) => <PieChart obj={e} uuid={i} />)}
           </div>
         </Card>
       </div>

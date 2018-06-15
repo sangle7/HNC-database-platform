@@ -1,17 +1,17 @@
 import React from 'react'
-import { Card, DatasourceTable } from '../../components' 
+import { Card, DatasourceTable } from '../../components'
 import Wrapper from '../wrapper'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 const gArray = item => {
   const arr = []
-  for (let key in item) {
+  for (const key in item) {
     arr.push({
       id: key,
-      key: key,
-      value: item[key].join(', ') || 'N/A'
+      key,
+      value: item[key].join(', ') || 'N/A',
     })
   }
   return arr
@@ -19,8 +19,8 @@ const gArray = item => {
 
 const gData = list => {
   console.log(list)
-  return list.reduce((pre,elem) => {
-    for (let key in elem) {
+  return list.reduce((pre, elem) => {
+    for (const key in elem) {
       pre[key] = pre[key] || []
       pre[key].push(elem[key])
       pre[key] = Array.from(new Set(pre[key]))
@@ -40,17 +40,17 @@ const Casecard = props => {
     columns: [{
       title: 'key',
       dataIndex: 'key',
-      width: '30%'
+      width: '30%',
     }, {
       title: 'value',
       dataIndex: 'value',
       width: '70%',
-      render:(v,record) => record.key === 'PMID' ? <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a> : v
+      render: (v, record) => (record.key === 'PMID' ? <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a> : v),
     }],
     loading,
   }
   return (
-    <Card title={<div><i className="fa fa-list-alt fa-fw fa-lg"/><span>Dataset Information</span></div>}>
+    <Card title={<div><i className="fa fa-list-alt fa-fw fa-lg" /><span>Dataset Information</span></div>}>
       <DatasourceTable {...TableProps} />
     </Card>
   )

@@ -2,11 +2,12 @@ import React from 'react'
 
 import { COLORS } from '../const'
 import echarts from 'echarts'
-require('./mdtheme')
-class Stackchart extends React.Component {
 
+require('./mdtheme')
+
+class Stackchart extends React.Component {
   componentDidMount () {
-    this.myChart = echarts.init(document.getElementById('echart-stack'),'roma');  
+    this.myChart = echarts.init(document.getElementById('echart-stack'), 'roma')
     this.updateChart(this.props)
   }
 
@@ -18,13 +19,13 @@ class Stackchart extends React.Component {
     const { data } = props
 
     const legend = ['male', 'female', 'positive', 'negative', 'tumor', 'normal']
-    const yData = data.map(e=>e.key)
+    const yData = data.map(e => e.key)
 
 
-    function gDataByDataAndLegend(legendname,yData,data){
-      return yData.map(e=>{
-        const arr = data.filter(i=>i.key===e)
-        return arr[0][legendname] || 0 
+    function gDataByDataAndLegend (legendname, yData, data) {
+      return yData.map(e => {
+        const arr = data.filter(i => i.key === e)
+        return arr[0][legendname] || 0
       })
     }
 
@@ -39,9 +40,9 @@ class Stackchart extends React.Component {
             pixelRatio: 2,
           },
           magicType: {
-            type: ['line', 'bar', 'stack','tiled']
-          }
-        }
+            type: ['line', 'bar', 'stack', 'tiled'],
+          },
+        },
       },
       legend: {
         data: legend,
@@ -50,14 +51,14 @@ class Stackchart extends React.Component {
         left: '3%',
         right: '4%',
         bottom: '3%',
-        containLabel: true
+        containLabel: true,
       },
       xAxis: {
-        type: 'value'
+        type: 'value',
       },
       yAxis: {
         type: 'category',
-        data: yData
+        data: yData,
       },
       series: legend.map(item => ({
         name: item,
@@ -66,19 +67,19 @@ class Stackchart extends React.Component {
         label: {
           normal: {
             show: true,
-            position: 'insideRight'
-          }
+            position: 'insideRight',
+          },
         },
-        data: gDataByDataAndLegend(item,yData,data)
+        data: gDataByDataAndLegend(item, yData, data),
       })
-      )
-    };
+      ),
+    }
 
-    this.myChart.setOption(option);
+    this.myChart.setOption(option)
   }
 
   render () {
-    return <div id="echart-stack" style={{margin:'0 auto',width:'1000px',height:'400px'}} />
+    return <div id="echart-stack" style={{ margin: '0 auto', width: '1000px', height: '400px' }} />
   }
 }
 

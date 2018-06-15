@@ -3,7 +3,7 @@ import { Select } from 'antd'
 
 const Option = Select.Option
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 class SearchInput extends React.Component {
@@ -11,13 +11,13 @@ class SearchInput extends React.Component {
       data: [],
       value: '',
     }
-    handleChange = (value) => {
+    handleChange = value => {
       const { cgi = 'sug' } = this.props
-      this.setState({ value },this.props.onChange(value));
-      fetchForSuggest(value, data => this.setState({ data }), cgi);
+      this.setState({ value }, this.props.onChange(value))
+      fetchForSuggest(value, data => this.setState({ data }), cgi)
     }
-    render() {
-      const options = this.state.data.map(d => <Option key={d.value}>{d.text}</Option>);
+    render () {
+      const options = this.state.data.map(d => <Option key={d.value}>{d.text}</Option>)
       return (
         <Select
           mode="combobox"
@@ -31,45 +31,45 @@ class SearchInput extends React.Component {
         >
           {options}
         </Select>
-      );
+      )
     }
-  }
+}
 
 
-let timeout;
-let currentValue;
+let timeout
+let currentValue
 
-function fetchForSuggest(value, callback, cgi) {
+function fetchForSuggest (value, callback, cgi) {
   if (timeout) {
-    clearTimeout(timeout);
-    timeout = null;
+    clearTimeout(timeout)
+    timeout = null
   }
-  currentValue = value;
+  currentValue = value
 
-  function fake() {
-    fetch(`${prefix}/gene/${cgi}?q=${value}`,{
+  function fake () {
+    fetch(`${prefix}/gene/${cgi}?q=${value}`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
     })
       .then(response => response.json())
-      .then((d) => {
+      .then(d => {
         if (currentValue === value) {
-          const result = d.result;
-          const data = [];
-          result.forEach((r) => {
+          const result = d.result
+          const data = []
+          result.forEach(r => {
             data.push({
               value: r.name,
               text: r.name,
-            });
-          });
-          callback(data);
+            })
+          })
+          callback(data)
         }
-      });
+      })
   }
 
-  timeout = setTimeout(fake, 300);
+  timeout = setTimeout(fake, 300)
 }
 
 export default SearchInput

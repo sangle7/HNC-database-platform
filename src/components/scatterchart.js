@@ -3,12 +3,11 @@ import echarts from 'echarts'
 import { getlinearRegression } from '../const'
 
 class SimpleScatterChart extends React.Component {
-
   componentDidMount () {
     const { onDotClick } = this.props
-    this.myChart = echarts.init(document.getElementById('echart-scatter'));  
+    this.myChart = echarts.init(document.getElementById('echart-scatter'))
     this.updateChart(this.props)
-    this.myChart.on('click',params => {
+    this.myChart.on('click', params => {
       if (params.seriesType === 'scatter') {
         onDotClick(params.data[2])
       }
@@ -29,29 +28,29 @@ class SimpleScatterChart extends React.Component {
         normal: {
           formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)} \n r = ${result.toFixed(4)}`,
           textStyle: {
-            align: 'right'
-          }
-        }
+            align: 'right',
+          },
+        },
       },
       lineStyle: {
-        color:'#333',
+        color: '#333',
       },
       tooltip: {
-        formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)} <br /> r = ${result.toFixed(4)}`
+        formatter: `y = ${a.toFixed(2)} * x + ${b.toFixed(2)} <br /> r = ${result.toFixed(4)}`,
       },
       data: [
         [{
           coord: [xMin, linearExp(xMin)],
-          symbol: 'none'
+          symbol: 'none',
         }, {
           coord: [xMax, linearExp(xMax)],
-          symbol: 'none'
-        }]
-      ]
-    };
+          symbol: 'none',
+        }],
+      ],
+    }
 
     const [i, xAxis, yAxis] = Object.keys(dataSource[0])
-  
+
     const option = {
       title: {
         text: 'Corr. Analysis Result',
@@ -68,29 +67,29 @@ class SimpleScatterChart extends React.Component {
           },
           dataZoom: {
             show: true,
-          }
-        }
+          },
+        },
       },
       animation: true,
-      xAxis: {name:xAxis,nameGap:5},
-      yAxis: {name:yAxis},
+      xAxis: { name: xAxis, nameGap: 5 },
+      yAxis: { name: yAxis },
       tooltip: {
-        formatter: '({c})'
+        formatter: '({c})',
       },
       series: [{
         symbolSize: 5,
         data: dataSource.map(e => modifyArr(Object.values(e))),
         type: 'scatter',
         markLine: markLineOpt,
-      }]
-    };
+      }],
+    }
 
-    this.myChart.setOption(option);
+    this.myChart.setOption(option)
   }
 
   render () {
     const { size = 400 } = this.props
-    return <div id="echart-scatter" style={{width:`${size}px`,height:`${size}px`}} />
+    return <div id="echart-scatter" style={{ width: `${size}px`, height: `${size}px` }} />
   }
 }
 export default SimpleScatterChart

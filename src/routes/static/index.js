@@ -16,25 +16,25 @@ const staticPage = props => {
     url: 'cgi/gene/init',
     caseId: params.caseId,
     geneId: params.geneId,
-    type:params.t,
-    onclickcb:(e)=>{console.log(e)}
+    type: params.t,
+    onclickcb: e => { console.log(e) },
   }
 
   const HNCDBProps = {
     history,
     location,
-    geneId: params.geneId
+    geneId: params.geneId,
   }
 
   return (
     <div>
-      <Header title={gTitle(params.drugId,params.geneId,params.caseId)}/>
+      <Header title={gTitle(params.drugId, params.geneId, params.caseId)} />
       <Card>
-        <a onClick={()=>window.history.back()}><i className="fa fa-lg fa-fw fa-arrow-left"></i>Back to previous</a>
+        <a onClick={() => window.history.back()}><i className="fa fa-lg fa-fw fa-arrow-left" />Back to previous</a>
       </Card>
-      {params.drugId && <HDrugcard history={history} location={location}/>}
-      {params.geneId && [<HGenecard history={history} location={location}/>, <HNCDB {...HNCDBProps}/>, <Expression {...ExpressionProps}/>]}
-      {params.caseId && <HCasecard history={history} location={location}/>}
+      {params.drugId && <HDrugcard history={history} location={location} />}
+      {params.geneId && [<HGenecard history={history} location={location} />, <HNCDB {...HNCDBProps} />, <Expression {...ExpressionProps} />]}
+      {params.caseId && <HCasecard history={history} location={location} />}
     </div>
   )
 }

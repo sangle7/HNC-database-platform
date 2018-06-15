@@ -9,25 +9,26 @@ const Multiselect = props => {
   const { onSubmit, form } = props
   const { getFieldDecorator } = form
   const submit = e => {
-    e.preventDefault();    
+    e.preventDefault()
     form.validateFields((err, values) => {
       if (!err) {
         onSubmit(values)
       }
-    });
+    })
   }
   return (
-    <Form 
+    <Form
       className={classnames({ [style.form]: true })}
-      layout="inline" 
-      onSubmit={submit}>
+      layout="inline"
+      onSubmit={submit}
+    >
       <FormItem
         label="Select an object category"
       >
         {getFieldDecorator('type', {
           initialValue: 'HPV',
         })(
-          <Select style={{width:150}}>
+          <Select style={{ width: 150 }}>
             <Option value="HPV">HPV</Option>
             <Option value="Tumor">Tumor</Option>
             <Option value="Tobacco">Tobacco</Option>
@@ -41,7 +42,7 @@ const Multiselect = props => {
         {getFieldDecorator('genetype', {
           initialValue: 'coding',
         })(
-          <Select style={{width:150}}>
+          <Select style={{ width: 150 }}>
             <Option value="coding">coding</Option>
             <Option value="lncRNA">lncRNA</Option>
           </Select>

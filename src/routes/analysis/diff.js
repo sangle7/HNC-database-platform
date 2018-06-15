@@ -11,7 +11,7 @@ class TabDefault extends React.Component {
     modalVisible: false,
     loading: false,
     subtitle: {},
-    pagination: {}
+    pagination: {},
   }
   hideModal = () => {
     this.setState({
@@ -29,7 +29,7 @@ class TabDefault extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name.replace('.heatmap.png',''), pagination }),
+      body: JSON.stringify({ name: name.replace('.heatmap.png', ''), pagination }),
     })
       .then(blob => blob.json())
       .then(code => {
@@ -50,7 +50,7 @@ class TabDefault extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...obj, title: this.props.name.replace('.heatmap.png','') }),
+      body: JSON.stringify({ ...obj, title: this.props.name.replace('.heatmap.png', '') }),
     })
       .then(blob => blob.json())
       .then(code => {
@@ -62,7 +62,7 @@ class TabDefault extends React.Component {
           subtitle: {
             'P.Value': parseFloat(code.p).toExponential(2),
             'adj.P.Val': parseFloat(code.adjp).toFixed(4),
-          }
+          },
         })
       })
   }
@@ -92,30 +92,30 @@ class TabDefault extends React.Component {
           onClick: () => this.showModal({ gene: record.Gene, p: record['P.Value'], adjp: record['adj.P.Val'] }),
           style: { cursor: 'pointer', color: '#a9303e', fontWeight: 400 },
         }),
-      },{
+      }, {
         title: 'logFC',
         dataIndex: 'logFC',
-        render:v => parseFloat(v).toFixed(4)
-      },{
+        render: v => parseFloat(v).toFixed(4),
+      }, {
         title: 'AveExpr',
         dataIndex: 'AveExpr',
-        render:v => parseFloat(v).toFixed(4)        
-      },{
+        render: v => parseFloat(v).toFixed(4),
+      }, {
         title: 'P.Value',
         dataIndex: 'P.Value',
-        render:v => parseFloat(v).toExponential(2)        
-      },{
+        render: v => parseFloat(v).toExponential(2),
+      }, {
         title: 'adj.P.Val',
         dataIndex: 'adj.P.Val',
-        render:v => parseFloat(v).toFixed(4)        
-      }]
+        render: v => parseFloat(v).toFixed(4),
+      }],
     }
 
 
     return (
-      <div style={{ display:'flex',alignItems:'center', justifyContent: 'space-around' }}>
-        <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400"/>
-        <DiffModal {...ModalProps}/>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+        <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400" />
+        <DiffModal {...ModalProps} />
         {dataSource[0] ? <DatasourceTable {...TableProps} /> : <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>}
       </div>
     )
@@ -152,23 +152,23 @@ class Diff extends React.Component {
 
     const TabProps = {
       transform: false,
-      tabs: list.map(elem=>({
+      tabs: list.map(elem => ({
         key: elem,
         title: elem.split('_')[0],
-        content: <TabDefault name={elem}/>,
-      }))
+        content: <TabDefault name={elem} />,
+      })),
     }
 
     return (
       <div>
-        <Header title="Diff analysis"/>
+        <Header title="Diff analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-toggle-on" /><span>select query</span></div>}>
-          <Multiselect onSubmit={this.init}/>
+          <Multiselect onSubmit={this.init} />
         </Card>
         { list[0] && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
-           <Tabs {...TabProps} />}
+          <Tabs {...TabProps} />}
         </Card> }
-    </div>)
+      </div>)
   }
 }
 

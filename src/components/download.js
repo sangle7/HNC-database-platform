@@ -6,7 +6,7 @@ class Download extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      downloadURL: null
+      downloadURL: null,
     }
   }
   render () {
@@ -15,7 +15,7 @@ class Download extends React.Component {
     const handleClick = () => {
       const params = {
         download: true,
-        ...queryString.parse(query)
+        ...queryString.parse(query),
       }
       fetch(`${url}${query}&download=true`, {
         method: 'get',
@@ -28,15 +28,15 @@ class Download extends React.Component {
         .then(code => {
           if (code.downloadURL) {
             this.setState({
-              downloadURL: code.downloadURL
+              downloadURL: code.downloadURL,
             }, () => this.a.click())
           }
         })
     }
-    return [<div style={{display:'flex',justifyContent:'flex-end'}}>
-      <Button type = "primary" icon = "download" onClick ={handleClick}>Download</Button>
-      </div>,
-      <a ref={a=>this.a=a} download={url + query} href={this.state.downloadURL}></a>]
+    return [<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <Button type="primary" icon="download" onClick={handleClick}>Download</Button>
+    </div>,
+      <a ref={a => this.a = a} download={url + query} href={this.state.downloadURL} />]
   }
 }
 

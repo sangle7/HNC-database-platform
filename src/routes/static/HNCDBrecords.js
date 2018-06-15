@@ -5,7 +5,7 @@ import { Tabs, Card, DatasourceTable, BarChart } from '../../components'
 import { countFromArray } from '../../const'
 import Wrapper from '../wrapper'
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 const HNCDB = props => {
@@ -16,26 +16,26 @@ const HNCDB = props => {
   const TableProps = {
     dataSource,
     loading,
-    pagination:false,
-    scroll:{y:330,x:true},
+    pagination: false,
+    scroll: { y: 330, x: true },
     columns: [{
       title: 'Gene Name',
       dataIndex: 'name',
       render: () => (geneId),
-      width:100,
+      width: 100,
     }, {
       title: 'PMID',
       dataIndex: 'pmid',
-      width:100,
-      render:v => <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a>
+      width: 100,
+      render: v => <a href={`https://www.ncbi.nlm.nih.gov/pubmed/?term=${v}`}>{v}</a>,
     }, {
       title: 'Molecular Event',
       dataIndex: 'mol_event',
-      width:200,
+      width: 200,
     }, {
       title: 'Function in HNC',
       dataIndex: 'note',
-      width:600,
+      width: 600,
       render: value => <span title={value}>{value.length > 80 ? `${value.slice(0, 80)}...` : value}</span>,
     }],
   }
@@ -54,9 +54,9 @@ const HNCDB = props => {
     },
   }
   return (
-  <Card title={<div><i className="fa fa-bar-chart fa-lg"/><span>Gene Records</span></div>}>
-    <Tabs {...TabProps} />
-  </Card>)
+    <Card title={<div><i className="fa fa-bar-chart fa-lg" /><span>Gene Records</span></div>}>
+      <Tabs {...TabProps} />
+    </Card>)
 }
 
 const HHNCDB = Wrapper(HNCDB, `${prefix}/gene/init`, null, { step: '1' })

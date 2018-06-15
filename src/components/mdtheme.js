@@ -1,524 +1,524 @@
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['exports', 'echarts'], factory);
-    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
-        // CommonJS
-        factory(exports, require('echarts'));
-    } else {
-        // Browser globals
-        factory({}, root.echarts);
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['exports', 'echarts'], factory)
+  } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+    // CommonJS
+    factory(exports, require('echarts'))
+  } else {
+    // Browser globals
+    factory({}, root.echarts)
+  }
+}(this, (exports, echarts) => {
+  const log = function (msg) {
+    if (typeof console !== 'undefined') {
+      console && console.error && console.error(msg)
     }
-}(this, function (exports, echarts) {
-    var log = function (msg) {
-        if (typeof console !== 'undefined') {
-            console && console.error && console.error(msg);
-        }
-    };
-    if (!echarts) {
-        log('ECharts is not Loaded');
-        return;
-    }
-    echarts.registerTheme('roma', {
-        "color": [
-            "#ef5350",
-            "#1e88e5",
-            "#e91e63",
-            "#673ab7",
-            "#5c6bc0",
-            "#8e24aa",
-            "#039be5",
-            "#26c6da",
-            "#26a69a",
-            "#66bb6a",
-            "#9ccc65",
-            "#ffa726"
-        ],
-        "backgroundColor": "rgba(0,0,0,0)",
-        "textStyle": {},
-        "title": {
-            "textStyle": {
-                "color": "#333333"
-            },
-            "subtextStyle": {
-                "color": "#aaaaaa"
-            }
+  }
+  if (!echarts) {
+    log('ECharts is not Loaded')
+    return
+  }
+  echarts.registerTheme('roma', {
+    color: [
+      '#ef5350',
+      '#1e88e5',
+      '#e91e63',
+      '#673ab7',
+      '#5c6bc0',
+      '#8e24aa',
+      '#039be5',
+      '#26c6da',
+      '#26a69a',
+      '#66bb6a',
+      '#9ccc65',
+      '#ffa726',
+    ],
+    backgroundColor: 'rgba(0,0,0,0)',
+    textStyle: {},
+    title: {
+      textStyle: {
+        color: '#333333',
+      },
+      subtextStyle: {
+        color: '#aaaaaa',
+      },
+    },
+    line: {
+      itemStyle: {
+        normal: {
+          borderWidth: 1,
         },
-        "line": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 1
-                }
-            },
-            "lineStyle": {
-                "normal": {
-                    "width": 2
-                }
-            },
-            "symbolSize": 4,
-            "symbol": "emptyCircle",
-            "smooth": false
+      },
+      lineStyle: {
+        normal: {
+          width: 2,
         },
-        "radar": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 1
-                }
-            },
-            "lineStyle": {
-                "normal": {
-                    "width": 2
-                }
-            },
-            "symbolSize": 4,
-            "symbol": "emptyCircle",
-            "smooth": false
+      },
+      symbolSize: 4,
+      symbol: 'emptyCircle',
+      smooth: false,
+    },
+    radar: {
+      itemStyle: {
+        normal: {
+          borderWidth: 1,
         },
-        "bar": {
-            "itemStyle": {
-                "normal": {
-                    "barBorderWidth": 0,
-                    "barBorderColor": "#ccc"
-                },
-                "emphasis": {
-                    "barBorderWidth": 0,
-                    "barBorderColor": "#ccc"
-                }
-            }
+      },
+      lineStyle: {
+        normal: {
+          width: 2,
         },
-        "pie": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+      },
+      symbolSize: 4,
+      symbol: 'emptyCircle',
+      smooth: false,
+    },
+    bar: {
+      itemStyle: {
+        normal: {
+          barBorderWidth: 0,
+          barBorderColor: '#ccc',
         },
-        "scatter": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+        emphasis: {
+          barBorderWidth: 0,
+          barBorderColor: '#ccc',
         },
-        "boxplot": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+      },
+    },
+    pie: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "parallel": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "sankey": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+      },
+    },
+    scatter: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "funnel": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "gauge": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                },
-                "emphasis": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            }
+      },
+    },
+    boxplot: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "candlestick": {
-            "itemStyle": {
-                "normal": {
-                    "color": "#e01f54",
-                    "color0": "#001852",
-                    "borderColor": "#f5e8c8",
-                    "borderColor0": "#b8d2c7",
-                    "borderWidth": 1
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "graph": {
-            "itemStyle": {
-                "normal": {
-                    "borderWidth": 0,
-                    "borderColor": "#ccc"
-                }
-            },
-            "lineStyle": {
-                "normal": {
-                    "width": 1,
-                    "color": "#aaaaaa"
-                }
-            },
-            "symbolSize": 4,
-            "symbol": "emptyCircle",
-            "smooth": false,
-            "color": [
-                "#ff5252",
-                "#1e88e5",
-                "#e91e63",
-                "#673ab7",
-                "#5c6bc0",
-                "#8e24aa",
-                "#039be5",
-                "#26c6da",
-                "#26a69a",
-                "#66bb6a",
-                "#9ccc65",
-                "#ffa726"
-            ],
-            "label": {
-                "normal": {
-                    "textStyle": {
-                        "color": "#eeeeee"
-                    }
-                }
-            }
+      },
+    },
+    parallel: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "map": {
-            "itemStyle": {
-                "normal": {
-                    "areaColor": "#eeeeee",
-                    "borderColor": "#444444",
-                    "borderWidth": 0.5
-                },
-                "emphasis": {
-                    "areaColor": "rgba(255,215,0,0.8)",
-                    "borderColor": "#444444",
-                    "borderWidth": 1
-                }
-            },
-            "label": {
-                "normal": {
-                    "textStyle": {
-                        "color": "#000000"
-                    }
-                },
-                "emphasis": {
-                    "textStyle": {
-                        "color": "rgb(100,0,0)"
-                    }
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "geo": {
-            "itemStyle": {
-                "normal": {
-                    "areaColor": "#eeeeee",
-                    "borderColor": "#444444",
-                    "borderWidth": 0.5
-                },
-                "emphasis": {
-                    "areaColor": "rgba(255,215,0,0.8)",
-                    "borderColor": "#444444",
-                    "borderWidth": 1
-                }
-            },
-            "label": {
-                "normal": {
-                    "textStyle": {
-                        "color": "#000000"
-                    }
-                },
-                "emphasis": {
-                    "textStyle": {
-                        "color": "rgb(100,0,0)"
-                    }
-                }
-            }
+      },
+    },
+    sankey: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "categoryAxis": {
-            "axisLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisTick": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisLabel": {
-                "show": true,
-                "textStyle": {
-                    "color": "#333"
-                }
-            },
-            "splitLine": {
-                "show": false,
-                "lineStyle": {
-                    "color": [
-                        "#ccc"
-                    ]
-                }
-            },
-            "splitArea": {
-                "show": false,
-                "areaStyle": {
-                    "color": [
-                        "rgba(250,250,250,0.3)",
-                        "rgba(200,200,200,0.3)"
-                    ]
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "valueAxis": {
-            "axisLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisTick": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisLabel": {
-                "show": true,
-                "textStyle": {
-                    "color": "#333"
-                }
-            },
-            "splitLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": [
-                        "#ccc"
-                    ]
-                }
-            },
-            "splitArea": {
-                "show": false,
-                "areaStyle": {
-                    "color": [
-                        "rgba(250,250,250,0.3)",
-                        "rgba(200,200,200,0.3)"
-                    ]
-                }
-            }
+      },
+    },
+    funnel: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "logAxis": {
-            "axisLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisTick": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisLabel": {
-                "show": true,
-                "textStyle": {
-                    "color": "#333"
-                }
-            },
-            "splitLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": [
-                        "#ccc"
-                    ]
-                }
-            },
-            "splitArea": {
-                "show": false,
-                "areaStyle": {
-                    "color": [
-                        "rgba(250,250,250,0.3)",
-                        "rgba(200,200,200,0.3)"
-                    ]
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "timeAxis": {
-            "axisLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisTick": {
-                "show": true,
-                "lineStyle": {
-                    "color": "#333"
-                }
-            },
-            "axisLabel": {
-                "show": true,
-                "textStyle": {
-                    "color": "#333"
-                }
-            },
-            "splitLine": {
-                "show": true,
-                "lineStyle": {
-                    "color": [
-                        "#ccc"
-                    ]
-                }
-            },
-            "splitArea": {
-                "show": false,
-                "areaStyle": {
-                    "color": [
-                        "rgba(250,250,250,0.3)",
-                        "rgba(200,200,200,0.3)"
-                    ]
-                }
-            }
+      },
+    },
+    gauge: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "toolbox": {
-            "iconStyle": {
-                "normal": {
-                    "borderColor": "#999999"
-                },
-                "emphasis": {
-                    "borderColor": "#666666"
-                }
-            }
+        emphasis: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "legend": {
-            "textStyle": {
-                "color": "#333333"
-            }
+      },
+    },
+    candlestick: {
+      itemStyle: {
+        normal: {
+          color: '#e01f54',
+          color0: '#001852',
+          borderColor: '#f5e8c8',
+          borderColor0: '#b8d2c7',
+          borderWidth: 1,
         },
-        "tooltip": {
-            "axisPointer": {
-                "lineStyle": {
-                    "color": "#cccccc",
-                    "width": 1
-                },
-                "crossStyle": {
-                    "color": "#cccccc",
-                    "width": 1
-                }
-            }
+      },
+    },
+    graph: {
+      itemStyle: {
+        normal: {
+          borderWidth: 0,
+          borderColor: '#ccc',
         },
-        "timeline": {
-            "lineStyle": {
-                "color": "#293c55",
-                "width": 1
-            },
-            "itemStyle": {
-                "normal": {
-                    "color": "#293c55",
-                    "borderWidth": 1
-                },
-                "emphasis": {
-                    "color": "#a9334c"
-                }
-            },
-            "controlStyle": {
-                "normal": {
-                    "color": "#293c55",
-                    "borderColor": "#293c55",
-                    "borderWidth": 0.5
-                },
-                "emphasis": {
-                    "color": "#293c55",
-                    "borderColor": "#293c55",
-                    "borderWidth": 0.5
-                }
-            },
-            "checkpointStyle": {
-                "color": "#e43c59",
-                "borderColor": "rgba(194,53,49,0.5)"
-            },
-            "label": {
-                "normal": {
-                    "textStyle": {
-                        "color": "#293c55"
-                    }
-                },
-                "emphasis": {
-                    "textStyle": {
-                        "color": "#293c55"
-                    }
-                }
-            }
+      },
+      lineStyle: {
+        normal: {
+          width: 1,
+          color: '#aaaaaa',
         },
-        "visualMap": {
-            "color": [
-                "#e01f54",
-                "#e7dbc3"
-            ]
+      },
+      symbolSize: 4,
+      symbol: 'emptyCircle',
+      smooth: false,
+      color: [
+        '#ff5252',
+        '#1e88e5',
+        '#e91e63',
+        '#673ab7',
+        '#5c6bc0',
+        '#8e24aa',
+        '#039be5',
+        '#26c6da',
+        '#26a69a',
+        '#66bb6a',
+        '#9ccc65',
+        '#ffa726',
+      ],
+      label: {
+        normal: {
+          textStyle: {
+            color: '#eeeeee',
+          },
         },
-        "dataZoom": {
-            "backgroundColor": "rgba(47,69,84,0)",
-            "dataBackgroundColor": "rgba(47,69,84,0.3)",
-            "fillerColor": "rgba(167,183,204,0.4)",
-            "handleColor": "#a7b7cc",
-            "handleSize": "100%",
-            "textStyle": {
-                "color": "#333333"
-            }
+      },
+    },
+    map: {
+      itemStyle: {
+        normal: {
+          areaColor: '#eeeeee',
+          borderColor: '#444444',
+          borderWidth: 0.5,
         },
-        "markPoint": {
-            "label": {
-                "normal": {
-                    "textStyle": {
-                        "color": "#eeeeee"
-                    }
-                },
-                "emphasis": {
-                    "textStyle": {
-                        "color": "#eeeeee"
-                    }
-                }
-            }
-        }
-    });
-}));
+        emphasis: {
+          areaColor: 'rgba(255,215,0,0.8)',
+          borderColor: '#444444',
+          borderWidth: 1,
+        },
+      },
+      label: {
+        normal: {
+          textStyle: {
+            color: '#000000',
+          },
+        },
+        emphasis: {
+          textStyle: {
+            color: 'rgb(100,0,0)',
+          },
+        },
+      },
+    },
+    geo: {
+      itemStyle: {
+        normal: {
+          areaColor: '#eeeeee',
+          borderColor: '#444444',
+          borderWidth: 0.5,
+        },
+        emphasis: {
+          areaColor: 'rgba(255,215,0,0.8)',
+          borderColor: '#444444',
+          borderWidth: 1,
+        },
+      },
+      label: {
+        normal: {
+          textStyle: {
+            color: '#000000',
+          },
+        },
+        emphasis: {
+          textStyle: {
+            color: 'rgb(100,0,0)',
+          },
+        },
+      },
+    },
+    categoryAxis: {
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisTick: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#333',
+        },
+      },
+      splitLine: {
+        show: false,
+        lineStyle: {
+          color: [
+            '#ccc',
+          ],
+        },
+      },
+      splitArea: {
+        show: false,
+        areaStyle: {
+          color: [
+            'rgba(250,250,250,0.3)',
+            'rgba(200,200,200,0.3)',
+          ],
+        },
+      },
+    },
+    valueAxis: {
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisTick: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#333',
+        },
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: [
+            '#ccc',
+          ],
+        },
+      },
+      splitArea: {
+        show: false,
+        areaStyle: {
+          color: [
+            'rgba(250,250,250,0.3)',
+            'rgba(200,200,200,0.3)',
+          ],
+        },
+      },
+    },
+    logAxis: {
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisTick: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#333',
+        },
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: [
+            '#ccc',
+          ],
+        },
+      },
+      splitArea: {
+        show: false,
+        areaStyle: {
+          color: [
+            'rgba(250,250,250,0.3)',
+            'rgba(200,200,200,0.3)',
+          ],
+        },
+      },
+    },
+    timeAxis: {
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisTick: {
+        show: true,
+        lineStyle: {
+          color: '#333',
+        },
+      },
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#333',
+        },
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: [
+            '#ccc',
+          ],
+        },
+      },
+      splitArea: {
+        show: false,
+        areaStyle: {
+          color: [
+            'rgba(250,250,250,0.3)',
+            'rgba(200,200,200,0.3)',
+          ],
+        },
+      },
+    },
+    toolbox: {
+      iconStyle: {
+        normal: {
+          borderColor: '#999999',
+        },
+        emphasis: {
+          borderColor: '#666666',
+        },
+      },
+    },
+    legend: {
+      textStyle: {
+        color: '#333333',
+      },
+    },
+    tooltip: {
+      axisPointer: {
+        lineStyle: {
+          color: '#cccccc',
+          width: 1,
+        },
+        crossStyle: {
+          color: '#cccccc',
+          width: 1,
+        },
+      },
+    },
+    timeline: {
+      lineStyle: {
+        color: '#293c55',
+        width: 1,
+      },
+      itemStyle: {
+        normal: {
+          color: '#293c55',
+          borderWidth: 1,
+        },
+        emphasis: {
+          color: '#a9334c',
+        },
+      },
+      controlStyle: {
+        normal: {
+          color: '#293c55',
+          borderColor: '#293c55',
+          borderWidth: 0.5,
+        },
+        emphasis: {
+          color: '#293c55',
+          borderColor: '#293c55',
+          borderWidth: 0.5,
+        },
+      },
+      checkpointStyle: {
+        color: '#e43c59',
+        borderColor: 'rgba(194,53,49,0.5)',
+      },
+      label: {
+        normal: {
+          textStyle: {
+            color: '#293c55',
+          },
+        },
+        emphasis: {
+          textStyle: {
+            color: '#293c55',
+          },
+        },
+      },
+    },
+    visualMap: {
+      color: [
+        '#e01f54',
+        '#e7dbc3',
+      ],
+    },
+    dataZoom: {
+      backgroundColor: 'rgba(47,69,84,0)',
+      dataBackgroundColor: 'rgba(47,69,84,0.3)',
+      fillerColor: 'rgba(167,183,204,0.4)',
+      handleColor: '#a7b7cc',
+      handleSize: '100%',
+      textStyle: {
+        color: '#333333',
+      },
+    },
+    markPoint: {
+      label: {
+        normal: {
+          textStyle: {
+            color: '#eeeeee',
+          },
+        },
+        emphasis: {
+          textStyle: {
+            color: '#eeeeee',
+          },
+        },
+      },
+    },
+  })
+}))

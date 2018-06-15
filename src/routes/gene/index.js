@@ -8,12 +8,12 @@ const Gene = props => {
 
   return (
     <div>
-      <Header title="Gene Data"/>
+      <Header title="Gene Data" />
       {/* <HGenelist history={history} location={location} /> */}
-      <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt"></i><span>Tutorial</span></div>}>
+      <Card title={<div><i className="fa fa-lg fa-fw fa-list-alt" /><span>Tutorial</span></div>}>
         <div className="markdown-body" dangerouslySetInnerHTML={{ __html: geneInstruction }} />
       </Card>
-      <HHeatmap history={history} location={location}/>
+      <HHeatmap history={history} location={location} />
     </div>
   )
 }

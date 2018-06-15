@@ -29,6 +29,7 @@ npm run dev:ser
   npm restart
   ```
 会自动进行打包构建 打包完毕后自动重启服务器
+
 2. 也可以手动构建
   ```bash
   npm run build //打包构建

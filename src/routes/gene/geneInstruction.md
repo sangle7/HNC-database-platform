@@ -1,0 +1,3 @@
+- switch between the tabs to select dataset
+- search for specific gene
+- click on the cell to see further information 

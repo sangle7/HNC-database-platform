@@ -11,3 +11,4 @@ run/
 *.swp
 app/public/
 app/view/
+config/config.prod.js

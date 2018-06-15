@@ -6,13 +6,13 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.dev.config');
 const Express = require('express');
-const fs = require('fs')
-var https = require('https')
+// const fs = require('fs')
+// var https = require('https')
 
-var certOptions = {
-  key: fs.readFileSync('/Users/sanglewang/server.key'),
-  cert: fs.readFileSync('/Users/sanglewang/server.crt')
-}
+// var certOptions = {
+//   key: fs.readFileSync('/Users/sanglewang/server.key'),
+//   cert: fs.readFileSync('/Users/sanglewang/server.crt')
+// }
 
 const app = new Express();
 const port = 3001;
@@ -47,19 +47,7 @@ app.use('/', (req, res, next) => {
   }
 });
 
-// app.listen(port, error => {
-//   /* eslint-disable no-console */
-//   if (error) {
-//     console.error(error);
-//   } else {
-//     console.info(
-//       '🌎 Listening on port %s. Open up http://localhost:%s/ in your browser.',
-//       port, port);
-//   }
-//   /* eslint-enable no-console */
-// });
-
-var server = https.createServer(certOptions, app).listen(port, error => {
+app.listen(port, error => {
   /* eslint-disable no-console */
   if (error) {
     console.error(error);
@@ -70,3 +58,15 @@ var server = https.createServer(certOptions, app).listen(port, error => {
   }
   /* eslint-enable no-console */
 });
+
+// var server = https.createServer(certOptions, app).listen(port, error => {
+//   /* eslint-disable no-console */
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.info(
+//       '🌎 Listening on port %s. Open up http://localhost:%s/ in your browser.',
+//       port, port);
+//   }
+//   /* eslint-enable no-console */
+// });

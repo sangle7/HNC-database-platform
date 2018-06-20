@@ -1,7 +1,6 @@
 import React from 'react'
 import { message } from 'antd'
-import { Header, Card, WrappedDynamicFieldSet } from '../../components'
-import style from './style.less'
+import { Header, Card, SurvivalCard, WrappedDynamicFieldSet } from '../../components'
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
@@ -42,22 +41,7 @@ class Survival extends React.Component {
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet cgi="survivalsug" max={1} onSubmit={v => this.init(v)} />
         </Card>
-        {gene && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
-          <div className={style.imgcontainer}>
-            <div>
-              <img src={`${prefix}/public/survival/GSE27020_PFS/${gene}.png`} />
-              <p>{gene} - GSE27020_PFS</p>
-            </div>
-            <div>
-              <img src={`${prefix}/public/survival/GSE31056_PFS/${gene}.png`} />
-              <p>{gene} - GSE31056_PFS</p>
-            </div>
-            <div>
-              <img src={`${prefix}/public/survival/GSE41613_OS/${gene}.png`} />
-              <p>{gene} - GSE41613_OS</p>
-            </div>
-          </div>
-        </Card> }
+        {gene && <SurvivalCard gene={gene}/> }
       </div>)
   }
 }

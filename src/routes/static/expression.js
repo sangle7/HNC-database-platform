@@ -1,6 +1,5 @@
 import React from 'react'
-import { Card, BoxPlot, DatasourceTable } from '../../components'
-import style from './style.less'
+import { Card, BoxPlot, DatasourceTable, SurvivalCard } from '../../components'
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
@@ -106,22 +105,7 @@ class Expression extends React.Component {
           {caseId ? <BoxPlot {...BoxPlotProps} /> : <DatasourceTable {...TableProps} />}
         </div>
       </Card>,
-      <Card title={<div><i className="fa fa-area-chart fa-lg" /><span>Survival Chart</span></div>}>
-        <div className={style.imgcontainer}>
-          <div>
-            <img src={`${prefix}/public/survival/GSE27020_PFS/${geneId}.png`} />
-            <p>{geneId} - GSE27020 PFS </p>
-          </div>
-          <div>
-            <img src={`${prefix}/public/survival/GSE31056_PFS/${geneId}.png`} />
-            <p>{geneId} - GSE31056 PFS </p>
-          </div>
-          <div>
-            <img src={`${prefix}/public/survival/GSE41613_OS/${geneId}.png`} />
-            <p>{geneId} - GSE41613 OS </p>
-          </div>
-        </div>
-      </Card>,
+      <SurvivalCard gene={geneId}/>,
     ]
   }
 }

@@ -8,6 +8,14 @@ module.exports = app => {
           dbid: result.drug_id
         }
       }
+    async getIdBydbid(dbid) {
+      const item = await app.mysql.get('hncdrug', {
+        drug_id: dbid
+      })
+      return {
+        hncDrugId: item.id
+      }
+    }
     async query(page) {
       const geneIds = await app.mysql.select('hncdrug', {
         limit: 10,

@@ -114,7 +114,7 @@ class DatasourceTable extends React.Component {
   }
 
   render () {
-    const { onCellClick, t, higher = false } = this.props
+    const { onCellClick, onTitleClick, t, higher = false } = this.props
     const { dataSource, filtedtotal, min, max, total, loading } = this.state
 
     const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
@@ -142,13 +142,16 @@ class DatasourceTable extends React.Component {
         pagination={false}
         scroll={{ x: true, y: 400 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
-          title: <span>{e}</span>,
+          title: <span onClick={()=>{e !== 'id' && e !== 'score' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,
-          fixed: e === 'id',
+          fixed: e === 'id' || e === 'score',
           width: e === 'id' ? 100 : 70,
-          sorter: true,
+          sorter: e !== 'id',
+          onHeaderCell: column => ({
+            className: column.dataIndex !=='id' && column.dataIndex !=='score' && 'scrollheader',
+          }),
           onCell: record => ({
-            onClick: () => { e !== 'id' && onCellClick(record.id, e, t) },
+            onClick: () => { e !== 'id' && e !== 'score' && onCellClick(record.id, e, t) },
             style: gStyle(e, record[e]),
             className: (e === firstKey && record.id === '') && 'scrolltag',
           }),
@@ -222,6 +225,9 @@ function hsv2rgb (h, s, v) { // color range function adapted from http://schinck
 }
 
 function gStyle (key, val) {
+  if(key === 'score'){
+    return {}
+  }
   if (key === 'last') {
     return {
       display: 'none',

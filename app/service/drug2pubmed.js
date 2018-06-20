@@ -1,5 +1,15 @@
 module.exports = app => {
   return class Databaselist extends app.Service {
+    async getByDrugId(hncdrug_id){
+      const list = await app.mysql.select('drug2pubmed', {
+        where: {
+          hncdrug_id
+        },
+      })
+      return {
+        list
+      }
+    }
     async query(pubmed_id) {
         const list = await app.mysql.select('drug2pubmed', {
           where: {

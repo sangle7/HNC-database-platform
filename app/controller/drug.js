@@ -5,10 +5,14 @@ exports.item = async ctx => {
     ret: 500,
   }
 
-  const { drugId } = ctx.request.query
+  const {
+    drugId
+  } = ctx.request.query
 
   try {
-    const { item } = await ctx.service.drugbank.queryByName(drugId)
+    const {
+      item
+    } = await ctx.service.drugbank.queryByName(drugId)
     body = {
       item,
       ret: 200,
@@ -18,6 +22,37 @@ exports.item = async ctx => {
   }
   ctx.body = body
 }
+
+exports.record = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const {
+    drugId
+  } = ctx.request.query
+
+  try {
+    const {
+      item
+    } = await ctx.service.drugbank.queryByName(drugId)
+    var {
+      hncDrugId
+    } = await ctx.service.hncdrug.getIdBydbid(item.dbid)
+    var {
+      list
+    } = await ctx.service.drug2pubmed.getByDrugId(hncDrugId)
+    body = {
+      list,
+      step: 2,
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+}
+
 
 exports.info = async ctx => {
   let body = {
@@ -39,8 +74,8 @@ exports.info = async ctx => {
         total
       } = await ctx.service.drugbank.search(q)
 
-      if(download === true){
-        downloadURL = writeToCSV(q,list)
+      if (download === true) {
+        downloadURL = writeToCSV(q, list)
       }
 
       body = {
@@ -65,8 +100,8 @@ exports.info = async ctx => {
         list.push(drug)
       }
 
-      if(download === true){
-        downloadURL = writeToCSV('',list)
+      if (download === true) {
+        downloadURL = writeToCSV('', list)
       }
 
       body = {
@@ -90,12 +125,18 @@ exports.heatmap = async ctx => {
     ret: 500,
   }
 
-  const { offset = 0, sorter = {}, filter = '' } = ctx.request.body
+  const {
+    offset = 0, sorter = {}, filter = ''
+  } = ctx.request.body
 
   try {
-    const { list,total, filtedtotal } = await ctx.service.connectivemap.getByPagi({
-      offset, 
-      size:20,
+    const {
+      list,
+      total,
+      filtedtotal
+    } = await ctx.service.connectivemap.getByPagi({
+      offset,
+      size: 20,
       sorter,
       filter
     })
@@ -114,10 +155,12 @@ exports.heatmap = async ctx => {
   ctx.body = body
 }
 
-function writeToCSV (q,list) {
-  csv.writeToPath(`app/public/drug-${q}.csv`, list, {headers: true})
-    .on("finish", function(){
-        console.log("done!");
-  });
+function writeToCSV(q, list) {
+  csv.writeToPath(`app/public/drug-${q}.csv`, list, {
+      headers: true
+    })
+    .on("finish", function () {
+      console.log("done!");
+    });
   return `/public/drug-${q}.csv`
 }

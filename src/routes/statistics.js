@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Stackchart, PieChart, Card } from '../components'
+import { Header, Stackchart, PieChart, Card, BarChart } from '../components'
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
@@ -39,11 +39,11 @@ class Statistics extends React.Component {
     return (
       <div>
         <Header title="Statistics" />
-        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>HNClinc</span></div>}>
-          <Stackchart data={lincStats} />
+        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>Overview</span></div>}>
+          <Stackchart data={lincStats} height ={300}/>
         </Card>
-        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>PieChart</span></div>}>
-          <div style={{ display: 'flex' }}>
+        <Card title={<div><i className="fa fa-bar-chart fa-fw fa-lg" /><span>Clinical Data</span></div>}>
+          <div style={{ display: 'flex' ,flexWrap:'wrap'}}>
             {pieStats.map((e, i) => <PieChart obj={e} uuid={i} />)}
           </div>
         </Card>

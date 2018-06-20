@@ -29,7 +29,7 @@ class Stackchart extends React.Component {
       })
     }
 
-    const option = {
+    /* const option = {
       tooltip: {},
       toolbox: {
         show: true,
@@ -73,13 +73,60 @@ class Stackchart extends React.Component {
         data: gDataByDataAndLegend(item, yData, data),
       })
       ),
-    }
+    } */
+
+    const option = {
+      tooltip : {
+          trigger: 'axis',
+          axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+              type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          }
+      },
+      legend: {
+          data:['Total','Related Pubmed','Related Case']
+      },
+      grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+      },
+      yAxis : [
+          {
+              type : 'category',
+              data : ['Gene','Drug']
+          }
+      ],
+      xAxis : [
+          {
+              type : 'value'
+          }
+      ],
+      series : [
+        {
+          name:'Related Case',
+          type:'bar',
+          data:[4017, 4237],
+        },
+          {
+            name:'Related Pubmed',
+            type:'bar',
+            data:[2614, 2361],
+          },{
+            name:'Total',
+            type:'bar',
+            data:[1253, 205]
+        },
+      ]
+  };
+  
 
     this.myChart.setOption(option)
   }
 
   render () {
-    return <div id="echart-stack" style={{ margin: '0 auto', width: '1000px', height: '400px' }} />
+    const { height = 400 } = this.props
+    return <div id="echart-stack" style={{ margin: '0 auto', width: '1000px', height: height + 'px' }} />
   }
 }
 

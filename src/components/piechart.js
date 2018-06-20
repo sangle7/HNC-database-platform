@@ -74,7 +74,7 @@ class PieChart extends React.Component {
 
   render () {
     const { size = 400, uuid } = this.props
-    return <div id={`echart-Pie-${uuid}`} style={{ margin: '0 auto', width: '500px', height: '400px' }} />
+    return <div id={`echart-Pie-${uuid}`} style={{ margin: '0 auto', width: '250px', height: '350px' }} />
   }
 }
 

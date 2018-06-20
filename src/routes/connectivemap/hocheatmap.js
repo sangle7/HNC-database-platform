@@ -44,6 +44,9 @@ class GeneList extends React.Component {
       onCellClick: (gene, c, t) => {
         history.push(`/statics?t=${t}&geneId=${gene}&drugId=${c}`)
       },
+      onTitleClick: c => {
+        history.push(`/statics?drugId=${c}`)
+      },
     }
 
     return (

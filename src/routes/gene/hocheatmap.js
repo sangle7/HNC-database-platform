@@ -32,6 +32,7 @@ class WithSearch extends React.Component {
       onCellClick: (gene, c, t) => {
         history.push(`/statics?t=${t}&geneId=${gene}&caseId=${c}`)
       },
+      onTitleClick: () => {},
     }
 
     return [<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '.2rem' }}>

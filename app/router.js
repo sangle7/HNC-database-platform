@@ -17,10 +17,12 @@ module.exports = app => {
   app.post('/diff/boxplot', app.controller.diff.boxplot)
   
   app.post('/corr/init', app.controller.corr.init)
+  app.get('/corr/dataset', app.controller.corr.dataset)
 
   app.post('/survival/init', app.controller.survival.init)
 
   app.get('/drug/item', app.controller.drug.item)
+  app.get('/drug/record', app.controller.drug.record)
 
   app.get('/case/item', app.controller.case.item)
 

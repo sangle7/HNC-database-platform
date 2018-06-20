@@ -33,10 +33,10 @@ const menu = [{
 }, {
   text: 'statistics',
   src: '/statistics',
-}, {
+}, /* {
   text: 'help',
   src: '/help',
-}, {
+},  */{
   text: 'Contact',
   src: '/Contact',
 }]

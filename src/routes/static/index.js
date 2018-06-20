@@ -6,6 +6,7 @@ import HGenecard from './hocgenecard'
 import HDrugcard from './hocdrugcard'
 import Expression from './expression'
 import HNCDB from './HNCDBrecords'
+import HDrugrecords from './drugRecords'
 
 const staticPage = props => {
   const { location, history } = props
@@ -26,13 +27,19 @@ const staticPage = props => {
     geneId: params.geneId,
   }
 
+  const HDrugProps = {
+    history,
+    location,
+    drugId: params.drugId,
+  }
+
   return (
     <div>
       <Header title={gTitle(params.drugId, params.geneId, params.caseId)} />
       <Card>
         <a onClick={() => window.history.back()}><i className="fa fa-lg fa-fw fa-arrow-left" />Back to previous</a>
       </Card>
-      {params.drugId && <HDrugcard history={history} location={location} />}
+      {params.drugId && [<HDrugcard history={history} location={location} />, <HDrugrecords {...HDrugProps}/>]}
       {params.geneId && [<HGenecard history={history} location={location} />, <HNCDB {...HNCDBProps} />, <Expression {...ExpressionProps} />]}
       {params.caseId && <HCasecard history={history} location={location} />}
     </div>

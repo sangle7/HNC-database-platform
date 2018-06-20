@@ -1,3 +1,3 @@
-- switch between the tabs to select dataset
-- search for specific gene
-- click on the cell to see further information 
+- Switch between the tabs to select dataset
+- Search for specific gene
+- Click on the cell to see further information 

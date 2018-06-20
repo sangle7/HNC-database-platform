@@ -1,16 +1,37 @@
 import React from 'react'
-import { Spin, message } from 'antd'
+import { Spin, message, Checkbox, Row, Col } from 'antd'
 import { DatasourceTable, ScatterChart, Header, Card, WrappedDynamicFieldSet } from '../../components'
 import style from './style.less'
+
+const CheckboxGroup = Checkbox.Group;
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
 class Corr extends React.Component {
   state = {
+    plainOptions: [],
+    checkedList: [],
+    indeterminate: true,
+    checkAll: true,
     loading: false,
     dataSource: [],
     type: 1,
+  }
+  componentDidMount () {
+    fetch(`${prefix}/corr/dataset`, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(blob => blob.json())
+      .then(code => {
+        this.setState({
+          plainOptions:code.options,
+          checkedList:code.options,
+        })
+      })
   }
   init = params => {
     this.setState({
@@ -21,7 +42,7 @@ class Corr extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(params),
+      body: JSON.stringify({ checked: this.state.checkedList, ...params }),
     })
       .then(blob => blob.json())
       .then(code => {
@@ -51,8 +72,23 @@ class Corr extends React.Component {
       dataSource: list,
     })
   }
+  onChange = (checkedList) => {
+    this.setState({
+      checkedList,
+      indeterminate: !!checkedList.length && (checkedList.length < this.state.plainOptions.length),
+      checkAll: checkedList.length === this.state.plainOptions.length,
+    });
+  }
+  onCheckAllChange = (e) => {
+    this.setState({
+      checkedList: e.target.checked ? this.state.plainOptions : [],
+      indeterminate: false,
+      checkAll: e.target.checked,
+    });
+  }
   render () {
     const { dataSource, loading, type } = this.state
+    const { plainOptions, checkedList, indeterminate, checkAll } = this.state
 
     const TableProps = {
       dataSource,
@@ -73,6 +109,25 @@ class Corr extends React.Component {
         <Header title="Corr analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v => this.init(v)} />
+        </Card>
+        <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select dataset</span></div>}>
+          <div style={{ margin:'.2rem .6rem' }}>
+            <div style={{ borderBottom: '1px solid #E9E9E9' }}>
+              <Checkbox
+                indeterminate={indeterminate}
+                onChange={this.onCheckAllChange}
+                checked={checkAll}
+              >
+                Check all
+              </Checkbox>
+            </div>
+            <br />
+            <CheckboxGroup value={checkedList} onChange={this.onChange} >
+              <Row>
+                {plainOptions.map(e=><Col span={4}><Checkbox value={e}>{e}</Checkbox></Col>)}
+              </Row>
+            </CheckboxGroup>
+          </div>
         </Card>
         {(dataSource[0] || loading) && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>

@@ -1,16 +1,31 @@
-#Rscript expression.R  <path to matrix file 1> <path to matrix file 2> <input genename 1> <input genename 2> <output prefix>
+#Rscript expression.R  <path to matrix file 1> <path to matrix file 2> <input genename 1> <input genename 2> <output prefix> <sample ids split by ','>
 library("data.table")
 Args=commandArgs(trailingOnly = TRUE)
+
 
 #reading file
 # library(limma)
 # library(pheatmap)
-zdf1<-fread(Args[1],header=TRUE)
-zdf2<-fread(Args[2],header=TRUE)
+zdf1<-system(paste(sep="","grep ",Args[3]," ",Args[1]), intern = TRUE)
+zdf1=strsplit(zdf1,split="\t")
+zdf1=unlist(zdf1)
+zdf2<-system(paste(sep="","grep ",Args[4]," ",Args[2]), intern = TRUE, ignore.stderr = TRUE)
+zdf2=strsplit(zdf2,split="\t")
+zdf2=unlist(zdf2)
+names=system(paste(sep="","head -n 1 ",Args[2]), intern = TRUE, ignore.stderr = TRUE)
+names=strsplit(names,split="\t")
+names=unlist(names)
 zdf = rbind(zdf1,zdf2,fill=TRUE)
-zdf = setDF(zdf)
+zdf = data.frame(zdf)
 rownames(zdf) = zdf[,1]
+colnames(zdf)=names
 zdf = zdf[,-1]
+sample=Args[6]
+if(!is.na(sample)){
+sample=strsplit(sample,split=",")
+sample=unlist(sample)
+zdf=zdf[,intersect(sample,colnames(zdf))]
+}
 
 rpkm_data_1 = zdf[c(Args[3],Args[4]),]
 rpkm_data_2 = transpose(rpkm_data_1)

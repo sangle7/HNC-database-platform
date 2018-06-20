@@ -4,24 +4,55 @@ const path = require('path')
 var csv = require("fast-csv");
 const fs = require('fs')
 
+exports.dataset = async ctx => {
+  let body = {
+    ret: 500,
+  }
+
+  const list  = await ctx.service.hnclinc.getAllDataset()
+
+  try {
+    body = {
+      options: list.map(e=>e.DatasetID),
+      ret: 200,
+    }
+  } catch (error) {
+    body.error = error
+  }
+  ctx.body = body
+
+}
+
 exports.init = async ctx => {
-  const app = ctx.app
   let body = {
     ret: 500,
   }
 
   const {
-    names
+    names,checked
   } = ctx.request.body
+  const list = await ctx.service.hnclinc.getAllDataset()
+
+  var colnames = []
+  if(checked.length !== list.length){
+    for(let i = 0;i< checked.length;i++){
+      var samplelist = await ctx.service.hnclinc.getSampleByDataset(checked[i])
+      var arr = samplelist.map(e=>e.SampleID)
+      colnames = [...colnames,...arr]
+    }
+  }
+
+  const colstr = colnames.join(',')
+
   try {
     /*names长度决定1v1 or 1vn */
     const [name1, name2] = names
     // validate
-    if (await validate(names)) {
+    if (name1 && name2 && await validate(names)) {
       let newList = []
       if (name2) {
         /*1v1 */
-        const md5String = md5(name1 + name2)
+        const md5String = md5(name1 + name2 + colstr)
         const filePath = path.join(__dirname, '..', 'public', 'corr', `${md5String}.1v1.table.csv`)
         const isExist = fs.existsSync(filePath)
         if (isExist) {
@@ -29,7 +60,7 @@ exports.init = async ctx => {
             headers: true
           })
         } else {   
-          const rResult = R(`corr.1v1.R`, `${path.join(__dirname, '..', 'public', 'coding.matrix.adj.txt')} ${path.join(__dirname, '..', 'public', 'lncRNA.matrix.adj.txt')} ${name1} ${name2} ${md5String}`)
+          const rResult = R(`corr.1v1.R`, `${path.join(__dirname, '..', 'public', 'test.matrix.adj.txt')} ${path.join(__dirname, '..', 'public', 'test.matrix.adj.txt')} ${name1} ${name2} ${md5String} ${colstr}`)
           if (rResult.code === 0) {
             // 读取文件内容
             newList = await promiseCSV(filePath, {
@@ -44,8 +75,7 @@ exports.init = async ctx => {
           list: newList,
           ret: 200,
         }
-      } else {
-        /*1vn */
+      } /* else {
         const md5String = md5(name1)
         const filePath = path.join(__dirname, '..', 'public', 'corr', `${md5String}.1vn.table.csv`)
         const isExist = fs.existsSync(filePath)
@@ -69,7 +99,7 @@ exports.init = async ctx => {
           list: newList,
           ret: 200,
         }
-      }
+      } */
     } else {
       body = {
         msg: 'Please enter the correct gene name !',

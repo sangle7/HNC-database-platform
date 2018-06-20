@@ -62,7 +62,7 @@ class DynamicFieldSet extends React.Component {
   render () {
     const { max = 2, cgi } = this.props
     const { getFieldDecorator, getFieldValue } = this.props.form
-    getFieldDecorator('keys', { initialValue: [0] })
+    getFieldDecorator('keys', { initialValue: [0,1] })
     const keys = getFieldValue('keys')
     const formItems = keys.map((k, index) => (
       <FormItem
@@ -71,7 +71,7 @@ class DynamicFieldSet extends React.Component {
         key={k}
       >
         <SearchInput cgi={cgi} onChange={v => this.onChange(v, index)} placeholder="input gene here" style={{ width: 200 }} />
-        {keys.length > 1 ? (
+        {keys.length > 2 ? (
           <Icon
             className="dynamic-delete-button"
             type="minus-circle-o"

@@ -28,11 +28,11 @@ const Multiselect = props => {
         {getFieldDecorator('type', {
           initialValue: 'HPV',
         })(
-          <Select style={{ width: 150 }}>
-            <Option value="HPV">HPV</Option>
-            <Option value="Tumor">Tumor</Option>
-            <Option value="Tobacco">Tobacco</Option>
-            <Option value="Recurrence">Recurrence</Option>
+          <Select style={{ width: 200}}>
+            <Option value="HPV">HPV pos vs neg</Option>
+            <Option value="Tumor">Tumor vs normal</Option>
+            <Option value="Tobacco">Tobacco pos vs neg</Option>
+            <Option value="Recurrence">Recurrence pos vs neg</Option>
           </Select>
         )}
       </FormItem>
@@ -42,7 +42,7 @@ const Multiselect = props => {
         {getFieldDecorator('genetype', {
           initialValue: 'coding',
         })(
-          <Select style={{ width: 150 }}>
+          <Select style={{ width: 100 }}>
             <Option value="coding">coding</Option>
             <Option value="lncRNA">lncRNA</Option>
           </Select>

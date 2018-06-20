@@ -42,8 +42,7 @@
 }
 
 .mainCon {
-  flex-grow: 2;
-  // height: 510px;
+  flex-grow: 2; // height: 510px;
   // background: #fafafa;
   // border: 2px solid #002766;
   margin: 10px 0;
@@ -69,15 +68,17 @@
   margin: 0 30px;
 }
 
-.imgcontainer{
-  width:100%;
+.imgcontainer {
+  width: 100%;
   display: flex;
-  overflow-x: scroll;
-  &>div{
-    img{
-      height: 500px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  &>div {
+    img {
+      height: 300px;
     }
-    p{
+    p {
       text-align: center;
       margin-top: .2rem;
       font-weight: 700;
@@ -94,10 +95,12 @@
     color: white;
   }
 }
-.mainflex{
+
+.mainflex {
   display: flex;
   flex-direction: column;
 }
+
 .butcontainer {
   width: 50%;
   margin: 0 auto;

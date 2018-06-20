@@ -8,7 +8,7 @@
     h1 {
         font-size: 1.2rem;
         font-weight: 700;
-        font-family: "Cinzel Decorative", cursive;
+        font-family: "Cinzel Decorative", cursive, sans-serif;
         position: relative;
         z-index: 4;
         color: #ffffff;
@@ -75,7 +75,7 @@
         font-weight: 700;
         color: white;
         font-size: 1rem;
-        font-family: "Cinzel Decorative", cursive;
+        font-family: "Cinzel Decorative", cursive, sans-serif;
         text-transform: capitalize;
         margin: 0;
         padding: 0;
@@ -119,7 +119,7 @@
         opacity: 0;
     }
     100% {
-        opacity: .5;
+        opacity: 1;
     }
 }
 
@@ -157,7 +157,7 @@
     position: relative;
     z-index: 4;
     color: white;
-    background-color: #a92e3d;
+    background-color: #186998;
     background-image: url('../../img/gplay.png');
     text-transform: capitalize;
     margin-top: .3rem;
@@ -169,7 +169,7 @@
     animation-duration: 2000ms;
     animation-delay: 3500ms;
     animation-fill-mode: forwards;
-    animation-name: floating;
+    animation-name: fadeIn;
     display: inline-block;
     transition: .3s;
     &:hover {
@@ -218,6 +218,7 @@
 
 .imgcontainer {
     display: flex;
+    justify-content: center;
     padding: .4rem calc(.4rem - 5px);
     max-width: 1200px;
     margin: .6rem auto 0 auto;
@@ -290,10 +291,10 @@
         animation-fill-mode: forwards;
         animation-name: scaleIn;
         &>main {
-            background-color: #174775;
+            background-color: #a92e3d;
         }
         &>div {
-            background-image: url('../../img/pubmedlogo.jpg');
+            background-image: url('../../img/medocs_txt.jpg');
         }
     }
     &>div:nth-child(3) {
@@ -303,23 +304,10 @@
         animation-fill-mode: forwards;
         animation-name: scaleIn;
         &>main {
-            background-color: #a92e3d;
+            background-color: #174775;
         }
         &>div {
-            background-image: url('../../img/headneck_diagram_english.jpg');
-        }
-    }
-    &>div:nth-child(4) {
-        animation-timing-function: ease-in-out;
-        animation-duration: 500ms;
-        animation-delay: 750ms;
-        animation-fill-mode: forwards;
-        animation-name: scaleIn;
-        &>main {
-            background-color: #cc4e57;
-        }
-        &>div {
-            background-image: url("../../img/medocs_txt.jpg");
+            background-image: url('../../img/pubmedlogo.jpg');
         }
     }
 }

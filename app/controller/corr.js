@@ -60,7 +60,7 @@ exports.init = async ctx => {
             headers: true
           })
         } else {   
-          const rResult = R(`corr.1v1.R`, `${path.join(__dirname, '..', 'public', 'test.matrix.adj.txt')} ${path.join(__dirname, '..', 'public', 'test.matrix.adj.txt')} ${name1} ${name2} ${md5String} ${path.join(__dirname, '..', 'public', 'dataset2sample.csv')} ${colstr}`)
+          const rResult = R(`corr.1v1.R`, `${path.join(__dirname, '..', 'public', 'test.matrix.txt')} ${path.join(__dirname, '..', 'public', 'test.matrix.txt')} ${name1} ${name2} ${md5String} ${path.join(__dirname, '..', 'public', 'dataset2sample.csv')} ${colstr}`)
           if (rResult.code === 0) {
             // 读取文件内容
             newList = await promiseCSV(filePath, {

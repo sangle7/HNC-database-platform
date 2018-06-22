@@ -20,11 +20,17 @@ zdf = data.frame(zdf)
 rownames(zdf) = zdf[,1]
 colnames(zdf)=names
 zdf = zdf[,-1]
-sample=Args[6]
-if(!is.na(sample)){
-sample=strsplit(sample,split=",")
-sample=unlist(sample)
-zdf=zdf[,intersect(sample,colnames(zdf))]
+dataset=Args[7]
+if(!is.na(dataset)){
+  sample_bank=fread(Args[6],sep=",",header=TRUE)
+  dataset=strsplit(dataset,split=",")
+  dataset=data.frame(Dataset_ID=unlist(dataset))
+  sample=merge(dataset,sample_bank,by="Dataset_ID",all.x=T)
+  temp=sample$Sample_ID
+  zdf=zdf[,intersect(temp,colnames(zdf))]
+  rownames(sample)=sample$Sample_ID
+  colnames(zdf)=paste(sep=".",sample[colnames(zdf),'Dataset_ID'],
+                      sample[colnames(zdf),'Sample_ID'])
 }
 
 rpkm_data_1 = zdf[c(Args[3],Args[4]),]

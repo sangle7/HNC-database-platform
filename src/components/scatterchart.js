@@ -1,6 +1,8 @@
 import React from 'react'
 import echarts from 'echarts'
 import { getlinearRegression } from '../const'
+import { WSATYPE_NOT_FOUND } from 'constants';
+import { isArray } from 'util';
 
 class SimpleScatterChart extends React.Component {
   componentDidMount () {
@@ -74,7 +76,21 @@ class SimpleScatterChart extends React.Component {
       xAxis: { name: xAxis, nameGap: 5 },
       yAxis: { name: yAxis },
       tooltip: {
-        formatter: '({c})',
+        formatter: (params, ticket, callback) => {
+          const { value } = params
+          // return isArray(value)
+          const arr = value.map(e=>{
+            switch (typeof(e)) {
+              case 'number':
+                return e.toFixed(2)
+              case 'string':
+                return /\./.test(e)? e.split('.')[0] : e
+              default:
+                return e
+            }
+          })
+          return `${arr.join('<br />')}`;
+        },
       },
       series: [{
         symbolSize: 5,

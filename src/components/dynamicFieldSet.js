@@ -62,7 +62,7 @@ class DynamicFieldSet extends React.Component {
   render () {
     const { max = 2, cgi } = this.props
     const { getFieldDecorator, getFieldValue } = this.props.form
-    getFieldDecorator('keys', { initialValue: [0,1] })
+    getFieldDecorator('keys', { initialValue: new Array(max).fill(0) })
     const keys = getFieldValue('keys')
     const formItems = keys.map((k, index) => (
       <FormItem

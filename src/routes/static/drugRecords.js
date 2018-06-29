@@ -40,9 +40,9 @@ const HNCDB = props => {
     }],
   }
   return (
-    <Card title={<div><i className="fa fa-bar-chart fa-lg" /><span>Drug Records</span></div>}>
+    dataSource[0] ? <Card title={<div><i className="fa fa-bar-chart fa-lg" /><span>Drug Records</span></div>}>
       <DatasourceTable {...TableProps} />
-    </Card>)
+    </Card> : null)
 }
 
 const HHNCDB = Wrapper(HNCDB, `${prefix}/drug/record`, null, { step: '1' })

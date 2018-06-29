@@ -8,16 +8,26 @@ import Wrapper from '../wrapper'
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
-const HNCDB = props => {
-  const { loading, dataSource = [], geneId } = props
+class HNCDB extends React.Component{
+  state = {
+    filter: '',
+  }
+  onBarClick = (filter) => {
+    this.setState({
+      filter
+    })
+  }
+  render () {
+    const { loading, dataSource = [], geneId } = this.props
+    const { filter } = this.state
 
   const data = countFromArray(dataSource, 'mol_event')
 
   const TableProps = {
-    dataSource,
+    dataSource: dataSource.filter(e=>new RegExp(filter,'g').test(e.mol_event)),
     loading,
     pagination: false,
-    scroll: { y: 330, x: true },
+    scroll: { y: 150, x: true },
     columns: [{
       title: 'Gene Name',
       dataIndex: 'name',
@@ -36,7 +46,7 @@ const HNCDB = props => {
       title: 'Function in HNC',
       dataIndex: 'note',
       width: 600,
-      render: value => <span title={value}>{value.length > 80 ? `${value.slice(0, 80)}...` : value}</span>,
+      render: value => <span title={value}>{value.length > 100 ? `${value.slice(0, 100)}...` : value}</span>,
     }],
   }
   const TabProps = {
@@ -55,8 +65,11 @@ const HNCDB = props => {
   }
   return (
     <Card title={<div><i className="fa fa-bar-chart fa-lg" /><span>Gene Records</span></div>}>
-      <Tabs {...TabProps} />
+      {/* <Tabs {...TabProps} /> */}
+      <BarChart data={data} onBarClick={this.onBarClick}/>
+      <DatasourceTable {...TableProps} />
     </Card>)
+  }
 }
 
 const HHNCDB = Wrapper(HNCDB, `${prefix}/gene/init`, null, { step: '1' })

@@ -55,7 +55,7 @@ class SurvivalCard extends React.Component {
             <p>{gene} - GSE41613_OS</p>
           </div>
           <div>
-            <img onClick={()=>this.showModal(gene,'TCGA_OS')} src={`${prefix}/public/survival/TCGA_OS/${gene}.png`} />
+            <img onClick={()=>this.showModal(gene,'TCGA_OS')} src={`${prefix}/public/survival/TCGA_OS/${gene}.png`} onerror='this.src="http://bpic.588ku.com/element_pic/01/47/29/645743e3d4812eb.jpg"'/>
             <p>{gene} - TCGA_OS</p>
           </div>
         </div>

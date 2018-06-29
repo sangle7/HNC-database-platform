@@ -56,11 +56,11 @@ const GeneList = props => {
 
     }, {
       key: 'hpvcoding',
-      title: 'hpv positive & negative Coding',
+      title: 'HPV positive & negative Coding',
       content: <WithSearch t="hpvcoding" {...props} />,
     }, {
       key: 'hpvlnc',
-      title: 'hpv positive & negative lncRNA',
+      title: 'HPV positive & negative lncRNA',
       content: <WithSearch t="hpvlnc" {...props} />,
     }],
     onChange (key) {

@@ -95,11 +95,11 @@ class TabDefault extends React.Component {
       }, {
         title: 'logFC',
         dataIndex: 'logFC',
-        render: v => parseFloat(v).toFixed(4),
+        render: v => parseFloat(v).toExponential(2),
       }, {
         title: 'AveExpr',
         dataIndex: 'AveExpr',
-        render: v => parseFloat(v).toFixed(4),
+        render: v => parseFloat(v).toExponential(2),
       }, {
         title: 'P.Value',
         dataIndex: 'P.Value',

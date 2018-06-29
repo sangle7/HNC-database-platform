@@ -114,7 +114,7 @@ class DatasourceTable extends React.Component {
   }
 
   render () {
-    const { onCellClick, onTitleClick, t, higher = false } = this.props
+    const { onCellClick, onTitleClick, t, higher = false, colorMax = 2.55 } = this.props
     const { dataSource, filtedtotal, min, max, total, loading } = this.state
 
     const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
@@ -142,17 +142,17 @@ class DatasourceTable extends React.Component {
         pagination={false}
         scroll={{ x: true, y: 400 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
-          title: <span onClick={()=>{e !== 'id' && e !== 'score' && onTitleClick(e)}}>{e}</span>,
+          title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'SP' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,
-          fixed: e === 'id' || e === 'score',
+          fixed: e === 'id' || e === 'score'  || e === 'SP' ,
           width: e === 'id' ? 100 : 70,
           sorter: e !== 'id',
           onHeaderCell: column => ({
-            className: column.dataIndex !=='id' && column.dataIndex !=='score' && 'scrollheader',
+            className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'SP' && 'scrollheader',
           }),
           onCell: record => ({
-            onClick: () => { e !== 'id' && e !== 'score' && onCellClick(record.id, e, t) },
-            style: gStyle(e, record[e]),
+            onClick: () => { e !== 'id' &&  e !== 'SP' && e !== 'score' && onCellClick(record.id, e, t) },
+            style: gStyle(e, record[e], record, colorMax),
             className: (e === firstKey && record.id === '') && 'scrolltag',
           }),
           render: (v, row, index) => this.gRender(e, v, index, list, firstKey),
@@ -224,8 +224,8 @@ function hsv2rgb (h, s, v) { // color range function adapted from http://schinck
   }).join('')}`
 }
 
-function gStyle (key, val) {
-  if(key === 'score'){
+function gStyle (key, val, record, max) {
+  if(key === 'score' ||  key == 'SP' || record.id == 'SP'){
     return {}
   }
   if (key === 'last') {
@@ -239,19 +239,21 @@ function gStyle (key, val) {
         background: 'rgb(241,241,241)',
       }
     } else if (val > 0) {
-      const p = val > 2.55 ? 1 : (val / 2.55).toFixed(2)
-      const v = val > 2.55 ? 0.86 : (1 - (val / 2.55) * 0.14).toFixed(2)
-      // const d = val > 2.55 ? 0 :((2.55 - Math.abs(val - 1.275)) / 2.55 * 30).toFixed(0)
+      const p = val > max ? 1 : (val / max).toFixed(2)
+      const v = val > max ? 0.86 : (1 - (val / max) * 0.14).toFixed(2)
+      // const d = val > max ? 0 :((max - Math.abs(val - 1.275)) / max * 30).toFixed(0)
       return {
         background: hsv2rgb(0, p, v),
+        color: val > max * 0.7 ? 'rgb(230,230,230)' : 'black'
       }
     }
-    const p = -val > 2.55 ? 0.56 : ((-val / 2.55) * 0.56).toFixed(2)
-    const v = -val > 2.55 ? 0.53 : (1 - (-val / 2.55) * 0.47).toFixed(2)
+    const p = -val > max ? 0.56 : ((-val / max) * 0.56).toFixed(2)
+    const v = -val > max ? 0.53 : (1 - (-val / max) * 0.47).toFixed(2)
     // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
 
     return {
       background: hsv2rgb(221, p, v),
+      color: -val > max * 0.7 ? 'rgb(230,230,230)' : 'black'
     }
   } catch (error) {
     return {

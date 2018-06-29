@@ -126,7 +126,7 @@ exports.heatmap = async ctx => {
   }
 
   const {
-    offset = 0, sorter = {}, filter = ''
+    offset = 0, sorter = {}, filter = '',t
   } = ctx.request.body
 
   try {
@@ -138,7 +138,8 @@ exports.heatmap = async ctx => {
       offset,
       size: 20,
       sorter,
-      filter
+      filter,
+      table:t,
     })
     body = {
       list,

@@ -6,8 +6,12 @@ require('./mdtheme')
 
 class Barchart extends React.Component {
   componentDidMount () {
+    const { onBarClick } = this.props
     this.myChart = echarts.init(document.getElementById('echart-bar'), 'roma')
     this.updateChart(this.props)
+    this.myChart.on('click', params => {
+      onBarClick(params.name)
+    })
   }
 
   componentWillReceiveProps (nextProps) {

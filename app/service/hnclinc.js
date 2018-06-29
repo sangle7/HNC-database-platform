@@ -120,12 +120,12 @@ module.exports = app => {
         value: [{
           name: 'positive',
           value: await app.mysql.count('hnclinc', {
-            hpv: 'yes'
+            hpv: 'positive'
           }),
         }, {
           name: 'negative',
           value: await app.mysql.count('hnclinc', {
-            hpv: 'no'
+            hpv: 'negative'
           }),
         }],
       },{

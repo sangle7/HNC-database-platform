@@ -1,14 +1,14 @@
 import React from 'react'
 import queryString from 'query-string'
 import { Icon } from 'antd'
-import { HeatMapTable, Search, Card } from '../../components'
+import { HeatMapTable, Search, Card ,Tabs } from '../../components'
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
 
-class GeneList extends React.Component {
+class WithSearch extends React.Component {
   state = {
-    filter: '', // gene=value1&drug=value
+    filter: '',
   }
   onSearch = (v, key) => {
     const { filter } = this.state
@@ -21,7 +21,7 @@ class GeneList extends React.Component {
     })
   }
   render () {
-    const { history } = this.props
+    const { history, t } = this.props
     const { filter } = this.state
 
     const SearchProps = {
@@ -40,7 +40,9 @@ class GeneList extends React.Component {
 
     const HeatmapProps = {
       url: `${prefix}/drug/heatmap`,
+      t,
       filter,
+      colorMax: 1.5,
       onCellClick: (gene, c, t) => {
         history.push(`/statics?t=${t}&geneId=${gene}&drugId=${c}`)
       },
@@ -49,16 +51,37 @@ class GeneList extends React.Component {
       },
     }
 
+    return [<div className="flexdc">
+    <Search {...Search2Props} />
+    <Search {...SearchProps} />
+  </div>,
+  <HeatMapTable higher {...HeatmapProps} />]
+  }
+}
+
+const GeneList = props => {
+  const TabProps = {
+      transform: false,
+      tabs: [{
+        key: 'coding',
+        title: 'Tumor vs Normal/Disease Coding',
+        content: <WithSearch t="coding" {...props} />,
+      }, {
+        key: 'lnc',
+        title: 'Tumor vs Normal/Disease lncRNA',
+        content: <WithSearch t="lnc" {...props} />,
+  
+      }],
+      onChange (key) {
+        console.log(key)
+      },
+    }
+
     return (
       <Card title={<div><i className="fa fa-th fa-fw fa-lg" /><span>Data Heat Map</span></div>}>
-        <div className="flexdc">
-          <Search {...Search2Props} />
-          <Search {...SearchProps} />
-        </div>
-        <HeatMapTable higher {...HeatmapProps} />
+        <Tabs {...TabProps} />
       </Card>
     )
   }
-}
 
 export default GeneList

@@ -104,6 +104,12 @@ class Corr extends React.Component {
       onDotClick: i => (this.deleteItem(i)),
       size: 600,
     }
+    const optionsObj = plainOptions.sort().reduce((pre,e)=>{
+          const key = e.slice(0,4)
+          pre[key] = pre[key] ? [...pre[key],e]: [e]
+          return pre
+        },{})
+        console.log(Object.values(optionsObj))
     return (
       <div>
         <Header title="Corr analysis" />
@@ -122,10 +128,13 @@ class Corr extends React.Component {
               </Checkbox>
             </div>
             <br />
-            <CheckboxGroup value={checkedList} onChange={this.onChange} >
-              <Row>
-                {plainOptions.map(e=><Col span={4}><Checkbox value={e}>{e}</Checkbox></Col>)}
-              </Row>
+            <CheckboxGroup style={{maxHeight:'190px',overflowY:'scroll'}}value={checkedList} onChange={this.onChange} >
+            {Object.values(optionsObj).map(el=>{
+              return [<Row style={{ borderBottom: '1px solid #E9E9E9', marginBottom: '.1rem', paddingBottom: '.1rem' }}>
+                {el.map(e=><Col span={4}><Checkbox value={e}>{e}</Checkbox></Col>)}
+              </Row>]
+            })}
+              {/* <Col span={4}><Checkbox value={e}>{e}</Checkbox></Col> */}
             </CheckboxGroup>
           </div>
         </Card>

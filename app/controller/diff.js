@@ -48,12 +48,21 @@ exports.table = async ctx =>{
     const {
         pagination = {},
         geneId,
+        genename,
         name //GSE21866_Tumor_vs_Normal_coding
     } = ctx.request.body
 
     const { current = 1 } = pagination
 
-    if (geneId) {
+    if (genename) {
+        const {
+            caseId,
+        } = arrangeName(name)
+        temp = await ctx.service.difftable.searchByGene({
+            gene: genename,
+            caseId
+        })
+    }else if (geneId) {
         temp = await ctx.service.difftable.getByGene({
             geneId
         })
@@ -74,7 +83,7 @@ exports.table = async ctx =>{
     }
 
     body.list = temp.list
-    body.pagination = {
+    body.pagination = genename ? false : {
         page: current,
         total: temp.total
     }

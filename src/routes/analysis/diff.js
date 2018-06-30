@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button, Icon } from 'antd'
 import DiffModal from './diffModal'
-import { Multiselect, DatasourceTable, Header, Card, Tabs } from '../../components'
+import style from './style.less'
+import { Multiselect, DatasourceTable, Header, Card, Tabs, Search } from '../../components'
 
 const env = process.env.NODE_ENV
 const prefix = env === 'production' ? '' : '/cgi'
@@ -18,8 +19,7 @@ class TabDefault extends React.Component {
       modalVisible: false,
     })
   }
-  fetchData = (e, pagination) => {
-    console.log(pagination)
+  fetchData = (e, query) => {
     const { name } = this.props
     this.setState({
       loading: true,
@@ -29,7 +29,7 @@ class TabDefault extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name.replace('.heatmap.png', ''), pagination }),
+      body: JSON.stringify({ name: name.replace('.heatmap.png', ''), ...query }),
     })
       .then(blob => blob.json())
       .then(code => {
@@ -84,7 +84,7 @@ class TabDefault extends React.Component {
       dataSource,
       scroll: { x: true, y: false },
       pagination,
-      onChange: page => this.fetchData(null, page),
+      onChange: pag => this.fetchData(null, { pagination: pag }),
       columns: [{
         title: 'Gene',
         dataIndex: 'Gene',
@@ -95,11 +95,11 @@ class TabDefault extends React.Component {
       }, {
         title: 'logFC',
         dataIndex: 'logFC',
-        render: v => parseFloat(v).toExponential(2),
+        render: v => parseFloat(v).toFixed(3),
       }, {
         title: 'AveExpr',
         dataIndex: 'AveExpr',
-        render: v => parseFloat(v).toExponential(2),
+        render: v => parseFloat(v).toFixed(3),
       }, {
         title: 'P.Value',
         dataIndex: 'P.Value',
@@ -111,12 +111,20 @@ class TabDefault extends React.Component {
       }],
     }
 
+    const SearchProps = {
+      title: <Icon type="search" />,
+      placeholder: 'Search Gene',
+      onSearch: value => {
+        this.fetchData(null, {genename: value})
+      },
+    }
+
 
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <div className={style.flexcontainer}>
         <img src={`${prefix}/public/diff/${name}`} alt="diff" height="400" />
         <DiffModal {...ModalProps} />
-        {dataSource[0] ? <DatasourceTable {...TableProps} /> : <Button loading={loading} onClick={this.fetchData} type="primary">Get Origin Data</Button>}
+        {dataSource[0] ? <div style={{textAlign: 'end'}}><Search {...SearchProps}/><DatasourceTable {...TableProps} /></div> : <Button loading={loading} onClick={this.fetchData} type="primary">Show Result Table</Button>}
       </div>
     )
   }
@@ -166,7 +174,7 @@ class Diff extends React.Component {
           <Multiselect onSubmit={this.init} />
         </Card>
         { list[0] && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
-          <Tabs {...TabProps} />}
+          <Tabs {...TabProps} />
         </Card> }
       </div>)
   }

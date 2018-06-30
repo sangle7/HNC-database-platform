@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   keys: '0904',
-  middleware: [ 'notfoundHandler' ],
+  // middleware: [ 'notfoundHandler' ],
   security: {
     domainWhiteList: [
       'localhost',

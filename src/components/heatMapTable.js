@@ -140,7 +140,7 @@ class DatasourceTable extends React.Component {
         rowKey={record => record.id}
         dataSource={list}
         pagination={false}
-        scroll={{ x: (Object.keys(list[0]).length -2) * 70 + 200, y: 400 }}
+        scroll={{ x: true, y: 400 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
           title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'SP' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,

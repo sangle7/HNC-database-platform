@@ -39,10 +39,9 @@ exports.record = async ctx => {
     var {
       hncDrugId
     } = await ctx.service.hncdrug.getIdBydbid(item.dbid)
-    console.log(hncDrugId)
     var {
       list
-    } = await ctx.service.opm2drug.getByDrugId(item.dbid)
+    } = await ctx.service.drug2pubmed.getByDrugId(hncDrugId)
     body = {
       list,
       step: 2,

@@ -7,73 +7,23 @@ require('./mdtheme')
 
 class Stackchart extends React.Component {
   componentDidMount () {
-    this.myChart = echarts.init(document.getElementById('echart-stack'), 'roma')
+    const { uuid } = this.props
+    this.myChart = echarts.init(document.getElementById(`echart-stack-${uuid}`), 'roma')
     this.updateChart(this.props)
   }
-
+  
   componentWillReceiveProps (nextProps) {
     this.updateChart(nextProps)
-  }
-
+  }  
+  
   updateChart = props => {
     const { data } = props
 
-    const legend = ['male', 'female', 'positive', 'negative', 'tumor', 'normal']
-    const yData = data.map(e => e.key)
+    console.log(data[0])
 
+    const legend =  Object.keys(data[0]).filter(e=>e!=='key')
 
-    function gDataByDataAndLegend (legendname, yData, data) {
-      return yData.map(e => {
-        const arr = data.filter(i => i.key === e)
-        return arr[0][legendname] || 0
-      })
-    }
-
-    /* const option = {
-      tooltip: {},
-      toolbox: {
-        show: true,
-        right: 30,
-        feature: {
-          saveAsImage: {
-            show: true,
-            pixelRatio: 2,
-          },
-          magicType: {
-            type: ['line', 'bar', 'stack', 'tiled'],
-          },
-        },
-      },
-      legend: {
-        data: legend,
-      },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true,
-      },
-      xAxis: {
-        type: 'value',
-      },
-      yAxis: {
-        type: 'category',
-        data: yData,
-      },
-      series: legend.map(item => ({
-        name: item,
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight',
-          },
-        },
-        data: gDataByDataAndLegend(item, yData, data),
-      })
-      ),
-    } */
+    console.log(legend)
 
     const option = {
       tooltip : {
@@ -83,7 +33,7 @@ class Stackchart extends React.Component {
           }
       },
       legend: {
-          data:['Total','Related Pubmed','Related Case']
+          data: legend,
       },
       grid: {
           left: '3%',
@@ -94,7 +44,7 @@ class Stackchart extends React.Component {
       yAxis : [
           {
               type : 'category',
-              data : ['Gene','Drug']
+              data : data.map(e=>e.key)
           }
       ],
       xAxis : [
@@ -102,22 +52,11 @@ class Stackchart extends React.Component {
               type : 'value'
           }
       ],
-      series : [
-        {
-          name:'Related Case',
-          type:'bar',
-          data:[4017, 4237],
-        },
-          {
-            name:'Related Pubmed',
-            type:'bar',
-            data:[2614, 2361],
-          },{
-            name:'Total',
-            type:'bar',
-            data:[1253, 205]
-        },
-      ]
+      series : legend.map(e=>({
+        name:e,
+        type:'bar',
+        data:data.map(item=>item[e]),
+      }))
   };
   
 
@@ -125,8 +64,8 @@ class Stackchart extends React.Component {
   }
 
   render () {
-    const { height = 400 } = this.props
-    return <div id="echart-stack" style={{ margin: '0 auto', width: '1000px', height: height + 'px' }} />
+    const { height = 400, uuid } = this.props
+    return <div id={`echart-stack-${uuid}`} style={{ margin: '0 auto', width: '1000px', height: height + 'px' }} />
   }
 }
 

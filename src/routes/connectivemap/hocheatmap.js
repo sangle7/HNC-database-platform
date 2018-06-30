@@ -64,11 +64,11 @@ const GeneList = props => {
       transform: false,
       tabs: [{
         key: 'coding',
-        title: 'Tumor vs Normal/Disease Coding',
+        title: 'Coding gene',
         content: <WithSearch t="coding" {...props} />,
       }, {
         key: 'lnc',
-        title: 'Tumor vs Normal/Disease lncRNA',
+        title: 'lncRNA',
         content: <WithSearch t="lnc" {...props} />,
   
       }],

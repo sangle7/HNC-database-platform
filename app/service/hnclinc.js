@@ -9,6 +9,16 @@ module.exports = app => {
       const options = await app.mysql.query('SELECT DISTINCT DatasetID from hnclinc')
       return options;
     }
+    async getIds(){
+      const arr = [{
+        key: 'Sample',
+        value: await this.doCount('SELECT COUNT(DISTINCT sampleid) from hnclinc','COUNT(DISTINCT sampleid)'),
+      },{
+        key: 'dataset',
+        value: await this.doCount('SELECT COUNT(DISTINCT datasetid) from hnclinc','COUNT(DISTINCT datasetid)'),
+      }]
+      return arr
+    }
     async getStatistics() {
 
       const arr = [{
@@ -64,16 +74,16 @@ module.exports = app => {
           }),
         }],
       }, {
-        key: 'tumor/normal',
+        key: 'tumornormal',
         value: [{
           name: 'tumor',
           value: await app.mysql.count('hnclinc', {
-            'tumor/normal': 'tumor'
+            'tumornormal': 'tumor'
           }),
         }, {
           name: 'normal',
           value: await app.mysql.count('hnclinc', {
-            'tumor/normal': 'normal'
+            'tumornormal': 'normal'
           }),
         }],
       }, {

@@ -4,11 +4,11 @@ import { Table, Spin } from 'antd'
 import style from './heatMapTable.less'
 import ReactDOM from 'react-dom'
 
-const ColorWrapper = () => (
+const ColorWrapper = props => (
   <div>
-    <span>Low Expression</span>
+    <span>Low {props.colorMax === 2.55 ? `Expression` :`Score` }</span>
     <span className={style.colorbar} />
-    <span>High Expression</span>
+    <span>High {props.colorMax === 2.55 ? `Expression` :`Score` }</span>
   </div>
 )
 
@@ -21,7 +21,7 @@ const Entries = ({ min, max, total, filtedtotal }) => (
 const Footer = props => (
   <div className={style.footer}>
     <Entries {...props} />
-    <ColorWrapper />
+    <ColorWrapper {...props}/>
   </div>
 )
 
@@ -158,7 +158,7 @@ class DatasourceTable extends React.Component {
           render: (v, row, index) => this.gRender(e, v, index, list, firstKey),
           /* 最后一行的id column span才为全部 */
         })) : []}
-        footer={() => (<Footer min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal} />)}
+        footer={() => (<Footer colorMax={colorMax} min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal} />)}
         {...this.props}
       />
     )

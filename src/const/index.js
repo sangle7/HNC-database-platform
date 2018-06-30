@@ -16,7 +16,7 @@ const menu = [{
   text: 'Gene',
   src: '/Gene',
 }, {
-  text: 'Connective Map',
+  text: 'Connectivity Map',
   src: '/ConnectiveMap',
 }, {
   text: 'Analysis',

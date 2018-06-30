@@ -2,6 +2,7 @@
 
 module.exports = app => {
   app.get('/statistics',app.controller.statistics.info)
+  app.get('/statistics/hnclinc',app.controller.statistics.hnclinc)
   app.get('/drugs', app.controller.drug.info)
   app.get('/genes', app.controller.gene.info)
   app.get('/gene/:geneId', app.controller.gene.init)

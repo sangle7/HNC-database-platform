@@ -68,7 +68,7 @@ class DynamicFieldSet extends React.Component {
       <FormItem
         label={index === 0 ? 'Gene' : ''}
         required={false}
-        key={k}
+        key={index}
       >
         <SearchInput cgi={cgi} onChange={v => this.onChange(v, index)} placeholder="input gene here" style={{ width: 200 }} />
         {keys.length > 2 ? (

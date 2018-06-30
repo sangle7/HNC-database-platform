@@ -21,6 +21,7 @@ const Genecard = props => {
   const { item, loading } = props
   const TableProps = {
     showHeader: false,
+    scroll:{y:250},
     dataSource: item ? gData(item) : [],
     columns: [{
       title: 'key',

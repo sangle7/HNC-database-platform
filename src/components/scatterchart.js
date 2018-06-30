@@ -1,8 +1,6 @@
 import React from 'react'
 import echarts from 'echarts'
 import { getlinearRegression } from '../const'
-import { WSATYPE_NOT_FOUND } from 'constants';
-import { isArray } from 'util';
 
 class SimpleScatterChart extends React.Component {
   componentDidMount () {

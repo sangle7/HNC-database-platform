@@ -111,6 +111,9 @@ class Corr extends React.Component {
         },{})
         console.log(Object.values(optionsObj))
     return (
+      [loading && <div className={style.spinmodal}>
+      <Spin />
+    </div>,
       <div>
         <Header title="Corr analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
@@ -140,10 +143,11 @@ class Corr extends React.Component {
         </Card>
         {(dataSource[0] || loading) && <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>analysis result</span></div>}>
           <div className={style.container}>
-            {loading ? <Spin /> : type === 2 ? <ScatterChart {...ChartProps} /> : <DatasourceTable {...TableProps} />}
+            {type === 2 ? <ScatterChart {...ChartProps} /> : <DatasourceTable {...TableProps} />}
           </div>
         </Card>}
-      </div>)
+      </div>]
+    )
   }
 }
 

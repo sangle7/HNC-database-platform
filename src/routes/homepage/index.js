@@ -20,8 +20,8 @@ const Homepage = (props) => {
         <div onClick={()=>history.push('/Gene')}>
           <div />
           <main>
-            <h3>gene information</h3>
-            <p>including xxx and xxx.</p>
+            <h3>gene</h3>
+            <p>including 1,253 genes and 4,017 supported papers.</p>
           </main>
         </div>
 
@@ -29,7 +29,7 @@ const Homepage = (props) => {
           <div />
           <main>
             <h3>drug</h3>
-            <p>including xxx and xxx.</p>
+            <p>including 205 drugs and 4,237 supported papers.</p>
           </main>
         </div>
 

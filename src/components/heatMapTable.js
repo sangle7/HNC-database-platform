@@ -27,7 +27,7 @@ const Footer = props => (
 
 class DatasourceTable extends React.Component {
   state = {
-    dataSource: [],
+    dataSource: [{}],
     loading: false,
     min: 1,
     max: 10,
@@ -124,7 +124,7 @@ class DatasourceTable extends React.Component {
     let mincol = false
     if (dataSource.length) {
       const obj = { id: '' }
-      console.log(firstKey, dataSource.length, filtedtotal, dataSource.length >= filtedtotal)
+      // console.log(firstKey, dataSource.length, filtedtotal, dataSource.length >= filtedtotal)
       obj[firstKey] = dataSource.length >= filtedtotal ? <span><i className="fa fa-fw fa-smile-o" aria-hidden="true" /> No More Records</span> : <Spin />
       list = [...dataSource, obj]
       mincol = Object.keys(dataSource[0]).length <= 16
@@ -151,7 +151,7 @@ class DatasourceTable extends React.Component {
             className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'SP' && 'scrollheader',
           }),
           onCell: record => ({
-            onClick: () => { e !== 'id' &&  e !== 'SP' && e !== 'score' && onCellClick(record.id, e, t) },
+            onClick: () => { record.id !== 'SP' && e !== 'id' &&  e !== 'SP' && e !== 'score' && onCellClick(record.id, e, t) },
             style: gStyle(e, record[e], record, colorMax),
             className: (e === firstKey && record.id === '') && 'scrolltag',
           }),

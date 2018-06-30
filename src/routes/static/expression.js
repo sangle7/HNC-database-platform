@@ -76,25 +76,35 @@ class Expression extends React.Component {
       pagination: false,
       columns: [{
         title: 'Gene',
+        width:100,
         dataIndex: 'Gene',
       }, {
         title: 'dataset',
+        width:100,
         dataIndex: 'dataset',
       }, {
+        title: 'data type',
+        width:200,
+        dataIndex: 'data_type',
+      },{
         title: 'logFC',
         dataIndex: 'logFC',
+        width:100,
         render: v => parseFloat(v).toFixed(4),
       }, {
         title: 'AveExpr',
         dataIndex: 'AveExpr',
+        width:100,
         render: v => parseFloat(v).toFixed(4),
       }, {
         title: 'P.Value',
+        width:100,
         dataIndex: 'P.Value',
         render: v => parseFloat(v).toExponential(2),
       }, {
         title: 'adj.P.Val',
         dataIndex: 'adj.P.Val',
+        width:100,
         render: v => parseFloat(v).toFixed(4),
       }],
     }

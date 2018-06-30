@@ -9,7 +9,7 @@ const DatasourceTable = props => {
     <Table
       className={classnames({ [style.table]: true, [style.nwrap]: nwrap })}
       bordered
-
+      scroll={ document.body.clientWidth < 600 ? true : false}
       rowKey={record => record.id}
       {...props}
       columns={columns}

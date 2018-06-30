@@ -66,8 +66,8 @@ class Barchart extends React.Component {
   }
 
   render () {
-    const { size = 400 } = this.props
-    return <div id="echart-bar" style={{ margin: '0 auto', width: '1000px', height: '400px' }} />
+    const width = document.body.clientWidth
+    return <div id="echart-bar" style={{ margin: '0 auto', width: `${width}px`, height: `${width * 0.4}px` }} />
   }
 }
 

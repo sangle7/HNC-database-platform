@@ -124,7 +124,7 @@ exports.init = async ctx => {
       case '0':
         var {
           item
-        } = await ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId.trim())
         body = {
           item,
           step: 0,
@@ -135,7 +135,7 @@ exports.init = async ctx => {
         // 获取基因在gene表中的id
         var {
           item
-        } = await ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId.trim())
         // 根据基因id查找在hncgene表中的hncGeneId
         var {
           hncGeneId
@@ -161,7 +161,7 @@ exports.init = async ctx => {
         // 获取基因在gene表中的id
         var {
           item
-        } = await ctx.service.gene.getIdByName(geneId)
+        } = await ctx.service.gene.getIdByName(geneId.trim())
         // 根据基因id查找在hncgene表中的hncGeneId
         var {
           hncGeneId

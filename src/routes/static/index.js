@@ -15,8 +15,8 @@ const staticPage = props => {
 
   const ExpressionProps = {
     url: 'cgi/gene/init',
-    caseId: params.caseId,
-    geneId: params.geneId,
+    caseId: params.caseId.trim(),
+    geneId: params.geneId.trim(),
     type: params.t,
     onclickcb: e => { console.log(e) },
   }
@@ -24,14 +24,15 @@ const staticPage = props => {
   const HNCDBProps = {
     history,
     location,
-    geneId: params.geneId,
+    geneId: params.geneId.trim(),
   }
 
   const HDrugProps = {
     history,
     location,
-    drugId: params.drugId,
+    drugId: params.drugId.trim(),
   }
+
 
   return (
     <div>
@@ -51,7 +52,7 @@ export default staticPage
 
 
 function gTitle (...values) {
-  const arr = values.filter(e => e)
+  const arr = values.filter(e => e).map(e=>e.trim())
   const result = arr.join(' - ')
   return result
 }

@@ -15,8 +15,8 @@ const staticPage = props => {
 
   const ExpressionProps = {
     url: 'cgi/gene/init',
-    caseId: params.caseId.trim(),
-    geneId: params.geneId.trim(),
+    caseId: params.caseId && params.caseId.trim(),
+    geneId: params.geneId && params.geneId.trim(),
     type: params.t,
     onclickcb: e => { console.log(e) },
   }
@@ -24,13 +24,13 @@ const staticPage = props => {
   const HNCDBProps = {
     history,
     location,
-    geneId: params.geneId.trim(),
+    geneId: params.geneId && params.geneId.trim(),
   }
 
   const HDrugProps = {
     history,
     location,
-    drugId: params.drugId.trim(),
+    drugId: params.drugId && params.drugId.trim(),
   }
 
 

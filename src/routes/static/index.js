@@ -11,11 +11,12 @@ import HDrugrecords from './drugRecords'
 const staticPage = props => {
   const { location, history } = props
 
-  const params = queryString.parse(location.search)
+  const tempparams = queryString.parse(location.search)
 
-  for(let key in params){
-    if(params[key]){
-      params[key]=params[key].trim()
+  const params = {}
+  for(let key of params){
+    if(tempparams[key]){
+      params[key] = tempparams[key].trim()
     }
   }
 

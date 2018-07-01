@@ -60,6 +60,7 @@ exports.table = async ctx =>{
         } = arrangeName(name)
         temp = await ctx.service.difftable.searchByGene({
             gene: genename,
+            type,
             caseId
         })
     }else if (geneId) {

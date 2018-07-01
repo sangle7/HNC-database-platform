@@ -142,16 +142,16 @@ class DatasourceTable extends React.Component {
         pagination={false}
         scroll={{ x: true, y: 400 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
-          title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'SP' && onTitleClick(e)}}>{e}</span>,
+          title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'pubmed evidence' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,
-          fixed: e === 'id' || e === 'score'  || e === 'SP' ,
+          fixed: e === 'id' || e === 'score'  || e === 'pubmed evidence' ,
           width: e === 'id' ? 100 : 70,
           sorter: e !== 'id',
           onHeaderCell: column => ({
-            className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'SP' && 'scrollheader',
+            className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'pubmed evidence' && 'scrollheader',
           }),
           onCell: record => ({
-            onClick: () => { record.id !== 'SP' && e !== 'id' &&  e !== 'SP' && e !== 'score' && onCellClick(record.id, e, t) },
+            onClick: () => { record.id !== 'pubmed evidence' && e !== 'id' &&  e !== 'pubmed evidence' && e !== 'score' && onCellClick(record.id, e, t) },
             style: gStyle(e, record[e], record, colorMax),
             className: (e === firstKey && record.id === '') && 'scrolltag',
           }),
@@ -225,7 +225,7 @@ function hsv2rgb (h, s, v) { // color range function adapted from http://schinck
 }
 
 function gStyle (key, val, record, max) {
-  if(key === 'score' ||  key == 'SP' || record.id == 'SP'){
+  if(key === 'score' ||  key == 'pubmed evidence' || record.id == 'pubmed evidence'){
     return {}
   }
   if (key === 'last') {

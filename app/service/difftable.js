@@ -40,8 +40,8 @@ module.exports = app => {
       return { list }
     }
 
-    async searchByGene({gene, caseId}){
-      const list = await app.mysql.query(`SELECT * FROM difftable WHERE gene like '%${gene}%' and dataset = '${caseId}'`)
+    async searchByGene({gene, caseId, type}){
+      const list = await app.mysql.query(`SELECT * FROM difftable WHERE gene like '%${gene}%' and dataset = '${caseId}' and data_type = '${type}`)
       return { list }
     }
   }

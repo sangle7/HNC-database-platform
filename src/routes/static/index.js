@@ -14,7 +14,7 @@ const staticPage = props => {
   const tempparams = queryString.parse(location.search)
 
   const params = {}
-  for(let key of tempparams){
+  for(let key in tempparams){
     if(tempparams[key]){
       params[key] = tempparams[key].trim()
     }

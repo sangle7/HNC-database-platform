@@ -46,7 +46,7 @@ class HNCDB extends React.Component{
       title: 'Function in HNC',
       dataIndex: 'note',
       width: 600,
-      render: value => <span title={value}>{value.length > 100 ? `${value.slice(0, 100)}...` : value}</span>,
+      render: value => <span title={value}>{value.length > 80 ? `${value.slice(0, 80)}...` : value}</span>,
     }],
   }
   const TabProps = {

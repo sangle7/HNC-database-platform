@@ -13,10 +13,16 @@ const staticPage = props => {
 
   const params = queryString.parse(location.search)
 
+  for(let key in params){
+    if(params[key]){
+      params[key]=params[key].trim()
+    }
+  }
+
   const ExpressionProps = {
     url: 'cgi/gene/init',
-    caseId: params.caseId && params.caseId.trim(),
-    geneId: params.geneId && params.geneId.trim(),
+    caseId: params.caseId,
+    geneId: params.geneId,
     type: params.t,
     onclickcb: e => { console.log(e) },
   }
@@ -24,13 +30,13 @@ const staticPage = props => {
   const HNCDBProps = {
     history,
     location,
-    geneId: params.geneId && params.geneId.trim(),
+    geneId: params.geneId,
   }
 
   const HDrugProps = {
     history,
     location,
-    drugId: params.drugId && params.drugId.trim(),
+    drugId: params.drugId,
   }
 
 
@@ -52,7 +58,7 @@ export default staticPage
 
 
 function gTitle (...values) {
-  const arr = values.filter(e => e).map(e=>e.trim())
+  const arr = values.filter(e => e)
   const result = arr.join(' - ')
   return result
 }

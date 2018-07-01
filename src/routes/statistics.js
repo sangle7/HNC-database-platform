@@ -22,7 +22,7 @@ class Statistics extends React.Component {
     this.setState({
       loading: true,
     })
-    fetch(`${prefix}/statistics`, {
+    fetch(`${prefix}/statisticscgi`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ class Statistics extends React.Component {
     this.setState({
       tbloading: true,
     })
-    fetch(`${prefix}/statistics/hnclinc?page=${page}`, {
+    fetch(`${prefix}/statisticscgi/hnclinc?page=${page}`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

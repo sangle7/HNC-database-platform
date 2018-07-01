@@ -15,7 +15,7 @@ const cgiConfig = {
   diff: `${prefix}/diff/init`,
   diffboxplot: `${prefix}/diff/boxplot`,
   difftable: `${prefix}/diff/table`,
-  statistics: `${prefix}/statistics`,
+  statistics: `${prefix}/statisticscgi`,
   public: `${prefix}/public`,
 }
 

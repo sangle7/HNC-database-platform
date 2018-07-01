@@ -15,10 +15,11 @@
         }
     }
     :global {
-        .ant-table-fixed-left th {
+        .ant-table-fixed thead th {
             text-transform: capitalize;
+            word-break: break-word  !important;
+            white-space: unset  !important;
             /* font-size: .2rem; */
-            white-space: normal !important;
         }
         th.scrollheader {
             height: 100px !important;

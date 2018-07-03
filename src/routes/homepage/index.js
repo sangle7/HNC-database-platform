@@ -11,7 +11,7 @@ const Homepage = (props) => {
       <header className={style.header}>
         <div className={style.container}>
           <h1>HNC Database</h1>
-          <h2>A comprehensive resource for the HNC community, including the related gene and medication information, provides a Genome Atlas platform to perform integrated analysis.</h2>
+          <h2>A comprehensive resource for the HNC community, including the HNC related gene and medication information, and expression analysis platform.</h2>
           {/* <Link className={style.button} to="/Gene">start here</Link> */}
         </div>
       </header>

@@ -6,9 +6,9 @@ import ReactDOM from 'react-dom'
 
 const ColorWrapper = props => (
   <div>
-    <span>Low {props.colorMax === 2.55 ? `Expression` :`Score` }</span>
+    <span>Low {props.colorMax === 2.55 ? `Fold change` :`Score` }</span>
     <span className={style.colorbar} />
-    <span>High {props.colorMax === 2.55 ? `Expression` :`Score` }</span>
+    <span>High {props.colorMax === 2.55 ? `Fold change` :`Score` }</span>
   </div>
 )
 

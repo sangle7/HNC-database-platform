@@ -47,20 +47,20 @@ const GeneList = props => {
     transform: false,
     tabs: [{
       key: 'tumorcoding',
-      title: 'Tumor vs Normal/Disease Coding',
+      title: 'Tumor vs Normal/Disease (Coding gene)',
       content: <WithSearch t="tumorcoding" {...props} />,
     }, {
       key: 'tumorlnc',
-      title: 'Tumor vs Normal/Disease lncRNA',
+      title: 'Tumor vs Normal/Disease (lncRNA)',
       content: <WithSearch t="tumorlnc" {...props} />,
 
     }, {
       key: 'hpvcoding',
-      title: 'HPV positive & negative Coding',
+      title: 'HPV positive & negative (Coding gene)',
       content: <WithSearch t="hpvcoding" {...props} />,
     }, {
       key: 'hpvlnc',
-      title: 'HPV positive & negative lncRNA',
+      title: 'HPV positive & negative (lncRNA)',
       content: <WithSearch t="hpvlnc" {...props} />,
     }],
     onChange (key) {

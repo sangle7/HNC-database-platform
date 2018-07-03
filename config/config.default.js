@@ -15,6 +15,9 @@ module.exports = {
       enable: false
     }
   },
+  static:{
+    gzip: true,
+  },
   bodyParser: {
     enable: true,
     encoding: 'utf8',
@@ -28,8 +31,8 @@ module.exports = {
   view: {
     defaultViewEngine: 'nunjucks',
   },
- /*  middleware: ['gzip'],
+  // middleware: ['gzip'],
   gzip: {
     threshold: 1024, // 小于 1k 的响应体不压缩
-  }, */
+  },
 }

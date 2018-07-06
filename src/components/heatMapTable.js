@@ -145,7 +145,7 @@ class DatasourceTable extends React.Component {
           title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'pubmed evidence' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,
           fixed: e === 'id' || e === 'score'  || e === 'pubmed evidence' ,
-          width: e === 'id' ? 100 : 70,
+          width: e === 'id' ? 120 : 70,
           sorter: e !== 'id',
           onHeaderCell: column => ({
             className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'pubmed evidence' && 'scrollheader',

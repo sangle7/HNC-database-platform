@@ -20,7 +20,7 @@ class Survival extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ gene }),
+      body: JSON.stringify({ gene: gene.toUpperCase() }),
     })
       .then(blob => blob.json())
       .then(code => {

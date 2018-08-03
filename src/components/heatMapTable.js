@@ -130,6 +130,8 @@ class DatasourceTable extends React.Component {
       mincol = Object.keys(dataSource[0]).length <= 16
     }
 
+    const tempnum = list[0] ? Object.keys(list[0]).length : 1
+
     return (
       <Table
         ref={t => this.hmtable = t}
@@ -140,7 +142,7 @@ class DatasourceTable extends React.Component {
         rowKey={record => record.id}
         dataSource={list}
         pagination={false}
-        scroll={{ x: 80 * Object.keys(list[0]).length, y: 300 }}
+        scroll={{ x: 80 * tempnum, y: 300 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
           title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'pubmed evidence' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,

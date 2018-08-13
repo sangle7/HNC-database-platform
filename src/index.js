@@ -54,7 +54,6 @@ const footerstyle = {
 
 
 ReactDOM.render(
-  <ErrorBoundary>
     <Router>
       <WScrollToTop>
         <Route
@@ -82,6 +81,5 @@ ReactDOM.render(
       </WScrollToTop>
     </Router>
     <BackTop />
-  </ErrorBoundary>
   , document.getElementById('root'),
 )

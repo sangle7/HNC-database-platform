@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom'
 const ColorWrapper = props => (
   <div>
     <span>Low {props.colorMax === 2.55 ? `Fold change` :`Score` }</span>
-    <span className={style.colorbar} />
+    <span className={ props.half ? style.colorbarhalf : style.colorbar } />
     <span>High {props.colorMax === 2.55 ? `Fold change` :`Score` }</span>
   </div>
 )
@@ -114,7 +114,7 @@ class DatasourceTable extends React.Component {
   }
 
   render () {
-    const { onCellClick, onTitleClick, t, higher = false, colorMax = 2.55 } = this.props
+    const { onCellClick, onTitleClick, t, higher = false, colorMax = 2.55, half = false} = this.props
     const { dataSource, filtedtotal, min, max, total, loading } = this.state
 
     const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
@@ -160,7 +160,7 @@ class DatasourceTable extends React.Component {
           render: (v, row, index) => this.gRender(e, v, index, list, firstKey),
           /* 最后一行的id column span才为全部 */
         })) : []}
-        footer={() => (<Footer colorMax={colorMax} min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal} />)}
+        footer={() => (<Footer half={half} colorMax={colorMax} min={min} max={dataSource.length} total={total} filtedtotal={filtedtotal} />)}
         {...this.props}
       />
     )

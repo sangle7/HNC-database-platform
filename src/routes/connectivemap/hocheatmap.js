@@ -55,7 +55,7 @@ class WithSearch extends React.Component {
     <Search {...Search2Props} />
     <Search {...SearchProps} />
   </div>,
-  <HeatMapTable higher {...HeatmapProps} />]
+  <HeatMapTable half higher {...HeatmapProps} />]
   }
 }
 

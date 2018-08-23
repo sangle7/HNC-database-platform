@@ -227,8 +227,11 @@ function hsv2rgb (h, s, v) { // color range function adapted from http://schinck
 }
 
 function gStyle (key, val, record, max) {
-  if(key === 'score' ||  key == 'pubmed evidence' || record.id == 'pubmed evidence'){
-    return {}
+  if(key === 'score' ||  key === 'pubmed evidence'){
+    return {
+      background: 'rgb(255,255,255)',
+      color: 'black'
+    }
   }
   if (key === 'last') {
     return {
@@ -236,7 +239,11 @@ function gStyle (key, val, record, max) {
     }
   }
   try {
-    if (val === 0) {
+    if(record.id === 'pubmed evidence'){
+      return {
+        background: 'rgb(255,255,255)',
+      }
+    }else if (val === 0) {
       return {
         background: 'rgb(241,241,241)',
       }

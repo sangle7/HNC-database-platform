@@ -117,7 +117,22 @@ class DatasourceTable extends React.Component {
     const { onCellClick, onTitleClick, t, higher = false, colorMax = 2.55, half = false} = this.props
     const { dataSource, filtedtotal, min, max, total, loading } = this.state
 
-    const firstKey = dataSource[0] ? Object.keys(dataSource[0])[1] : null
+
+    const gFirstKey = (obj) => {
+      const arr = Object.keys(obj)
+      console.log(arr)
+      let result
+      if(arr[1]!=='score' && arr[1]!=='pubmed evidence'){
+        result =  arr[1]
+      }else{
+        result = arr[2]
+      }
+      console.log(result)
+      return result
+    }
+
+    const firstKey = dataSource[0] ? gFirstKey(dataSource[0]) : null
+
 
 
     let list = []
@@ -142,14 +157,15 @@ class DatasourceTable extends React.Component {
         rowKey={record => record.id}
         dataSource={list}
         pagination={false}
-        scroll={{ x: tempnum > 10 ? 80 * tempnum : 80 * tempnum  - 30, y: 300 }}
+        scroll={{ x:  80 * tempnum + 40, y: 300 }}
         columns={list[0] ? [...Object.keys(list[0]), 'last'].map(e => ({
           title: <span onClick={()=>{e !== 'id' && e !== 'score' && e !== 'pubmed evidence' && onTitleClick(e)}}>{e}</span>,
           dataIndex: e,
           fixed: e === 'id' || e === 'score'  || e === 'pubmed evidence' ,
-          width: e === 'id' ? 120 : 70,
+          width: e === 'id' ? 120 : 80,
           sorter: e !== 'id',
           onHeaderCell: column => ({
+            onScroll:()=>{console.log(scrollheader)},
             className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'pubmed evidence' && 'scrollheader',
           }),
           onCell: record => ({

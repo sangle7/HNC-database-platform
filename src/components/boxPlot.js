@@ -20,7 +20,8 @@ const gSubText = obj => {
 
 class Boxplot extends React.Component {
   componentDidMount () {
-    this.myChart = echarts.init(document.getElementById('echart-boxplot'))
+    const { title = 0 } = this.props
+    this.myChart = echarts.init(document.getElementById(`boxplot-${title}`))
     this.updateChart(this.props)
   }
 
@@ -104,8 +105,8 @@ class Boxplot extends React.Component {
   }
 
   render () {
-    const { size = 550 } = this.props
-    return <div id="echart-boxplot" style={{ margin: '0 auto', width: `${size}px`, height: `${size}px` }} />
+    const { size = 550, title = 0 } = this.props
+    return <div id={`boxplot-${title}`} style={{ margin: '0 auto', width: `${size}px`, height: `${size}px` }} />
   }
 }
 export default Boxplot

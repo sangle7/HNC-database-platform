@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon } from 'antd'
+import { Button, Icon，message } from 'antd'
 import DiffModal from './diffModal'
 import style from './style.less'
 import { Multiselect, DatasourceTable, Header, Card, Tabs, Search } from '../../components'
@@ -33,12 +33,19 @@ class TabDefault extends React.Component {
     })
       .then(blob => blob.json())
       .then(code => {
-        this.setState({
-          dataSource: code.list,
-          loading: false,
-          pagination: code.pagination,
-          // modalVisible: true,
-        })
+        if(!code.list[0]){
+          message.error('No Data!')//没有合适的基因
+          this.setState({
+            loading: false,
+          })
+        }else{
+          this.setState({
+            dataSource: code.list,
+            loading: false,
+            pagination: code.pagination,
+            // modalVisible: true,
+          })
+        }
       })
   }
   showModal = obj => {

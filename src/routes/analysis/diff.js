@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon，message } from 'antd'
+import { Button, Icon, message } from 'antd'
 import DiffModal from './diffModal'
 import style from './style.less'
 import { Multiselect, DatasourceTable, Header, Card, Tabs, Search } from '../../components'

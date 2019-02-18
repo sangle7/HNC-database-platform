@@ -1,5 +1,7 @@
 # HNC-database-platform
 
+项目地址： http://hncdb.cancerbio.info/
+
 ## 构建环境
 + node v8.5+
 + npm v3.6+

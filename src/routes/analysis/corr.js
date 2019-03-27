@@ -115,7 +115,7 @@ class Corr extends React.Component {
       <Spin />
     </div>,
       <div>
-        <Header title="Corr analysis" />
+        <Header title="Correlation analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-check-square-o" /><span>select gene</span></div>}>
           <WrappedDynamicFieldSet onSubmit={v => this.init(v)} />
         </Card>
@@ -127,7 +127,7 @@ class Corr extends React.Component {
                 onChange={this.onCheckAllChange}
                 checked={checkAll}
               >
-                Check all
+               Check all
               </Checkbox>
             </div>
             <br />

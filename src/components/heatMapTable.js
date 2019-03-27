@@ -114,8 +114,9 @@ class DatasourceTable extends React.Component {
   }
 
   render () {
-    const { onCellClick, onTitleClick, t, higher = false, colorMax = 2.55, half = false} = this.props
+    const { onCellClick, onTitleClick, onGeneClick, t, higher = false, colorMax = 2.55 } = this.props
     const { dataSource, filtedtotal, min, max, total, loading } = this.state
+    const half = this.props.half
 
 
     const gFirstKey = (obj) => {
@@ -169,8 +170,8 @@ class DatasourceTable extends React.Component {
             className: column.dataIndex !=='id' && column.dataIndex !=='score' && column.dataIndex !== 'pubmed evidence' && 'scrollheader',
           }),
           onCell: record => ({
-            onClick: () => { record.id !== 'pubmed evidence' && e !== 'id' &&  e !== 'pubmed evidence' && e !== 'score' && onCellClick(record.id, e, t) },
-            style: gStyle(e, record[e], record, colorMax),
+            onClick: () => { (record.id !== 'pubmed evidence' && e !== 'id' &&  e !== 'pubmed evidence' && e !== 'score' && onCellClick(record.id, e, t)) || (record.id === 'pubmed evidence'  && e !== 'pubmed evidence' && e !== 'id'&& e !== 'score' && onTitleClick(e)) ||  (record.id !== 'pubmed evidence'  && e === 'pubmed evidence'  && onGeneClick(record.id))},
+            style: gStyle(e, record[e], record, colorMax,half), //xingyang
             className: (e === firstKey && record.id === '') && 'scrolltag',
           }),
           render: (v, row, index) => this.gRender(e, v, index, list, firstKey),
@@ -242,7 +243,8 @@ function hsv2rgb (h, s, v) { // color range function adapted from http://schinck
   }).join('')}`
 }
 
-function gStyle (key, val, record, max) {
+function gStyle (key, val, record, max, half) { //xingyang
+  let p=0, v=0;
   if(key === 'score' ||  key === 'pubmed evidence'){
     return {
       background: 'rgb(255,255,255)',
@@ -264,18 +266,23 @@ function gStyle (key, val, record, max) {
         background: 'rgb(241,241,241)',
       }
     } else if (val > 0) {
-      const p = val > max ? 1 : (val / max).toFixed(2)
-      const v = val > max ? 0.86 : (1 - (val / max) * 0.14).toFixed(2)
+      p = val > max ? 1 : (val / max).toFixed(2)
+      v = val > max ? 0.86 : (1 - (val / max) * 0.14).toFixed(2)
       // const d = val > max ? 0 :((max - Math.abs(val - 1.275)) / max * 30).toFixed(0)
       return {
         background: hsv2rgb(0, p, v),
         color: val > max * 0.7 ? 'rgb(230,230,230)' : 'black'
       }
-    }
-    const p = -val > max ? 0.56 : ((-val / max) * 0.56).toFixed(2)
-    const v = -val > max ? 0.53 : (1 - (-val / max) * 0.47).toFixed(2)
+    } else if (half === true){ //xingyang
+      return{	 
+         background: 'rgb(255, 255, 255)',
+         color:  'black'
+      }
+    } else {//xingyang
+        p = -val > max ? 0.56 : ((-val / max) * 0.56).toFixed(2)
+        v = -val > max ? 0.53 : (1 - (-val / max) * 0.47).toFixed(2)
     // const d = -val > 2.55 ? 0 :( -val / 2.55 * 120).toFixed(0)
-
+    }
     return {
       background: hsv2rgb(221, p, v),
       color: -val > max * 0.7 ? 'rgb(230,230,230)' : 'black'

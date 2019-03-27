@@ -6,8 +6,8 @@ class App extends React.Component {
   state = {
     plainOptions: [],
     checkedList: [],
-    indeterminate: true,
-    checkAll: true,
+    indeterminate: false,
+    checkAll: false,
   }
   componentDidMount () {
     fetch(this.props.url, {

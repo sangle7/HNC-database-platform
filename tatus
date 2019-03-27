@@ -1,0 +1,1232 @@
+[33mcommit 849716ba789c2bf5ef989d52a1149c114eb53d62[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 25da90b 7c2f6f1
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jul 6 06:58:43 2018 -0600
+
+    Merge branch 'master' of https://github.com/sangle7/HNC-database-platform
+
+[33mcommit 7c2f6f1789bc4f10eef846db2ada6164f5a2d311[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jul 6 20:53:12 2018 +0800
+
+    remove overflow hidden
+
+[33mcommit 25da90b7ee1a9f79919956b0861c07c212eff06d[m
+Merge: 635eaab 406650a
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jul 3 07:35:54 2018 -0600
+
+    Merge branch 'master' of https://github.com/sangle7/HNC-database-platform
+
+[33mcommit 635eaab7ace25eafcbb5273180da8df774e6d9c7[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jul 3 07:35:49 2018 -0600
+
+    pic modify;
+
+[33mcommit 406650a2d7278d5e28a4750ed202233d275c1c5d[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jul 3 21:33:46 2018 +0800
+
+    scollbar test
+
+[33mcommit 1ea0e783e575b1d68c1920fd13379e86f3dbc036[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jul 3 21:02:19 2018 +0800
+
+    gzip on
+
+[33mcommit b567c3839a6cc27a1e2a654608bb542bbd085c13[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 17:04:32 2018 +0800
+
+    trim
+
+[33mcommit bdcf65ec2ca06601748720f1b2dcd474d1f257af[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 16:59:11 2018 +0800
+
+    tabs
+
+[33mcommit 66dee75fdccc4b5b779b660afdbf490c1237b97a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 16:55:27 2018 +0800
+
+    let in
+
+[33mcommit d48573bfcfe242a7bd9a04d15d7119b382aef3b1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 16:52:41 2018 +0800
+
+    fix
+
+[33mcommit 4fb37702d9aedb33d9def9a8030c78892e4886de[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 16:49:56 2018 +0800
+
+    params
+
+[33mcommit 5e33234dbc676dd8d9c3f08a4626f8f3f8626886[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 16:38:22 2018 +0800
+
+    param trim
+
+[33mcommit 791ff8452b4304959a45f2d547ddd9039525bb88[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:56:37 2018 +0800
+
+    barchart width
+
+[33mcommit c5f36e815a1dcd844b519340d180fc03ae48210b[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:51:48 2018 +0800
+
+    100=>80
+
+[33mcommit d24e90b0a7430af195f520990e461d360c20821a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:47:58 2018 +0800
+
+    trim
+
+[33mcommit 5e917608fcf0d691a7fc67446f37075f6d8bee51[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:42:09 2018 +0800
+
+    table style
+
+[33mcommit d799b99632b667512fb4c1769279fc47b115b34b[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:30:29 2018 +0800
+
+    trim
+
+[33mcommit 2a257deb504630f1592efdb22ab27f385a8c2cd0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 15:00:25 2018 +0800
+
+    fontsize
+
+[33mcommit 5422109d56d58cae026c4d2bf45f0d9867f93e7a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 14:03:11 2018 +0800
+
+    add loading
+
+[33mcommit 916127567a523db912b88a5c63eef9c18b2b640d[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 13:55:53 2018 +0800
+
+    diff sql
+
+[33mcommit 1bc4c8bd6b58160fc1e8249499448946c5cf2a8e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sun Jul 1 13:48:48 2018 +0800
+
+    diff
+
+[33mcommit 818b4200b3054df4a22e1d13b3e3adddb7a418a1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 23:54:06 2018 +0800
+
+    reset;
+
+[33mcommit 41420d2afcd2c429db685591101f6e81044fe79c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 23:48:47 2018 +0800
+
+    fix
+
+[33mcommit 5cb80447dde5f76525b934ae018c8915f1c65495[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 23:03:30 2018 +0800
+
+    add search
+
+[33mcommit 0fdc205dac7742808f582f13527221df18de635c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 21:48:07 2018 +0800
+
+    static;
+
+[33mcommit cd0c7099e3fbaaa738d0f146b95a2702a0aca8c0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 15:52:54 2018 +0800
+
+    fix ff
+
+[33mcommit 2e9dbe578f2109f4429b9791a24c62997d131889[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 15:43:44 2018 +0800
+
+    hide scrollbar
+
+[33mcommit c546008cd3eb4154709e0a1b898ae520cee386b0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 15:00:55 2018 +0800
+
+    default img & rm button
+
+[33mcommit 66b1362dbfcafcbf96b614b0033b86ee12ee141c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 14:26:03 2018 +0800
+
+    scroll
+
+[33mcommit f98aae46f79bc979690c81edc44c677a25f7fcbf[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Sat Jun 30 13:47:35 2018 +0800
+
+    spin
+
+[33mcommit 924e35f834ee5dc87da093c6d9d1784b2632e044[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 29 16:49:12 2018 +0800
+
+    new pic
+
+[33mcommit 622d36918b80f50a1311f1842b0a16e5e4a891f8[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 29 16:25:55 2018 +0800
+
+    feat
+
+[33mcommit ada15d6bbc78e854e55d46cf7f4ecc57040c3901[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 29 13:36:22 2018 +0800
+
+    tcga
+
+[33mcommit 00a066de24f742426cb7ab9192d91e013150bb27[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 29 13:33:38 2018 +0800
+
+    fix
+
+[33mcommit fd0abfabad589295dbe37dd6719dad187706f565[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 22 13:12:01 2018 +0800
+
+    change matrix name
+
+[33mcommit 17255abb05c614a8cd6b31809fd707f7e392c26f[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 22 13:05:04 2018 +0800
+
+    corr dataset&tooltip
+
+[33mcommit 179eb3f92045479eb9ba9edc3a76691d234624ca[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:30:50 2018 +0800
+
+    new corr.
+
+[33mcommit e71c03ee6c00a246aa768c6bb048a7eef0381944[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:30:39 2018 +0800
+
+    drug2heatmap
+
+[33mcommit d7c8f9d7e863738aea2ef4f7fb9fdc20201279e1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:30:31 2018 +0800
+
+    drug2heatmap
+
+[33mcommit b756c64dd1bcb90fecb294169cb0b863f4cedac6[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:30:09 2018 +0800
+
+    heatmap
+
+[33mcommit 82c3233d22e9599a17a3348fbd304b206ac14101[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:30:00 2018 +0800
+
+    chart;
+
+[33mcommit 101e27c6a38978e75552de5747c42d143896291c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:29:46 2018 +0800
+
+    static
+
+[33mcommit f8500d4093b10f398b91957ff1457d273afebedf[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:29:27 2018 +0800
+
+    hide /help
+
+[33mcommit 33a1ba29a89844570dc74aa8ed81c200e333a2f1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:29:11 2018 +0800
+
+    form
+
+[33mcommit 894440f2a27aad7113a502148ecd23de5eaa586d[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:28:48 2018 +0800
+
+    font
+
+[33mcommit 174e1f51a8029642619d447cb0dda98f0dc3a859[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:28:38 2018 +0800
+
+    survival pic
+
+[33mcommit 9d764ffc184cad71df81c63f2160f80367150d34[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:28:17 2018 +0800
+
+    new components;
+
+[33mcommit 2b1d872f01071dd778a11d6ba41d67c9b3822e7e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:27:46 2018 +0800
+
+    new route
+
+[33mcommit 3c263eae2992254bf3e121798ecb41f8527431f6[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:27:35 2018 +0800
+
+    style
+
+[33mcommit 7f0faece67be05069e26498bb08d35a0e6a2db98[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jun 20 18:27:05 2018 +0800
+
+    md
+
+[33mcommit 755d84beab1143e20af97b8593fab2ca2320ac35[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 17:00:55 2018 +0800
+
+    update readme & pkg
+
+[33mcommit 014fab33bcb2c990d5b4e5f6b6a70de84a71bae9[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 16:58:20 2018 +0800
+
+    eslint fix auto
+
+[33mcommit e39cb4e479e0bf84e270bbc57335c0d7f716b2f7[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 16:55:06 2018 +0800
+
+    add md for instruction
+
+[33mcommit a8bcd8f282d2c601100f32f486c31af5f45951ee[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 16:33:41 2018 +0800
+
+    loading
+
+[33mcommit 35e4d8692ddaa7ce7f9380ca61c61aa1273cea4e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 16:05:26 2018 +0800
+
+    path
+
+[33mcommit 3ddfff5d8b231e1cedb433c89035eaee98123393[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 15:41:52 2018 +0800
+
+    remove git track
+
+[33mcommit 2ff26c2a65c9c45415ae620f961e9c85c6afe92f[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 15:39:15 2018 +0800
+
+    reset to http
+
+[33mcommit 5623e00ffeee7a404c74d19d71b8a1a69d0296bc[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 15:37:28 2018 +0800
+
+    readme
+
+[33mcommit bd6fcacf5b7d83d1a1aee41cfcf52a57c4937791[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 15:36:01 2018 +0800
+
+    readme update
+
+[33mcommit 01e34a0ec26e58b4743dc7b32396bc45dba1775d[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Jun 15 14:41:33 2018 +0800
+
+    echarts => total
+
+[33mcommit 77d56c8b1fdd9055aa6791042222f769a1d98e09[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 17:05:23 2018 +0800
+
+    spelling fix
+
+[33mcommit 87d64fe48f9ea58970e1e3bb5b18b115adaa992e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 16:46:01 2018 +0800
+
+    rpath modift
+
+[33mcommit 74f1df275a7ae2fb9a87decdcc94bb0039a1bdd5[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 16:45:51 2018 +0800
+
+    style
+
+[33mcommit c43e661cf4b41e6626a0f15a61d953d067f6e621[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 14:04:23 2018 +0800
+
+    add error handle for survival pic
+
+[33mcommit f3d7f1e69397df93bb4db00180b8dc96a3a1eef4[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:10:22 2018 +0800
+
+     change to datasetID
+
+[33mcommit 3bc1cdcdd26fe73383fc8d032ac0d62008283cb4[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:10:05 2018 +0800
+
+    style:
+
+[33mcommit d5fa2e4820438966819a477f1064a52e0247b243[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:09:56 2018 +0800
+
+    diffmodal
+
+[33mcommit b7dc0b43e7f017be9259cc22fd52a3a3607f7db8[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:09:41 2018 +0800
+
+    corr
+
+[33mcommit 1d14635b2c6319b5404aee6dced3a06f12424617[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:09:32 2018 +0800
+
+    boxplot
+
+[33mcommit b004951f089d7ea0d446ab0b149de3d9cdd6e8f1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:09:13 2018 +0800
+
+    modify: submatrix & boxplot
+
+[33mcommit 71ba5494c700094027bf639de059225044cbbe25[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:08:40 2018 +0800
+
+    fix:expression boxplot
+
+[33mcommit 67af0b75e1c5d8fff26cb73244e3aede52509cf0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:08:14 2018 +0800
+
+    fix:case expression
+
+[33mcommit 4a74069285635b4f6c502ed7ef5d1a5154de7961[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jun 14 11:07:47 2018 +0800
+
+    fix:table scroll
+
+[33mcommit da47350c5001b1e9a6e43ec3a6ab8018b6a5b1b5[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Jun 11 12:21:30 2018 +0800
+
+    fe boxplot and diff modal
+
+[33mcommit 75779f712e1c8783492bfe5620e99f5c0ab98b16[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu May 10 12:18:30 2018 +0800
+
+    remove bundle analysis
+
+[33mcommit 8f624c3fe1130739304ab629de42fe3fc4712dd5[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu May 10 12:12:06 2018 +0800
+
+    优化打包体积
+
+[33mcommit 9ca6c736acc9d63feeafd0f4b4974426e7aaf183[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:06:01 2018 +0800
+
+    webpack config
+
+[33mcommit 1ad0e0d73a9a958bdea0797af018c22ad71055ba[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:05:48 2018 +0800
+
+    modify diff analysis
+
+[33mcommit 3da0a547d38384a25d3a23e29119c0b5a725bf73[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:05:36 2018 +0800
+
+    modify theme and style
+
+[33mcommit 074b1b37a31cc4032656ecaa0f68a03cf037ba30[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:05:11 2018 +0800
+
+    add gene expression
+
+[33mcommit ec82596a6342c8d0c76c9b943f42f66ccaba3516[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:04:54 2018 +0800
+
+    add survivalsug
+
+[33mcommit 3c9aa0ac74c8ce97aa683b62def9ba02ec64f734[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:04:32 2018 +0800
+
+    rm proptype
+
+[33mcommit f5843612a722e359dc022d4d7c7d9b7c0d373586[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed May 9 13:03:09 2018 +0800
+
+    add survival
+
+[33mcommit ef9851ba6601cf00bb9011519b85497fae7f1be6[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:26:42 2018 +0800
+
+    add controller and service for statistics
+
+[33mcommit 3a40454cb56becd744dbe71c5bbd1de4425a3644[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:26:17 2018 +0800
+
+    add charts
+
+[33mcommit 8a6be7952fdeb5acb9de4dee631484551e9b499e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:26:02 2018 +0800
+
+    route change
+
+[33mcommit d0a8638d87f1cc6277eccddb6135961ac93ad1e3[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:24:46 2018 +0800
+
+    navigate change
+
+[33mcommit 92fb1011ccd04654cf17b59780cdb13a8612cce0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:24:18 2018 +0800
+
+    homepage media query
+
+[33mcommit 625893190af8456c022a0eb1335f75af101c0daa[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 20:24:01 2018 +0800
+
+    route change
+
+[33mcommit ae5206ee596c9f6b250af7f160154a63742d6c2a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 15:13:51 2018 +0800
+
+    homepage modify
+
+[33mcommit 3eb368a49784605eee1ecbcf2d38decda5ba0297[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:28:14 2018 +0800
+
+    modify diff
+
+[33mcommit 3c4a4d145899834bfd235879c77252165dfd42bb[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:28:05 2018 +0800
+
+    add boxplot
+
+[33mcommit 731ebf46246bb2171972192bd97a09c94f741f07[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:27:46 2018 +0800
+
+    add desc
+
+[33mcommit 426152fcd92051e864d65b66649ee14f87dfbfd0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:27:39 2018 +0800
+
+    add tables
+
+[33mcommit d984aef3d524ffc2a3a779d900bdaf7bcc896d15[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:27:16 2018 +0800
+
+    add link
+
+[33mcommit a0c9dd2b5a824dc89e1e82fdbecf16fba53d77ee[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:26:18 2018 +0800
+
+    route build
+
+[33mcommit f5d22a4332317075fee2a35a82e7910f1a884811[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:26:07 2018 +0800
+
+    display modify
+
+[33mcommit 847d4345e357903e98ee19a921db96d703fd09c2[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:25:32 2018 +0800
+
+    add config
+
+[33mcommit ff516aaa9562da270afdb7f39904e8e19d877a67[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon May 7 13:25:15 2018 +0800
+
+    add https
+
+[33mcommit 81e9e876f898f058363f43119e31af99af1193e4[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 27 17:17:13 2018 +0800
+
+    fix: font-size in safari display
+
+[33mcommit c21d2be02f586dbe7ff9eccc68b5f64d5249a107[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 27 17:05:59 2018 +0800
+
+    update media query
+
+[33mcommit 81eef8faa05467332ffe53ed600feb6705dc4fd9[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 27 11:10:33 2018 +0800
+
+    update contact.md
+
+[33mcommit b9846de54ab8c2707e5e97f3c8fda26d8f298f58[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 16:16:33 2018 +0800
+
+    feat: add 1vn r script
+
+[33mcommit 7cd1b7de223d235dac83280191d04c48f342f073[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 14:47:10 2018 +0800
+
+    add validate to corr analysis
+
+[33mcommit 21613cc4c29003169aad9ad248e68e820420ed44[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 14:46:53 2018 +0800
+
+    static page modify;
+
+[33mcommit 07dade4cc4ca9b0363043052aef5460572b63714[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 14:46:01 2018 +0800
+
+    add prop to control field number
+
+[33mcommit cc4d9d5630f8212df23d69e5cd329c275d6bc6fa[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 14:45:17 2018 +0800
+
+    expression jpg
+
+[33mcommit eaa41286cf1b1683412ecba1f3d3a625dcd4146c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Apr 19 14:44:46 2018 +0800
+
+    calculate r
+
+[33mcommit 2592a6edb6486f83564189299bf733623c214255[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 18 18:41:11 2018 +0800
+
+    add download to chart
+
+[33mcommit 10cbea2256458e48248f79e22515cab367d9c46a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 18 16:35:50 2018 +0800
+
+    remove recharts;
+
+[33mcommit b5201f04917abffc0f8f62ab82d14d3731ab5692[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 18 15:33:44 2018 +0800
+
+    change scatterchart to echarts
+
+[33mcommit 450b5d82a8d43daf86a523bb40c0d98f2134f280[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 18 12:40:53 2018 +0800
+
+    delete dependencies
+
+[33mcommit bd62b82a65a0947a34c6d2f987c14cc83b844c8f[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Apr 17 16:31:48 2018 +0800
+
+    bug fix: different tab with same state
+
+[33mcommit c0b7d99841d4d0c44d2bd1112849736e563f40a1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Apr 17 15:08:52 2018 +0800
+
+    remove duplicated
+
+[33mcommit 5d505dc1420cd68a469185f43704a69a423ffcea[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Apr 16 12:52:17 2018 +0800
+
+    code spell check
+
+[33mcommit cc7a0c8c91c3592ef5ff1b5eedfe74f68368c0bd[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 11 16:19:14 2018 +0800
+
+    boxplot size
+
+[33mcommit 1c934cbb8bde59e38c53d51a9698855a063abfd7[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Apr 9 11:22:05 2018 +0800
+
+    update sql for filter
+
+[33mcommit bf9681d92675c69aea2eb9205de1c48ba6c65389[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 6 20:31:10 2018 +0800
+
+    add new column to scroll table
+    table
+
+[33mcommit a1ffa3061e15015cc7e791628ceae4c875af52ba[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 6 19:52:56 2018 +0800
+
+    replace nav width bs nav
+
+[33mcommit e61cb746ad9cb4777e4e099f6f88d0f70e0bfd59[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Apr 6 18:21:25 2018 +0800
+
+    modify mobile ui
+
+[33mcommit 1af0db005920f8ed073b75d87022c5215b833eb3[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 16:52:27 2018 +0800
+
+    fix
+
+[33mcommit f46ae4a3eaec74026474277ee6c51f5fef0045f3[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 12:19:36 2018 +0800
+
+    heatmaptable prop
+
+[33mcommit 679bb75940ba760bab5a312bd95279c15b805bb8[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 12:18:57 2018 +0800
+
+    backend route and sql
+
+[33mcommit 191be2acdffcbf5b42b360438c8c49de29da9153[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 12:18:08 2018 +0800
+
+    scroll druginfo
+
+[33mcommit d69c11acff9d0bcdf9b0424ba6b8b62784ec62dd[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 12:17:36 2018 +0800
+
+    change em => rem
+
+[33mcommit 898e396a183ed1261ce60f4c145b5aebd5812324[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Apr 4 12:16:53 2018 +0800
+
+     build connectivemap
+
+[33mcommit f8b8cd52ab391581fe69cc889aad51ffdaf07385[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 27 17:01:09 2018 +0800
+
+    table and map layout
+
+[33mcommit d760deee5800c0767f2b64aa6770a8c02ffa9e83[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 27 16:15:11 2018 +0800
+
+    scroll heatmap
+
+[33mcommit 8181f9c54b2d99ae7e8131ef99a47385ee863f92[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Mar 26 15:50:26 2018 +0800
+
+    style and route change
+
+[33mcommit 0edf640c53f61d877c61401fde20ed0ab9d1c539[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Mar 23 16:46:21 2018 +0800
+
+    feat: statisticspage and hoc comps
+
+[33mcommit 3f028781d6527e96aa3785b2fd224e10d0464bd1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 22 16:48:18 2018 +0800
+
+    add backtotop and scroll
+
+[33mcommit 89453e2d4f30ab84524d142dc641e815fe41f405[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 21 20:17:54 2018 +0800
+
+    new layout
+
+[33mcommit ee565f684665e3df203669adc3c4285da2bf2bf8[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 20 18:36:00 2018 +0800
+
+    async & add corr
+
+[33mcommit af1211d5005a8e94ba7f984724779c02ce17bfef[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 20 13:00:52 2018 +0800
+
+    r script & wrapper select
+
+[33mcommit 911deeb4ffcc3089227d5a630dc6014b4795d523[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 20 11:30:45 2018 +0800
+
+    r script  modify
+
+[33mcommit 96a2ee56a4663f29088e5e867b35d3d2df3fa164[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 20 11:19:06 2018 +0800
+
+    add download
+
+[33mcommit 32bf2beecbbb70beb95e171c024335222899d8af[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 14 14:27:46 2018 +0800
+
+    style
+
+[33mcommit c6079888618aa826555b9d5f9993a91ef4e0776a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 13 15:58:24 2018 +0800
+
+    style
+
+[33mcommit 6d8861409e3a007fb563d665e59e3f2fc82e3823[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 13 12:35:16 2018 +0800
+
+    style change
+
+[33mcommit 7324738ce5344afb004d92302d6abab6b17dfa82[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 13 11:32:59 2018 +0800
+
+    style
+
+[33mcommit 679f8bcd5c536757c8bca62b4ada55bb3fc6c625[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Mar 12 13:52:26 2018 +0800
+
+    add col name in fwrite
+
+[33mcommit 72e206318c8978154c585e4dedebfbc20a8700b4[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Mar 12 13:28:18 2018 +0800
+
+    handle diff
+
+[33mcommit 2042d6459551e50b53b296a79b578cb4724d752e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Mar 12 13:27:52 2018 +0800
+
+    handle boxplot
+
+[33mcommit be7264594984dfcb41a0d0cace94322ff004a858[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:05:04 2018 +0800
+
+    modify component
+
+[33mcommit bc2216fe69ef5310f2256714b3ce40344bb6c96b[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:04:54 2018 +0800
+
+    add fe route /annalysis/drugs
+
+[33mcommit 9e27f9339a41de0bb318ca77448b1e5d151936ed[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:04:04 2018 +0800
+
+    change drug info to md style
+
+[33mcommit af53b811afa64d0219b7aeae50b95e14dc209edb[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:03:17 2018 +0800
+
+    r script
+
+[33mcommit 8c87345c61ee28b28654c91d60eb2149353e2bb9[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:03:08 2018 +0800
+
+    modify md style
+
+[33mcommit 04aae22df63f8edd5d79afa69a10f123815c945a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 17:02:38 2018 +0800
+
+    add server route /drugs
+
+[33mcommit 39b6a9f7a1bd984b744ff4ce5f4bb24eafe63ba5[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 13:26:59 2018 +0800
+
+    wrapper
+
+[33mcommit 0a593440364a0f498fd12ae3d24bc3cb99b23a3c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Mar 8 12:16:58 2018 +0800
+
+    modify route
+
+[33mcommit 492c17035fb044f4eb056672dadac49b2c748d69[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 18:25:29 2018 +0800
+
+    delete obj
+
+[33mcommit 7f2a21ae727ba5395ef8732fb13ff3d14c7e12fa[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 18:25:15 2018 +0800
+
+    handle column
+
+[33mcommit 3a407923962aaee7de99cd442efa4d89b00cd1cc[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 18:25:03 2018 +0800
+
+    add chart api
+
+[33mcommit 8e1827c80c2a078c0d4c005362cbd7cb56c804d1[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:20:15 2018 +0800
+
+    set limit to 10
+
+[33mcommit 176afdb82a5b9616ad9f17e4a02db55a09c919bd[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:18:38 2018 +0800
+
+    handle drug2target
+
+[33mcommit 8a9509945d1df7444123e4e7aea0ff4b0fb4f346[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:18:22 2018 +0800
+
+    handle style
+
+[33mcommit bcfd20b683dde734973959d19e6f2818c65fe35e[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:18:00 2018 +0800
+
+    handle records page
+
+[33mcommit f93bc28ebc3a9348eec0f03e97998158971b5935[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:17:08 2018 +0800
+
+    handle case page
+
+[33mcommit 0aafd737e97840ed140f892e8752c851348b74a7[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:16:30 2018 +0800
+
+    add new comp
+
+[33mcommit f9706164bc4794963a51a9ffcf1a4ffd941cad67[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:16:12 2018 +0800
+
+    add new route
+
+[33mcommit 54190a513f588528c629bb220c39d8a16d7b19f9[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Mar 7 16:15:35 2018 +0800
+
+    i new package
+
+[33mcommit 44b4d5977d736ad622626670779281a465867997[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 18:39:46 2018 +0800
+
+    get str from sql
+
+[33mcommit 83e225a0f3e5555bc6870cce83e680e4050be3a5[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 16:03:24 2018 +0800
+
+    modify r script
+
+[33mcommit 047a004439babd4fc70c10c13a778c524f0ac354[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 15:59:35 2018 +0800
+
+    link arguments
+
+[33mcommit 510acf169a08f4c87c6f1357f9bc63783c0773fb[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 15:59:17 2018 +0800
+
+    modify r script
+
+[33mcommit 911de229c5ac1a658f5cda672adb1812172df0f4[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 15:59:02 2018 +0800
+
+    set local path
+
+[33mcommit 2432f18fe9818fa1b995f491186893b9e3c439e8[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 15:58:34 2018 +0800
+
+    add md5;
+
+[33mcommit e1e7c02dde720106bea7f69d11547023fba625cd[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Mar 6 11:22:20 2018 +0800
+
+    link r package
+
+[33mcommit 09224454937013cd69652131c15050c44d4186bb[m
+Author: sanglewang <sanglewang@tencent.com>
+Date:   Sat Feb 24 16:44:00 2018 +0800
+
+    remove breaks
+
+[33mcommit 1e9d0b3e870644f71eb17fc7baf52643cc2ed97c[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:34:21 2018 +0800
+
+    add md sample content;
+
+[33mcommit dc59298a65f4248857d61360dbfcdb32b416685b[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:34:06 2018 +0800
+
+    add md container
+
+[33mcommit 3b1ce10aacfa3261c027d701edce78c2fc26635d[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:33:50 2018 +0800
+
+    modify 404page height
+
+[33mcommit 247cfaf3fa77565c4863580feb1fcd12e5b3443a[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:33:36 2018 +0800
+
+    modify 404page
+
+[33mcommit f0c47fb04a941321890a44032823d705e8cc4596[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:33:13 2018 +0800
+
+    modify homepage
+
+[33mcommit 45e83d80a4a442abc2b4df3ce27f662214344563[m
+Author: sangle7 <sanglewang@gmail.com>
+Date:   Sat Feb 24 16:32:52 2018 +0800
+
+    configuration
+
+[33mcommit b0fe0cf2c2c80ee1418da32a7579bcb3fc39ec73[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jan 30 22:11:57 2018 +0800
+
+    feat: 修改开发环境
+
+[33mcommit 8ec710aa677b7c3b5a468930b4a2b599f3f28937[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jan 18 14:23:00 2018 +0800
+
+    remove console
+
+[33mcommit bbfdb77b7aede4df4dabc86e3317657ae50fa212[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jan 18 14:20:41 2018 +0800
+
+    fix scale-hoisting
+
+[33mcommit 2f7b217fd5a3d551ff43ac5eb7eb816035a99086[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Thu Jan 18 13:51:48 2018 +0800
+
+    add needle-plot
+
+[33mcommit 5f074ed0493299ff26d3621c03b0bb67ea4f5725[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jan 16 22:31:52 2018 +0800
+
+    add view-engine
+
+[33mcommit 46f950288c41f69898a6f80ed6b9ab52994af79a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jan 16 15:50:36 2018 +0800
+
+    add d3 to generate boxplot
+
+[33mcommit 1ff6fb5ef8136e92d52028d5c6d017ea1d4d93e7[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Jan 16 15:20:54 2018 +0800
+
+    add boxplot from plotly
+
+[33mcommit 9c7dba52d7106cddc1b9e03c683f49c066160caf[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jan 10 17:20:15 2018 +0800
+
+    add shell script
+
+[33mcommit b3520de66573d99fb7496f042958cbd533259abe[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Jan 10 12:24:03 2018 +0800
+
+    modify sql sequence and fix ui render
+
+[33mcommit c812cdfb89023572ae6e1e5f018392d4e1c94c05[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Jan 8 14:36:07 2018 +0800
+
+    modify config
+
+[33mcommit 60b74fc80d0ccd544784583fba2098f72365296f[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Dec 26 17:53:46 2017 +0800
+
+    [update]: webpack.prod.config
+
+[33mcommit ac65d2b91eee3dd532a6744505ed94e6c8399578[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Dec 26 17:27:20 2017 +0800
+
+    add prod.config
+
+[33mcommit 4b1e45730c64ac9dd43a69831317938beda06547[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Dec 25 20:43:14 2017 +0800
+
+    search table hncgene instead of gene
+
+[33mcommit 8284cb68f44481d7430ef4e462a54d56a64fcc67[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Dec 25 16:09:31 2017 +0800
+
+    select style modify
+
+[33mcommit 0ca46e1281567bdd4cbf8e1c4b4d3feadf3861ad[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Mon Dec 25 15:02:15 2017 +0800
+
+    table layout modify
+
+[33mcommit 2a39ebe81a64c3423bbac9e2c27305927b2b2f68[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Dec 22 16:18:55 2017 +0800
+
+    modify tabs style
+
+[33mcommit d2e344caba5e0fd8e851f1f354a9cb960a613c24[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Dec 22 15:29:32 2017 +0800
+
+    table header modify
+
+[33mcommit 133a71f9f501357d40c87522f7bf2693b50402cd[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Dec 22 14:35:26 2017 +0800
+
+    终于把这个诡异的箭头画出来了
+
+[33mcommit e0247b256eaff6c5addf25dddfba845dc432d71d[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Dec 22 13:27:21 2017 +0800
+
+    css modify
+
+[33mcommit deea84a0e9b98e5093098fb990860a17c475a2b3[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Nov 10 18:48:46 2017 +0800
+
+    layout modify & update reademe
+
+[33mcommit abd170a3e15d25299e8eedb944f15fe50f0c1e07[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Nov 10 18:07:46 2017 +0800
+
+    modify readme
+
+[33mcommit 952bc23f5714bb8a88d76c5131982a516edf0671[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Nov 8 17:05:05 2017 +0800
+
+    modify route for ncRNA & lint
+
+[33mcommit b8a9569e0ec48abcdde27f15a3cf0564538aa20b[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Nov 8 14:01:05 2017 +0800
+
+    add HOC for multiple component
+
+[33mcommit f10223a308d4c79737976d7edc15818cba3a463a[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Nov 7 17:08:34 2017 +0800
+
+    add linechart & eslint before commit
+
+[33mcommit f5618f9b983f184da83a9ea20ed661b9e236ac53[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Nov 7 16:42:19 2017 +0800
+
+    add multiple charts with material color
+
+[33mcommit afe24cae9d72d565333512ac4e7e179aa249ca1c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Tue Nov 7 14:08:45 2017 +0800
+
+    add datasets model route & view
+
+[33mcommit 5aa720d7fd16a0dea2de4602b3f6dbd03d71c26c[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Nov 3 21:06:12 2017 +0800
+
+    修改packagejson 添加说明文档
+
+[33mcommit 037338c13b60e1be09aa0c6bf24d1dc46c1d55a0[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Fri Nov 3 20:37:00 2017 +0800
+
+    新增drug分页后端逻辑处理
+
+[33mcommit 86f560abdc510652e248f1d08414c4280c27e491[m
+Author: sangle <sanglewang@gmail.com>
+Date:   Wed Nov 1 17:07:37 2017 +0800
+
+    first commit

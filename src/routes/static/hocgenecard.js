@@ -17,6 +17,29 @@ const gData = item => {
   return arr
 }
 
+
+function aaa(v, record) {
+  switch(record.key){
+    case 'entrezid':
+    return <a href ={`http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=gene&cmd=Retrieve&dopt=full_report&list_uids=${v}`}>{v}</ a>
+    break;
+    case 'omimid':
+    return <a href = {`http://omim.org/entry/${v}`}>{v}</ a>
+    break;
+    case 'uniprotid':
+    return <a href = {`http://www.uniprot.org/uniprot/${v}`}>{v}</ a>
+    break;
+    case 'ensemblid':
+    return <a href = {`http://asia.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=${v}`}>{v}</ a>
+    break;
+    case 'refseqid':
+    return <a href = {`http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=Nucleotide&cmd=Search&doptcmdl=GenBank&term=${v}`}>{v}</ a>
+    break;
+    default:
+    return v
+  }
+}
+
 const Genecard = props => {
   const { item, loading } = props
   const TableProps = {
@@ -31,6 +54,7 @@ const Genecard = props => {
       title: 'value',
       dataIndex: 'value',
       width: '70%',
+      render: aaa,
     }],
     loading,
     pagination: false,

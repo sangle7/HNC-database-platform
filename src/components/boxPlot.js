@@ -36,7 +36,7 @@ class Boxplot extends React.Component {
 
     const data = echarts.dataTool.prepareBoxplotData(boxPlotData)
 
-    const xData = xDataMap[title.split('_')[1]] // GSE1722_Tumor_vs_Normal_coding
+    const xData = xDataMap[title.split(/[_@]/)[1]] // GSE1722_Tumor_vs_Normal_coding
 
     const option = {
       title: [{
@@ -61,7 +61,7 @@ class Boxplot extends React.Component {
       },
       yAxis: {
         type: 'value',
-        name: 'Expression',
+        name: 'log2(Expression)',
         splitArea: {
           show: true,
         },

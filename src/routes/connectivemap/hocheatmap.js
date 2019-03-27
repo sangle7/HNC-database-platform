@@ -49,6 +49,9 @@ class WithSearch extends React.Component {
       onTitleClick: c => {
         history.push(`/statics?drugId=${c}`)
       },
+      onGeneClick: gene => {
+        history.push(`/statics?geneId=${gene}`)
+      },
     }
 
     return [<div className="flexdc">
@@ -66,12 +69,13 @@ const GeneList = props => {
         key: 'coding',
         title: 'Coding gene',
         content: <WithSearch t="coding" {...props} />,
-      }, {
-        key: 'lnc',
-        title: 'lncRNA',
-        content: <WithSearch t="lnc" {...props} />,
+      }, //{
+        //key: 'lnc',
+        //title: 'lncRNA',
+        //content: <WithSearch t="lnc" {...props} />,
   
-      }],
+      //}
+      ],
       onChange (key) {
         console.log(key)
       },

@@ -177,7 +177,7 @@ class Diff extends React.Component {
 
     return (
       <div>
-        <Header title="Diff analysis" />
+        <Header title="Differential expression analysis" />
         <Card title={<div><i className="fa fa-lg fa-fw fa-toggle-on" /><span>select query</span></div>}>
           <Multiselect onSubmit={this.init} />
         </Card>

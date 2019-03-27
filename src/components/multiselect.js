@@ -32,7 +32,6 @@ const Multiselect = props => {
             <Option value="HPV">HPV pos vs neg</Option>
             <Option value="Tumor">Tumor vs normal</Option>
             <Option value="Tobacco">Tobacco pos vs neg</Option>
-            <Option value="Recurrence">Recurrence pos vs neg</Option>
           </Select>
         )}
       </FormItem>

@@ -13,9 +13,11 @@ import PieChart from './piechart'
 import Multiselect from './multiselect'
 import SurvivalCard from './survivalcard'
 import Checkboxgroup from './checkboxgroup'
+import WrappedDynamicFieldSet2 from './dynamicFieldSet_2'
 
 export {
   WrappedDynamicFieldSet,
+  WrappedDynamicFieldSet2,
   HeatMapTable,
   Stackchart,
   PieChart,

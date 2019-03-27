@@ -33,6 +33,9 @@ class WithSearch extends React.Component {
         history.push(`/statics?t=${t}&geneId=${gene}&caseId=${c}`)
       },
       onTitleClick: () => {},
+      onGeneClick: gene => {
+        history.push(`/statics?geneId=${gene}`)
+      },
     }
 
     return [<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '.2rem' }}>
@@ -49,20 +52,22 @@ const GeneList = props => {
       key: 'tumorcoding',
       title: 'Tumor vs Normal/Disease (Coding gene)',
       content: <WithSearch t="tumorcoding" {...props} />,
-    }, {
-      key: 'tumorlnc',
-      title: 'Tumor vs Normal/Disease (lncRNA)',
-      content: <WithSearch t="tumorlnc" {...props} />,
+    },// {
+      //key: 'tumorlnc',
+      //title: 'Tumor vs Normal/Disease (lncRNA)',
+      //content: <WithSearch t="tumorlnc" {...props} />,
 
-    }, {
+    //},
+    {
       key: 'hpvcoding',
       title: 'HPV positive & negative (Coding gene)',
       content: <WithSearch t="hpvcoding" {...props} />,
-    }, {
-      key: 'hpvlnc',
-      title: 'HPV positive & negative (lncRNA)',
-      content: <WithSearch t="hpvlnc" {...props} />,
-    }],
+    },// {
+      //key: 'hpvlnc',
+      //title: 'HPV positive & negative (lncRNA)',
+      //content: <WithSearch t="hpvlnc" {...props} />,
+    //}
+    ],
     onChange (key) {
       console.log(key)
     },

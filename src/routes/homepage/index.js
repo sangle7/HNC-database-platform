@@ -21,7 +21,7 @@ const Homepage = (props) => {
           <div />
           <main>
             <h3>gene</h3>
-            <p>including 1,253 genes and 4,017 supported papers.</p>
+            <p>including 1,173 genes and 2,564 supported papers.</p>
           </main>
         </div>
 
@@ -29,7 +29,7 @@ const Homepage = (props) => {
           <div />
           <main>
             <h3>drug</h3>
-            <p>including 205 drugs and 4,237 supported papers.</p>
+            <p>including 176 drugs and 2,032 supported papers.</p>
           </main>
         </div>
 

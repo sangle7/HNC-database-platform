@@ -21,13 +21,13 @@ const menu = [{
 }, {
   text: 'Analysis',
   child: [{
-    text: 'Diff',
+    text: 'Differential expression analysis',
     src: '/Diff',
   }, {
-    text: 'Corr',
+    text: 'Correlation analysis',
     src: '/Corr',
   }, {
-    text: 'Survival',
+    text: 'Survival analysis',
     src: '/Survival',
   }],
 }, {

@@ -6,7 +6,7 @@ exports.init = async ctx => {
   const {
     gene
   } = ctx.request.body
-
+  console.log(gene)
   try {
     const result = gene ? await ctx.service.survivalgene.get(gene) : false
     body = {

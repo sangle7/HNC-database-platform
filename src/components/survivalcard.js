@@ -26,7 +26,7 @@ class SurvivalCard extends React.Component {
         visible: false
       })
     }
-
+    
     render () {
     const { gene } = this.props
     const { visible, url, title } = this.state
@@ -38,7 +38,7 @@ class SurvivalCard extends React.Component {
       onCancel: this.hideModal,
       footer: null,
     }
-  
+    
     return (
       <Card title={<div><i className="fa fa-lg fa-fw fa-line-chart" /><span>Survival Charts</span></div>}>
         <div className={style.imgcontainer}>

@@ -12,6 +12,7 @@ import Stackchart from './stackChart'
 import PieChart from './piechart'
 import Multiselect from './multiselect'
 import SurvivalCard from './survivalcard'
+import SurvivalCardmulti from './survivalcardmulti'
 import Checkboxgroup from './checkboxgroup'
 import WrappedDynamicFieldSet2 from './dynamicFieldSet_2'
 
@@ -32,4 +33,5 @@ export {
   Checkboxgroup,
   Card,
   SurvivalCard,
+  SurvivalCardmulti,
 }

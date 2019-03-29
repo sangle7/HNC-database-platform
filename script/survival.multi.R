@@ -104,7 +104,7 @@ if(length(gene_not_in_the_matrix)){
                              "\nHR CI: ",round(pvalue$conf.int[3],3),"-",round(pvalue$conf.int[4],3),
                              "\nGene: ",paste(Args,collapse = "+")
                  ))
-      ggsave(paste("/home/cancerbi/public_html/HNCDB/app/public/test",dataset[i,1],"_",dataset[i,2],".png",sep=""),width = 5,height = 6)
+      ggsave(paste("/home/cancerbi/public_html/HNCDB/app/public/multisurvival/",output,".",dataset[i,1],"_",dataset[i,2],".png",sep=""),width = 5,height = 6)
     }
     i=i+1
   }

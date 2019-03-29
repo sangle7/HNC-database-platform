@@ -8,6 +8,7 @@ const FormItem = Form.Item
 
 let uuid = 1
 class DynamicFieldSet extends React.Component {
+/*
   state = {
     names: [],
   }
@@ -58,9 +59,20 @@ class DynamicFieldSet extends React.Component {
     e.preventDefault()
     this.props.onSubmit(this.state)
   }
+*/
+  multiSubmit = e => {
+    e.preventDefault()
+    this.props.onSubmit(this.state)
+  }
+
+  onChange= v => {
+    this.setState({
+      names : v.target.value,
+    })
+  }
 
   render () {
-    const { max = 2, cgi } = this.props
+    /*const { max = 2, cgi } = this.props
     const { getFieldDecorator, getFieldValue } = this.props.form
     getFieldDecorator('keys', { initialValue: new Array(max).fill(0) })
     const keys = getFieldValue('keys')
@@ -80,14 +92,14 @@ class DynamicFieldSet extends React.Component {
           />
         ) : null}
       </FormItem>
-    ))
+    ))*/
     return (
       <Form
         className={classnames({ [style.form]: true })}
-        onSubmit={this.handleSubmit}
+        onSubmit={this.multiSubmit}
         layout="inline"
       >
-        <FormItem label="Multi input"><Input.TextArea /></FormItem>
+        <FormItem label="Multi genes: "><Input.TextArea onChange={this.onChange} placeholder="TP53&#10;KARS&#10;PIK3CA" autosize/></FormItem>
         <FormItem>
           <Button type="primary" htmlType="submit">Submit</Button>
         </FormItem>

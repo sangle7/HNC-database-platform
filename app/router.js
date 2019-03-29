@@ -21,6 +21,7 @@ module.exports = app => {
   app.get('/corr/dataset', app.controller.corr.dataset)
 
   app.post('/survival/init', app.controller.survival.init)
+  app.post('/multisurvival/multiinput', app.controller.multisurvival.multiinput)
 
   app.get('/drug/item', app.controller.drug.item)
   app.get('/drug/record', app.controller.drug.record)
